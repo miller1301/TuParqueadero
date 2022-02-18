@@ -5,5 +5,23 @@
 </ion-header>
 
 <ion-content>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada</ion-item>
+        <ion-item><ion-icon name="reader-outline" class="ion-padding-horizontal"></ion-icon> Parqueaderos</ion-item>
+        <ion-item ><ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion</ion-item>
+        <ion-item ><ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
+
+  
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-content>
