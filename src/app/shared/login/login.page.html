@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4" >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center" color="primary">Iniciar Sesión</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input type="text" placeholder="Correo"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input type="password" placeholder="Contraseña"></ion-input>
+            </ion-item>          
+            <ion-button expand="block" color="primary" class="ion-margin-top">
+              Login
+            </ion-button>
+            <ion-button  expand="block" fill="outline" color="primary">
+              <ion-icon name="logo-google"></ion-icon>
+            </ion-button>
+            <ion-button  expand="block" fill="outline" color="primary">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </ion-button>
+            <ion-button  expand="block" fill="outline" color="primary">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+
+          <ion-button expand="block" fill="clear" routerLink="/register">
+            Registrarse
+          </ion-button>
+        </ion-card>
+       
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
