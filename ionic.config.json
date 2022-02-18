@@ -1,0 +1,7 @@
+{
+  "name": "TuParqueadero",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
