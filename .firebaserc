@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tuparqueadero-178e4": {
+      "hosting": {
+        "app": [
+          "tuparqueadero-178e4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tuparqueadero-178e4"
+  }
+}
