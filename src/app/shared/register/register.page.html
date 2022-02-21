@@ -33,13 +33,13 @@
                 <ion-button expand="block" color="primary" mode="ios" class="ion-margin-top">
                     Register
                 </ion-button>
-                <ion-button expand="block" mode="ios" fill="outline">
+                <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
                   <ion-icon name="logo-google" ></ion-icon>           
                 </ion-button>
-                <ion-button expand="block" fill="outline" mode="ios">
+                <ion-button (click)="loginFacebook()" expand="block" fill="outline" mode="ios">
                   <ion-icon name="logo-facebook"></ion-icon>
                 </ion-button>
-                <ion-button expand="block" fill="outline" mode="ios">
+                <ion-button (click)="loginTwitter()" expand="block" fill="outline" mode="ios">
                   <ion-icon name="logo-twitter"></ion-icon>
                 </ion-button>
               </ion-card-content>
