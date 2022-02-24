@@ -14,24 +14,24 @@
               <ion-card-content>
                 <ion-item class="ion-margin-vertical">
                   <ion-label position="floating">Nombre:</ion-label>
-                  <ion-input type="text" placeholder="Nombre"></ion-input>
+                  <ion-input type="text" placeholder="Nombre" [(ngModel)]="datos.nombre" ></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label position="floating">
                     Telefono:
                   </ion-label>
-                  <ion-input type="text" placeholder="Telefono"></ion-input>
+                  <ion-input type="text" placeholder="Telefono" [(ngModel)]="datos.telefono" ></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label position="floating">Correo:</ion-label>
-                  <ion-input type="text" placeholder="Correo"></ion-input>
+                  <ion-input type="text" placeholder="Correo" [(ngModel)]="datos.correo" ></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label position="floating">Contraseña</ion-label>
-                  <ion-input type="password" placeholder="Contraseña"></ion-input>
+                  <ion-input type="password" placeholder="Contraseña" [(ngModel)]="datos.password" ></ion-input>
                 </ion-item>
-                <ion-button expand="block" color="primary" mode="ios" class="ion-margin-top">
-                    Register
+                <ion-button expand="block" color="primary" mode="ios" class="ion-margin-top" (click)="registrar()">
+                    Registrarse
                 </ion-button>
                 <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
                   <ion-icon name="logo-google" ></ion-icon>           

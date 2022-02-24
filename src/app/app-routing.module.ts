@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then( m => m.AdminPageModule)
+  },  {
+    path: 'parqueadero',
+    loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
+
 
 
 ];
