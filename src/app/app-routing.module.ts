@@ -16,12 +16,17 @@ const routes: Routes = [
     loadChildren: () => import('./shared/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'admin',
+    path: 'home',
     loadChildren: () => import('./modules/admin/admin.module').then( m => m.AdminPageModule)
   },
   {
+ 
     path: 'empleado',
     loadChildren: () => import('./modules/empleado/home/home.module').then( m => m.HomeComponentModule)
+  },
+    {
+    path: 'parqueadero',
+    loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
 
 

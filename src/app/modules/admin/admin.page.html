@@ -12,12 +12,12 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
+      <!-- <ion-list> -->
         <ion-item><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada</ion-item>
         <ion-item><ion-icon name="reader-outline" class="ion-padding-horizontal"></ion-icon> Parqueaderos</ion-item>
         <ion-item ><ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion</ion-item>
-        <ion-item ><ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar sesión</ion-item>
-      </ion-list>
+        <ion-item (click)="logout()" ><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
+      <!-- </ion-list> -->
     </ion-content>
   </ion-menu>
 
