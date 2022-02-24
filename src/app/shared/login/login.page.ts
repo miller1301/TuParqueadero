@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
   constructor( public auth: AngularFireAuth ) { }
 
   ngOnInit() {
+    
   }
 
   loginGoogle() {

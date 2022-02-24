@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Empleado de parqueadero</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-menu side="start" menuId="first" contentId="main">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada</ion-item>
+          <ion-item><ion-icon name="pricetag-outline" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+          <ion-item ><ion-icon name="cart-outline" class="ion-padding-horizontal"></ion-icon> Reservas Locales</ion-item>
+          <ion-item ><ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar sesión</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    
+    <ion-content class="ion-padding">
+      <h1>Tuparqueadero</h1>
+      <h1>Main Content</h1>
+      <p>Click the icon in the top left to toggle the menu.</p>
+      <ion-col>
+        <div class="ion-text-center">
+          <h3>Tuparqueadero</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+    </ion-content>
+
+
+    <ion-router-outlet id="main"></ion-router-outlet>
+
+
+  
