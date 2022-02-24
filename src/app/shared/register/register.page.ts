@@ -32,8 +32,16 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  loginGoogle() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  async loginGoogle() {
+    const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
+    if( res ){
+      
+      this.router.navigate(['/home'])
+    } else (
+      console.log('No se pudo iniciar sesion')
+    )
+    
+
   }
 
   loginFacebook() {
@@ -58,7 +66,7 @@ export class RegisterPage implements OnInit {
       this.datos.uid = id;
       this.datos.password = null;
       await this.firestore.createDoc(this.datos, path, id)
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/home'])
     }
   }
 }

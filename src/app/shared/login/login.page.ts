@@ -44,15 +44,15 @@ export class LoginPage implements OnInit {
     const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
     if (res) {
       console.log('res =>', res);
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/home'])
     }
   }
 
   async loginGoogle() {
-    const res = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
+    const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
     if( res ){
       
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/home'])
     } else (
       console.log('No se pudo iniciar sesion')
     )

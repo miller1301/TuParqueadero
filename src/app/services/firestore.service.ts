@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class FirestoreService{
 
-        constructor(private firestore: AngularFirestore){}
+    constructor(private firestore: AngularFirestore){}
 
     createDoc(data: any, path: string, id:string) {
         const collection = this.firestore.collection(path);
