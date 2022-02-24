@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { User } from '../modelos/models';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,4 +27,6 @@ export class AuthService {
   stateUser(){
     return this.authfirebase.authState;
   }
+
+
 }

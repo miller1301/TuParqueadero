@@ -25,11 +25,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  loginGoogle() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
+  
 
-  loginFacebook() {
+   loginFacebook() {
     this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
@@ -48,6 +46,18 @@ export class LoginPage implements OnInit {
       console.log('res =>', res);
       this.router.navigate(['/admin'])
     }
+  }
+
+  async loginGoogle() {
+    const res = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
+    if( res ){
+      
+      this.router.navigate(['/admin'])
+    } else (
+      console.log('No se pudo iniciar sesion')
+    )
+    
+
   }
 
 }
