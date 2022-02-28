@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-parqueadero',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParqueaderoPage implements OnInit {
 
-  constructor() { }
+  constructor(private log:AuthService) { }
 
   ngOnInit() {
+  }
+
+  
+  logout(){
+    console.log("Logout")
+    this.log.logout()
   }
 
 }
