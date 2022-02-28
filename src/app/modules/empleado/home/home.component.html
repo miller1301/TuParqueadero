@@ -1,40 +1,69 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-title>Empleado de parqueadero</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Empleado del parqueadero</ion-title>
+  </ion-toolbar> 
+</ion-header>
   
   <ion-content>
     <ion-menu side="start" menuId="first" contentId="main">
-      <ion-header>
-        <ion-toolbar color="primary">
           <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
       <ion-content>
         <ion-list>
           <ion-item><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada</ion-item>
           <ion-item><ion-icon name="pricetag-outline" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
           <ion-item ><ion-icon name="cart-outline" class="ion-padding-horizontal"></ion-icon> Reservas Locales</ion-item>
-          <ion-item ><ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar sesión</ion-item>
+          <ion-item (click)="logout()" ><ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar sesión</ion-item>
+          
         </ion-list>
       </ion-content>
     </ion-menu>
+
+      
     
     <ion-content class="ion-padding">
-      <h1>Tuparqueadero</h1>
-      <h1>Main Content</h1>
-      <p>Click the icon in the top left to toggle the menu.</p>
+      <ion-row>
       <ion-col>
+        
         <div class="ion-text-center">
-          <h3>Tuparqueadero</h3>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+          <p id="titulo">Tuparqueadero</p>
+          <img id="imagen" src="https://www.carroya.com/noticias/sites/default/files/entradillas/432216777nidoo-parqueaderos-cy.jpg"><img>
+          <h1 style="font-size:50px;">¿Quienes somos?</h1>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum 
+                  is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, 
+                  and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, 
+                  sometimes on purpose (injected humour and the like).</p>
         </div>
-      </ion-col>
-    </ion-content>
+        </ion-col>
+       </ion-row>
 
+            <div style='text-align:left'>
+            <b>Ubicacion NO Editable</b>
+          </div>
+
+          <ion-row>
+            <ion-col>
+              <img id="ubicacion" src="https://www.seekpng.com/png/full/347-3471100_icono-ubicacion-vector-png-icono-de-ubicacion-png.png"><img>
+
+            </ion-col>
+
+            <ion-col size="10">
+              <p>El parqueadero se encuentra en la ciudad de mosquera
+                Cll 17, Mosquera-Cundinamarca
+              </p>
+            </ion-col>
+          </ion-row>
+
+        
+        
+     
+      
+   
+      
+      
+
+   
 
     <ion-router-outlet id="main"></ion-router-outlet>
-
+    </ion-content>
 
   
