@@ -22,9 +22,7 @@ const routes: Routes = [
   {
     path: 'parqueadero',
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
-  },
-
-
+  }
 
 ];
 
