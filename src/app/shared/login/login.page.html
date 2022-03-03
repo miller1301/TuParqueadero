@@ -1,18 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid >
     <ion-row>
-      <ion-col sizeMd="4" offsetMd="4" >
+      <ion-col sizeMd="6" offsetMd="3" sizeLg="4" offsetLg="4">
+        <ion-text color="primary" class="ion-text-center">
+          <h1 color="primary">Iniciar Sesíon</h1>
+        </ion-text>
         <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center" color="primary">Iniciar Sesión</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
+          <ion-card-content class="ion-padding">
             <ion-item>
               <ion-label position="floating">Correo</ion-label>
               <ion-input type="text" placeholder="Correo"  [(ngModel)]="credenciales.correo"></ion-input>
@@ -20,29 +17,45 @@
             <ion-item>
               <ion-label position="floating">Contraseña</ion-label>
               <ion-input type="password" placeholder="Contraseña"  [(ngModel)]="credenciales.password"></ion-input>
-            </ion-item>          
-            <ion-button expand="block" color="primary" class="ion-margin-top" (click)="login()">
-              Login
-            </ion-button>
-            <ion-button (click)="loginGoogle()" expand="block" fill="outline" color="primary">
-              <ion-icon name="logo-google"></ion-icon>
-            </ion-button>
-            <ion-button (click)="loginFacebook()" expand="block" fill="outline" color="primary">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </ion-button>
-            <ion-button (click)="loginTwitter()" expand="block" fill="outline" color="primary">
-              <ion-icon name="logo-twitter"></ion-icon>
+            </ion-item>         
+            <div class="ion-text-center">
+              <ion-button  color="primary" class="ion-margin-top" (click)="login()">
+                Login
+              </ion-button>
+            </div> 
+            
+            <ion-button expand="block" fill="clear" routerLink="/recuperar-contrasena" >
+              Recuperar contraseña
             </ion-button>
           </ion-card-content>
 
-          <ion-button expand="block" fill="clear" routerLink="/empleado">
+          <ion-button expand="block" fill="clear" routerLink="/register">
             Registrarse
           </ion-button>
         </ion-card>
-       
       </ion-col>
       
     </ion-row>
+    <ion-row>
+      <ion-col sizeLg="2" offsetLg="3" sizeMd="2" offsetMd="3" sizeXs="12">
+        <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
+          <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />          
+        </ion-button>
+      </ion-col>
+      <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
+        <ion-button (click)="loginFacebook()" expand="block" fill="outline" mode="ios">
+          <img src="../../../assets/facebook.png" width="30px" alt="Facebook_logo">
+        </ion-button>
+      </ion-col>
+      <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
+        <ion-button (click)="loginTwitter()" expand="block" fill="outline" mode="ios">
+          <img src="../../../assets/Twitter.png" width="30px" alt="Twitter_logo">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-button  expand="block" fill="clear" routerLink="/register">
+      Registrarse
+    </ion-button>
   </ion-grid>
 
 </ion-content>
