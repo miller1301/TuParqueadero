@@ -22,7 +22,7 @@ const routes: Routes = [
   {
  
     path: 'empleado',
-    loadChildren: () => import('./modules/empleado/home/home.module').then( m => m.HomeComponentModule)
+    loadChildren: () => import('./modules/empleado/empleado/home/home.module').then( m => m.HomeComponentModule)
   },
     {
     path: 'parqueadero',

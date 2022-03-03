@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
     if (res) {
       console.log('res =>', res);
-      this.router.navigate(['/home'])
+      this.router.navigate(['/empleado'])
     }
   }
 
