@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ParqueaderoPageRoutingModule } from './parqueadero-routing.module';
 
 import { ParqueaderoPage } from './parqueadero.page';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ParqueaderoPage } from './parqueadero.page';
     IonicModule,
     ParqueaderoPageRoutingModule
   ],
-  declarations: [ParqueaderoPage]
+  declarations: [ParqueaderoPage,MenuComponent]
 })
 export class ParqueaderoPageModule {}
