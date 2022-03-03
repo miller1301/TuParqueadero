@@ -18,6 +18,7 @@ export class RecuperarContrasenaPage{
       await this.auth.Recuperar(email);
       alert('Email de recuperacion enviado');
       this.router.navigate(['/login'])
+      this.emailU = '';
     }
 
 }

@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: AdminPage
+  },  {
+    path: 'parqueaderos',
+    loadChildren: () => import('./parqueaderos/parqueaderos.module').then( m => m.ParqueaderosPageModule)
   }
+
 ];
 
 @NgModule({

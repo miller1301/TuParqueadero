@@ -46,6 +46,11 @@ export class LoginPage implements OnInit {
       console.log('res =>', res);
       this.router.navigate(['/home'])
     }
+    this.credenciales = {
+      correo:null ,
+      password: null
+    }
+
   }
 
   async loginGoogle() {
