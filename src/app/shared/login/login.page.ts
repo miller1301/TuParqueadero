@@ -19,6 +19,8 @@ export class LoginPage implements OnInit {
     password: null
   }
 
+  userData: string[] =[]
+
   constructor( public auth: AngularFireAuth, private authh: AuthService, private router:Router, private firestore: FirestoreService ) { }
 
 
@@ -43,8 +45,21 @@ export class LoginPage implements OnInit {
     console.log("Credenciales", this.credenciales)
     const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
     if (res) {
+      const path ='Usuarios' 
+      const id =  res.user.uid
+      this.firestore.getDoc<any>(path, id).subscribe( resp => {
+        if(resp.perfil === 'usuario'){this.router.navigate(['/home'])}
+        if(resp.perfil === 'administrador'){this.router.navigate(['/parqueadero'])}
+        // if(resp.perfil === 'usuario'){this.router.navigate(['/home'])}
+        // if(resp.perfil === 'usuario'){this.router.navigate(['/home'])}
+      })
+
       console.log('res =>', res);
-      this.router.navigate(['/home'])
+      // this.router.navigate(['/home'])
+    }
+    this.credenciales = {
+      correo:null ,
+      password: null
     }
   }
 

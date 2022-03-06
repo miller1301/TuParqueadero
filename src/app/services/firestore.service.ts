@@ -15,7 +15,8 @@ export class FirestoreService{
 
 
     getDoc<Tipo>(path: string, id: string){
-        return this.firestore.collection(path).doc<Tipo>(id).valueChanges()
+        const colleccion = this.firestore.collection<Tipo>(path)
+        return colleccion.doc(id).valueChanges()
     }
 }
 
