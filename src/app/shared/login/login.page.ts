@@ -61,6 +61,11 @@ export class LoginPage implements OnInit {
       correo:null ,
       password: null
     }
+    this.credenciales = {
+      correo:null ,
+      password: null
+    }
+
   }
 
   async loginGoogle() {
