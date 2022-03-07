@@ -54,6 +54,15 @@ const routes: Routes = [
     path: 'cupos',
     loadChildren: () => import('./modules/empleado/cupos/cupos.module').then( m => m.CuposPageModule)
   },
+  {
+    path: 'R_local',
+    loadChildren: () => import('./modules/empleado/cupos/r-local/r-local.module').then( m => m.RLocalPageModule)
+  },
+  {
+    path: 'cupos2',
+    loadChildren: () => import('./modules/empleado/cupos/cupos-act/cupos-act-routing.module').then( m => m.CuposActPageRoutingModule)
+  },
+  
 ];
 @NgModule({
   imports: [

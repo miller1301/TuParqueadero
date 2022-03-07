@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: CuposPage
+  },
+  {
+    path: 'r-local',
+    loadChildren: () => import('./r-local/r-local.module').then( m => m.RLocalPageModule)
+  },
+  {
+    path: 'cupos-act',
+    loadChildren: () => import('./cupos-act/cupos-act.module').then( m => m.CuposActPageModule)
   }
 ];
 
