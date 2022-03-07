@@ -1,8 +1,9 @@
-export interface User{
+export interface User {
     nombre: string,
     telefono: string,
     correo: string,
     uid: string,
     password: string,
-    perfil: 'usuario'|'admin'|'parqueadero'|'trabajador'
+    perfil: 'usuario'|'admin'|'parqueadero'|'trabajador',
+    icono: string
 }

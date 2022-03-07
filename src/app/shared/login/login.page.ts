@@ -28,11 +28,15 @@ export class LoginPage implements OnInit {
   
 
    loginFacebook() {
-    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then( success => {
+      this.router.navigate(['/user']);
+    });
   }
 
   loginTwitter() {
-    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then( success => {
+      this.router.navigate(['/user']);
+    });
   }
 
   logout() {
@@ -44,7 +48,7 @@ export class LoginPage implements OnInit {
     const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
     if (res) {
       console.log('res =>', res);
-      this.router.navigate(['/home'])
+      this.router.navigate(['/user'])
     }
   }
 
@@ -52,7 +56,7 @@ export class LoginPage implements OnInit {
     const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
     if( res ){
       
-      this.router.navigate(['/home'])
+      this.router.navigate(['/user'])
     } else (
       console.log('No se pudo iniciar sesion')
     )

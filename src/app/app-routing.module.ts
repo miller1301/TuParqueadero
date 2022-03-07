@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './modules/user/home/home.component';
+
+// Protección de rutas
+import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'user',
     pathMatch: 'full'
   },
   {
@@ -16,8 +23,16 @@ const routes: Routes = [
     loadChildren: () => import('./shared/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./modules/admin/admin.module').then( m => m.AdminPageModule)
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then( m => m.AdminPageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'user',
+    component: HomeComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'parqueadero',
