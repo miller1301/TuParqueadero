@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { User } from 'src/app/modelos/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -41,23 +42,39 @@ export class LoginPage implements OnInit {
 
   async login(){
     console.log("Credenciales", this.credenciales)
-    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
-    if (res) {
-      console.log('res =>', res);
-      this.router.navigate(['/admin'])
-    }
+    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password)
+    .then(success => {
+      this.validarRol();
+    })
+    .catch( error => console.log(error))
   }
 
   async loginGoogle() {
-    const res = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
-    if( res ){
+    const res = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(success => {
       
-      this.router.navigate(['/admin'])
+      this.validarRol()
+
+    })
+    .catch(error => console.log(error))
+    if( res ){
+    
     } else (
       console.log('No se pudo iniciar sesion')
     )
     
 
   }
+
+  validarRol(){
+    this.firestore.getDoc('Usuarios', 'duYqE5TrHDWAlHdyzeGnsW4C7Kr2').subscribe( (res: User) => {
+      console.log(res);
+      if(res.perfil === 'admin'){
+        this.router.navigate(['/user']);
+      } else{
+        this.router.navigate(['/admin']);
+      }
+    });
+  }
+  
 
 }

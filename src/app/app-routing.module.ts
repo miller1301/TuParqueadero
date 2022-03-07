@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './modules/user/home/home.component';
 
 const routes: Routes = [
   {
@@ -18,9 +19,14 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then( m => m.AdminPageModule)
-  },  {
+  },
+  {
     path: 'parqueadero',
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
+  },
+  {
+    path: 'user',
+    component: HomeComponent
   },
 
 
