@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-validacion-cuenta-parqueadero',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ValidacionCuentaParqueaderoPage implements OnInit {
 
-  constructor(private log : AuthService) { }
+  constructor(private log : AuthService, private menuAdmin: MenuService) { }
 
   ngOnInit() {
   }
@@ -17,4 +18,7 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
     this.log.logout()
   }
 
+  menu(){
+    this.menuAdmin.presentActionSheet();
+  }
 }

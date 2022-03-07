@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AdminPage implements OnInit {
 
-  constructor(private log:AuthService, private router:Router, private auth: AngularFireAuth) { }
+  constructor(private log:AuthService, private router:Router, private auth: AngularFireAuth, private menuAdmin: MenuService) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,9 @@ export class AdminPage implements OnInit {
     this.log.logout()
   }
 
+  menu(){
+    this.menuAdmin.presentActionSheet();
+  }
   // redireccion1(){
   //   this.router.navigate(['/home'])
   // }

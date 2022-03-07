@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-informacion-del-parqueadero',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformacionDelParqueaderoPage implements OnInit {
 
-  constructor() { }
+  constructor(private menuAdmin: MenuService) { }
 
   ngOnInit() {
   }
@@ -19,5 +20,9 @@ export class InformacionDelParqueaderoPage implements OnInit {
       (this.activo = 'Inactivo', this.color = 'danger')
       : 
       (this.activo = 'Activo', this.color = 'success'); 
+  }
+
+  menu(){
+    this.menuAdmin.presentActionSheet();
   }
 }

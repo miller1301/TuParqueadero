@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-parqueaderos',
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ParqueaderosPage implements OnInit {
 
-  constructor(private auth:AuthService ,private router:Router) { }
+  constructor(private auth:AuthService ,private router:Router, private menuAdmin: MenuService) { }
 
   ngOnInit() {
   }
@@ -24,5 +25,9 @@ export class ParqueaderosPage implements OnInit {
   // }
   logout() {
     this.auth.logout();
+  }
+
+  menu(){
+    this.menuAdmin.presentActionSheet();
   }
 }

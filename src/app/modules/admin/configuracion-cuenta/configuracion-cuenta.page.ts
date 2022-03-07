@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-configuracion-cuenta',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ConfiguracionCuentaPage implements OnInit {
 
-  constructor(private log : AuthService) { }
+  constructor(private log : AuthService, private menuAdmin: MenuService) { }
 
   ngOnInit() {
   }
@@ -16,4 +17,7 @@ export class ConfiguracionCuentaPage implements OnInit {
     this.log.logout()
   }
 
+  menu(){
+    this.menuAdmin.presentActionSheet()
+  }
 }

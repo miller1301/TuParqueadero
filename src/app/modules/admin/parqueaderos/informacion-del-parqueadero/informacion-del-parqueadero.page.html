@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Información Del Parqueadero</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/admin/parqueaderos" ></ion-back-button>
-    </ion-buttons>
+      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button>
+      <ion-buttons slot="end">
+        <ion-button (click)="menu()">
+          <ion-icon slot="end" name="menu-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
