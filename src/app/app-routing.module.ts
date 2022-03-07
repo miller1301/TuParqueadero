@@ -45,9 +45,16 @@ const routes: Routes = [
   {
     path: 'recuperar-contrasena',
     loadChildren: () => import('./shared/recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
-  }
+  },
+  {
+    path: 'empleado',
+    loadChildren: () => import('./modules/empleado/empleado/home/home.module').then( m => m.HomeComponentModule)
+  },
+  {
+    path: 'cupos',
+    loadChildren: () => import('./modules/empleado/cupos/cupos.module').then( m => m.CuposPageModule)
+  },
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
   constructor( public auth: AngularFireAuth, private authh: AuthService, private router:Router, private firestore: FirestoreService ) { }
 
   ngOnInit() {
+    
   }
 
   
@@ -53,10 +54,10 @@ export class LoginPage implements OnInit {
        this.firestore.getDoc<any>(path, id).forEach( resp => {
         console.log(resp)
         if (resp.perfil === 'usuario'){
-          this.router.navigate(['/home'])
+          this.router.navigate(['/user'])
         }
         else if(resp.perfil === 'administrador'){
-          this.router.navigate(['/home/parqueaderos'])
+          this.router.navigate(['/admin'])
           return;
         }
         else if(resp.perfil === 'parqueadero'){
@@ -72,10 +73,6 @@ export class LoginPage implements OnInit {
       
       console.log('res =>', res);
       // this.router.navigate(['/home'])
-    }
-    this.credenciales = {
-      correo:null ,
-      password: null
     }
     this.credenciales = {
       correo:null ,

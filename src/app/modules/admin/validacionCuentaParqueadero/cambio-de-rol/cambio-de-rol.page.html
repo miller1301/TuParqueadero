@@ -2,13 +2,13 @@
   <ion-toolbar>
     <ion-title>Cambio de Rol</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home/validacion-cuenta-parqueadero"></ion-back-button>
+      <ion-back-button defaultHref="/admin/validacion-cuenta-parqueadero"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-menu side="start" menuId="first" contentId="rol">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
@@ -16,14 +16,14 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item routerLink="/home" >Bandeja de entrada</ion-item>
-        <ion-item routerLink="/home/parqueaderos" >Parqueaderos</ion-item>
-        <ion-item routerLink="/home/configuracion-cuenta" >Configiuracion</ion-item>
+        <ion-item routerLink="/admin" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >Configuración</ion-item>
         <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-router-outlet id="rol"></ion-router-outlet>
   <ion-grid>
     <ion-row>
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="10" offsetSm="1">
@@ -59,7 +59,7 @@
               <option>Usuario</option>
               <option >Parqueadero</option>
             </select>
-            <ion-button routerLink="/home" expand="block" size="large">
+            <ion-button routerLink="/admin" expand="block" size="large">
               Actualizar Rol
             </ion-button>
           </ion-card-content>
