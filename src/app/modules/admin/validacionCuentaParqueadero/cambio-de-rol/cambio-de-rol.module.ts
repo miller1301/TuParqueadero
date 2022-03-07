@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminPageRoutingModule } from './admin-routing.module';
+import { CambioDeRolPageRoutingModule } from './cambio-de-rol-routing.module';
 
-import { AdminPage } from './admin.page';
-
+import { CambioDeRolPage } from './cambio-de-rol.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPageRoutingModule
-
+    CambioDeRolPageRoutingModule
   ],
-  declarations: [AdminPage]
+  declarations: [CambioDeRolPage]
 })
-export class AdminPageModule {}
+export class CambioDeRolPageModule {}

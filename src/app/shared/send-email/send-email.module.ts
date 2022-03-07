@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminPageRoutingModule } from './admin-routing.module';
+import { SendEmailPageRoutingModule } from './send-email-routing.module';
 
-import { AdminPage } from './admin.page';
-
+import { SendEmailPage } from './send-email.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPageRoutingModule
-
+    SendEmailPageRoutingModule
   ],
-  declarations: [AdminPage]
+  declarations: [SendEmailPage]
 })
-export class AdminPageModule {}
+export class SendEmailPageModule {}

@@ -38,9 +38,14 @@ const routes: Routes = [
     path: 'parqueadero',
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
-
-
-
+  {
+    path: 'send-email',
+    loadChildren: () => import('./shared/send-email/send-email.module').then( m => m.SendEmailPageModule)
+  },
+  {
+    path: 'recuperar-contrasena',
+    loadChildren: () => import('./shared/recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
+  }
 ];
 
 @NgModule({

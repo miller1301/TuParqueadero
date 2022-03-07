@@ -4,19 +4,15 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.page.html',
-  styleUrls: ['./admin.page.scss'],
+  selector: 'app-parqueaderos',
+  templateUrl: './parqueaderos.page.html',
+  styleUrls: ['./parqueaderos.page.scss'],
 })
-export class AdminPage implements OnInit {
+export class ParqueaderosPage implements OnInit {
 
-  constructor(private log:AuthService, private router:Router, private auth: AngularFireAuth) { }
+  constructor(private auth:AuthService ,private router:Router) { }
 
   ngOnInit() {
-  }
-
-  logout(){
-    this.log.logout()
   }
 
   // redireccion1(){
@@ -26,4 +22,7 @@ export class AdminPage implements OnInit {
   // redireccion2(){
   //   this.router.navigate(['/home/parqueaderos'])
   // }
+  logout() {
+    this.auth.logout();
+  }
 }

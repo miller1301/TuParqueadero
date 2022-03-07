@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeSm="10" offsetSm="1">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle class="ion-text-center">Ingrese su correo para la recuperacion de contraseña</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Ingrese su correo</ion-label>
+              <ion-input type="email" placeholder="Ingrese su correo"  [(ngModel)]="emailU" ></ion-input>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<ion-button (click)="Reset()" expand="block" fill="clear">
+  Enviar correo de recuperación.
+</ion-button>
+</ion-content>

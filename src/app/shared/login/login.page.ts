@@ -19,8 +19,9 @@ export class LoginPage implements OnInit {
     password: null
   }
 
-  constructor( public auth: AngularFireAuth, private authh: AuthService, private router:Router, private firestore: FirestoreService ) { }
+  userData: string[] =[]
 
+  constructor( public auth: AngularFireAuth, private authh: AuthService, private router:Router, private firestore: FirestoreService ) { }
 
   ngOnInit() {
   }
@@ -39,16 +40,46 @@ export class LoginPage implements OnInit {
     });
   }
 
-  logout() {
-    this.auth.signOut();
-  }
+  // logout() {
+  //   this.auth.signOut();
+  // }
 
   async login(){
     console.log("Credenciales", this.credenciales)
     const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
     if (res) {
+      const path ='Usuarios' 
+      const id =  res.user.uid
+       this.firestore.getDoc<any>(path, id).forEach( resp => {
+        console.log(resp)
+        if (resp.perfil === 'usuario'){
+          this.router.navigate(['/home'])
+        }
+        else if(resp.perfil === 'administrador'){
+          this.router.navigate(['/home/parqueaderos'])
+          return;
+        }
+        else if(resp.perfil === 'parqueadero'){
+          this.router.navigate(['/parqueadero'])
+          return;
+        }
+        else if(resp.perfil === 'empleado'){
+          this.router.navigate(['/empleado'])
+          return;
+        }
+
+      })
+      
       console.log('res =>', res);
-      this.router.navigate(['/user'])
+      // this.router.navigate(['/home'])
+    }
+    this.credenciales = {
+      correo:null ,
+      password: null
+    }
+    this.credenciales = {
+      correo:null ,
+      password: null
     }
   }
 
