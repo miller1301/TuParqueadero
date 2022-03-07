@@ -23,6 +23,55 @@ const routes: Routes = [
     path: 'parqueadero',
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
+  {
+    path: 'edit',
+    loadChildren: () => import('./modules/parqueadero/edit-home/edit-home.module').then(m => m.EditHomePageModule)
+  },
+  {
+    path: 'Cr_empleado',
+    loadChildren: () => import('./modules/parqueadero/crear-empleado/crear-empleado.module').then(m => m.CrearEmpleadoPageModule)
+  },
+  {
+    path: 'B_empleado',
+    loadChildren: () => import('./modules/parqueadero/borrar-empleado/borrar-empleado.module').then(m => m.BorrarEmpleadoPageModule)
+  },
+  {
+    path: 'BB_empleado',
+    loadChildren: () => import('./modules/parqueadero/borrar-empleado/borrar/borrar.module').then(m => m.BorrarPageModule)
+  },
+  {
+    path: 'reservas',
+    loadChildren: () => import('./modules/parqueadero/reservas/reservas.module').then(m => m.ReservasPageModule)
+  }
+  ,
+  {
+    path: 'reserva',
+    loadChildren: () => import('./modules/parqueadero/reservas/reserva/reserva.module').then(m => m.ReservaPageModule)
+  },
+  {
+    path: 'reserv',
+    loadChildren: () => import('./modules/parqueadero/reservas/reserva/reserv/reserv.module').then(m => m.ReservPageModule)
+  },
+  {
+    path: 'C_rol',
+    loadChildren: () => import('./modules/parqueadero/cambio-rol/cambio-rol.module').then(m => m.CambioRolPageModule)
+  },
+  {
+    path: 'cambio',
+    loadChildren: () => import('./modules/parqueadero/cambio-rol/cambio/cambio.module').then( m => m.CambioPageModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./modules/user/user.module').then( m => m.UserPageModule)
+  }
+  ,
+  {
+    path: 'home2',
+    loadChildren: () => import('./modules/user/home/home.module').then( m => m.HomePageModule)
+  }
+
+
+
 
 
 

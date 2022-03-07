@@ -1,31 +1,25 @@
-<ion-menu side="start" menuId="menu" contentId="parqueo">
+<ion-menu side="start" menuId="menu2" contentId="user">
   <ion-content>
     <div class="menu-header-bg">menu</div>
     <div class="header-content">
       <img src="../../../assets/img/585e4beacb11b227491c3399.png" alt="icono">
       <ion-label>
         <h2>Andres</h2>
-        <p>dueño de parqueadero</p>
+        <p>usuario</p>
       </ion-label>
     </div>
     <ion-list class="menu-items" lines="none">
-      <ion-item routerLink="/parqueadero">
+      <ion-item routerLink="/user">
         <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
       </ion-item>
-      <ion-item routerLink="/Cr_empleado">
-        <ion-icon name="person-add-outline" class="ion-padding-horizontal"></ion-icon> Crear empleado
-      </ion-item>
-      <ion-item routerLink="/B_empleado">
-        <ion-icon name="person-remove-outline" class="ion-padding-horizontal"></ion-icon> Borrar empleado
+      <ion-item routerLink="/reservas">
+        <ion-icon name="pencil-outline"class="ion-padding-horizontal"></ion-icon> Inscribir parqueadero
       </ion-item>
       <ion-item routerLink="/reservas">
         <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
       </ion-item>
-      <ion-item >
-        <ion-icon name="map-outline" class="ion-padding-horizontal"></ion-icon> Mapa
-      </ion-item>
-      <ion-item routerLink="/C_rol">
-        <ion-icon name="swap-horizontal-outline" class="ion-padding-horizontal"></ion-icon> Cambio de rol
+      <ion-item routerLink="/B_empleado">
+        <ion-icon name="add-outline" class="ion-padding-horizontal"></ion-icon> Crear rserva
       </ion-item>
       <ion-item routerLink="#" (click)="logout()" >
         <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
@@ -33,4 +27,4 @@
     </ion-list>
   </ion-content>
 </ion-menu>
-<ion-router-outlet id="parqueo"></ion-router-outlet>
+<ion-router-outlet id="user"></ion-router-outlet>
