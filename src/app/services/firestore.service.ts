@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class FirestoreService{
 
-        constructor(private firestore: AngularFirestore){}
+    constructor(private firestore: AngularFirestore){}
 
     createDoc(data: any, path: string, id:string) {
         const collection = this.firestore.collection(path);
@@ -15,7 +15,8 @@ export class FirestoreService{
 
 
     getDoc<Tipo>(path: string, id: string){
-        return this.firestore.collection(path).doc<Tipo>(id).valueChanges()
+        const colleccion = this.firestore.collection<Tipo>(path)
+        return colleccion.doc(id).valueChanges()
     }
 }
 

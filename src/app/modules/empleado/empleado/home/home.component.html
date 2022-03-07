@@ -1,0 +1,66 @@
+<!-- Pagina web y aplicacion movil:Tuparqueadero
+Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago piraquive
+Ficha 2252471 ADSI
+Redes sociales: Tuparqueadero-->
+
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Empleado del parqueadero</ion-title>
+  </ion-toolbar> 
+</ion-header>
+  <!-- Menu de navegacion -->
+  <ion-content>
+    <ion-menu side="start" menuId="first" contentId="second">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <!-- <ion-list> -->
+          <ion-item routerLink="/empleado" ><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
+          <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+          <ion-item routerLink="empleado/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+          <ion-item (click)="logout()"><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
+        <!-- </ion-list> -->
+      </ion-content>
+    </ion-menu>
+
+      
+    <!-- Pagina principal del rol empleado -->
+    <ion-content class="ion-padding-horizontal">
+      <ion-grid>
+      <ion-row>
+        <ion-col sizesm="12">
+        <div class="ion-text-center">
+          <h2 id="titulo">Tuparqueadero</h2>
+          <img id="imagen" src="https://www.eltiempo.com/files/article_second/uploads/2021/01/22/600b1a714c8fe.jpeg"><img>
+          <h2 id="subtitulo">¿Quienes somos?</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque earum, consectetur iste nobis labore iusto veritatis mollitia dolores, temporibus hic ipsa asperiores, ipsum voluptates magnam. Similique fugiat mollitia commodi consectetur autem sed corporis, illum eaque non tenetur ad. Ab asperiores atque doloribus veritatis quasi illum dolor distinctio eum, facere provident nesciunt fugiat veniam ducimus odio quae nobis libero magnam necessitatibus amet velit neque. Hic nemo natus dicta corporis voluptatibus facilis odio nisi maxime iusto architecto. Atque similique eveniet odit possimus, obcaecati non provident dolorem optio sit excepturi maiores laboriosam repellat esse harum aliquid repudiandae, commodi debitis ducimus sunt deserunt. Et.</p>
+        </div>
+      </ion-col>
+       </ion-row>
+
+          <!-- Apartado donde se mostrara la ubicacion del parqueadero -->
+            <ion-col size="4">
+            <div style='text-align:left'>
+            <u><b>Ubicacion NO Editable</b></u>
+          </div>
+          </ion-col>
+          <!-- Ubicacion exacta donde queda el parqueadero -->
+          <ion-row>
+            <ion-col size="4">
+            <img id="ubicacion" src="https://www.seekpng.com/png/full/347-3471100_icono-ubicacion-vector-png-icono-de-ubicacion-png.png"><img>
+            </ion-col>
+            <ion-col size="8">
+            <p>El parqueadero se encuentra en la ciudad de mosquera
+                Cll 17, Mosquera-Cundinamarca
+            </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+    <ion-router-outlet id="second"></ion-router-outlet>
+    </ion-content>
+
+  

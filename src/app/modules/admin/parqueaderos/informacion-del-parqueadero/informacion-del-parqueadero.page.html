@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Información Del Parqueadero</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin/parqueaderos" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+        <ion-card>
+          <ion-card-header>
+            <ion-item>
+            <img src="../../../../../assets/users.png" alt="Usuario" width="150" class="imgp2">
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Nombres:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Apellidos:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Correo:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Telefono:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Ubicacion:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <ion-item><h1 class="imgp2"> Parqueadero </h1></ion-item>
+            <br>
+            <p><strong>Nombre del parqueadero:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Ubicacion:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Horario:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Tarifas:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <ion-item><h1 class="imgp2">Estado</h1></ion-item>
+            <ion-button (click)="onClick()" expand="block"  size="large" [color]="color">
+              {{ activo }}
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
