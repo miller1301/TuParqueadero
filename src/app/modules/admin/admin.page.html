@@ -1,33 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Usuario</ion-title>
-    
+    <ion-title>Bandeja de entrada</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-<!-- <ion-split-pane when="(min-width: 1200px)"> -->
-<ion-menu side="start" menuId="first" contentId="main" > 
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <!-- <ion-list> -->
-      <ion-item><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada</ion-item>
-      <ion-item><ion-icon name="reader-outline" class="ion-padding-horizontal"></ion-icon> Parqueaderos</ion-item>
-      <ion-item ><ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion</ion-item>
-      <ion-item (click)="logout()" ><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
-    <!-- </ion-list> -->
-  </ion-content>
-</ion-menu>
-<!-- </ion-split-pane> -->
-  <ion-router-outlet id="main"></ion-router-outlet>
 <ion-grid>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/home" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/home/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/home/configuracion-cuenta" >Configiuracion</ion-item>
+        <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
   <ion-row>
+    
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -36,7 +33,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -45,7 +42,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -54,7 +51,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -63,7 +60,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -72,7 +69,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -81,7 +78,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -90,7 +87,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>
@@ -99,7 +96,7 @@
       </ion-item>
     </ion-col>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-      <ion-item>
+      <ion-item routerLink="/home/validacion-cuenta-parqueadero">
         <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
         <ion-text class="letra">
           <h3>Titulo</h3>

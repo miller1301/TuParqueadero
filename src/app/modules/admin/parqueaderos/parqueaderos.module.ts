@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminPageRoutingModule } from './admin-routing.module';
+import { ParqueaderosPageRoutingModule } from './parqueaderos-routing.module';
 
-import { AdminPage } from './admin.page';
+import { ParqueaderosPage } from './parqueaderos.page';
 
 
 @NgModule({
@@ -14,9 +14,8 @@ import { AdminPage } from './admin.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPageRoutingModule
-
+    ParqueaderosPageRoutingModule
   ],
-  declarations: [AdminPage]
+  declarations: [ParqueaderosPage]  
 })
-export class AdminPageModule {}
+export class ParqueaderosPageModule {}

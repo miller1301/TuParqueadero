@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Informacion de la cuenta</ion-title>
+    <ion-back-button slot="start" defaultHref="/home"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/home" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/home/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/home/configuracion-cuenta" >Configiuracion</ion-item>
+        <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+<ion-grid>
+  <ion-row>
+    <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+    <ion-card-content class="ion-padding">
+      <ion-item >
+        <img src="../../../../assets/users.png" width="150px" class="imgp">
+      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nombres</ion-label>
+          <ion-input type="text" placeholder="Nombres del Usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellidos</ion-label>
+          <ion-input type="text" placeholder="Apellidos del Usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="text" placeholder="Email del usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+        </ion-card-content>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
