@@ -7,9 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: AdminPage
-  },  {
+  },
+  {
     path: 'parqueaderos',
     loadChildren: () => import('./parqueaderos/parqueaderos.module').then( m => m.ParqueaderosPageModule)
+  },
+  {
+    path: 'configuracion-cuenta',
+    loadChildren: () => import('./configuracion-cuenta/configuracion-cuenta.module').then( m => m.ConfiguracionCuentaPageModule)
+  },
+  {
+    path: 'validacion-cuenta-parqueadero',
+    loadChildren: () => import('./validacion-cuenta-parqueadero/validacion-cuenta-parqueadero.module').then( m => m.ValidacionCuentaParqueaderoPageModule)
   }
 
 ];

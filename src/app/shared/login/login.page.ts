@@ -23,7 +23,6 @@ export class LoginPage implements OnInit {
 
   constructor( public auth: AngularFireAuth, private authh: AuthService, private router:Router, private firestore: FirestoreService ) { }
 
-
   ngOnInit() {
   }
 
@@ -37,9 +36,9 @@ export class LoginPage implements OnInit {
     this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
   }
 
-  logout() {
-    this.auth.signOut();
-  }
+  // logout() {
+  //   this.auth.signOut();
+  // }
 
   async login(){
     console.log("Credenciales", this.credenciales)
@@ -47,13 +46,26 @@ export class LoginPage implements OnInit {
     if (res) {
       const path ='Usuarios' 
       const id =  res.user.uid
-      this.firestore.getDoc<any>(path, id).subscribe( resp => {
-        if(resp.perfil === 'usuario'){this.router.navigate(['/home'])}
-        if(resp.perfil === 'administrador'){this.router.navigate(['/parqueadero'])}
-        // if(resp.perfil === 'usuario'){this.router.navigate(['/home'])}
-        // if(resp.perfil === 'usuario'){this.router.navigate(['/home'])}
-      })
+       this.firestore.getDoc<any>(path, id).forEach( resp => {
+        console.log(resp)
+        if (resp.perfil === 'usuario'){
+          this.router.navigate(['/home'])
+        }
+        else if(resp.perfil === 'administrador'){
+          this.router.navigate(['/home/parqueaderos'])
+          return;
+        }
+        else if(resp.perfil === 'parqueadero'){
+          this.router.navigate(['/parqueadero'])
+          return;
+        }
+        else if(resp.perfil === 'empleado'){
+          this.router.navigate(['/empleado'])
+          return;
+        }
 
+      })
+      
       console.log('res =>', res);
       // this.router.navigate(['/home'])
     }
@@ -65,7 +77,6 @@ export class LoginPage implements OnInit {
       correo:null ,
       password: null
     }
-
   }
 
   async loginGoogle() {

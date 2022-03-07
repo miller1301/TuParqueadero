@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ParqueaderosPageRoutingModule } from './parqueaderos-routing.module';
+import { CambioDeRolPageRoutingModule } from './cambio-de-rol-routing.module';
 
-import { ParqueaderosPage } from './parqueaderos.page';
-
+import { CambioDeRolPage } from './cambio-de-rol.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ParqueaderosPageRoutingModule
+    CambioDeRolPageRoutingModule
   ],
-  declarations: [ParqueaderosPage]  
+  declarations: [CambioDeRolPage]
 })
-export class ParqueaderosPageModule {}
+export class CambioDeRolPageModule {}
