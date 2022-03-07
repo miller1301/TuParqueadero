@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Informacion de la cuenta</ion-title>
-    <ion-back-button slot="start" defaultHref="/home"></ion-back-button>
+    <ion-back-button slot="start" defaultHref="/admin"></ion-back-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-menu side="start" menuId="first" contentId="adminConf">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
@@ -14,14 +14,14 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item routerLink="/home" >Bandeja de entrada</ion-item>
-        <ion-item routerLink="/home/parqueaderos" >Parqueaderos</ion-item>
-        <ion-item routerLink="/home/configuracion-cuenta" >Configiuracion</ion-item>
+        <ion-item routerLink="/admin" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >Configuración</ion-item>
         <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-router-outlet id="adminConf"></ion-router-outlet>
 <ion-grid>
   <ion-row>
     <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">

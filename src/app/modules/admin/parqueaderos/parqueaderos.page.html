@@ -2,13 +2,13 @@
   <ion-toolbar>
     <ion-title>Parqueaderos</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" ></ion-back-button>
+      <ion-back-button defaultHref="/admin" ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-menu side="start" menuId="first" contentId="parqueaderos">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
@@ -16,14 +16,14 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item routerLink="/home" >Bandeja de entrada</ion-item>
-        <ion-item routerLink="/home/parqueaderos" >Parqueaderos</ion-item>
-        <ion-item routerLink="/home/configuracion-cuenta" >Configiuracion</ion-item>
+        <ion-item routerLink="/admin" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >Configuración</ion-item>
         <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-router-outlet id="parqueaderos"></ion-router-outlet>
 
   <ion-grid>
     <ion-row>
@@ -36,7 +36,7 @@
     <ion-row>
       <ion-col sizeLg="6" offsetLg="3" sizeMd="8" offsetMd="2" sizeSm="10" offsetSm="1">
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero">
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero">
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -45,7 +45,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -54,7 +54,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -63,7 +63,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -72,7 +72,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -81,7 +81,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -90,7 +90,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -99,7 +99,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -108,7 +108,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -117,7 +117,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -126,7 +126,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>
@@ -135,7 +135,7 @@
           </ion-item>
         </ion-col>
         <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
-          <ion-item routerLink="/home/parqueaderos/informacion-del-parqueadero" >
+          <ion-item routerLink="/admin/parqueaderos/informacion-del-parqueadero" >
             <img src="../../../assets/users.png" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <h3>Titulo</h3>

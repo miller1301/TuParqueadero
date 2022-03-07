@@ -11,7 +11,7 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'empleado',
+    redirectTo: 'user',
     pathMatch: 'full'
   },
   {

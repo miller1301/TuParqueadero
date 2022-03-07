@@ -30,11 +30,15 @@ export class LoginPage implements OnInit {
   
 
    loginFacebook() {
-    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then( success => {
+      this.router.navigate(['/user']);
+    });
   }
 
   loginTwitter() {
-    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then( success => {
+      this.router.navigate(['/user']);
+    });
   }
 
   // logout() {
@@ -50,10 +54,10 @@ export class LoginPage implements OnInit {
        this.firestore.getDoc<any>(path, id).forEach( resp => {
         console.log(resp)
         if (resp.perfil === 'usuario'){
-          this.router.navigate(['/home'])
+          this.router.navigate(['/user'])
         }
         else if(resp.perfil === 'administrador'){
-          this.router.navigate(['/home/parqueaderos'])
+          this.router.navigate(['/admin'])
           return;
         }
         else if(resp.perfil === 'parqueadero'){
@@ -74,17 +78,13 @@ export class LoginPage implements OnInit {
       correo:null ,
       password: null
     }
-    this.credenciales = {
-      correo:null ,
-      password: null
-    }
   }
 
   async loginGoogle() {
     const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
     if( res ){
       
-      this.router.navigate(['/home'])
+      this.router.navigate(['/user'])
     } else (
       console.log('No se pudo iniciar sesion')
     )
