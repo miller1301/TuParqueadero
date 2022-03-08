@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { User } from 'src/app/modelos/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -95,5 +96,17 @@ export class LoginPage implements OnInit {
 
 
   }
+
+  validarRol(){
+    this.firestore.getDoc('Usuarios', 'duYqE5TrHDWAlHdyzeGnsW4C7Kr2').subscribe( (res: User) => {
+      console.log(res);
+      if(res.perfil === 'admin'){
+        this.router.navigate(['/user']);
+      } else{
+        this.router.navigate(['/admin']);
+      }
+    });
+  }
+  
 
 }

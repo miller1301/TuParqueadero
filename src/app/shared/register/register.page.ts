@@ -15,6 +15,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RegisterPage implements OnInit {
 
+  
+
+  id: string;
 
   datos: User = {
     nombre: null,
