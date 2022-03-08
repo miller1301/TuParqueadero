@@ -1,24 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sendEmail</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div>
-    <div>
-      <h3>Gracias por registrarte!</h3>
-      <div>
-        <p>
-          hemos enviado .......
+<div class="container mt-5" *ngIf="user$ | async as user; else loading">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title text-center">¡Gracias por registrarte!</h3>
+      <div class="form-group mt-5">
+        <p class="text-center">
+          Te hemos enviado un email de confirmación a <strong>{{ user?.email }}</strong>
         </p>
-        <p> Por favor revisa tu ....</p>
+        <p class="text-center">
+          Por favor revisa tu email y da click en el link para verificar tu dirección de correo.
+        </p>
       </div>
-      <div>
-        <button>Reenviar email </button>
+      <div class="form-group text-center mt-5">
+        <button class="btn btn-primary" (click)="onSendEmail()">Reenviar verificación de email</button>
       </div>
     </div>
   </div>
-  
+</div>
 
-</ion-content>
+<ng-template #loading>
+  Cargando...
+</ng-template>

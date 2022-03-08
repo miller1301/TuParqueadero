@@ -9,7 +9,11 @@ import { User } from '../modelos/models';
 })
 export class AuthService {
 
-  constructor(private authfirebase:AngularFireAuth, private router:Router) { }
+  constructor(public authfirebase:AngularFireAuth, private router:Router) { }
+
+  async sendVerificationEmail(){
+    return (await this.authfirebase.currentUser).sendEmailVerification();
+  }
 
   Recuperar(email:string){
     try {

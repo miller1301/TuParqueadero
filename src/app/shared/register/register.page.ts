@@ -26,7 +26,12 @@ export class RegisterPage implements OnInit {
     icono: 'https://firebasestorage.googleapis.com/v0/b/tuparqueadero-178e4.appspot.com/o/user.png?alt=media&token=33002ea0-edf8-4d10-9f5b-9768d2ed8b0e'
   }
 
-  constructor( public auth: AngularFireAuth, private authh: AuthService, private firestore: FirestoreService, private router:Router ) { }
+  constructor( 
+    public auth: AngularFireAuth, 
+    private authh: AuthService, 
+    private firestore: FirestoreService, 
+    private router:Router,
+    ) { }
 
 
 
@@ -62,15 +67,20 @@ export class RegisterPage implements OnInit {
 
   async registrar(){
     console.log("Datos", this.datos)
-    const res = await this.authh.registrarUser(this.datos).catch( error => console.log(error))
-    if(res){
+    const res = await this.authh.registrarUser(this.datos)
+    .then( async res => {
       console.log('Exito al crear el usuario');
       const path = 'Usuarios';
       const id = res.user.uid;
       this.datos.uid = id;
       this.datos.password = null;
+      this.authh.sendVerificationEmail();
       await this.firestore.createDoc(this.datos, path, id)
-      this.router.navigate(['/user'])
-    }
+      this.router.navigate(['/verificacion-email']);
+    })
+    
+    
+    
+    .catch( error => console.log(error))
   }
 }
