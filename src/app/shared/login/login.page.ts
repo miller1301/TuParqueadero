@@ -15,6 +15,10 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class LoginPage implements OnInit {
 
+  emailInvalid: boolean;
+  passwordInvalid: boolean;
+  userNotFound: boolean;
+
   credenciales = {
     correo: null,
     password: null
@@ -47,8 +51,22 @@ export class LoginPage implements OnInit {
   // }
 
   async login() {
-    console.log("Credenciales", this.credenciales)
-    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch(error => console.log(error))
+    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch(error => {
+      console.log(error)
+      if(error == 'FirebaseError: Firebase: The email address is badly formatted. (auth/invalid-email).'){
+        this.emailInvalid = true;
+        this.userNotFound = false;
+        this.passwordInvalid = false;
+      } else if(error == 'FirebaseError: Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).'){
+        this.passwordInvalid = true;
+        this.emailInvalid = false;
+        this.userNotFound = false;
+      } else if(error == 'FirebaseError: Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).'){
+        this.userNotFound = true;
+        this.passwordInvalid = false;
+        this.emailInvalid = false;
+      }
+    })
     if (res && res.user.emailVerified) {
       const path = 'Usuarios'
       const id = res.user.uid
@@ -76,8 +94,6 @@ export class LoginPage implements OnInit {
       // this.router.navigate(['/home'])
     } else if(res){
       this.router.navigate(['/verificacion-email']);
-    } else{
-      this.router.navigate(['/register']);
     }
     this.credenciales = {
         correo: null,
