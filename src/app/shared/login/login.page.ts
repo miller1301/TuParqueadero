@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { User } from 'src/app/modelos/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -14,29 +15,33 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class LoginPage implements OnInit {
 
+  emailInvalid: boolean;
+  passwordInvalid: boolean;
+  userNotFound: boolean;
+
   credenciales = {
-    correo:null ,
+    correo: null,
     password: null
   }
 
-  userData: string[] =[]
+  userData: string[] = []
 
-  constructor( public auth: AngularFireAuth, private authh: AuthService, private router:Router, private firestore: FirestoreService ) { }
+  constructor(public auth: AngularFireAuth, private authh: AuthService, private router: Router, private firestore: FirestoreService) { }
 
   ngOnInit() {
-    
+
   }
 
-  
 
-   loginFacebook() {
-    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then( success => {
+
+  loginFacebook() {
+    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(success => {
       this.router.navigate(['/user']);
     });
   }
 
   loginTwitter() {
-    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then( success => {
+    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then(success => {
       this.router.navigate(['/user']);
     });
   }
@@ -45,51 +50,79 @@ export class LoginPage implements OnInit {
   //   this.auth.signOut();
   // }
 
-  async login(){
-    console.log("Credenciales", this.credenciales)
-    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch( error => console.log(error))
-    if (res) {
-      const path ='Usuarios' 
-      const id =  res.user.uid
-       this.firestore.getDoc<any>(path, id).forEach( resp => {
+  async login() {
+    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch(error => {
+      console.log(error)
+      if(error == 'FirebaseError: Firebase: The email address is badly formatted. (auth/invalid-email).'){
+        this.emailInvalid = true;
+        this.userNotFound = false;
+        this.passwordInvalid = false;
+      } else if(error == 'FirebaseError: Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).'){
+        this.passwordInvalid = true;
+        this.emailInvalid = false;
+        this.userNotFound = false;
+      } else if(error == 'FirebaseError: Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).'){
+        this.userNotFound = true;
+        this.passwordInvalid = false;
+        this.emailInvalid = false;
+      }
+    })
+    if (res && res.user.emailVerified) {
+      const path = 'Usuarios'
+      const id = res.user.uid
+      this.firestore.getDoc<any>(path, id).forEach(resp => {
         console.log(resp)
-        if (resp.perfil === 'usuario'){
+        if (resp.perfil === 'usuario') {
           this.router.navigate(['/user'])
         }
-        else if(resp.perfil === 'administrador'){
+        else if (resp.perfil === 'administrador') {
           this.router.navigate(['/admin'])
           return;
         }
-        else if(resp.perfil === 'parqueadero'){
+        else if (resp.perfil === 'parqueadero') {
           this.router.navigate(['/parqueadero'])
           return;
         }
-        else if(resp.perfil === 'empleado'){
+        else if (resp.perfil === 'empleado') {
           this.router.navigate(['/empleado'])
           return;
         }
 
       })
-      
+
       console.log('res =>', res);
       // this.router.navigate(['/home'])
+    } else if(res){
+      this.router.navigate(['/verificacion-email']);
     }
     this.credenciales = {
-      correo:null ,
-      password: null
-    }
+        correo: null,
+        password: null
+      }
   }
 
   async loginGoogle() {
     const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
-    if( res ){
-      
+    if (res) {
+
       this.router.navigate(['/user'])
     } else (
       console.log('No se pudo iniciar sesion')
     )
-    
+
 
   }
+
+  validarRol(){
+    this.firestore.getDoc('Usuarios', 'duYqE5TrHDWAlHdyzeGnsW4C7Kr2').subscribe( (res: User) => {
+      console.log(res);
+      if(res.perfil === 'admin'){
+        this.router.navigate(['/user']);
+      } else{
+        this.router.navigate(['/admin']);
+      }
+    });
+  }
+  
 
 }

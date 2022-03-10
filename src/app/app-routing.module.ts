@@ -39,7 +39,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
   {
-    path: 'send-email',
+    path: 'verificacion-email',
     loadChildren: () => import('./shared/send-email/send-email.module').then( m => m.SendEmailPageModule)
   },
   {
