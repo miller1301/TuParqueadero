@@ -23,10 +23,18 @@
                   <ion-label position="floating">Correo:</ion-label>
                   <ion-input type="text" placeholder="Correo" [(ngModel)]="datos.correo" ></ion-input>
                 </ion-item>
+                <p *ngIf="email" class="text-danger" >Esta email ya esta en uso en otra cuenta</p>
                 <ion-item>
                   <ion-label position="floating">Contraseña</ion-label>
-                  <ion-input type="password" placeholder="Contraseña" [(ngModel)]="datos.password" ></ion-input>
+                  <ion-input type="password" minlength="6" placeholder="Contraseña" [(ngModel)]="datos.password" ></ion-input>
                 </ion-item>
+                <p *ngIf="caracteres" class="text-danger" >La contraseña debe tener minimo 6 caracteres</p>
+                <p *ngIf="longitud" class="text-danger" >La contraseña debe tener minimo 6 caracteres</p>
+                <ion-item>
+                  <ion-label position="floating">Verifica tu Contraseña</ion-label>
+                  <ion-input type="password" minlength="6"placeholder="Contraseña" [(ngModel)]="verificar" ></ion-input>
+                </ion-item>
+                <p *ngIf="invalid" class="text-danger">Las contraseñas no coinciden</p>
                 <div class="ion-text-center">
                   <ion-button  color="primary" class="ion-margin-top"  mode="ios" (click)="registrar()">
                     Registrarse

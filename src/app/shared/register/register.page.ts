@@ -15,9 +15,14 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RegisterPage implements OnInit {
 
-  
+  caracteres: boolean;
+  verificar: String = '';
+  invalid:boolean;
+  email:boolean;
+  longitud:boolean;
 
   id: string;
+  mensaje: string;
 
   datos: User = {
     nombre: null,
@@ -72,6 +77,10 @@ export class RegisterPage implements OnInit {
     console.log("Datos", this.datos)
     const res = await this.authh.registrarUser(this.datos)
     .then( async res => {
+      if(this.datos.password === this.verificar && this.datos.password.length > 5){
+      this.longitud = false
+      this.invalid = false
+
       console.log('Exito al crear el usuario');
       const path = 'Usuarios';
       const id = res.user.uid;
@@ -80,10 +89,15 @@ export class RegisterPage implements OnInit {
       this.authh.sendVerificationEmail();
       await this.firestore.createDoc(this.datos, path, id)
       this.router.navigate(['/verificacion-email']);
+      } else if (this.datos.password !== this.verificar && this.datos.password.length < 6) {
+        this.invalid = true
+        this.longitud = true
+      }
     })
-    
-    
-    
-    .catch( error => console.log(error))
+    .catch( error =>{
+      (error === 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password)')? (this.caracteres = true): (this.caracteres = false);
+      // (error === 'FirebaseError: Firebase: The email address is already in use by another account. (auth/email-already-in-use)')? (this.email = true): (this.email = false);
+
+    }) 
   }
 }
