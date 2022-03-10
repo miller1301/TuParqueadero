@@ -27,7 +27,11 @@ const routes: Routes = [
   {
     path: 'cambio-rol',
     loadChildren: () => import('./cambio-rol/cambio-rol.module').then( m => m.CambioRolPageModule)
+  },  {
+    path: 'par-home',
+    loadChildren: () => import('./par-home/par-home.module').then( m => m.ParHomePageModule)
   }
+
   
 
 ];

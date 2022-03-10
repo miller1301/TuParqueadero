@@ -7,7 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage
+  },  {
+    path: 'buscar',
+    loadChildren: () => import('./buscar/buscar.module').then( m => m.BuscarPageModule)
+  },
+  {
+    path: 'parque',
+    loadChildren: () => import('./parque/parque.module').then( m => m.ParquePageModule)
   }
+
 ];
 
 @NgModule({

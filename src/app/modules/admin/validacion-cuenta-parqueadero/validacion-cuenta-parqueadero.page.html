@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>validacionCuentaParqueadero</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="validar">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/admin" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >Configuración</ion-item>
+        <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="validar"></ion-router-outlet>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="6" offsetMd="3" sizeSm="10" offsetSm="1">
+        <ion-card>
+        <ion-card-header>
+          <ion-item>
+            <img src="../../../../assets/users.png" alt="Usuario" class="imgp">
+          </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+              <p><strong> Descripcion: </strong></p>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur doloribus repellendus excepturi laborum. Accusantium non iste ullam aut. Incidunt illo cupiditate dolorem hic quasi. Expedita blanditiis ex optio adipisci.</p>  
+              <br>
+              <p><strong>Nombre del parquedero</strong></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <br>
+              <p><strong>Ubicacion: </strong></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <br>
+              <p><strong>Horario del parquedero: </strong></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <br>
+              <p><strong>Tarifa del parqueadero: </strong></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <br>
+              <p><strong>Pagina web (Opcional): </strong></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <br>
+              <p><strong>Imagenes del parqueadero: </strong></p>
+              <ion-row>
+                <ion-col sizeLg="5" offsetLg="1" sizeMd="5" offsetMd="1" sizeSm="12">
+                  <img src="../../../../assets/p2.jfif" alt="Parqueadero 1" class="imgp1">
+                </ion-col>
+                <ion-col sizeLg="5" offsetLg="1" sizeMd="5" offsetMd="1" sizeSm="6">
+                  <img src="../../../../assets/p3.jfif" alt="Parqueadero 2" class="imgp1">
+                </ion-col>
+              </ion-row>
+              <br>
+              <p><strong>Constitucion de poliza de responsabilidad civil extracontractual: </strong></p>
+              <ion-row>
+                <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="2" offsetSm="5">
+                  <img src="../../../../assets/pdf.png" alt="pdf 1" class="imgp2" width="150px">
+                </ion-col>
+              </ion-row>
+              <br>
+              <p><strong>Camara de comercio: </strong></p>
+              <ion-row>
+                <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="2" offsetSm="5">
+                  <img src="../../../../assets/pdf.png" alt="pdf 1" class="imgp2" width="150px">
+                </ion-col>
+              </ion-row>
+              <br>
+              <p><strong>Licencia de funcionamiento: </strong></p>
+              <ion-row>
+                <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="2" offsetSm="5">
+                  <img src="../../../../assets/pdf.png" alt="pdf 1" class="imgp2" width="150px">
+                </ion-col>
+              </ion-row>
+              <br>
+              <p><strong>Documento detallado de la seguridad del parqueadero: </strong></p>
+              <ion-row>
+                <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="2" offsetSm="5">
+                  <img src="../../../../assets/pdf.png" alt="pdf 1" class="imgp2" width="150px">
+                </ion-col>
+              </ion-row>
+              <div>
+                <ion-button expand="block" color="primary" size="large" routerLink="/admin/validacion-cuenta-parqueadero/cambio-de-rol">
+                  Cambiar rol
+                </ion-button>
+              </div>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

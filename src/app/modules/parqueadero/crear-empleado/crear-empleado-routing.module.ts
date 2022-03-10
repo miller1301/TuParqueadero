@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: CrearEmpleadoPage
+  },  {
+    path: 'crud',
+    loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
   }
+
 ];
 
 @NgModule({

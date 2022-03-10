@@ -15,6 +15,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RegisterPage implements OnInit {
 
+  
+
+  id: string;
 
   datos: User = {
     nombre: null,
@@ -22,10 +25,16 @@ export class RegisterPage implements OnInit {
     telefono: null,
     uid: null,
     password: null,
-    perfil: 'usuario'
+    perfil: 'usuario',
+    icono: 'https://firebasestorage.googleapis.com/v0/b/tuparqueadero-178e4.appspot.com/o/user.png?alt=media&token=33002ea0-edf8-4d10-9f5b-9768d2ed8b0e'
   }
 
-  constructor( public auth: AngularFireAuth, private authh: AuthService, private firestore: FirestoreService, private router:Router ) { }
+  constructor( 
+    public auth: AngularFireAuth, 
+    private authh: AuthService, 
+    private firestore: FirestoreService, 
+    private router:Router,
+    ) { }
 
 
 
@@ -35,8 +44,7 @@ export class RegisterPage implements OnInit {
   async loginGoogle() {
     const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
     if( res ){
-      
-      this.router.navigate(['/home'])
+      this.router.navigate(['/user'])
     } else (
       console.log('No se pudo iniciar sesion')
     )
@@ -45,11 +53,15 @@ export class RegisterPage implements OnInit {
   }
 
   loginFacebook() {
-    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then( success => {
+      this.router.navigate(['/user']);
+    });
   }
 
   loginTwitter() {
-    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then( success => {
+      this.router.navigate(['/user']);
+    });
   }
 
   logout() {
@@ -58,15 +70,20 @@ export class RegisterPage implements OnInit {
 
   async registrar(){
     console.log("Datos", this.datos)
-    const res = await this.authh.registrarUser(this.datos).catch( error => console.log(error))
-    if(res){
+    const res = await this.authh.registrarUser(this.datos)
+    .then( async res => {
       console.log('Exito al crear el usuario');
       const path = 'Usuarios';
       const id = res.user.uid;
       this.datos.uid = id;
       this.datos.password = null;
+      this.authh.sendVerificationEmail();
       await this.firestore.createDoc(this.datos, path, id)
-      this.router.navigate(['/home'])
-    }
+      this.router.navigate(['/verificacion-email']);
+    })
+    
+    
+    
+    .catch( error => console.log(error))
   }
 }

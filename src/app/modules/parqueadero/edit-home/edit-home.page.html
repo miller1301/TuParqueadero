@@ -17,9 +17,20 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col id="img2" sizeLg="8" offsetLg="2" sizeSm="4" offsetSm="2" sizeXs="10">
-        <img id="img-1" src="../../../../assets/img/2.jpeg" alt="icono-carro">
-        <img id="img-2" src="../../../../assets/img/15132529parqueadero.jpg" alt="icono-carro">
+      <ion-col id="img2" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
+        <ion-slides>
+          <ion-slide>
+            <div class="slide">
+              <img src="../../../../assets/img/2.jpeg" />
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <img src="../../../../assets/img/600b1a714c8fe.jpeg" />
+          </ion-slide>
+          <ion-slide>
+            <img src="../../../../assets/img/15132529parqueadero.jpg" />
+          </ion-slide>
+        </ion-slides>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -47,7 +58,7 @@
             <ion-label position="floating">Costo</ion-label>
             <ion-input type="password" placeholder="Costo" ></ion-input>
           </ion-item>
-          <ion-button routerLink="/parqueadero" expand="block" color="primary" mode="ios" class="ion-margin-top">
+          <ion-button routerLink="/par-home" expand="block" color="primary" mode="ios" class="ion-margin-top">
             Confirmar
           </ion-button>
         </ion-col>

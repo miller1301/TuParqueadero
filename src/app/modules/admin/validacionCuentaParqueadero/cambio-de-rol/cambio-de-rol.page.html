@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cambio de Rol</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin/validacion-cuenta-parqueadero"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="rol">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/admin" >Bandeja de entrada</ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >Parqueaderos</ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >Configuración</ion-item>
+        <ion-item routerLink="#" (click)="logout()">Cerrar sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="rol"></ion-router-outlet>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="10" offsetSm="1">
+        <ion-card>
+          <ion-card-header>
+            <ion-row>
+              <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="4" offsetSm="4" sizeXs="4" offsetXs="4">
+                <img src="../../../../../assets/users.png" alt="Usuario" class="imgp2" width="150px">
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Nombres: </strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Apellidos: </strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Telefono: </strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Correo: </strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Nombre del parqueadero:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Ubicacion:</strong></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <br>
+            <p><strong>Rol:</strong></p>
+            <select class="selection">
+              <option>Usuario</option>
+              <option >Parqueadero</option>
+            </select>
+            <ion-button routerLink="/admin" expand="block" size="large">
+              Actualizar Rol
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
