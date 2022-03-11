@@ -1,11 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="end" name="notifications"></ion-icon>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button id="first"></ion-menu-button>
+    </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/empleado"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="second">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <!-- <ion-list> -->
+        <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
+        <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+        <ion-item routerLink="/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+        <ion-item routerLink="/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
+        <ion-item (click)="logout()"><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
+      <!-- </ion-list> -->
+    </ion-content>
+  </ion-menu>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="second">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+    
+      <!-- <ion-list> -->
+        <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
+        <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+        <ion-item routerLink="/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+        <ion-item routerLink="/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
+      <!-- </ion-list> -->
+    </ion-content>
+  </ion-menu>
 
 
 <ion-content>

@@ -62,6 +62,31 @@ const routes: Routes = [
     path: 'cupos2',
     loadChildren: () => import('./modules/empleado/cupos/cupos-act/cupos-act-routing.module').then( m => m.CuposActPageRoutingModule)
   },
+  {
+    path: 'agre-info-auto',
+    loadChildren: () => import('./modules/empleado/agre-info-auto/agre-info-auto.module').then( m => m.AgreInfoAutoPageModule)
+  },
+  {
+    path: 'reservas',
+    loadChildren: () => import('./modules/empleado/reservas/reservas.module').then( m => m.ReservasPageModule)
+  },
+  {
+    path: 'reservas-actu',
+    loadChildren: () => import('./modules/empleado/reservas-actu/reservas-actu.module').then( m => m.ReservasActuPageModule)
+  },
+  {
+    path: 'inf-auto',
+    loadChildren: () => import('./modules/empleado/inf-auto/inf-auto.module').then( m => m.InfAutoPageModule)
+  },
+  {
+    path: 'novedad',
+    loadChildren: () => import('./modules/empleado/novedad/novedad.module').then( m => m.NovedadPageModule)
+  },  {
+    path: 'info-lista',
+    loadChildren: () => import('./modules/empleado/info-lista/info-lista.module').then( m => m.InfoListaPageModule)
+  },
+
+
   
 ];
 @NgModule({
