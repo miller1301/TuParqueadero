@@ -23,7 +23,7 @@
                   <ion-label position="floating">Correo:</ion-label>
                   <ion-input type="text" placeholder="Correo" [(ngModel)]="datos.correo" ></ion-input>
                 </ion-item>
-                <p *ngIf="email" class="text-danger" >Esta email ya esta en uso en otra cuenta</p>
+                <p *ngIf="email" class="text-danger" >Este email ya esta en uso en otra cuenta</p>
                 <ion-item>
                   <ion-label position="floating">Contraseña</ion-label>
                   <ion-input type="password" minlength="6" placeholder="Contraseña" [(ngModel)]="datos.password" ></ion-input>

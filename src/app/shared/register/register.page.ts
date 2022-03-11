@@ -110,9 +110,22 @@ export class RegisterPage implements OnInit {
       }}
       )
       .catch( error =>{
-        error === 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password)' 
-        this.caracteres = true
-        
+        // document.write(error)
+        if(error == 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).'){
+          this.caracteres = true
+          this.email = false
+          //  setTimeout(() => {
+          //   this.caracteres = false
+          // }, 5000);
+          
+        }
+        else if(error == 'FirebaseError: Firebase: The email address is already in use by another account. (auth/email-already-in-use).'){
+          this.email = true;
+          this.caracteres = false
+          // setTimeout(() => {
+          //   this.email = false;
+          // }, 5000);
+        }
       }) 
   }
 }
