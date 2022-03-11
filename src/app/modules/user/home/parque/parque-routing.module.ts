@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ParquePage
+  },
+  {
+    path: 'reser-user',
+    loadChildren: () => import('./reser-user/reser-user.module').then( m => m.ReserUserPageModule)
   }
 ];
 

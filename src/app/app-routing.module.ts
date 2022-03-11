@@ -92,7 +92,10 @@ const routes: Routes = [
     path: 'parqueade',
     loadChildren: () => import('./modules/user/home/parque/parque.module').then( m => m.ParquePageModule)
   },
-
+  {
+    path: 'reserv-par',
+    loadChildren: () => import('./modules/user/home/parque/reser-user/reser-user.module').then( m => m.ReserUserPageModule)
+  },
 
 
 
