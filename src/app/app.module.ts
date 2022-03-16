@@ -20,6 +20,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { UserModule } from '../app/modules/user/user.module';
 
 @NgModule({
@@ -28,6 +30,7 @@ import { UserModule } from '../app/modules/user/user.module';
   imports: [
     BrowserModule, 
     UserModule,
+    HttpClientModule,
     IonicModule.forRoot(), 
     AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()), provideFunctions(() => getFunctions()), provideStorage(() => getStorage()),
     LoginPageModule,
