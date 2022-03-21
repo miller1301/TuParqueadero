@@ -3,24 +3,50 @@ import { AnySourceData, LngLatBounds, LngLatLike, Map, Marker, Popup } from 'map
 import { DirectionsApiClient } from '../api';
 import { DirectionsResponse, Route } from '../interfaces/directions';
 import { Feature } from '../interfaces/places';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapsService {
 
-  private map?: Map;
-  private markers: Marker[] = [];
+  public map?: Map;
+  public userLocation?: [number, number];
+  private markers: Marker[] | any = [];
+  private parqueaderosDisponibles: any[] = [];
+
 
   get isMapReady() {
     return !!this.map;
   }
 
-  constructor( private directionsApi: DirectionsApiClient ) {}
+  constructor( private directionsApi: DirectionsApiClient, private firestoreService: FirestoreService ) {
+    this.getUserLocation();
+  }
 
   // Obtener y asignar mapa
   setMap( map: Map ) {
     this.map = map;
+  }
+
+
+  // Obtener la localización del usuario
+  public async getUserLocation(): Promise<[number, number]> {
+    return new Promise( (resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        // Desectructuramos el objeto y resolvemos la promesa
+        ({ coords }) => {
+          this.userLocation = [coords.longitude, coords.latitude ];
+          resolve( this.userLocation );
+        },
+        // Atrapar el error
+        ( err ) => {
+          alert('No se pudo obtener la geolocalización');
+          console.log(err);
+          reject();
+        }
+      );
+    });
   }
 
   // Mover o deplazar mapa
@@ -33,22 +59,39 @@ export class MapsService {
     });
   }
 
-  // Crear marcadores de los lugares de búsqueda
-  createMarkersFromPlaces( places: Feature[], userLocation: [number, number] ) {
 
+
+  // Crear marcadores de los lugares buscados
+  createMarkersFromPlaces( places: Feature[], userLocation: [number, number] ) {
+    
     if( !this.map ) throw Error ('Mapa no inicializado');
 
+    // Recorrer marcadores
     this.markers.forEach( marker => marker.remove() );
     const newMarkers = [];
 
+    // Obtener lugares
     for (const place of places) {
+      
       const [ lng, lat ] = place.center;
+      
+      // Crear popup
       const popup = new Popup()
         .setHTML(`
           <h6>${ place.text }</h6>
           <span>${ place.place_name }</span>
-        `);
+          <button class="btn btn-sm btn-primary mt-3" id="btn-ruta">Direcciones</button>
+        `)
 
+        // Popup abierto
+        .on('open', () => {
+          console.log(place.center);
+          document.getElementById('btn-ruta').addEventListener('click', () => {
+            this.getRouteBetweenPoints(this.userLocation, place.center);
+          });
+        });
+
+      // Crear marcador 
       const newMarker = new Marker()
         .setLngLat({ lng, lat })
         .setPopup( popup )
@@ -68,11 +111,11 @@ export class MapsService {
     this.map.fitBounds(bounds, {
       padding: 200
     })
-
   }
 
+
   // Obtener ruta inicio y destino
-  getRouteBetweenPoints( start: [number, number], end: [number, number] ) {
+  getRouteBetweenPoints( start: [number, number], end: [number, number] | number[] ) {
   
     this.directionsApi.get<DirectionsResponse>(`/${start.join(',')};${end.join(',')}`)
       .subscribe( resp => {
@@ -82,7 +125,7 @@ export class MapsService {
   }
 
   // Trazar línea de ruta
-  private drawPolyline( route: Route ) {
+  drawPolyline( route: Route ) {
 
     console.log({ kms: route.distance / 1000, duration: route.duration / 60 });
 

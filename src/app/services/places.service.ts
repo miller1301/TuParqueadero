@@ -57,12 +57,13 @@ export class PlacesService {
 
     this.placesApi.get<PlacesResponse>(`/${query}.json`, {
       params: {
-        proximity: this.userLocation.join(',')
+        proximity: this.userLocation.join(','),
       }
     })
       .subscribe( res => {
         this.isLoadingPlaces = false;
         this.places = res.features;
+        console.log(this.places);
         this.mapService.createMarkersFromPlaces( this.places, this.userLocation );
       });
 

@@ -25,8 +25,14 @@ export class PlacesApiClient extends HttpClient {
 
         return super.get<T>( url, {
             params: {
-                limit: 5,
+                limit: 4,
                 language: 'es',
+                country: 'CO',
+                types: [
+                    'place',
+                    'address',
+                    'poi'
+                ],
                 access_token: environment.apiKey,
                 ...options.params
             }
