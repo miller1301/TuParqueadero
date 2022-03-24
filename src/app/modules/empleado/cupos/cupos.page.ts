@@ -13,6 +13,7 @@ export class CuposPage implements OnInit {
   ngOnInit() {
   }
 
+  // Iniciar sesion-Cerrar sesion
   logout(){
     console.log("logout")
     this.log.logout()

@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CuposActPage } from './cupos-act.page';
+import { TemporizadorPage } from './temporizador.page';
 
-// Funcion para Acualizar cupos
-describe('CuposActPage', () => {
-  let component: CuposActPage;
-  let fixture: ComponentFixture<CuposActPage>;
+describe('TemporizadorPage', () => {
+  let component: TemporizadorPage;
+  let fixture: ComponentFixture<TemporizadorPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CuposActPage ],
+      declarations: [ TemporizadorPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CuposActPage);
+    fixture = TestBed.createComponent(TemporizadorPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
