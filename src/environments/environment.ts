@@ -12,7 +12,11 @@ export const environment = {
     messagingSenderId: '23892918885',
     measurementId: 'G-ENHNF69GRZ',
   },
-  production: false
+  production: false,
+
+  // Api key MapBox
+  apiKey: 'pk.eyJ1IjoibWlsbGVyMTMwMSIsImEiOiJjbDBzczZ2NnUwZHYzM2txdTFnemc0a2l4In0.zQ3ZDg9aZZvi8g1d3-ljnw',
+
 };
 
 /*
