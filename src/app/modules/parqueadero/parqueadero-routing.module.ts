@@ -13,24 +13,20 @@ const routes: Routes = [
     loadChildren: () => import('./edit-home/edit-home.module').then( m => m.EditHomePageModule)
   },
   {
-    path: 'crear-empleado',
-    loadChildren: () => import('./crear-empleado/crear-empleado.module').then( m => m.CrearEmpleadoPageModule)
-  },
-  {
-    path: 'borrar-empleado',
-    loadChildren: () => import('./borrar-empleado/borrar-empleado.module').then( m => m.BorrarEmpleadoPageModule)
-  },
-  {
     path: 'reservas',
     loadChildren: () => import('./reservas/reservas.module').then( m => m.ReservasPageModule)
   },
   {
-    path: 'cambio-rol',
-    loadChildren: () => import('./cambio-rol/cambio-rol.module').then( m => m.CambioRolPageModule)
-  },  {
     path: 'par-home',
     loadChildren: () => import('./par-home/par-home.module').then( m => m.ParHomePageModule)
-  }
+  },
+  {
+    path: 'crud',
+    loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
+  },
+  
+
+
 
   
 

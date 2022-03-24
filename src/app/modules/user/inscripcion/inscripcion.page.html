@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button id="menu2"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-menu></app-menu>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
+        <ion-item-divider id="lines">
+          <h3 id="h3">Inscribe tu parqueadero</h3>
+        </ion-item-divider>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" placeholder="Nombre"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-label position="floating">Direccion</ion-label>
+            <ion-input type="text" placeholder="Direccion"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-label position="floating">Capacidad</ion-label>
+            <ion-input type="text" placeholder="Capacidad"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-label position="floating">Abierto</ion-label>
+            <ion-input type="password" placeholder="Abierto"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-label position="floating">Costo</ion-label>
+            <ion-input type="password" placeholder="Costo"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-item-divider id="lines">
+          <h3 id="h3">Informacion</h3>
+        </ion-item-divider>
+        <h4>
+          Constitución de póliza de responsabilidad civil extracontractual
+        </h4>
+        <h4>
+          Cámara de comercio
+        </h4>
+        <h4>
+          Licencia de funcionamiento
+        </h4>
+        <h4>
+          Documento detallando la seguridad del parqueadero
+        </h4>
+        <ion-button routerLink="/inscrip2" expand="block" color="primary" mode="ios" class="ion-margin-top">
+          Confirmar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
