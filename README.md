@@ -3,11 +3,24 @@
 Hola Soy Johan Santiago Tecnologo en Analisis y Desarrollo de sistemas de informacion 😎 de Bogota
 
 ## Proyecto Tuparqueadero
-Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y apk en movil 
+Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y apk en movil, esta aplicacion permitira al usuario parquear en un lugars seguro y reservar por medio de la aplicacion y pagar en linea
 
+### Mi funcion: Rol Empleado
+- 🔷 Desarrollo todo el Frontend en el rol
+- 🔷 Informacion de Automoviles
+- 🔷 Controlar el tiempo del vehiculo
+- 🔷 Generar fotografia del Automovil
+
+## Lenguajes que utilizamos
+- ⚡ Angular
+- ⚡ Ionic
+## Base de datos
+- ⚡ Firebase
+ 
 ## Desarrollo
 
 🌎 Front-end web development
+
 
 # Habilidades 
 - 💥Html    
