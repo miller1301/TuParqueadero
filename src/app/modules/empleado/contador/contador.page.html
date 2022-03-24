@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>contador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <div class="row text-center">
+        <div class="col-md-12 col-12 mt-5">
+            <h5 class="text-center" id="titulo">Contador de Cupos</h5>
+        </div>
+    </div>
+
+
+
+    <div class="row text-center  mt-5">
+        <div class="col-md-12 col-12">
+            <button  (click)=" numero = numero + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+
+            <span> {{ numero }} </span>
+                
+            <button (click)=" numero = numero - 1; "  class="btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</ion-content>

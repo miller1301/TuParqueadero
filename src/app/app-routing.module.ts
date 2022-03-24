@@ -89,6 +89,10 @@ const routes: Routes = [
     path: 'temporizador',
     loadChildren: () => import('./modules/empleado/temporizador/temporizador.module').then( m => m.TemporizadorPageModule)
   },
+  {
+    path: 'contador',
+    loadChildren: () => import('./modules/empleado/contador/contador.module').then( m => m.ContadorPageModule)
+  },
 
   
 
