@@ -27,6 +27,7 @@ Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y a
 - 💥Css
 - 💥Angular
 - 💥JavaScript
+- 💥Ionic 6
 
 
 <br>
