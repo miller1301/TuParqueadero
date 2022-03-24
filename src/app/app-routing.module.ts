@@ -81,10 +81,12 @@ const routes: Routes = [
   {
     path: 'novedad',
     loadChildren: () => import('./modules/empleado/novedad/novedad.module').then( m => m.NovedadPageModule)
-  },  {
+  },
+  {
     path: 'info-lista',
     loadChildren: () => import('./modules/empleado/info-lista/info-lista.module').then( m => m.InfoListaPageModule)
   },
+  
 
 
   
