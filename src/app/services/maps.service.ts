@@ -5,6 +5,8 @@ import { DirectionsResponse, Route } from '../interfaces/directions';
 import { Feature } from '../interfaces/places';
 import { FirestoreService } from './firestore.service';
 
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +15,16 @@ export class MapsService {
   public map?: Map;
   public userLocation?: [number, number];
   private markers: Marker[] | any = [];
-  private parqueaderosDisponibles: any[] = [];
+  public positionRealTime?: [number, number];
 
 
   get isMapReady() {
     return !!this.map;
   }
 
-  constructor( private directionsApi: DirectionsApiClient, private firestoreService: FirestoreService ) {
+  constructor( private directionsApi: DirectionsApiClient, private geolocation: Geolocation ) {
     this.getUserLocation();
+    this.getUserLocationLive();
   }
 
   // Obtener y asignar mapa
@@ -29,25 +32,22 @@ export class MapsService {
     this.map = map;
   }
 
-
-  // Obtener la localización del usuario
-  public async getUserLocation(): Promise<[number, number]> {
-    return new Promise( (resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        // Desectructuramos el objeto y resolvemos la promesa
-        ({ coords }) => {
-          this.userLocation = [coords.longitude, coords.latitude ];
-          resolve( this.userLocation );
-        },
-        // Atrapar el error
-        ( err ) => {
-          alert('No se pudo obtener la geolocalización');
-          console.log(err);
-          reject();
-        }
-      );
+  // Ubicación inicial del usuario
+  public getUserLocation(){
+    this.geolocation.getCurrentPosition().then( (resp) => {
+      this.userLocation = [resp.coords.longitude, resp.coords.latitude];
+    }).catch((error) => {
+      console.log('Error getting location', error);
     });
   }
+
+  public getUserLocationLive(){
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe( (data: GeolocationPosition) => {
+      this.positionRealTime = [data.coords.longitude, data.coords.latitude];
+    });
+  }
+
 
   // Mover o deplazar mapa
   flyTo( coords: LngLatLike ) {

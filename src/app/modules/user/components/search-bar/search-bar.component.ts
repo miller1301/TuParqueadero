@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { IonModal, IonRouterOutlet } from '@ionic/angular';
 import { PlacesService } from 'src/app/services';
+import { SearchResultsComponent } from '../search-results/search-results.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,8 +12,8 @@ export class SearchBarComponent implements OnInit {
 
   private debounceTimer?: NodeJS.Timeout;
 
-  constructor( private placesService: PlacesService ) { }
-
+  constructor( private placesService: PlacesService, public routerOutlet: IonRouterOutlet ) { }
+  
   ngOnInit() {}
 
   // Escucha de input de búsqueda

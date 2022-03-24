@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { PlacesApiClient } from '../api';
 import { Feature, PlacesResponse } from '../interfaces/places';
 import { MapsService } from './maps.service';
@@ -17,27 +18,16 @@ export class PlacesService {
     return !!this.userLocation;
   }
 
-  constructor( private placesApi: PlacesApiClient, private mapService: MapsService ) { 
+  constructor( private placesApi: PlacesApiClient, private mapService: MapsService, private geolocation: Geolocation ) { 
     this.getUserLocation();
   }
 
   // Obtener la localización del usuario
-  public async getUserLocation(): Promise<[number, number]> {
-    return new Promise( (resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        // Desectructuramos el objeto y resolvemos la promesa
-        ({ coords }) => {
-          this.userLocation = [coords.longitude, coords.latitude ];
-          console.log(this.userLocation);
-          resolve( this.userLocation );
-        },
-        // Atrapar el error
-        ( err ) => {
-          alert('No se pudo obtener la geolocalización');
-          console.log(err);
-          reject();
-        }
-      );
+  public getUserLocation(){
+    this.geolocation.getCurrentPosition().then( (resp) => {
+      this.userLocation = [resp.coords.longitude, resp.coords.latitude];
+    }).catch((error) => {
+      console.log('Error getting location', error);
     });
   }
 

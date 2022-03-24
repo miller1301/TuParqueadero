@@ -24,6 +24,12 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
+    this.makeMapInitial();
+    
+  }
+
+  // Creación de mapa y marcador inicial
+  makeMapInitial(){
     if ( !this.placesService.userLocation ) throw Error('No hay placesServices.userLocation');
     
     // Construcción del mapa
@@ -46,7 +52,6 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       .setLngLat( this.placesService.userLocation )
       .setPopup( popup )
       .addTo( map );
-
 
     // Inicializar el mapa
     this.mapService.setMap( map );

@@ -12,14 +12,7 @@
      [class.active]="place.id === selectedId"
      (click)="flyTo(place)"
   >
-    <h6>{{ place.text_es }}</h6>
-    <p>{{ place.place_name }}</p>
-    <button 
-      class="btn btn-sm"
-      [ngClass]="(place.id ===  selectedId) ? 'btn-outline-light' : 'btn-outline-primary'"
-      (click)="getDirections( place )"
-    >
-    Direcciones
-    </button>
+    <h6 class="m-1 fw-bold">{{ place.text_es }}</h6>
+    <p class="m-1">{{ place.place_name }}</p>
   </li>
 </ul>

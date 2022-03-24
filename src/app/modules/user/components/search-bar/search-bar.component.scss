@@ -1,3 +1,4 @@
+
 // Contenedor de búsqueda de lugares
 .search-container{
     position: fixed;
@@ -9,4 +10,40 @@
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+// Contenedor modal búsqueda lugares
+.modal-places{
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    ion-button{
+        width: 100%;
+        height: 100%;
+        --border-radius: 50px;
+    }
+    @media(min-width: 678px){
+        height: 8%;
+        bottom: 25px;
+        ion-button{
+            height: 100%;
+            width: 22%;
+            font-size: 18px;
+        }
+    }
+}
+
+// Modal ionic
+ion-modal {
+    --ion-background-color: #FFFFFF;
+    --ion-text-color: #000000;
+    --border-radius: 30px;
+}
+
+// Label selecciona destino
+.text-selecciona{
+    font-size: 24px;
+    color: #1A97E8;
 }

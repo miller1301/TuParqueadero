@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Feature } from 'src/app/interfaces/places';
 import { MapsService, PlacesService } from 'src/app/services';
 
