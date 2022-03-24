@@ -23,6 +23,10 @@ export class AuthService {
     }
   }
 
+  actulizarP(user){
+    return this.authfirebase.updateCurrentUser(user);
+  }
+
   login(correo:string, password: string){
     return this.authfirebase.signInWithEmailAndPassword(correo, password)
   }
@@ -36,9 +40,16 @@ export class AuthService {
    return this.authfirebase.createUserWithEmailAndPassword(datos.correo, datos.password);
   }
 
+
   stateUser(){
     return this.authfirebase.authState;
   }
+
+  async getUid(){
+    const user = await this.authfirebase.currentUser
+    return user.uid
+  }
+
 
 
 }
