@@ -2,6 +2,8 @@
 
 Hola Soy Johan Santiago Tecnologo en Analisis y Desarrollo de sistemas de informacion 😎 de Bogota
 
+-[@SantiagoPiraquive](https://github.com/SANTINI100)
+
 ## Proyecto Tuparqueadero
 Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y apk en movil, esta aplicacion permitira al usuario parquear en un lugars seguro y reservar por medio de la aplicacion y pagar en linea
 
