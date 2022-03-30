@@ -1,0 +1,30 @@
+.img-logo-parking{
+    width: 7%;
+    @media(max-width: 678px){
+        width: 20%;
+    }
+}
+
+.name-parking{
+    @media(max-width: 678px){
+        font-size: 16px;
+    }
+}
+
+.imgs-parking{
+    height: 100%;
+}
+
+.desktop{
+    display: block;
+    @media(max-width: 678px){
+        display: none;
+    }
+}
+
+.mobile{
+    display: none;
+    @media(max-width: 678px){
+        display: block;
+    }
+}
