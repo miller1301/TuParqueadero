@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PoppoverInfoComponent } from '../poppover-info/poppover-info.component';
 
 @Component({
   selector: 'app-validacion-cuenta-parqueadero',
@@ -18,7 +19,8 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
     private log : AuthService,
     private activatedRoute: ActivatedRoute,
     private firestore:FirestoreService,
-    private sanitizer : DomSanitizer
+    private sanitizer : DomSanitizer,
+    private popoverController : PopoverController
     ) {}
 
   data;
@@ -32,6 +34,15 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
   pdf2Valor;
   pdf3Valor;
   pdf4Valor;
+
+
+  datosUser:boolean = true;
+  imagenes:boolean;
+  constitucion:boolean;
+  camara:boolean;
+  licencia:boolean;
+  seguridad:boolean;
+  cambio:boolean;
 
   ngOnInit() {
      this.idDueñoParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
@@ -58,6 +69,32 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
     })
 
   }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PoppoverInfoComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    await popover.present();
+
+    const { data } = await popover.onWillDismiss();
+    console.log(data.valor)
+
+    if( data.valor === 'datos usuario' ){
+      this.datosUser = true
+      this.imagenes = false
+    }
+    else if ( data.valor === 'imagenes'){
+      this.datosUser = false
+      this.imagenes = true
+    }
+  }
+
+  
+
+
 
   abrir(){
     const abrirM = document.getElementById('open4');

@@ -49,27 +49,32 @@
             <img [src]="data.img" alt="Usuario" class="imgp">
 
           </ion-item>
+          <ion-button (click)="presentPopover( $event )" expand="block">
+            <ion-icon slot="end" name="list-outline"></ion-icon>
+          </ion-button>
           </ion-card-header>
-          <ion-card-content>
-              <p><strong> Descripcion: </strong></p>
-              <p>{{ data.descripcion }}</p>  
+          <ion-card-content *ngIf="datosUser" >
+              <p class="titulo"><strong> Descripcion: </strong></p>
+              <p class="textoB">{{ data.descripcion }}</p>  
               <br>
-              <p><strong>Nombre del parquedero</strong></p>
-              <p>{{ data.nameParqueadero }}</p>
+              <p  class="titulo"><strong>Nombre del parquedero</strong></p>
+              <p class="textoB">{{ data.nameParqueadero }}</p>
               <br>
-              <p><strong>Ubicacion: </strong></p>
-              <p>{{ data.ubicacion }}</p>
+              <p  class="titulo"><strong>Ubicacion: </strong></p>
+              <p class="textoB">{{ data.ubicacion }}</p>
               <br>
-              <p><strong>Horario del parquedero: </strong></p>
-              <p>{{ data.horario }}</p>
+              <p  class="titulo"><strong>Horario del parquedero: </strong></p>
+              <p class="textoB">{{ data.horario }}</p>
               <br>
-              <p><strong>Tarifa del parqueadero: </strong></p>
-              <p>{{ data.tarifa }}</p>
+              <p class="titulo"><strong>Tarifa del parqueadero: </strong></p>
+              <p class="textoB">{{ data.tarifa }}</p>
               <br>
-              <p><strong>Pagina web (Opcional): </strong></p>
-              <p><a [href]="data.pagina" target="blank">Pagina web</a></p>
+              <p  class="titulo"><strong>Pagina web (Opcional): </strong></p>
+              <p class="textoB"><a [href]="data.pagina" target="blank">Pagina web</a></p>
               <br>
-              <p><strong>Imagenes del parqueadero: </strong></p>
+            </ion-card-content>
+            <ion-card-content *ngIf="imagenes">
+              <p  class="titulo"><strong>Imagenes del parqueadero: </strong></p>
               <ion-row>
                 <ion-col sizeLg="5" offsetLg="1" sizeMd="5" offsetMd="1" sizeSm="12">
                   <img [src]="data.img1" alt="Parqueadero 1" class="imgp1">
@@ -78,40 +83,46 @@
                   <img [src]="data.img2" alt="Parqueadero 2" class="imgp1">
                 </ion-col>
               </ion-row>
-              <br>
-              <p><strong>Constitucion de poliza de responsabilidad civil extracontractual: </strong></p>
-              <ion-row>
-                <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
-                  <iframe [src]="pdf1Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
-                </ion-col>
-              </ion-row>
-              <br>
-              <p><strong>Camara de comercio: </strong></p>
-              <ion-row>
-                <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
-                  <iframe [src]="pdf2Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
-                </ion-col>
-              </ion-row>
-              <br>
-              <p><strong>Licencia de funcionamiento: </strong></p>
-              <ion-row>
-                <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
-                  <iframe [src]="pdf3Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
-                </ion-col>
-              </ion-row>
-              <br>
-              <p><strong>Documento detallado de la seguridad del parqueadero: </strong></p>
-              <ion-row>
-                <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
-                  <iframe [src]="pdf4Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
-                </ion-col>
-              </ion-row>
-              <div>
-                <ion-button expand="block" color="primary" size="large" [routerLink]="['cambio-de-rol/' + data.Uid]">
-                  Cambiar rol
-                </ion-button>
-              </div>
             </ion-card-content>
+              <ion-card-content *ngIf="constitucion">
+                <p><strong  class="titulo">Constitucion de poliza de responsabilidad civil extracontractual: </strong></p>
+                <ion-row>
+                  <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+                    <iframe [src]="pdf1Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+              <ion-card-content *ngIf="camara">
+                <p><strong  class="titulo">Camara de comercio: </strong></p>
+                <ion-row>
+                  <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+                    <iframe [src]="pdf2Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+              <ion-card-content *ngIf="licencia">
+                <p><strong  class="titulo">Licencia de funcionamiento: </strong></p>
+                <ion-row>
+                  <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+                    <iframe [src]="pdf3Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+              <ion-card-content *ngIf="seguridad">
+                <p><strong  class="titulo">Documento detallado de la seguridad del parqueadero: </strong></p>
+                <ion-row>
+                  <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+                    <iframe [src]="pdf4Valor"  style="width: 100%; height: 500px;"  frameborder="0"></iframe>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+              <ion-card-content *ngIf="cambio"> 
+                <div>
+                  <ion-button expand="block" color="primary" size="large" [routerLink]="['cambio-de-rol/' + data.Uid]">
+                    Cambiar rol
+                  </ion-button>
+                </div>
+              </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
