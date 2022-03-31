@@ -5,6 +5,9 @@ Redes sociales: Tuparqueadero-->
 
 <ion-header translucent>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button id="first"></ion-menu-button>
+    </ion-buttons>
     <ion-title>Empleado del parqueadero</ion-title>
   </ion-toolbar> 
 </ion-header>
@@ -18,9 +21,10 @@ Redes sociales: Tuparqueadero-->
       </ion-header>
       <ion-content>
         <!-- <ion-list> -->
-          <ion-item routerLink="/empleado" ><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
-          <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
-          <ion-item routerLink="empleado/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+          <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
+          <ion-item routerLink="/empleado/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+          <ion-item routerLink="/empleado/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+          <ion-item routerLink="/empleado/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
           <ion-item (click)="logout()"><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
         <!-- </ion-list> -->
       </ion-content>
@@ -34,7 +38,7 @@ Redes sociales: Tuparqueadero-->
         <ion-col sizesm="12">
         <div class="ion-text-center">
           <h2 id="titulo">Tuparqueadero</h2>
-          <img id="imagen" src="https://www.eltiempo.com/files/article_second/uploads/2021/01/22/600b1a714c8fe.jpeg"><img>
+          <img id="imagen" src="https://www.eltiempo.com/files/article_main/uploads/2021/01/22/600b1a714c8fe.jpeg"><img>
           <h2 id="subtitulo">¿Quienes somos?</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque earum, consectetur iste nobis labore iusto veritatis mollitia dolores, temporibus hic ipsa asperiores, ipsum voluptates magnam. Similique fugiat mollitia commodi consectetur autem sed corporis, illum eaque non tenetur ad. Ab asperiores atque doloribus veritatis quasi illum dolor distinctio eum, facere provident nesciunt fugiat veniam ducimus odio quae nobis libero magnam necessitatibus amet velit neque. Hic nemo natus dicta corporis voluptatibus facilis odio nisi maxime iusto architecto. Atque similique eveniet odit possimus, obcaecati non provident dolorem optio sit excepturi maiores laboriosam repellat esse harum aliquid repudiandae, commodi debitis ducimus sunt deserunt. Et.</p>
         </div>
