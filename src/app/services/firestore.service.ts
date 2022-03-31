@@ -35,6 +35,16 @@ export class FirestoreService{
         return this.firestore.collection(document).snapshotChanges();
     }
 
+    getCollection<Tipo>(path:string){
+        const colleccion = this.firestore.collection<Tipo>(path);
+        return colleccion.valueChanges();
+    }
+
+    deleteDoc(path:string, id:string){
+        const colleccion = this.firestore.collection(path);
+        return colleccion.doc(id).delete();
+    }
+
 
 }
 

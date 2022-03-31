@@ -1,0 +1,69 @@
+<ion-app>
+  <!-- el fin e¡de esta pantalla  -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button id="menu" ></ion-menu-button>
+      </ion-buttons>
+      
+      <ion-title>parqueadero</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+
+  <ion-content>
+    <!-- <app-menu></app-menu> -->
+<ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="primary" class="ion-text-center">
+          <h1 color="primary">Registrar empleado</h1>
+        </ion-text>
+          <ion-card>
+            <ion-card-content>
+              <ion-item class="ion-margin-vertical">
+                <ion-label position="floating">Nombre:</ion-label>
+                <ion-input type="text" placeholder="Nombre" [(ngModel)]="datos.nombre" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">
+                  Telefono:
+                </ion-label>
+                <ion-input type="text" placeholder="Telefono" [(ngModel)]="datos.telefono" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Correo:</ion-label>
+                <ion-input type="text" placeholder="Correo" [(ngModel)]="datos.correo" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input type="password" placeholder="Contraseña" [(ngModel)]="datos.password" ></ion-input>
+              </ion-item>
+              <div class="ion-text-center">
+                <ion-button  color="primary" class="ion-margin-top"  mode="ios" (click)="rEmpleado()">
+                  Registrarse
+                </ion-button>
+              </div> 
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col *ngFor="let usuario of usuarios"  sizeLg="4" offsetLg="4" sizeSm="12"  sizeXs="12" >
+    <ion-item id="item" *ngIf="usuario.perfil == 'trabajador'">
+      <ion-item >
+      <ion-label class="nombre">{{usuario.nombre}}</ion-label>
+      <ion-buttons>
+      <ion-button >
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteUser(usuario)">
+        <ion-icon slot="icon-only" color="danger" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+    </ion-item>
+  </ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>

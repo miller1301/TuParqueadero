@@ -1,9 +1,68 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>parqueadero</ion-title>
-  </ion-toolbar>
-</ion-header>
+<router-outlet></router-outlet>
 
-<ion-content>
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button id="menu" ></ion-menu-button>
+      </ion-buttons>
+      
+      <ion-title>parqueadero</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+  <ion-content>
+    <!-- <app-menu></app-menu> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <a routerLink="/parqueadero/par-home">
+          <ion-card class="card">
+            <img src="./../../../assets/img/15132529parqueadero.jpg" />
+            <ion-card-header>
+              <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h4>
+                Direccion
+              </h4>
+              <p>Calle 100a # 45 - 20</p>
+            </ion-card-content>
+          </ion-card></a>
+        </ion-col>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <a routerLink="/par-home">
+          <ion-card class="card">
+            <img src="./../../../assets/img/2.jpeg"/>
+            <ion-card-header>
+              <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h4>
+                Direccion
+              </h4>
+              <p>Calle 100a # 45 - 20</p>
+            </ion-card-content>
+          </ion-card></a>
+        </ion-col>
+        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+          <a routerLink="/par-home">
+          <ion-card class="card">
+            <img src="./../../../assets/img/600b1a714c8fe.jpeg"/>
+            <ion-card-header>
+              <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h4>
+                Direccion
+              </h4>
+              <p>Calle 100a # 45 - 20</p>
+            </ion-card-content>
+          </ion-card></a>
+        </ion-col>
+      </ion-row> 
+    </ion-grid>
+  </ion-content>
+</ion-app>
 
-</ion-content>
+

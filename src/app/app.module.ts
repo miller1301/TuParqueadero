@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { UserModule } from '../app/modules/user/user.module';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { ParqueaderoPageModule } from './modules/parqueadero/parqueadero.module';
 
 @NgModule({
   declarations: [AppComponent],

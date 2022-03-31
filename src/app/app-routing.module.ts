@@ -53,7 +53,7 @@ const routes: Routes = [
   {
     path: 'cupos',
     loadChildren: () => import('./modules/empleado/cupos/cupos.module').then( m => m.CuposPageModule)
-  },
+  }
 ];
 @NgModule({
   imports: [
