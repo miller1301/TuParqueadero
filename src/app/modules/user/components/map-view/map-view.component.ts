@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Map, Popup, Marker } from 'mapbox-gl';
 import { DirectionsApiClient } from 'src/app/api';
-import { DirectionsResponse } from 'src/app/interfaces/directions';
 import { MapsService, PlacesService } from 'src/app/services';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { InfoParkingComponent } from '../info-parking/info-parking.component';
 
 @Component({
   selector: 'app-map-view',
@@ -18,7 +19,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   // Obtener elemento local mapDiv
   @ViewChild('mapDiv') mapDivElement!: ElementRef
 
-  constructor( private placesService: PlacesService, private mapService: MapsService, private firestoreService: FirestoreService, private directionsApi: DirectionsApiClient ) { }
+  constructor( 
+    private placesService: PlacesService, 
+    private mapService: MapsService, 
+    private firestoreService: FirestoreService, 
+    private directionsApi: DirectionsApiClient,
+    public modalController: ModalController
+  ) { }
 
   ngOnInit() {}
 
@@ -88,7 +95,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         .on('open', () => {
           console.log([Number(latitud), Number(longitud)]);
           document.getElementById('btn-ruta').addEventListener('click', () => {
-            this.mapService.getRouteBetweenPoints(this.mapService.userLocation, [Number(longitud), Number(latitud)]);
+            this.presentModal();
           });
         });
 
@@ -104,6 +111,15 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.parqueaderosDisponibles.length; i++) {
       this.markers.push(markersParkings[i]);
     }
+  }
+
+  // Abrir modal info parqueadero
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: InfoParkingComponent,
+      cssClass: 'modal-info-parking'
+    });
+    return await modal.present();
   }
 
 
