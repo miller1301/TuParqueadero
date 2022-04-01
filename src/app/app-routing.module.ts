@@ -85,19 +85,14 @@ const routes: Routes = [
   {
     path: 'info-lista',
     loadChildren: () => import('./modules/empleado/info-lista/info-lista.module').then( m => m.InfoListaPageModule)
-  },  {
-    path: 'temporizador',
-    loadChildren: () => import('./modules/empleado/temporizador/temporizador.module').then( m => m.TemporizadorPageModule)
   },
+  
   {
     path: 'contador',
     loadChildren: () => import('./modules/empleado/contador/contador.module').then( m => m.ContadorPageModule)
   },
-
   
-
-
-  
+   
 ];
 @NgModule({
   imports: [

@@ -1,3 +1,7 @@
+<!-- !Pagina web y aplicacion movil:Tuparqueadero
+!Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago piraquive
+!Ficha 2252471 ADSI
+!Redes sociales: Tuparqueadero -->
 <ion-header>
   <ion-toolbar>
     <ion-title>contador</ion-title>
@@ -8,6 +12,7 @@
 
   <div class="container">
 
+    <!-- Navbar -->
     <div class="row text-center">
         <div class="col-md-12 col-12 mt-5">
             <h5 class="text-center" id="titulo">Contador de Cupos</h5>
@@ -15,18 +20,20 @@
     </div>
 
 
-
+    <!-- Estara el partado del contador -->
     <div class="row text-center  mt-5">
         <div class="col-md-12 col-12">
-            <button  (click)=" numero = numero + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+            <!-- Boton aumentar numero al dar clik -->
+            <ion-button  (click)=" numero = numero + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
                 <i class="zmdi zmdi-plus"></i>
-            </button>
-
+            </ion-button>
+            <!-- Mostrara el numero resultante -->
             <span> {{ numero }} </span>
                 
-            <button (click)=" numero = numero - 1; "  class="btn-danger bmd-btn-fab bmd-btn-fab-sm">
+            <!-- Boton disminuir numero al dar click -->
+            <ion-button (click)=" numero = numero - 1; "  class="btn-danger bmd-btn-fab bmd-btn-fab-sm">
                 <i class="zmdi zmdi-minus"></i>
-            </button>
+            </ion-button>
         </div>
 
     </div>

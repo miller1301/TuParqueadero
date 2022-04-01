@@ -11,9 +11,11 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <ion-grid>
     <ion-row>
+      
       <!-- Contenido Actualizado -->
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2">
         <div class="ion-text-center">
@@ -22,9 +24,9 @@
       </ion-col>
     </ion-row>
       
+          <!--Cupos Totales  -->
         <ion-col size="12" class="ion-justify-content-start">
           <ion-row>
-          
             <ion-col id="text2" class="ion-justify-content-end position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
               <p id="numero20">
                  50 
@@ -35,6 +37,7 @@
             </ion-col>
           </ion-row>
 
+          <!-- Cupos Tiempo real -->
         <ion-row>
           <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
             <div class="ion-text-center">
@@ -43,17 +46,18 @@
           </ion-col>
         </ion-row>
       
-        <ion-row>
-          
+        <!-- Cupos Actualizados -->
+        <ion-row>  
           <ion-col id="text2" class="ion-justify-content-end position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
             <p id="numero20">
                10
             </p>
             <p id="contenido2">
-              El parqueadero cuenta con una capacidad de 50 Automoviles,con su proteccion
+              El parqueadero cuenta con una capacidad de 10 Automoviles,con su proteccion
             </p>
           </ion-col>
         </ion-row>
+
         <!-- No editable -->
         <ion-row>
           <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
@@ -73,14 +77,33 @@
           </ion-col>
         </ion-row>
 
-        <!-- Boton actualizar -->
-        <ion-row>
-          <ion-col id="col1" sizeLg="2" offsetLg="5" sizeSm="12" sizeXs="12" > 
-            <ion-button routerLink="/cupos2" id="boton1"  expand="block" color="primary" mode="ios" class="ion-margin-top">
-              Actualizar
-            </ion-button>
-          </ion-col>
-        </ion-row>
-        </ion-col>
-</ion-grid>
+        <!-- Contador de cupos en el parqueadero -->
+            <ion-row>
+              <ion-col  class="ion-justify-content-center position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
+              <p id="titulo2"> 
+                Contador de Automoviles
+              </p>
+              
+
+              <!-- Boton aumentar numero al dar clik -->
+              
+              <ion-button id="boton1"  (click)=" numero = numero + 1;" expand="DEFAULT SIZE" color="primary" mode="ios" class="ion-text-center">
+                <ion-icon id="icono" name="add-sharp"></ion-icon>              
+              </ion-button>
+          
+              <!-- Mostrara el numero resultante -->
+              <span id="numeroC"> {{ numero }} </span>
+                
+                  
+              <!-- Boton disminuir numero al dar click -->
+              <ion-button id="boton1" (click)=" numero = numero - 1;"  expand="DEFAULT SIZE" color="danger" mode="ios" class="ion-text-center">
+                <ion-icon id="icono" name="remove-sharp"></ion-icon>
+              </ion-button>
+            
+            </ion-col>
+            </ion-row>
+            
+
+ </ion-col>
+ </ion-grid>
 </ion-content>

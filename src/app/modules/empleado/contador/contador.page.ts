@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContadorPage implements OnInit {
 
+  // numero en el que inicia el contador
   constructor() { }
 
-  numero:number = 15;
+  numero:number = 10;
 
 
   /***Funcion Sumar y Restar */

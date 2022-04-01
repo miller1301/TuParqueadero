@@ -36,5 +36,10 @@ export class AuthService {
     return this.authfirebase.authState;
   }
 
+  async getUid(){
+    const user = await this.authfirebase.currentUser
+    return user.uid
+  }
+
 
 }

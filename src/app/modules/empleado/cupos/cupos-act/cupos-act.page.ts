@@ -9,7 +9,31 @@ export class CuposActPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  numero:number = 10;
+
+
+  /***Funcion Sumar y Restar */
+  sumar(){
+    this.numero +=1;
   }
+
+  restar(){
+    this.numero -=1;
+  }
+/**fin  */
+
+
+  //espera un numero como respuesta
+  accionOperacion( valor:number ){
+    this.numero +=valor;
+  }
+  
+
+  ngOnInit(): void {
+  }
+
+
+  
+
 
 }
