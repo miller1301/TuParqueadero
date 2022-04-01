@@ -2,7 +2,11 @@
 
 Hola Soy Johan Santiago Tecnologo en Analisis y Desarrollo de sistemas de informacion 😎 de Bogota
 
+<<<<<<< HEAD
 -[@SantiagoPiraquive](https://github.com/SANTINI100)
+=======
+- 💥[@SantiagoPiraquive](https://github.com/SANTINI100)
+>>>>>>> b56cb4bba50d79bf5daa3d5fbefc240b711e6382
 
 ## Proyecto Tuparqueadero
 Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y apk en movil, esta aplicacion permitira al usuario parquear en un lugars seguro y reservar por medio de la aplicacion y pagar en linea
@@ -29,6 +33,7 @@ Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y a
 - 💥Css
 - 💥Angular
 - 💥JavaScript
+- 💥Ionic 6
 
 
 <br>
@@ -38,6 +43,6 @@ Estoy con mi equipo de trabajo en un proyecto de Diseñar pagina web oficial y a
 
 ### Donde me puedes encontrar
 
-- :star::blush: Perfil personal **[Instagram](https://www.instagram.com/johan_santiago_100/)** :v:
-- :star::blush: Perfil personal **[Facebook](https://www.facebook.com/santiago.piraquive.9)** :v:
+- :star: Perfil personal **[Instagram](https://www.instagram.com/johan_santiago_100/)** :v:
+- :star: Perfil personal **[Facebook](https://www.facebook.com/santiago.piraquive.9)** :v:
 
