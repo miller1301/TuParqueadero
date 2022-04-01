@@ -42,7 +42,76 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
   camara:boolean;
   licencia:boolean;
   seguridad:boolean;
-  cambio:boolean;
+  cambio:boolean = true
+  
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PoppoverInfoComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    await popover.present();
+
+    const { data } = await popover.onWillDismiss();
+    console.log(data.valor)
+
+    if( data.valor === 'datos usuario' ){
+      this.datosUser = true
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = false
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = true
+    }
+    else if ( data.valor === 'imagenes'){
+      this.datosUser = false
+      this.imagenes = true
+      this.constitucion = false
+      this.camara = false
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = false
+    }
+    else if(data.valor === 'constitucion'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = true
+      this.camara = false
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = false
+    }
+    else if(data.valor === 'camara'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = true
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = false
+    }
+    else if(data.valor === 'licencia'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = false
+      this.licencia = true
+      this.seguridad = false
+      this.cambio = false
+    }
+    else if(data.valor === 'seguridad'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = false
+      this.licencia = false
+      this.seguridad = true
+      this.cambio = false
+    }
+    
+  }
 
   ngOnInit() {
      this.idDueñoParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
@@ -70,40 +139,26 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
 
   }
 
-  async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
-      component: PoppoverInfoComponent,
-      cssClass: 'my-custom-class',
-      event: ev,
-      translucent: true
-    });
-    await popover.present();
-
-    const { data } = await popover.onWillDismiss();
-    console.log(data.valor)
-
-    if( data.valor === 'datos usuario' ){
-      this.datosUser = true
-      this.imagenes = false
-    }
-    else if ( data.valor === 'imagenes'){
-      this.datosUser = false
-      this.imagenes = true
-    }
-  }
 
   
 
 
 
   abrir(){
-    const abrirM = document.getElementById('open4');
-    abrirM.addEventListener('click', function(){
-     document.getElementById('animacion4').classList.toggle('active4');
+    const abrirMenu = ()=> {
+      document.getElementById('animacion4').classList.toggle('active4');
      document.getElementById('animacion4').classList.toggle('animate__bounceInLeft');
-    })
+    }
+    abrirMenu()
  }
 
+//  const abrirM = document.getElementById('open4');
+//     abrirM.addEventListener('dblclick', function(){
+//      document.getElementById('animacion4').classList.toggle('active4');
+//      document.getElementById('animacion4').classList.toggle('animate__bounceInLeft');
+//     })
+
+ 
   
   logout(){
     this.log.logout()
