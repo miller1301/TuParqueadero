@@ -54,6 +54,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         <span>Estoy en este lugar del mundo</span>
       `);
 
+
     // Implementación del marcador
     new Marker({ color: 'red' })
       .setLngLat( this.placesService.userLocation )

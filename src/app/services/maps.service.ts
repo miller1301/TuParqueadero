@@ -41,6 +41,7 @@ export class MapsService {
     });
   }
 
+  // Obtener localización en realtime
   public getUserLocationLive(){
     let watch = this.geolocation.watchPosition();
     watch.subscribe( (data: GeolocationPosition) => {

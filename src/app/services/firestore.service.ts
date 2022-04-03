@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { BookingResponse } from '../interfaces/booking';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +15,11 @@ export class FirestoreService{
         const collection = this.firestore.collection(path);
         return collection.doc(id).set(data)
     }
+
+    // Crear nuevo documento con ID default
+    createDocIdDefault( path: string, data: BookingResponse ){
+        return this.firestore.collection(path).add(data);
+    } 
 
 
     // Obtener documentos en base de datos Firestore

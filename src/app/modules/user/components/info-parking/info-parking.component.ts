@@ -30,8 +30,12 @@ export class InfoParkingComponent implements OnInit {
   async bookingModal(){
     const modal = await this.modalController.create({
       component: BookingParkingComponent,
-      cssClass: 'modal-booking-parking'
+      cssClass: 'modal-booking-parking',
+      componentProps: {
+        'parking': this.parking
+      }
     });
+    this.dismiss();
     return await modal.present();
   }
 
