@@ -11,24 +11,6 @@
     }
 }
 
-.imgs-parking{
-    height: 100%;
-}
-
-.desktop{
-    display: block;
-    @media(max-width: 678px){
-        display: none;
-    }
-}
-
-.mobile{
-    display: none;
-    @media(max-width: 678px){
-        display: block;
-    }
-}
-
 .div-informacion-parking{
     @media(max-width: 678px){
         padding: 0% 5%;
@@ -36,37 +18,47 @@
 }
 
 .div-info{
-    font-size: 20px;
+    font-size: 15px;
     img{
-        width: 20%;
+        width: 16%;
     }
     @media(max-width: 678px){
-        font-size: 15px;
-        margin-bottom: 5%;
+        font-size: 12px;
+        margin-bottom: 3%;
         img{
-            width: 12%;
+            width: 10%;
         }
     }
 }
 
-.div-btn-reservar{
+.div-btn-confirmar{
     margin-top: 5%;
     @media(max-width: 678px){
         margin-top: 2%;
     }
 }
 
-.btn-reservar{
+.btn-confirmar{
     background-color: #1A97E8;
     @media(min-width: 679px){
         padding: 1% 8%;
     }
 }
 
-// Título información
-.title-info{
+.div-info-parqueo{
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
     @media(max-width: 678px){
-        font-size: 15px;
-        margin-top: 5px;
+        width: 90%;
+    }
+    img{
+        width: 10%;
+    }
+}
+
+.input-info::placeholder{
+    @media(max-width: 678px){
+        font-size: 12px;
     }
 }

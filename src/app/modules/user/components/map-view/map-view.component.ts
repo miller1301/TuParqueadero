@@ -89,13 +89,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       const popup = new Popup()
         .setHTML(`
           <h1>${parking.nameParqueadero}</h1>
-          <button class="btn btn-sm btn-primary mt-3" id="btn-ruta">Direcciones</button>
+          <button class="btn btn-sm btn-primary mt-3" id="btn-ruta">Información</button>
         `)
         // Popup abierto
         .on('open', () => {
           console.log([Number(latitud), Number(longitud)]);
           document.getElementById('btn-ruta').addEventListener('click', () => {
-            this.presentModal();
+            this.presentModal(parking);
           });
         });
 
@@ -113,11 +113,15 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Abrir modal info parqueadero
-  async presentModal() {
+  // Abrir modal info parqueadero y enviar datos de parqueadero
+  async presentModal(parking) {
+    console.log(parking);
     const modal = await this.modalController.create({
       component: InfoParkingComponent,
-      cssClass: 'modal-info-parking'
+      cssClass: 'modal-info-parking',
+      componentProps: {
+        parking
+      }
     });
     return await modal.present();
   }

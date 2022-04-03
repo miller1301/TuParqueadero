@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { BookingParkingComponent } from '../booking-parking/booking-parking.component';
 
 @Component({
   selector: 'app-info-parking',
@@ -7,6 +8,9 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./info-parking.component.scss'],
 })
 export class InfoParkingComponent implements OnInit {
+
+  // Recibimos información del parqueadero abierto
+  @Input() parking;
 
   slideOpts = {
     initialSlide: 1,
@@ -21,6 +25,14 @@ export class InfoParkingComponent implements OnInit {
     this.modalController.dismiss({
       'dismissed': true
     });
+  }
+
+  async bookingModal(){
+    const modal = await this.modalController.create({
+      component: BookingParkingComponent,
+      cssClass: 'modal-booking-parking'
+    });
+    return await modal.present();
   }
 
 }

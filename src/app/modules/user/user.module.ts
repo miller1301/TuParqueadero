@@ -14,6 +14,7 @@ import { TuParqLogoComponent } from './components/tu-parq-logo/tu-parq-logo.comp
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { InfoParkingComponent } from './components/info-parking/info-parking.component';
+import { BookingParkingComponent } from './components/booking-parking/booking-parking.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { InfoParkingComponent } from './components/info-parking/info-parking.com
     TuParqLogoComponent,
     SearchBarComponent,
     SearchResultsComponent,
-    InfoParkingComponent
+    InfoParkingComponent,
+    BookingParkingComponent
   ],
   imports: [
     CommonModule,
