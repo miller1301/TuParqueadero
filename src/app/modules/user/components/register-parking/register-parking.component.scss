@@ -1,0 +1,11 @@
+::ng-deep body{
+    --ion-background-color: #FFF !important
+}
+
+.title-inscribe{
+    color: #1A97E8;
+    font-size: 35px;
+    @media(max-width: 678px){
+        font-size: 17px;
+    }
+}

@@ -16,6 +16,8 @@ export class MapsService {
   public userLocation?: [number, number];
   private markers: Marker[] | any = [];
   public positionRealTime?: [number, number];
+  public routeReady: boolean = false;
+  public resetMap: boolean;
 
 
   get isMapReady() {

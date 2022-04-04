@@ -15,9 +15,15 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { InfoParkingComponent } from './components/info-parking/info-parking.component';
 import { BookingParkingComponent } from './components/booking-parking/booking-parking.component';
+import { ParkingReadyComponent } from './components/parking-ready/parking-ready.component';
+import { UserRoutingModule } from './user-routing.module';
+import { UserComponent } from './user.component';
+import { MenuUserComponent } from './components/menu-user/menu-user.component';
+import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
 
 @NgModule({
   declarations: [
+    UserComponent,
     HomeComponent,
     LoadingComponent,
     MapViewComponent,
@@ -26,15 +32,22 @@ import { BookingParkingComponent } from './components/booking-parking/booking-pa
     SearchBarComponent,
     SearchResultsComponent,
     InfoParkingComponent,
-    BookingParkingComponent
+    BookingParkingComponent,
+    ParkingReadyComponent,
+    MenuUserComponent,
+    RegisterParkingComponent
   ],
   imports: [
     CommonModule,
+    UserRoutingModule,
     FormsModule,
     IonicModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    MapViewComponent
   ]
 })
 export class UserModule {}

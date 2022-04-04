@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // Importación de servicios
-import { PlacesService } from 'src/app/services';
+import { MapsService, PlacesService } from 'src/app/services';
 import { AuthService } from 'src/app/services/auth.service';
+import { MapViewComponent } from '../components/map-view/map-view.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private log: AuthService, private placesServices: PlacesService) { }
+  constructor(
+    private log: AuthService, 
+    private placesServices: PlacesService, 
+    public mapService: MapsService,
+    private mapViewComponent: MapViewComponent
+    ) { }
 
   ngOnInit() {}
 
@@ -23,6 +29,11 @@ export class HomeComponent implements OnInit {
   // Localización de usuario lista
   get isUserLocationReady() {
     return this.placesServices.isUserLocationReady;
+  }
+
+  resetMap(){
+    this.mapService.routeReady = false;
+    this.mapViewComponent.makeMapInitial();
   }
 
 }

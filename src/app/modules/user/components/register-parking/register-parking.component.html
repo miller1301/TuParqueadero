@@ -1,0 +1,36 @@
+<div class="container">
+  <!-- Cerrar modal -->
+  <div class="mt-4 ms-2">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <!-- logo parqueadero -->
+  <div class="text-center">
+    <h1 class="title-inscribe">INSCRIBE TU PARQUEADERO</h1>
+  </div>
+
+  <!-- Formulario de parqueo por el usuario -->
+  <form [formGroup]="formRegistroParking" (ngSubmit)="onSubmit()">
+    <div class="div-info-parqueo">
+      <div class="input-group mb-3">
+        <input formControlName="name" name="name" type="text" class="form-control input-info" placeholder="Nombre de parqueadero">
+      </div>
+      <div class="input-group mb-3">
+        <input formControlName="location" name="location" type="text" class="form-control input-info" placeholder="Ubicación de parqueadero">
+      </div>
+      <div class="input-group mb-3">
+        <input formControlName="schedule" name="schedule" type="text" class="form-control input-info" placeholder="Horarios de parqueadero">
+      </div>
+      <div class="input-group mb-3">
+        <input formControlName="tarifa" name="tarifa" type="text" class="form-control input-info" placeholder="Tarifa de parqueadero">
+      </div>
+      <div class="input-group mb-3">
+        <input formControlName="socialMedia" name="socialMedia" type="text" class="form-control input-info" placeholder="Redes sociales o página web">
+      </div>
+    </div>
+  
+    <!-- Botón confirmar -->
+    <div class="text-center div-btn-confirmar">
+      <button type="submit" class="btn btn-confirmar btn-lg text-white">Confirmar</button>
+    </div>
+  </form>
+</div>

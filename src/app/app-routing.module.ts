@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: HomeComponent,
+    loadChildren: () => import('./modules/user/user.module').then( m => m.UserModule ),
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import Swal from 'sweetalert2'
 import { MapsService } from 'src/app/services';
+import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-booking-parking',
@@ -68,6 +69,7 @@ export class BookingParkingComponent implements OnInit {
       marcaVehicle: this.formReserva.value.marca
     }
     if(this.formReserva.valid){
+      console.log(this.mapsService.routeReady);
       this.firestoreService.createDocIdDefault('reservas', data).then( success => {
         this.formReserva.reset();
         Swal.fire({
@@ -80,6 +82,7 @@ export class BookingParkingComponent implements OnInit {
           this.dismiss();
           let { latitud, longitud  } = this.parking
           this.mapsService.getRouteBetweenPoints(this.mapsService.positionRealTime , [Number(longitud), Number(latitud)]);
+          this.mapsService.routeReady = true;
         })
       })
     }
