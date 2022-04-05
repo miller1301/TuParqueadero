@@ -47,11 +47,12 @@ export class CambioDeRolPage implements OnInit {
   
 
   abrir(){
-     const abrirM = document.getElementById('open5');
-     abrirM.addEventListener('click', function(){
+     const abrirM = ()=>{
       document.getElementById('animacion5').classList.toggle('active5');
       document.getElementById('animacion5').classList.toggle('animate__bounceInLeft');
-     })
+     }
+
+     abrirM()
   }
 
   actualizarRol(){

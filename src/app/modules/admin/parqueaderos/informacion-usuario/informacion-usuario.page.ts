@@ -84,12 +84,12 @@ export class InformacionUsuarioPage implements OnInit {
     this.log.logout()
   }
   abrir(){
-    const abrirM = document.getElementById('open3');
-    abrirM.addEventListener('click', function(){
+    const abrirM = ()=>{
      document.getElementById('animacion3').classList.toggle('active3');
      document.getElementById('animacion3').classList.toggle('animate__bounceInLeft')
 
-    })
+    }
+    abrirM()
  }
 
 }
