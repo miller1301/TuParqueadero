@@ -6,7 +6,7 @@ import { ParqueaderoPage } from './parqueadero.page';
 const routes: Routes = [
   {
     path: '',
-    component: ParqueaderoPage
+    component: ParqueaderoPage,
   },
   {
     path: 'edit-home',
@@ -24,6 +24,15 @@ const routes: Routes = [
     path: 'crud',
     loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
   },
+  {
+    path: 'reserva',
+    loadChildren: () => import('./reservas/reserva/reserva.module').then( m => m.ReservaPageModule)
+  },
+  {
+    path: 'reserv',
+    loadChildren: () => import('./reservas/reserva/reserv/reserv.module').then( m => m.ReservPageModule)
+  }
+  
   
 
 

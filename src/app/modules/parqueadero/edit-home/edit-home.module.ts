@@ -16,6 +16,6 @@ import { MenuComponent } from '../menu/menu.component';
     IonicModule,
     EditHomePageRoutingModule
   ],
-  declarations: [EditHomePage,MenuComponent]
+  declarations: [EditHomePage, MenuComponent]
 })
 export class EditHomePageModule {}

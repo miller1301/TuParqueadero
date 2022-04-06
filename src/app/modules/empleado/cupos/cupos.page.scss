@@ -1,12 +1,15 @@
-#titulo{
+// Titulo
+#titulo2{
     text-align: center;
     font-size: 40px;
-    margin: 30px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+  
 }
 
-
+// contenido
 #numero50{
-   position: absolute;
+   position:absolute;
    top: 0px;
    bottom: 0px;
    margin-top: auto;
@@ -15,10 +18,49 @@
    font-size: 90pt;
 }
 
+#numero20{
+   position:center;
+   top: 0px;
+   bottom: 0px;
+   margin-top: 0px;
+   margin-bottom: auto;
+   font-size: 90pt;
+}
+
 #contenido{
-    position:absolute;
+   position:absolute;
    top: 0px;
    bottom: 0px;
    margin-top: 3%;
    margin-bottom: auto;
 }
+
+#contenido2{
+   position:center;
+   top: 0px;
+   bottom: 0px;
+   margin-top: 7%;
+   margin-bottom: auto;
+}
+
+#text2{
+    display: flex;
+}
+
+#imag1{
+    width: 100px;
+    height: 100px;
+}
+
+#img1{
+    max-width: 200px;
+    max-height: 100px;
+    margin: 10px;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+
+
+
+

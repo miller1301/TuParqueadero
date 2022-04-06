@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Información Del Usuario</ion-title>
+      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button>
+      <ion-buttons slot="end">
+        <ion-button (click)="abrir()"  id="open3">
+          <ion-icon slot="end" name="menu-outline" ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="menu3 menup3 animate__animated" *ngIf="dataUser" id="animacion3"> 
+      <ion-col size="12">
+        <div class="menu-header3">
+          <div>
+            <img [src]="dataUser.icono" width="120px" alt="Prueba">
+          </div>
+          <h4 class="menu-text3" >{{ dataUser.nombre }}</h4>
+          <p class="menu-text3"><small>{{ dataUser.perfil }}</small></p>
+        </div>
+        <div class="content-menu3">
+        <ion-item routerLink="/admin" >
+          <ion-icon slot="start" name="mail-unread-outline"></ion-icon><p class="texto-menu3" > Bandeja de entrada</p>
+        </ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >
+          <ion-icon slot="start" name="people-outline"></ion-icon><p class="texto-menu3" > Gestion de usuarios</p>
+        </ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >
+          <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu3" > Configuración </p>
+        </ion-item>
+        <ion-item routerLink="#" (click)="logout()">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu3" > Cerrar Sesión</p>
+        </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="infoUser" >
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+        <ion-card>
+          <ion-card-header>
+            <ion-item>
+            <img [src]="infoUser.icono" alt="Usuario" width="150" class="img">
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Nombre Completo:</strong></p>
+            <p>{{ infoUser.nombre }}</p>
+            <br>
+            <p><strong>Correo:</strong></p>
+            <p>{{ infoUser.correo }}</p>
+            <br>
+            <p><strong>Telefono:</strong></p>
+            <p>{{ infoUser.telefono }}</p>
+            <br>
+            <p><strong>Id:</strong></p>
+            <p>{{ infoUser.uid }}</p>
+            <br>
+            <p><strong>Rol de Usuario:</strong></p>
+            <p>{{ infoUser.perfil }}</p>
+            <br>
+            <ion-button slot="end" (click)="createPdf()" expand="block">
+              Generar PDF <ion-icon name="download-outline" color="success" ></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

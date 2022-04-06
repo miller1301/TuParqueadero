@@ -1,0 +1,18 @@
+<!-- Contenedor alerta de espera por resultados -->
+<div *ngIf="isLoadingPlaces" class="alert alert-primary mt-2 text-center">
+  <h6>Cargando</h6>
+  <span>Espere por favor...</span>
+</div>
+
+<!-- Lista de lugares encontrados -->
+<ul *ngIf="places.length > 0" class="list-group mt-2">
+  <li
+    *ngFor="let place of places"
+     class="list-group-item list-group-item-action pointer"
+     [class.active]="place.id === selectedId"
+     (click)="flyTo(place)"
+  >
+    <h6 class="m-1 fw-bold">{{ place.text_es }}</h6>
+    <p class="m-1">{{ place.place_name }}</p>
+  </li>
+</ul>

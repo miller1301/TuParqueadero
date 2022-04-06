@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: ReservPage
-  },
-  {
-    path: 'reserva',
-    loadChildren: () => import('../../reserva/reserva.module').then( m => m.ReservaPageModule)
   }
 ];
 

@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./configuracion-cuenta/configuracion-cuenta.module').then( m => m.ConfiguracionCuentaPageModule)
   },
   {
-    path: 'validacion-cuenta-parqueadero',
+    path: 'validacion-cuenta-parqueadero/:id',
     loadChildren: () => import('./validacion-cuenta-parqueadero/validacion-cuenta-parqueadero.module').then( m => m.ValidacionCuentaParqueaderoPageModule)
   }
 

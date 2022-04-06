@@ -1,0 +1,49 @@
+.img{
+  margin: auto;
+  border-radius: 50%;
+}
+
+.menup3{
+  position: fixed;
+  width: 230px;
+  z-index: 100;
+  left: -230px;
+}
+
+.active3{
+  left: 0px;
+}
+
+.menu-header3{
+  height: 230px;
+  width: 100%;
+  background: #3880ff;
+  background: linear-gradient(10deg, #3880ff 100%, #1c6dfa 100%);
+  box-shadow: 0px 1px 10px #003ca3;
+  border-radius: 10px 10px 80px 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.texto-menu3{
+  font-size: 17px;
+  padding-top: 17px;
+}
+
+
+.menu3 ion-icon{
+  margin: 4px;
+}
+
+.menu3 img{
+border-radius: 50%;
+}
+
+.menu-text3{
+  color: white;
+} 
+
+.cursor3{
+  cursor:pointer
+}
+

@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ReservPageRoutingModule } from './reserv-routing.module';
 
 import { ReservPage } from './reserv.page';
-import { MenuComponent } from '../../../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -16,6 +15,6 @@ import { MenuComponent } from '../../../menu/menu.component';
     IonicModule,
     ReservPageRoutingModule
   ],
-  declarations: [ReservPage,MenuComponent]
+  declarations: [ReservPage]
 })
 export class ReservPageModule {}

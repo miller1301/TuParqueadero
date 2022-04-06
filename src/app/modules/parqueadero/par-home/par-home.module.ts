@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ParHomePageRoutingModule } from './par-home-routing.module';
 
 import { ParHomePage } from './par-home.page';
-import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -16,6 +15,6 @@ import { MenuComponent } from '../menu/menu.component';
     IonicModule,
     ParHomePageRoutingModule
   ],
-  declarations: [ParHomePage,MenuComponent]
+  declarations: [ParHomePage]
 })
 export class ParHomePageModule {}

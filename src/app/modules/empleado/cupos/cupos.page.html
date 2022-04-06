@@ -1,47 +1,126 @@
+<!-- !Pagina web y aplicacion movil:Tuparqueadero
+!Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago piraquive
+!Ficha 2252471 ADSI
+!Redes sociales: Tuparqueadero -->
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="end" name="notifications"></ion-icon>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button id="first"></ion-menu-button>
+    </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/empleado"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<!-- Menu principal -->
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="second">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <!-- <ion-list> -->
+        <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
+        <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+        <ion-item routerLink="/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+        <ion-item routerLink="/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
+        <ion-item (click)="logout()"><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
+      <!-- </ion-list> -->
+    </ion-content>
+  </ion-menu>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="second">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+    
+      <!-- <ion-list> -->
+        <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
+        <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+        <ion-item routerLink="/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+        <ion-item routerLink="/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
+      <!-- </ion-list> -->
+    </ion-content>
+  </ion-menu>
 
 
 <ion-content>
   <ion-grid>
     <ion-row>
-
+      <!-- Se mostrara la capacidad de automoviles -->
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2">
         <div class="ion-text-center">
-          <h1 id="titulo">Capacidad de Automoviles</h1>
+          <h1 id="titulo2">Capacidad de Automoviles</h1>
         </div>
       </ion-col>
     </ion-row>
-      <ion-col size="12" class="ion-justify-content-start">
+      
+        <ion-col size="12" class="ion-justify-content-start">
+          <ion-row>
+          
+            <ion-col id="text2" class="ion-justify-content-end position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
+              <p id="numero20">
+                 50 
+              </p>
+              <p id="contenido2">
+                El parqueadero cuenta con una capacidad de 50 Automoviles,con su proteccion
+              </p>
+            </ion-col>
+          </ion-row>
+
+        <ion-row>
+          <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
+            <div class="ion-text-center">
+              <h1 id="titulo2">Cupos disponibles en tiempo real</h1>
+              </div>
+          </ion-col>
+        </ion-row>
+      
         <ion-row>
           
-          <ion-col class="ion-justify-content-end position-relative" sizeMd="4" sizeSm="4">
-            <p id="numero50">
-               50
+          <ion-col id="text2" class="ion-justify-content-end position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
+            <p id="numero20">
+               20
+            </p>
+            <p id="contenido2">
+              El parqueadero cuenta con una capacidad de 50 Automoviles,con su proteccion
             </p>
           </ion-col>
-          <ion-col sizeMd="8" size-sm="8"  class="  position-relative">
-            <p id="contenido">
-              El parqueadero cuenta con una capacidad de 50 Automoviles,con su proteccion
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, at quibusdam quisquam vitae reprehenderit praesentium consectetur, autem quia ipsam repellat officia! Sapiente aut natus perspiciatis consequatur quia officiis architecto maiores.
+        </ion-row>
+
+        <ion-row>
+          <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12">
+            <div class="ion-text-center">
+              <h1 id="titulo2">Costo no editable</h1>
+              </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          
+          <ion-col id="text2" class="ion-justify-content-center position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
+            <img id="imag1" src="https://images.vexels.com/media/users/3/145759/isolated/preview/1ed942cd576a9f4ae65a8e1d85b71b60-fajo-de-dinero.png" alt="">
+            <p id="contenido2">
+              En la reserva ya esta el precio fijo
             </p>
           </ion-col>
         </ion-row>
         
-        <div>
-
-        </div>
-        
-      </ion-col>
-
-
-
-
-  </ion-grid>
+       <!-- Se Actulizaran los cupos -->
+        <ion-row>
+          <ion-col id="col1" sizeLg="2" offsetLg="5" sizeSm="12" sizeXs="12" > 
+            <ion-button routerLink="/cupos2" id="boton1"  expand="block" color="primary" mode="ios" class="ion-margin-top">
+              Actualizar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        </ion-col>
+</ion-grid>
 </ion-content>
