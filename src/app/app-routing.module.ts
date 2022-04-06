@@ -39,20 +39,8 @@ const routes: Routes = [
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
   {
-    path: 'edit',
-    loadChildren: () => import('./modules/parqueadero/edit-home/edit-home.module').then(m => m.EditHomePageModule)
-  },
-  {
-    path: 'Cr_empleado',
-    loadChildren: () => import('./modules/parqueadero/crear-empleado/crear-empleado.module').then(m => m.CrearEmpleadoPageModule)
-  },
-  {
-    path: 'B_empleado',
-    loadChildren: () => import('./modules/parqueadero/borrar-empleado/borrar-empleado.module').then(m => m.BorrarEmpleadoPageModule)
-  },
-  {
-    path: 'BB_empleado',
-    loadChildren: () => import('./modules/parqueadero/borrar-empleado/borrar/borrar.module').then(m => m.BorrarPageModule)
+    path: 'crud',
+    loadChildren: () => import('./modules/parqueadero/crud/crud.module').then(m => m.CrudPageModule)
   },
   {
     path: 'reservas',
@@ -66,14 +54,6 @@ const routes: Routes = [
   {
     path: 'reserv',
     loadChildren: () => import('./modules/parqueadero/reservas/reserva/reserv/reserv.module').then(m => m.ReservPageModule)
-  },
-  {
-    path: 'C_rol',
-    loadChildren: () => import('./modules/parqueadero/cambio-rol/cambio-rol.module').then(m => m.CambioRolPageModule)
-  },
-  {
-    path: 'cambio',
-    loadChildren: () => import('./modules/parqueadero/cambio-rol/cambio/cambio.module').then( m => m.CambioPageModule)
   },
   {
     path: 'user',
@@ -92,8 +72,42 @@ const routes: Routes = [
     path: 'parqueade',
     loadChildren: () => import('./modules/user/home/parque/parque.module').then( m => m.ParquePageModule)
   },
-
-
+  {
+    path: 'reserv-par',
+    loadChildren: () => import('./modules/user/home/parque/reser-user/reser-user.module').then( m => m.ReserUserPageModule)
+  },
+  {
+    path: 'map2',
+    loadChildren: () => import('./modules/user/reserv-map/reserv-map.module').then( m => m.ReservMapPageModule)
+  },
+  {
+    path: 'reservado',
+    loadChildren: () => import('./modules/user/reserv-map/relog/relog.module').then( m => m.RelogPageModule)
+  },
+  {
+    path: 'pagos',
+    loadChildren: () => import('./modules/user/reserv-map/relog/pagos/pagos.module').then( m => m.PagosPageModule)
+  },
+  {
+    path: 'inscrip',
+    loadChildren: () => import('./modules/user/inscripcion/inscripcion.module').then( m => m.InscripcionPageModule)
+  },
+  {
+    path: 'inscrip2',
+    loadChildren: () => import('./modules/user/insc2/insc2.module').then( m => m.Insc2PageModule)
+  },
+  {
+    path: 'reserus',
+    loadChildren: () => import('./modules/user/rservas/rservas.module').then( m => m.RservasPageModule)
+  },
+  {
+    path: 'reserus2',
+    loadChildren: () => import('./modules/user/rservas/rservas2/rservas2.module').then( m => m.Rservas2PageModule)
+  },
+  {
+    path: 'reserus3',
+    loadChildren: () => import('./modules/user/rservas/rservas2//rserva3/rserva3.module').then( m => m.Rserva3PageModule)
+  },
 
 
 

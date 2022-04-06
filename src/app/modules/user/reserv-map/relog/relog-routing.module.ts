@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ParquePage } from './parque.page';
+import { RelogPage } from './relog.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ParquePage
+    component: RelogPage
   },
   {
-    path: 'reser-user',
-    loadChildren: () => import('./reser-user/reser-user.module').then( m => m.ReserUserPageModule)
+    path: 'pagos',
+    loadChildren: () => import('./pagos/pagos.module').then( m => m.PagosPageModule)
   }
 ];
 
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ParquePageRoutingModule {}
+export class RelogPageRoutingModule {}
