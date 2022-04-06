@@ -21,7 +21,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   constructor( 
     private placesService: PlacesService, 
-    private mapService: MapsService, 
+    private mapService: MapsService,
     private firestoreService: FirestoreService, 
     private directionsApi: DirectionsApiClient,
     public modalController: ModalController
