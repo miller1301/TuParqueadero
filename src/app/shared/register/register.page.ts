@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // AngularFire
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import firebase from 'firebase/compat/app';
 import { User } from 'src/app/modelos/models';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,9 +16,14 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RegisterPage implements OnInit {
 
-  
+  caracteres: boolean;
+  verificar: String = '';
+  invalid:boolean;
+  email:boolean;
+  longitud:boolean;
 
   id: string;
+  mensaje: string;
 
   datos: User = {
     nombre: null,
@@ -34,6 +40,7 @@ export class RegisterPage implements OnInit {
     private authh: AuthService, 
     private firestore: FirestoreService, 
     private router:Router,
+    private loading: LoadingController
     ) { }
 
 
@@ -68,22 +75,78 @@ export class RegisterPage implements OnInit {
     this.auth.signOut();
   }
 
+  async presentLoading() {
+    const loading = await this.loading.create({
+      message: 'Please wait...',
+      duration: 1000
+    });
+    await loading.present();
+  }
+
+
   async registrar(){
     console.log("Datos", this.datos)
     const res = await this.authh.registrarUser(this.datos)
     .then( async res => {
-      console.log('Exito al crear el usuario');
-      const path = 'Usuarios';
-      const id = res.user.uid;
-      this.datos.uid = id;
-      this.datos.password = null;
-      this.authh.sendVerificationEmail();
-      await this.firestore.createDoc(this.datos, path, id)
-      this.router.navigate(['/verificacion-email']);
-    })
-    
-    
-    
-    .catch( error => console.log(error))
+      if(this.datos.password === this.verificar){
+        if(this.datos.password.length >= 6)
+        this.longitud = false
+        this.invalid = false
+        console.log('Exito al crear el usuario');
+        const path = 'Usuarios';
+        const id = res.user.uid;
+        this.datos.uid = id;
+        this.datos.password = null;
+        this.authh.sendVerificationEmail();
+        this.presentLoading()
+        await this.firestore.createDoc(this.datos, path, id)
+        this.router.navigate(['/verificacion-email'])
+        return
+        ;
+      }else if(this.datos.password !== this.verificar){
+          this.invalid = true;
+          (this.datos.password.length >= 6)? (this.longitud = false):( this.longitud = true);
+        
+      }}
+      )
+      .catch( error =>{
+        // document.write(error)
+        if(error == 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).'){
+          this.caracteres = true
+          this.email = false
+          //  setTimeout(() => {
+          //   this.caracteres = false
+          // }, 5000);
+          
+        }
+        else if(error == 'FirebaseError: Firebase: The email address is already in use by another account. (auth/email-already-in-use).'){
+          this.email = true;
+          this.caracteres = false
+          // setTimeout(() => {
+          //   this.email = false;
+          // }, 5000);
+        }
+      }) 
   }
 }
+
+//El que "Sirve"
+//   if(this.datos.password === this.verificar && this.datos.password.length >= 6){
+//   this.longitud = false
+//   this.invalid = false
+
+//   console.log('Exito al crear el usuario');
+//   const path = 'Usuarios';
+//   const id = res.user.uid;
+//   this.datos.uid = id;
+//   this.datos.password = null;
+//   this.authh.sendVerificationEmail();
+//   await this.firestore.createDoc(this.datos, path, id)
+//   this.router.navigate(['/verificacion-email']);
+//   } else {
+//     this.invalid = true
+//     this.longitud = true
+//   }
+    
+  
+// }

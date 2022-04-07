@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ParqueaderosPageRoutingModule } from './parqueaderos-routing.module';
 
 import { ParqueaderosPage } from './parqueaderos.page';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ParqueaderosPage } from './parqueaderos.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ParqueaderosPageRoutingModule
+    ParqueaderosPageRoutingModule,
+    PipesModule
   ],
   declarations: [ParqueaderosPage]  
 })

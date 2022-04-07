@@ -7,10 +7,16 @@ const routes: Routes = [
   {
     path: '',
     component: ParqueaderosPage
-  },  {
-    path: 'informacion-del-parqueadero',
+  },
+  {
+    path: 'informacion-del-parqueadero/:id',
     loadChildren: () => import('./informacion-del-parqueadero/informacion-del-parqueadero.module').then( m => m.InformacionDelParqueaderoPageModule)
+  },
+  {
+    path: 'informacion-usuario/:id',
+    loadChildren: () => import('./informacion-usuario/informacion-usuario.module').then( m => m.InformacionUsuarioPageModule)
   }
+
 
 ];
 

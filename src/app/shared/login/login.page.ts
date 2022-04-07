@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // AngularFire
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import firebase from 'firebase/compat/app';
 import { User } from 'src/app/modelos/models';
 import { AuthService } from 'src/app/services/auth.service';
@@ -26,7 +27,12 @@ export class LoginPage implements OnInit {
 
   userData: string[] = []
 
-  constructor(public auth: AngularFireAuth, private authh: AuthService, private router: Router, private firestore: FirestoreService) { }
+  constructor(public auth: AngularFireAuth,
+      private authh: AuthService,
+      private router: Router,
+      private firestore: FirestoreService,
+      private loading: LoadingController
+    ) { }
 
   ngOnInit() {
 
@@ -50,8 +56,18 @@ export class LoginPage implements OnInit {
   //   this.auth.signOut();
   // }
 
+  async presentLoading() {
+    const loading = await this.loading.create({
+      message: 'Please wait...',
+      duration: 1500
+    });
+    await loading.present();
+  }
+
   async login() {
-    const res = await this.authh.login(this.credenciales.correo, this.credenciales.password).catch(error => {
+    this.presentLoading();
+    const res =
+    await this.authh.login(this.credenciales.correo, this.credenciales.password).catch(error => {
       console.log(error)
       if(error == 'FirebaseError: Firebase: The email address is badly formatted. (auth/invalid-email).'){
         this.emailInvalid = true;

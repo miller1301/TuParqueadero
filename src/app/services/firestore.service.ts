@@ -32,7 +32,6 @@ export class FirestoreService{
     getCollection<Tipo>(path:string){
         const colleccion = this.firestore.collection<Tipo>(path);
         return colleccion.valueChanges();
-    }
 
 }
-
+}
