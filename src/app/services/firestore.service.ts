@@ -24,10 +24,10 @@ export class FirestoreService{
         return colleccion.doc(id).delete();
     }
 
-    updateDoc(data: any, path:string, id:string){
-        const colleccion = this.firestore.collection(path);
-        return colleccion.doc(id).update(data);
+    updateDoc(path:string, id: string, data: any){
+        return this.firestore.collection(path).doc(id).update(data)
     }
+
 
     getCollection<Tipo>(path:string){
         const colleccion = this.firestore.collection<Tipo>(path);
