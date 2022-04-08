@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { UserPageRoutingModule } from './user-routing.module';
 
 import { UserPage } from './user.page';
-import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -16,6 +15,6 @@ import { MenuComponent } from './menu/menu.component';
     IonicModule,
     UserPageRoutingModule
   ],
-  declarations: [UserPage,MenuComponent]
+  declarations: [UserPage]
 })
 export class UserPageModule {}
