@@ -14,8 +14,9 @@ import { EditHomePageModule } from './edit-home/edit-home.module';
 import { CrudPageModule } from './crud/crud.module';
 import { RouterModule } from '@angular/router';
 
+import { ModalPage } from './modal/modal.page' 
+
 @NgModule({
-  declarations: [ParqueaderoPage],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,5 +29,8 @@ import { RouterModule } from '@angular/router';
     CrudPageModule,
     RouterModule
   ],
+  
+  declarations: [ParqueaderoPage, ModalPage],
+  entryComponents:[ModalPage]
 })
 export class ParqueaderoPageModule {}

@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Insc2PageRoutingModule } from './insc2-routing.module';
+import { ModalPageRoutingModule } from './modal-routing.module';
 
-import { Insc2Page } from './insc2.page';
-import { MenuComponent } from '../menu/menu.component';
+import { ModalPage } from './modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Insc2PageRoutingModule
+    ModalPageRoutingModule
   ],
-  declarations: [Insc2Page,MenuComponent]
+  declarations: [ModalPage]
 })
-export class Insc2PageModule {}
+export class ModalPageModule {}

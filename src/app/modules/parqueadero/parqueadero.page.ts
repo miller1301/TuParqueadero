@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from './modal/modal.page' 
 
 @Component({
   selector: 'app-parqueadero',
@@ -18,7 +20,9 @@ export class ParqueaderoPage implements OnInit {
     // * LLamando al servicio que se utilizara para el manejo de los datos del parqueadero
     private datos:FirestoreService,
     // * Llamando al servicio que se utilizara para el manejo de los datos del usuario de la sesion actual
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+
+    public modalController: ModalController
   ) { }
 
   // ! Propiedad que guarda el ID del usuario actual para luego hacer una consulta en la base de datos y guardar esa informacion en la propiedad "dataUser"
@@ -26,18 +30,6 @@ export class ParqueaderoPage implements OnInit {
   // ! Propiedad que guarda la informacion del usuario actual para mostrarla en el menu 
   dataUser;
 
-  // ! Metodo que muestra o oculta el menu del usuario
-  abrir(){
-    const abrirM = ()=>{
-    // * La funcion a ejecutar es la siguiente
-    // ! Se obtiene el elemento por id "animacion" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
-    // * La clase "active" mostrara el menu 
-    document.getElementById('animacion').classList.toggle('active');
-    // * La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
-    document.getElementById('animacion').classList.toggle('animate__bounceInLeft');
-    }
-    abrirM();
-  }
 
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
@@ -65,5 +57,14 @@ export class ParqueaderoPage implements OnInit {
   logout(){
     this.log.logout()
   }
+
+  async openModal(){
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
+  
 
 }

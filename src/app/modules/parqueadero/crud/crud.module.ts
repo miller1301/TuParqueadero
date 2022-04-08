@@ -16,6 +16,6 @@ import { MenuComponent } from '../menu/menu.component';
     IonicModule,
     CrudPageRoutingModule
   ],
-  declarations: [CrudPage,MenuComponent]
+  declarations: [CrudPage]
 })
 export class CrudPageModule {}

@@ -6,18 +6,24 @@
       </ion-buttons>
       
       <ion-title>parqueadero</ion-title>
+
+      <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
+        <ion-button (click)="openModal()" color="primary">
+          crear
+        </ion-button>
+      </ion-col>
     </ion-toolbar>
     
   </ion-header>
 
   <ion-content>
     <ion-menu side="start" menuId="menu" contentId="parqueo">
-      <ion-content>
+    
         <div class="menu-header-bg">menu</div>
         <div class="header-content">
-          <img src="../../../assets/img/585e4beacb11b227491c3399.png" alt="icono">
+          <img [src]="dataUser.icono" width="120px" alt="Prueba">
           <ion-label>
-            <h2>Andres</h2>
+            <h2 class="menu-text" >{{ dataUser.nombre }}</h2>
             <p>dueño de parqueadero</p>
           </ion-label>
         </div>
@@ -35,16 +41,16 @@
             <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
           </ion-item>
         </ion-list>
-      </ion-content>
     </ion-menu>
     <ion-router-outlet id="parqueo"></ion-router-outlet>
     
     <ion-grid>
       <ion-row>
-        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
-          <a routerLink="/par-home">
+        
+        <ion-col class="clas2" sizeLg="4" sizeSm="12" sizeXs="12">
+          <a routerLink="/parqueadero/par-home">
           <ion-card >
-            <img src="./../../../assets/img/15132529parqueadero.jpg" />
+            <img class="clas1" src="./../../../assets/img/15132529parqueadero.jpg" />
             <ion-card-header>
               <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
             </ion-card-header>
@@ -57,9 +63,9 @@
           </ion-card></a>
         </ion-col>
         <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
-          <a routerLink="/par-home">
+          <a routerLink="/parqueadero/par-home">
           <ion-card>
-            <img src="./../../../assets/img/2.jpeg"/>
+            <img class="clas1" src="./../../../assets/img/2.jpeg"/>
             <ion-card-header>
               <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
             </ion-card-header>
@@ -72,9 +78,9 @@
           </ion-card></a>
         </ion-col>
         <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
-          <a routerLink="/par-home">
+          <a routerLink="/parqueadero/par-home">
           <ion-card>
-            <img src="./../../../assets/img/600b1a714c8fe.jpeg"/>
+            <img class="clas1" src="./../../../assets/img/600b1a714c8fe.jpeg"/>
             <ion-card-header>
               <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
             </ion-card-header>
