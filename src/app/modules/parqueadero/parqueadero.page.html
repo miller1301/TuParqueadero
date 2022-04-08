@@ -11,7 +11,34 @@
   </ion-header>
 
   <ion-content>
-    <app-menu></app-menu>
+    <ion-menu side="start" menuId="menu" contentId="parqueo">
+      <ion-content>
+        <div class="menu-header-bg">menu</div>
+        <div class="header-content">
+          <img src="../../../assets/img/585e4beacb11b227491c3399.png" alt="icono">
+          <ion-label>
+            <h2>Andres</h2>
+            <p>dueño de parqueadero</p>
+          </ion-label>
+        </div>
+        <ion-list class="menu-items" lines="none">
+          <ion-item routerLink="/parqueadero">
+            <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
+          </ion-item>
+          <ion-item routerLink="/crud">
+            <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
+          </ion-item>
+          <ion-item routerLink="/reservas">
+            <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
+          </ion-item>
+          <ion-item routerLink="#" (click)="logout()" >
+            <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="parqueo"></ion-router-outlet>
+    
     <ion-grid>
       <ion-row>
         <ion-col sizeLg="4" sizeSm="12" sizeXs="12">

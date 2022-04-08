@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AuthService } from 'src/app/services/auth.service';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
  
 @Component({
@@ -87,10 +84,6 @@ export class InformacionDelParqueaderoPage implements OnInit {
         }
       }
     }
-    // ! Creacion del Pdf
-    const pdf = pdfMake.createPdf(pdfDefiniton);
-    // ! Descarga del Pdf
-    pdf.download();
   }
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
