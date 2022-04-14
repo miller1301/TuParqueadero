@@ -17,7 +17,7 @@ export class FirestoreService{
     }
 
     // Crear nuevo documento con ID default
-    createDocIdDefault( path: string, data: BookingResponse ){
+    createDocIdDefault( path: string, data: any ){
         return this.firestore.collection(path).add(data);
     } 
 
