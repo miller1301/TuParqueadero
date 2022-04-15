@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import Swal from 'sweetalert2'
 import { MapsService } from 'src/app/services';
-import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-booking-parking',
@@ -62,6 +61,11 @@ export class BookingParkingComponent implements OnInit {
   onSubmit(){
     let data = {
       idUser: this.idUser,
+      idParking: this.parking.Uid,
+      nameParqueadero: this.parking.nameParqueadero,
+      img: this.parking.img,
+      direccion: this.parking.direccion,
+      telefono: this.parking.telefono,
       timeParking: this.formReserva.value.time,
       hourArrive: this.formReserva.value.hour,
       typeVehicle: this.formReserva.value.vehicle,

@@ -20,6 +20,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { MenuUserComponent } from './components/menu-user/menu-user.component';
 import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
+import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
+import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit-reserv.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { RegisterParkingComponent } from './components/register-parking/register
     BookingParkingComponent,
     ParkingReadyComponent,
     MenuUserComponent,
-    RegisterParkingComponent
+    RegisterParkingComponent,
+    CrudReservasComponent,
+    EditReservComponent
   ],
   imports: [
     CommonModule,

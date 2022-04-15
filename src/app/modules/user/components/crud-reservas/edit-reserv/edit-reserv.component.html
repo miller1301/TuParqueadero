@@ -1,0 +1,65 @@
+<div class="container">
+  <!-- Cerrar modal -->
+  <div (click)="dismiss()" class="mt-4 ms-2">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <!-- logo parqueadero -->
+  <div class="text-center">
+    <img class="img-logo-parking" src="../../../../../assets/img/user/logo-parqueadero.png" width=""
+      alt="Logo parqueadero">
+    <h1 class="name-parking">{{ dataBooking.data.nameParqueadero }}</h1>
+  </div>
+
+  <!-- Info parqueadero -->
+  <div class="row justify-content-center div-informacion-parking">
+    <div class="col-sm-12 col-lg-3 div-info text-center">
+      <img class="m-1" src="../../../../../assets/img/user/icon-location.png"alt="icono ubicación">
+      {{ dataBooking.data.direccion }}
+    </div>
+    <div class="col-sm-12 col-lg-3 div-info text-center">
+      <img class="m-1" src="../../../../../assets/img/user/icon-telephone.png"alt="icono teléfono">
+      {{ dataBooking.data.telefono }}
+    </div>
+  </div>
+
+  <!-- Formulario de parqueo por el usuario -->
+  <form [formGroup]="formEditReserva" (ngSubmit)="onSubmitUpdatedData()">
+    <div class="div-info-parqueo">
+      <div class="input-group mb-3">
+        <span class="input-group-text span-input-1" id="basic-addon1">
+          <i class="fas fa-clock"></i>
+        </span>
+        <input formControlName="time" name="time" type="text" class="form-control input-info" placeholder="Tiempo estimado de parqueo" aria-label="tiempo" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text span-input-1" id="basic-addon2">
+          <i class="bi bi-geo-alt-fill"></i>
+        </span>
+        <input formControlName="hour" name="hour" type="text" class="form-control input-info" placeholder="Hora estimada de llegada" aria-label="hora" aria-describedby="basic-addon2">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text span-input-1" id="basic-addon3">
+          <i class="fas fa-car"></i>
+        </span>
+        <input formControlName="vehicle" name="vehicle" type="text" class="form-control input-info" placeholder="Tipo de vehículo" aria-label="vehículo" aria-describedby="basic-addon3">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text span-input-1" id="basic-addon4">
+          <i class="bi bi-123"></i>
+        </span>
+        <input formControlName="placa" name="placa" type="text" class="form-control input-info" placeholder="Placa de vehículo" aria-label="placa" aria-describedby="basic-addon4">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text span-input-1" id="basic-addon5">
+          <i class="bi bi-circle-half"></i>
+        </span>
+        <input formControlName="marca" name="marca" type="text" class="form-control input-info" placeholder="Marca de vehículo" aria-label="marca" aria-describedby="basic-addon5">
+      </div>
+    </div>
+  
+    <!-- Botón confirmar -->
+    <div class="text-center div-btn-confirmar">
+      <button type="submit" class="btn btn-confirmar btn-lg text-white">Editar</button>
+    </div>
+  </form>
+</div>

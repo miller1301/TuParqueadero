@@ -1,0 +1,18 @@
+<h1 class="text-center">Mis reservas</h1>
+
+<div class="container p-5">
+  <div *ngFor="let booking of userBookings; let i = index" class="row">
+    <div class="col-lg-2">
+      <img [src]="booking.data.img" width="100%">
+    </div>
+    <div class="col-lg-4">
+      <h3>{{ booking.data.nameParqueadero }}</h3>
+      <p>{{ booking.data.direccion }}</p>
+      <p>{{ booking.data.telefono }}</p>
+    </div>
+    <div class="col-lg-6">
+      <button class="btn btn-warning" (click)="presentModal(i)">Editar</button>
+      <button class="btn btn-danger" (click)="deleteBooking(booking.idBooking)">Eliminar</button>
+    </div>
+  </div>
+</div>
