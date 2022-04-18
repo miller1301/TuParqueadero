@@ -41,7 +41,7 @@
     </ion-row>
 
     <ion-row *ngIf="data" >
-      <ion-col sizeLg="8" offsetLg="2" sizeMd="6" offsetMd="3" sizeSm="10" offsetSm="1">
+      <ion-col sizeLg="10" offsetLg="1" sizeMd="10" offsetMd="1" sizeSm="12">
         <ion-card>
         <ion-card-header>
           <ion-item>
@@ -49,9 +49,9 @@
             <img [src]="data.img" alt="Usuario" class="imgp">
 
           </ion-item>
-          <ion-button (click)="presentPopover( $event )" expand="block">
-            <ion-icon slot="end" name="list-outline"></ion-icon>
-          </ion-button>
+          <ion-item lines="none">
+            <ion-icon (click)="presentPopover( $event )" class="linea"  slot="end" name="list-outline"></ion-icon>
+          </ion-item>
           </ion-card-header>
           <ion-card-content *ngIf="datosUser" >
               <p class="titulo"><strong> Descripcion: </strong></p>
@@ -76,10 +76,12 @@
             <ion-card-content *ngIf="imagenes">
               <p  class="titulo"><strong>Imagenes del parqueadero: </strong></p>
               <ion-row>
-                <ion-col sizeLg="5" offsetLg="1" sizeMd="5" offsetMd="1" sizeSm="12">
+                <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12">
                   <img [src]="data.img1" alt="Parqueadero 1" class="imgp1">
                 </ion-col>
-                <ion-col sizeLg="5" offsetLg="1" sizeMd="5" offsetMd="1" sizeSm="6">
+              </ion-row>
+              <ion-row>
+                <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12">
                   <img [src]="data.img2" alt="Parqueadero 2" class="imgp1">
                 </ion-col>
               </ion-row>

@@ -51,16 +51,15 @@ export class ConfiguracionCuentaPage implements OnInit {
   // ! Metodo que muestra o oculta el menu del usuario
   abrir(){
     // * Constante que obtiene el elemento por el id "open6" para luego asignarle un evento
-    const abrirM = document.getElementById('open6');
-    // * Se le asigna un evento click al elemento que obtuvimos anteriormente el cual ejecutara una funcion
-    abrirM.addEventListener('click', function(){
-    // * La funcion a ejecutar es la siguiente
+    const abrirM = ()=>{
     // ! Se obtiene el elemento por id "animacion6" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
     // * La clase "active6" mostrara el menu 
      document.getElementById('animacion6').classList.toggle('active6');
     // * La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
      document.getElementById('animacion6').classList.toggle('animate__bounceInLeft');
-    });
+    }
+
+    abrirM()
   }
 
     // ! Funcion para usar el componente Toast de Ionic 

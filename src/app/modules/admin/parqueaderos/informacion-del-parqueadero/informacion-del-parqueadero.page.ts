@@ -107,7 +107,12 @@ export class InformacionDelParqueaderoPage implements OnInit {
     // * Metodo para obtener la informacion del usuario recibe como parametros el path y el id del usuario luego guardamos la respuesta en la propiedad infoUser
     this.firebase.getDoc(path, this.idParqueadero).subscribe(res => this.infoUser = res)
     // * Metodo para obtener la informacion del parqueadero recibe como parametro el path y el id del parqueadero luego guardamos la respuesta en la propiedad infoPar
-    this.firebase.getDoc(path2, this.idParqueadero).subscribe( res => this.infoPar = res)
+    this.firebase.getDoc(path2, this.idParqueadero).subscribe( res => {
+      this.infoPar = res
+      this.activo = this.infoPar.estado;
+      (this.infoPar.estado == 'Activo')? (this.color = 'success', this.activo = 'Activo'): (this.color = 'danger', this.activo = 'Inactivo');
+
+    })
     // * Metodo para obtener el Id del usuario actual 
     this.log.getUid().then( res => {
       // ! Propiedad que guarda la respuesta del metodo anterior
@@ -118,20 +123,21 @@ export class InformacionDelParqueaderoPage implements OnInit {
       this.dataUser = res
       });
     });
+
+  
   }
   // ! Metodo que muestra o oculta el menu del usuario
   abrir(){
     // * Constante que obtiene el elemento por el id "open2" para luego asignarle un evento
-    const abrirM = document.getElementById('open2');
-    // * Se le asigna un evento click al elemento que obtuvimos anteriormente el cual ejecutara una funcion
-    abrirM.addEventListener('click', function(){
-    // * La funcion a ejecutar es la siguiente
+    const abrirM = ()=>{
     // ! Se obtiene el elemento por id "animacion2" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
     // * La clase "active2" mostrara el menu 
     document.getElementById('animacion2').classList.toggle('active2');
     // * La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
     document.getElementById('animacion2').classList.toggle('animate__bounceInLeft');
-    });
+    }
+
+    abrirM()
   }
   // * Funcion que consume el servicio de Autenticacion y le permite al usuario cerrar la sesion
  logout(){
@@ -139,14 +145,29 @@ export class InformacionDelParqueaderoPage implements OnInit {
  }
 
   // ! Propiedades por defecto del boton para indicar si el estado del parqueadero esta activo o inactivo
-  activo: string = 'Activo';
-  color = 'success';
+  activo;
+  color = 'primary';
   // ! Funcion que cambia el valor de las propiedades de Activo a Inactivo y viceversa junto con su color respectivo por ahora no genera cambios en la base de datos
   onClick(){
-    this.activo === 'Activo' ?
-    (this.activo = 'Inactivo', this.color = 'danger')
-      : 
-    (this.activo = 'Activo', this.color = 'success'); 
+    console.log(this.infoPar.estado)
+    if( this.infoPar.estado == 'Activo'){
+      this.activo = 'Inactivo'
+      this.color = 'danger'
+      const data = {
+        estado: 'Inactivo'
+      }
+      this.firebase.updateDoc('Parqueaderos', this.idParqueadero, data)
+    }
+    else if( this.infoPar.estado == 'Inactivo'){
+      this.activo = 'Activo'
+      this.color = 'success'
+      const data = {
+        estado: 'Activo'
+      }
+      this.firebase.updateDoc('Parqueaderos', this.idParqueadero, data)
+    }
+    console.log(this.infoPar.estado)
+
   }
 
   
