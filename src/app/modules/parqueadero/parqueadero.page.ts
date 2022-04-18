@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-parqueadero',
   templateUrl: './parqueadero.page.html',
@@ -11,5 +12,8 @@ export class ParqueaderoPage implements OnInit {
 
   ngOnInit() {
   }
+
+  
+  
 
 }

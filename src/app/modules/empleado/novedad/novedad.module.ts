@@ -4,15 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { NovedadPageRoutingModule } from './novedad-routing.module';
 
-import { HomeComponent } from './home.component';
+import { NovedadPage } from './novedad.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    NovedadPageRoutingModule
   ],
-  declarations: [HomeComponent]
+  declarations: [NovedadPage]
 })
-export class AdminPageModule {}
+export class NovedadPageModule {}

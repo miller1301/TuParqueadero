@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import {AuthService} from 'src/app/services/auth.service';
 
@@ -11,14 +9,13 @@ import {AuthService} from 'src/app/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private log:AuthService, private menu: MenuController, public auth: AngularFireAuth, private router: Router){ }
+  constructor(private log:AuthService, private menu: MenuController){ }
 
   ngOnInit() {}
 
   logout(){
     console.log("logout")
-    this.auth.signOut();
-    this.router.navigate(['/login'])
+    this.log.logout()
   }
 
   openFirst() {
