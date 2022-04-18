@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './modules/user/home/home.component';
+import { UserPage } from './modules/user/user.page';
 
 // Protección de rutas
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: HomeComponent,
+    component: UserPage,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
@@ -38,6 +38,9 @@ const routes: Routes = [
     path: 'parqueadero',
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
+
+
+
   {
     path: 'verificacion-email',
     loadChildren: () => import('./shared/send-email/send-email.module').then( m => m.SendEmailPageModule)
@@ -54,6 +57,15 @@ const routes: Routes = [
     path: 'cupos',
     loadChildren: () => import('./modules/empleado/cupos/cupos.module').then( m => m.CuposPageModule)
   },
+  {
+    path: 'par-home',
+    loadChildren: () => import('./modules/parqueadero/par-home/par-home.module').then( m => m.ParHomePageModule)
+  },  {
+    path: 'user',
+    loadChildren: () => import('./modules/user/user.module').then( m => m.UserPageModule)
+  },
+
+
 ];
 @NgModule({
   imports: [

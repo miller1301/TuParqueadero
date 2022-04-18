@@ -4,15 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { ReservPageRoutingModule } from './reserv-routing.module';
 
-import { HomeComponent } from './home.component';
+import { ReservPage } from './reserv.page';
+import { MenuComponent } from '../../../menu/menu.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReservPageRoutingModule
   ],
-  declarations: [HomeComponent]
+  declarations: [ReservPage]
 })
-export class AdminPageModule {}
+export class ReservPageModule {}

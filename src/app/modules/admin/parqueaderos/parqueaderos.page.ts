@@ -45,7 +45,7 @@ export class ParqueaderosPage implements OnInit {
   ngOnInit() {
     // ! Metodo que se ejecuta para traer los datos de los usuarios luego esperamos su respuesta "res" y se la asignamos a la propiedad "usuariosL" para luego ser consumida en la vista
     const path = 'Usuarios'
-    this.firebase.getDocs(path).subscribe(res => this.usuariosL = res)
+    // this.firebase.getDoc(path).subscribe(res => this.usuariosL = res)
     // ! Metodo por ahora en desuso
     // this.firebase.getDocs(path).subscribe((res:any[]) => {
     //   console.log(res)
@@ -59,9 +59,9 @@ export class ParqueaderosPage implements OnInit {
     // })
     // ! Metodo que se ejecuta para traer los datos de los parqueaderos luego esperamos su respuesta "res" y se la asignamos a la propiedad "parqueaderos" para luego ser consumida en la vista
     const pathP = 'Parqueaderos';
-    this.firebase.getDocs(pathP).subscribe(res => {
-      this.parqueaderos = res
-    });
+    // this.firebase.getDoc(pathP).subscribe(res => {
+    //   this.parqueaderos = res
+    // });
     // ! Metodo que se ejecuta para traer el ID del usuario actual y luego traer la respectiva informacion del usuario
     this.auth.getUid().then( res => {
       // * Propiedad que almacena el Id del usuario actual

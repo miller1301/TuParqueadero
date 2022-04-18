@@ -19,14 +19,19 @@ export class FirestoreService{
         return colleccion.doc(id).valueChanges()
     }
 
-    getDocs<Tipo>(path){
-        const colleccion = this.firestore.collection<Tipo>(path).valueChanges();
-        return colleccion
+    deleteDoc(path:string, id:string){
+        const colleccion = this.firestore.collection(path);
+        return colleccion.doc(id).delete();
     }
 
     updateDoc(path:string, id: string, data: any){
         return this.firestore.collection(path).doc(id).update(data)
     }
 
-}
 
+    getCollection<Tipo>(path:string){
+        const colleccion = this.firestore.collection<Tipo>(path);
+        return colleccion.valueChanges();
+
+}
+}

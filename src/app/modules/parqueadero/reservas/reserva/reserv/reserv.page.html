@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button id="menu" ></ion-menu-button>
+    </ion-buttons>
+    <ion-title>reservas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="menu" contentId="parqueo">
+    <ion-content>
+      <div class="menu-header-bg">menu</div>
+      <div class="header-content">
+        <img [src]="dataUser.icono" width="120px" alt="Prueba">
+        <ion-label>
+          <h2 class="menu-text" >{{ dataUser.nombre }}</h2>
+          <p>dueño de parqueadero</p>
+        </ion-label>
+      </div>
+      <ion-list class="menu-items" lines="none">
+        <ion-item routerLink="/parqueadero/parqueadero">
+          <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
+        </ion-item>
+        <ion-item routerLink="/parqueadero/crud">
+          <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
+        </ion-item>
+        <ion-item routerLink="/parqueadero/reservas">
+          <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
+        </ion-item>
+        <ion-item routerLink="#" (click)="logout()" >
+          <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="parqueo"></ion-router-outlet>
+  <ion-grid>
+  <ion-row>
+    <ion-col id="img" sizeLg="4" offsetLg="5" sizeSm="4" offsetSm="5" sizeXs="6" offsetXs="3">
+      <img id="icono-carro" src="../../../../../assets/img/384e0b3361d99d9c370b4037115324b9-icono-de-coche-plano-vintage.png" alt="icono-carro">
+      <p id="txt">Mi parqueadero</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col sizeLg="4" offsetLg="4" sizeSm="12" sizeXs="12">
+      <ion-item-divider id="lines">
+        <h3 id="h3">Informacion</h3>
+      </ion-item-divider>
+      <h4>
+        Nombre
+      </h4>
+      <p>Andres -------------</p>
+      <h4>
+        Hora
+      </h4>
+      <p>2 pm</p>
+      <h4>
+        Contacto
+      </h4>
+      <p>3104562388</p>
+      <h4>
+        Tipo de veiculo
+      </h4>
+      <p>Automovil</p>
+      <h4>
+        Placa
+      </h4>
+      <p>mps2.......</p>
+      <ion-button routerLink="/reserva" expand="block" color="primary" mode="ios" class="ion-margin-top">
+        Regresar
+      </ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

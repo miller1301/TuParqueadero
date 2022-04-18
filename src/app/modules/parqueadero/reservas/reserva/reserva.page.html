@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button id="menu" ></ion-menu-button>
+    </ion-buttons>
+    <ion-title>reservas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-menu side="start" menuId="menu" contentId="parqueo">
+    <ion-content>
+      <div class="menu-header-bg">menu</div>
+      <div class="header-content">
+        <img [src]="dataUser.icono" width="120px" alt="Prueba">
+        <ion-label>
+          <h2 class="menu-text" >{{ dataUser.nombre }}</h2>
+          <p>dueño de parqueadero</p>
+        </ion-label>
+      </div>
+      <ion-list class="menu-items" lines="none">
+        <ion-item routerLink="/parqueadero/parqueadero">
+          <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
+        </ion-item>
+        <ion-item routerLink="/parqueadero/crud">
+          <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
+        </ion-item>
+        <ion-item routerLink="/parqueadero/reservas">
+          <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
+        </ion-item>
+        <ion-item routerLink="#" (click)="logout()" >
+          <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="parqueo"></ion-router-outlet>
+  <ion-row>
+    <ion-col id="cuest" sizeLg="6" offsetLg="3" sizeSm="12" sizeXs="12">
+      <ion-list>
+        <a routerLink="/reserv">
+        <ion-item >
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva1</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva2</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva3</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva4</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva5</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva6</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva7</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva8</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva9</h2>
+          </ion-label>
+        </ion-item></a>
+
+        <a routerLink="/reserv">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../../../assets/img/585e4beacb11b227491c3399.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Reserva10</h2>
+          </ion-label>
+        </ion-item></a>
+
+      </ion-list>
+      </ion-col>
+      </ion-row>
+</ion-content>

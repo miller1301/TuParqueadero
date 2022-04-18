@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12">
+      <ion-text color="primary" class="ion-text-center">
+        <h1 color="primary">Registrar Parqueadero</h1>
+      </ion-text>
+        <ion-card>
+          <ion-card-content>
+            <ion-item class="ion-margin-vertical">
+              <ion-label position="floating">Nombre:</ion-label>
+              <ion-input type="text" placeholder="Nombre" [(ngModel)]="datosp.nameParqueadero" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Direccion:</ion-label>
+              <ion-input type="text" placeholder="Direccion" [(ngModel)]="datosp.direccion" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Telefono</ion-label>
+              <ion-input type="text" placeholder="Telefono" [(ngModel)]="datosp.telefono" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Ubicacion</ion-label>
+              <ion-input type="text" placeholder="Ubicacion" [(ngModel)]="datosp.ubicacion" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Horario</ion-label>
+              <ion-input type="text" placeholder="Horario" [(ngModel)]="datosp.horario" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Tarifa</ion-label>
+              <ion-input type="text" placeholder="Tarifa" [(ngModel)]="datosp.tarifa" ></ion-input>
+            </ion-item>
+            <div class="ion-text-center">
+              <ion-button  color="primary" class="ion-margin-top"  mode="ios" (click)="rParquedero()">
+                Registrarse
+              </ion-button>
+            </div> 
+          </ion-card-content>
+        </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
