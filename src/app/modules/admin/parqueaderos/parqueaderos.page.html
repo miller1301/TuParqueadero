@@ -1,0 +1,233 @@
+<!-- 
+  !Aplicacion: TuParqueadero
+  !Equipo de trabajo: Miller Nivia, Andres Tibaquicha, Santiago Piraquive, Cristhofer Andres Tibaquicha
+  !Ficha: 2252471
+  !GitHub del proyecto: https://github.com/miller1301/TuParqueadero
+  !Tecnologias implementadas: Angular 13, Ionic 6 , Firebase 
+  !Modulo admin desarrollado por: Cristhofer Tibaquicha
+  !Mas informacion del desarrollador: https://github.com/CristhoferT29 
+-->
+<!--*Header de la Gestion de usuarios -->
+<ion-header>
+  <ion-toolbar>
+    <!--*Informacion de la pagina en la cual se encuentra el usuario-->
+    <!--*Boton para regresar a la pagina anterior -->
+      <ion-back-button slot="start" defaultHref="/admin" ></ion-back-button>
+      <ion-toolbar>
+      </ion-toolbar>
+    <!--*Boton que abre el menu del usuario  -->
+      <ion-buttons slot="end">
+        <ion-button (click)="abrir()" id="open1">
+          <ion-icon slot="end" name="menu-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!--*Fin del header-->
+<!--*Contenido de la Gestion de Usuarios -->
+<ion-content>
+  <!--*Contenedor Ion-Grid para el manejo del responsive -->
+  <ion-grid >
+  <!--* Menu del usuario  -->
+    <ion-row class="menu1 menup1 animate__animated" *ngIf="dataUser" id="animacion1"> 
+      <ion-col size="12">
+        <div class="menu-header1">
+        <!--*Informacion del usuario actual -->
+          <div>
+            <img [src]="dataUser.icono" width="120px" alt="Prueba">
+          </div>
+          <h4 class="menu-text1" >{{ dataUser.nombre }}</h4>
+          <p class="menu-text1"><small>{{ dataUser.perfil }}</small></p>
+        </div>
+        <!--*Fin de la informacion del usuario actual -->
+        <!--*Opciones por las cuales el usuario puede navegar -->
+        <div class="content-menu1">
+        <!--Navegacion a la pagina principal -->
+        <ion-item routerLink="/admin" >
+          <ion-icon slot="start" name="mail-unread-outline"></ion-icon><p class="texto-menu1" > Bandeja de entrada</p>
+        </ion-item>
+        <!--*Navegacion a la pagina de Gestion de usuarios  -->
+        <ion-item routerLink="/admin/parqueaderos" >
+          <ion-icon slot="start" name="people-outline"></ion-icon><p class="texto-menu1" > Gestion de usuarios</p>
+        </ion-item>
+        <!--*Navegacion a la pagina de configuracion -->
+        <ion-item routerLink="/admin/configuracion-cuenta" >
+          <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu1" > Configuración </p>
+        </ion-item>
+        <!-- *Cierre de sesion del usuario -->
+        <ion-item routerLink="#" (click)="logout()">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu1" > Cerrar Sesión</p>
+        </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del menu del usuario -->
+    <!-- *Contenido de la pagina de Gestion de usuarios-->
+    <!-- *Filtros de busqueda -->
+    <ion-row class="position" >
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" class="ion-text-center" >
+          <!-- *Filtro para buscar todos los usuarios -->
+          <ion-chip  class="position" (click)="usuarios()" color="primary">
+            Usuarios
+          </ion-chip>
+          <!-- *Filtro para buscar usuarios con el rol usuario -->
+          <ion-chip (click)="usuario()" color="primary">
+            Usuario
+          </ion-chip>
+          <!-- *Filtro para buscar usuarios con el rol admin -->
+          <ion-chip (click)="admin()" color="primary">
+            Admin
+          </ion-chip>
+          <!-- *Filtro para buscar usuarios con el rol parqueadero-->
+          <ion-chip (click)="dueno()" color="primary">
+            Dueño P
+          </ion-chip>
+          <!-- *Filtro para buscar usuarios con el rol empleado -->
+          <ion-chip (click)="empleado()" color="primary">
+            Empleado
+          </ion-chip>
+          <!-- *Filtro para buscar todos los parqueadero -->
+          <ion-chip (click)="parqueadero()" color="primary">
+            Parqueaderos
+          </ion-chip>
+          <!-- *Vaciar filtro de busqueda -->
+          <ion-chip (click)="otro()" color="primary">
+            Vaciar lista
+          </ion-chip>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin de los filtros -->
+    <!-- *Mensaje que le indica al usuario que seleccione un filtro al seleccionar el filtro el mensaje se pone en false y se oculta -->
+    <ion-row *ngIf="mensajeDeSeleccion" >
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" >
+        <ion-text color="primary" class="ion-text-center" >
+          <h4>Seleccione un tipo de filtro para mostrar los datos respectivos.</h4>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del mensaje -->
+    <!-- *Mostrar parqueaderos al seleccionar el filtro de los parqueaderos la propiedad "mostrarParqueaderos" se pone en true y muestra los parqueadeos -->
+    <ion-row *ngIf="mostrarParqueaderos" >
+      <!-- *Tamaño de la barra de busqueda -->
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+        <!-- *Barra de busqueda de parqueaderos -->
+      <ion-searchbar placeholder="Buscar Parqueaderos" (ionChange)="onSearchChange( $event )" mode="ios"></ion-searchbar>
+      </ion-col>
+      <!-- *Tamaño de los resultados del filtro de parqueadero y consumo de parqueaderos a través del for y la propiedad parqueadero-->
+      <ion-col  *ngFor="let parq of parqueaderos | filtro:textoBuscar" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" [routerLink]="['informacion-del-parqueadero/' + parq.Uid]" >
+        <!-- *Informacion del parqueadero -->
+          <ion-item >
+            <!-- *Imagen del dueño del parqueadero -->
+            <img [src]="parq.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
+            <ion-text class="letra">
+              <!-- *Nombre del parqueadero -->
+              <h3>{{ parq.nameParqueadero }}</h3>
+            </ion-text>
+          </ion-item>
+          <!-- *Fin de los datos del parqueadero-->
+      </ion-col>
+    </ion-row>
+    <!-- *Fin datos parqueadero -->
+    <!-- *Filtro para ver todos los usuarios al seleccionar este filtro la propiedad "mostrarUsuarios" se pondra en true y se mostraran todos los usuarios -->
+    <ion-row *ngIf="mostrarUsuarios" >
+      <!-- *Tamaño de los resultados del filtro de usuarios y consumo de usuarios a través del for y la propiedad usuariosL-->
+      <ion-col *ngFor="let user of usuariosL" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" [routerLink]="['informacion-usuario/' + user.uid]" >
+        <!-- *Informacion de los usuarios -->
+        <ion-item>
+          <!-- *Imagen del perfil usuario -->
+          <img [src]="user.icono" [alt]="user.nombre" width="40px" class="ion-margin-horizontal" >
+          <ion-text >
+            <!-- *Nombre completo del usuario y dirreccion de correo electronico -->
+            <h3> {{ user.nombre }} </h3><small>{{ user.correo }}</small>
+          </ion-text>
+        </ion-item>
+        <!-- *Fin de la informacion del usuario -->
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del filtro de todos los usuarios -->
+    <!-- *Filtro para ver a los administradores al seleccionar este filtro la propiedad "mostrarAdmin" se pondra en true y mostrara todos los usuarios con rol administrador -->
+    <ion-row *ngIf="mostrarAdmin">
+      <!-- *Tamaño de los resultados del filtro administrador y consumo a través del for y la propiedad usuariosL-->
+      <ion-col *ngFor="let user of usuariosL" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" >
+        <!-- *Validadcion del rol del usuario para mostrar los datos respectivos-->
+      <ion-col  *ngIf="user.perfil == 'administrador'" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" [routerLink]="['informacion-usuario/' + user.uid]" >
+        <!-- *Informacion del usuario -->
+        <ion-item  >
+          <!-- *Imagen del usuario -->
+          <img [src]="user.icono" [alt]="user.nombre" width="40px" class="ion-margin-horizontal" >
+          <ion-text >
+            <!-- *Nombre y correo del usuario -->
+            <h3> {{ user.nombre }} </h3><small>{{ user.correo }}</small>
+          </ion-text>
+        </ion-item>
+        <!-- *Fin de la informacion del usuario -->
+      </ion-col>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del filtro de administrador -->
+    <!-- *Filtro para ver los usuarios con rol usuario al seleccionar este filtro la propiedad "mostrarUsuario" se pondra en true y mostrara todos los usuarios con rol usuario -->
+    <ion-row *ngIf="mostrarUsuario">
+      <!-- *Tamaño de los resultados del filtro usuario y consumo a través del for y la propiedad usuariosL -->
+      <ion-col *ngFor="let user of usuariosL" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" >
+      <!-- *Validacion del rol de usuario para mostrar los datos respectivos -->
+      <ion-col  *ngIf="user.perfil === 'usuario'" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" [routerLink]="['informacion-usuario/' + user.uid]" >
+        <!-- *Informacion del usuario -->
+        <ion-item  >
+          <!-- *Imagen del perfil de usuario -->
+          <img [src]="user.icono" [alt]="user.nombre" width="40px" class="ion-margin-horizontal" >
+          <ion-text >
+            <!-- *Nombres completos y correo electronico -->
+            <h3> {{ user.nombre }} </h3><small>{{ user.correo }}</small>
+          </ion-text>
+        </ion-item>
+        <!-- *Fin de la informacion de usuario -->
+      </ion-col>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del filtro de usuario -->
+    <!-- *Filtro para ver los usuarios con el rol parqueadero al seleccionar este filtro la propiedad "mostrarDueno" se pondra en true y mostrara todos los usuarios con rol parqueadero -->
+    <ion-row *ngIf="mostrarDueno">
+      <!-- *Tamaño de los resultados del filtro parqueadero y consumo a través del for y la propiedad usuariosL -->
+      <ion-col *ngFor="let user of usuariosL" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" >
+      <!-- *Validacion del rol parqueadero para mostrar los datos respectivos -->
+      <ion-col  *ngIf="user.perfil === 'parqueadero'" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" [routerLink]="['informacion-usuario/' + user.uid]" >
+        <!-- *Informacion del usuario -->
+        <ion-item  >
+          <!-- *Imagen del perfil del usuario -->
+          <img [src]="user.icono" [alt]="user.nombre" width="40px" class="ion-margin-horizontal" >
+          <ion-text >
+            <!-- *Nombres completos y direccion de correo electronico -->
+            <h3> {{ user.nombre }} </h3><small>{{ user.correo }}</small>
+          </ion-text>
+        </ion-item>
+        <!-- *Fin de la informacion del usuario -->
+      </ion-col>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del filtro parqueadero -->
+    <!-- *Filtro para ver los usuarios con el rol empleado al seleccionar este filtro la propiedad "mostrarEmpleado" se pondra en true y mostrara todos los usuarios con rol empleado -->
+    <ion-row *ngIf="mostrarEmpleado">
+      <!-- *Tamaño de los resultados del filtro empleado y consumo a través del for y la propiedad usuariosL -->
+      <ion-col *ngFor="let user of usuariosL" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+        <!-- *Validacion del rol empleado para mostrar los datos respectivos -->
+      <ion-col  *ngIf="user.perfil === 'empleado'" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" [routerLink]="['informacion-usuario/' + user.uid]" >
+        <!-- *Informacion del usuario -->
+        <ion-item  >
+          <!-- *Imagen del perfil del usuario -->
+          <img [src]="user.icono" [alt]="user.nombre" width="40px" class="ion-margin-horizontal" >
+          <ion-text >
+            <!-- *Nombres completos y direccion de correo electronico -->
+            <h3> {{ user.nombre }} </h3> 
+            <p><small>{{ user.correo }}</small></p>
+          </ion-text>
+        </ion-item>
+        <!-- *Fin de la informacion del usuario -->
+      </ion-col>
+      </ion-col>
+    </ion-row>
+    <!-- *Fin del filtro empleado -->
+  </ion-grid>
+  <!--*Fin del contenido responsive-->
+</ion-content>
+<!--*Fin del contenido -->
+

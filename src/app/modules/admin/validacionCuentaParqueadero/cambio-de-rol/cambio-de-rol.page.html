@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cambio de Rol</ion-title>
+      <ion-back-button slot="start" defaultHref="/admin"></ion-back-button>
+      <ion-buttons slot="end">
+        <ion-button (click)="abrir()"  id="open5">
+          <ion-icon slot="end" name="menu-outline" ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row class="menu5 menup5 " *ngIf="dataUser" id="animacion5"> 
+      <ion-col size="12">
+        <div class="menu-header5">
+          <div>
+            <img [src]="dataUsers.icono" width="120px" alt="Prueba">
+          </div>
+          <h4 class="menu-text5" >{{ dataUsers.nombre }}</h4>
+          <p class="menu-text5"><small>{{ dataUsers.perfil }}</small></p>
+        </div>
+        <div class="content-menu5">
+        <ion-item routerLink="/admin" >
+          <ion-icon slot="start" name="mail-unread-outline"></ion-icon><p class="texto-menu5" > Bandeja de entrada</p>
+        </ion-item>
+        <ion-item routerLink="/admin/parqueaderos" >
+          <ion-icon slot="start" name="people-outline"></ion-icon><p class="texto-menu5" > Gestion de usuarios</p>
+        </ion-item>
+        <ion-item routerLink="/admin/configuracion-cuenta" >
+          <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu5" > Configuración </p>
+        </ion-item>
+        <ion-item routerLink="#" (click)="logout()">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu5" > Cerrar Sesión</p>
+        </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="dataUser" >
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="10" offsetSm="1">
+        <ion-card>
+          <ion-card-header>
+            <ion-row>
+              <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="4" offsetSm="4" sizeXs="4" offsetXs="4">
+                <img src="../../../../../assets/users.png" alt="Usuario" class="imgp2" width="150px">
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Nombres y Apellidos: </strong></p>
+            <p>{{ dataUser.nombre }}</p>
+            <br>
+            <p><strong>Telefono: </strong></p>
+            <p>{{ dataUser.telefono }}</p>
+            <br>
+            <p><strong>Correo: </strong></p>
+            <p> {{ dataUser.correo }} </p>
+            <br>
+            <div *ngIf="dataParqueadero"  >
+            <p><strong>Nombre del parqueadero:</strong></p>
+            <p>{{dataParqueadero.nameParqueadero}}</p>
+            <br>
+            <p><strong>Ubicacion:</strong></p>
+            <p>{{dataParqueadero.ubicacion}}</p>
+            <br>
+            <p><strong>Actualizar Rol a:</strong></p>
+            <select class="selection" [(ngModel)]="valor">
+              <option >usuario</option>
+              <option >parqueadero</option>
+            </select>
+          </div>
+            <ion-button (click)="actualizarRol()" expand="block" size="large">
+              Actualizar Rol
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

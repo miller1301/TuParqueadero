@@ -1,27 +1,83 @@
+<!-- 
+  !Aplicacion: TuParqueadero
+  !Equipo de trabajo: Miller Nivia, Andres Tibaquicha, Santiago Piraquive, Cristhofer Andres Tibaquicha
+  !Ficha: 2252471
+  !GitHub del proyecto: https://github.com/miller1301/TuParqueadero
+  !Tecnologias implementadas: Angular 13, Ionic 6 , Firebase 
+  !Modulo admin desarrollado por: Cristhofer Tibaquicha
+  !Mas informacion del desarrollador: https://github.com/CristhoferT29 
+-->
+<!--*Header de la bandeja de entrada -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>Usuario</ion-title>
+    <!--*Informacion de la pagina en la cual se encuentra el usuario-->
+    <ion-title>Bandeja de entrada</ion-title>
+    <!--*Boton que abre el menu del usuario  -->
+    <ion-buttons slot="end">
+      <ion-button (click)="abrir()"  id="open">
+        <ion-icon slot="end" name="menu-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+  <!--*Fin del header-->
+  <!--*Contenido de la bandeja de entrada  -->
 <ion-content>
-  <ion-menu side="start" menuId="first" contentId="main">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <!-- <ion-list> -->
-        <ion-item><ion-icon name="mail-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada</ion-item>
-        <ion-item><ion-icon name="reader-outline" class="ion-padding-horizontal"></ion-icon> Parqueaderos</ion-item>
-        <ion-item ><ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion</ion-item>
-        <ion-item (click)="logout()" ><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
-      <!-- </ion-list> -->
-    </ion-content>
-  </ion-menu>
-
-
-  
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <!--*Contenedor Ion-Grid para el manejo del responsive -->
+<ion-grid>
+  <!--* Menu del usuario  -->
+  <ion-row class="menu menup animate__animated" *ngIf="dataUser" id="animacion"> 
+    <ion-col size="12">
+      <div class="menu-header">
+        <!--*Informacion del usuario actual -->
+        <div>
+          <img [src]="dataUser.icono" width="120px" alt="Prueba">
+        </div>
+        <h4 class="menu-text" >{{ dataUser.nombre }}</h4>
+        <p class="menu-text"><small>{{ dataUser.perfil }}</small></p>
+      </div>
+      <!--*Fin de la informacion del usuario actual -->
+      <!--*Opciones por las cuales el usuario puede navegar -->
+      <div class="content-menu">
+        <!--*Navegacion a la pagina principal -->
+      <ion-item routerLink="/admin" >
+        <ion-icon slot="start" name="mail-unread-outline"></ion-icon><p class="texto-menu" > Bandeja de entrada</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de Gestion de usuarios  -->
+      <ion-item routerLink="/admin/parqueaderos" >
+        <ion-icon slot="start" name="people-outline"></ion-icon><p class="texto-menu" > Gestion de usuarios</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de configuracion -->
+      <ion-item routerLink="/admin/configuracion-cuenta" >
+        <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu" > Configuración </p>
+      </ion-item>
+      <!-- *Cierre de sesion del usuario -->
+      <ion-item routerLink="#" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu" > Cerrar Sesión</p>
+      </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!--*Fin del menu del usuario -->
+  <!--*Contenido de la bandeja de entrada -->
+  <ion-row>  
+    <!--*Datos de los parqueaderos consumidos de la base de datos a través de un For-->
+    <ion-col  *ngFor="let datos of listarData" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12" [routerLink]="['validacion-cuenta-parqueadero/' + datos.Uid]"  class="cursor" >
+      <!--*Item con la informacion del los parqueaderos -->
+      <ion-item >
+        <!--*Imagen del dueño del parqueadero-->
+        <img [src]="datos.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
+        <ion-text class="letra">
+          <!--*Nombre del parqueadero  -->
+          <h3>{{ datos.nameParqueadero }}</h3>
+          <!--*Descripcion del parqueadero -->
+          {{ datos.descripcion }}
+        </ion-text>
+      </ion-item>
+      <!--*Fin de la informacion del usuario -->
+    </ion-col>
+  </ion-row>
+</ion-grid>
+  <!--*Fin del contenido responsive-->
 </ion-content>
+<!--*Fin del contenido -->
