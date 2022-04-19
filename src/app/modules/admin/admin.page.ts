@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { ValidacionCuentaParqueaderoPage } from './validacion-cuenta-parqueadero/validacion-cuenta-parqueadero.page';
 
 @Component({
   selector: 'app-admin',
@@ -19,13 +21,19 @@ export class AdminPage implements OnInit {
     // * LLamando al servicio que se utilizara para el manejo de los datos del parqueadero
     private datos:FirestoreService,
     // * Llamando al servicio que se utilizara para el manejo de los datos del usuario de la sesion actual
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+
+    private modalController: ModalController
   ) { }
 
   // ! Propiedad que guarda el ID del usuario actual para luego hacer una consulta en la base de datos y guardar esa informacion en la propiedad "dataUser"
   UidG;
   // ! Propiedad que guarda la informacion del usuario actual para mostrarla en el menu 
   dataUser;
+
+
+  arreglo;
+
 
   // ! Metodo que muestra o oculta el menu del usuario
   abrir(){
@@ -57,7 +65,21 @@ export class AdminPage implements OnInit {
     this.firestore.getDoc('Usuarios', this.UidG ).subscribe(res => {
     // * Esperamos la respuesta y se la asignamos a la propiedad dataUser la cual sera usada para mostrar la informacion del usuario en el menu  
     this.dataUser = res
+
     });
+
+    this.firestore.getAllDocs('Parqueaderos').subscribe( (res: any) =>{
+      this.arreglo = [];
+      res.forEach( (parqueadero:any) => {
+        this.arreglo.push({
+          IdParqueadero: parqueadero.payload.doc.id,
+          data : parqueadero.payload.doc.data()
+        })
+      });
+      console.log(this.arreglo)
+
+    })
+
     });
   }
 
@@ -65,6 +87,19 @@ export class AdminPage implements OnInit {
   // * Funcion que consume el servicio de Autenticacion y le permite al usuario cerrar la sesion
   logout(){
     this.log.logout()
+  }
+
+
+  // Modal
+  async presentModal(index: number) {
+    const modal = await this.modalController.create({
+      component: ValidacionCuentaParqueaderoPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        Parqueadero: this.arreglo[index]
+      }
+    });
+    return await modal.present();
   }
 
 }

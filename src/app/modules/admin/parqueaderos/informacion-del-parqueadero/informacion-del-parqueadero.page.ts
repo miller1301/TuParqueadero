@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -25,6 +25,8 @@ export class InformacionDelParqueaderoPage implements OnInit {
   UidG;
   // ! Propiedad que guarda la informacion del usuario actual
   dataUser;
+
+  @Input() arreglo;
 
   constructor(
     // * Llamada a la clase ActivatedRoute que nos permite obtener el id que se le paso como paremetro 
@@ -94,6 +96,9 @@ export class InformacionDelParqueaderoPage implements OnInit {
   }
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
+     
+
+
     // * Creamos una variable con el valor del objeto Date
     const data = new Date
     // * Luego le pasamos ese valor a la propiedad "data" para luego implementarla en nuestro Pdf
@@ -105,13 +110,11 @@ export class InformacionDelParqueaderoPage implements OnInit {
     // ! Id del parqueadero y usuario que obtenemos atraves de la implementacion de la clase ActivatedRoute y guardamos en la propiedad idParqueadero
     this.idParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
     // * Metodo para obtener la informacion del usuario recibe como parametros el path y el id del usuario luego guardamos la respuesta en la propiedad infoUser
-    this.firebase.getDoc(path, this.idParqueadero).subscribe(res => this.infoUser = res)
+    this.firebase.getDoc(path, this.arreglo.data.idUser).subscribe(res => this.infoUser = res)
     // * Metodo para obtener la informacion del parqueadero recibe como parametro el path y el id del parqueadero luego guardamos la respuesta en la propiedad infoPar
-    this.firebase.getDoc(path2, this.idParqueadero).subscribe( res => {
+    this.firebase.getDoc(path2, this.arreglo.Idparqueadero).subscribe((res: any) => {
       this.infoPar = res
-      this.activo = this.infoPar.estado;
-      (this.infoPar.estado == 'Activo')? (this.color = 'success', this.activo = 'Activo'): (this.color = 'danger', this.activo = 'Inactivo');
-
+    
     })
     // * Metodo para obtener el Id del usuario actual 
     this.log.getUid().then( res => {
@@ -124,7 +127,9 @@ export class InformacionDelParqueaderoPage implements OnInit {
       });
     });
 
-  
+    this.activo = this.arreglo.data.estado;
+
+    console.log(this.arreglo.data.estado)
   }
   // ! Metodo que muestra o oculta el menu del usuario
   abrir(){
@@ -149,26 +154,22 @@ export class InformacionDelParqueaderoPage implements OnInit {
   color = 'primary';
   // ! Funcion que cambia el valor de las propiedades de Activo a Inactivo y viceversa junto con su color respectivo por ahora no genera cambios en la base de datos
   onClick(){
-    console.log(this.infoPar.estado)
-    if( this.infoPar.estado == 'Activo'){
+    if( this.activo == 'Activo'){
       this.activo = 'Inactivo'
       this.color = 'danger'
       const data = {
         estado: 'Inactivo'
       }
-      this.firebase.updateDoc('Parqueaderos', this.idParqueadero, data)
+      this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
     }
-    else if( this.infoPar.estado == 'Inactivo'){
+    else if( this.activo == 'Inactivo'){
       this.activo = 'Activo'
       this.color = 'success'
       const data = {
         estado: 'Activo'
       }
-      this.firebase.updateDoc('Parqueaderos', this.idParqueadero, data)
+      this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
     }
-    console.log(this.infoPar.estado)
-
   }
-
-  
 }
+

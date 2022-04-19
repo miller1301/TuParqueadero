@@ -61,8 +61,8 @@
   </ion-row>
   <!--*Fin del menu del usuario -->
   <!--*Contenido de la informacion del parqueadero -->
-  <!--*Datos de los parqueaderos y usuarios consumidos de la base de datos a través de las propiedades infoUser y infoPar-->
-    <ion-row *ngIf="infoUser && infoPar" >
+  <!--*Datos de los parqueaderos y usuarios consumidos de la base de datos a través de las propiedades infoUser y arreglo.data.-->
+    <ion-row *ngIf="infoUser && arreglo && infoPar" >
       <!-- * Tamaño de los elementos que se traen de la BD -->
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
         <!-- * Componente de Ionic que muestra la informacion -->
@@ -87,16 +87,16 @@
             <ion-item><h1 class="imgp2"> Parqueadero </h1></ion-item>
             <br>
             <p><strong>Nombre del parqueadero:</strong></p>
-            <p>{{ infoPar.nameParqueadero }}</p>
+            <p>{{ arreglo.data.nameParqueadero }}</p>
             <br>
             <p><strong>Ubicacion:</strong></p>
-            <p>{{ infoPar.ubicacion }}</p>
+            <p>{{ arreglo.data.ubicacion }}</p>
             <br>
             <p><strong>Horario:</strong></p>
-            <p> {{ infoPar.horario }} </p>
+            <p> {{ arreglo.data.horario }} </p>
             <br>
             <p><strong>Tarifas:</strong></p>
-            <p> {{infoPar.tarifa}} </p>
+            <p> {{arreglo.data.tarifa}} </p>
             <br>
             <p><strong>Estado Actual:</strong></p>
             <p>{{ infoPar.estado }}</p>

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PoppoverInfoComponent } from '../poppover-info/poppover-info.component';
+import { CambioDeRolPage } from '../validacionCuentaParqueadero/cambio-de-rol/cambio-de-rol.page';
 
 @Component({
   selector: 'app-validacion-cuenta-parqueadero',
@@ -20,16 +21,17 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private firestore:FirestoreService,
     private sanitizer : DomSanitizer,
-    private popoverController : PopoverController
+    private popoverController : PopoverController,
+    private modalController: ModalController
     ) {}
+
+    @Input() Parqueadero;
+     
+    
 
   data;
   UidG;
   dataUser;
-  pdf1;
-  pdf2;
-  pdf3;
-  pdf4;
   pdf1Valor;
   pdf2Valor;
   pdf3Valor;
@@ -116,18 +118,16 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
   ngOnInit() {
      this.idDueñoParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
 
-     this.firestore.getDoc('Parqueaderos', this.idDueñoParqueadero).subscribe((res:any) => {
-      this.data = res
-      this.pdf1 = res.constitucion_poliza
-      this.pdf2 = res.camara_comercio
-      this.pdf3 = res.licencia_funcionamiento
-      this.pdf4 = res.documento_seguridad
+    
 
-      this.pdf1Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdf1)
-      this.pdf2Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdf2)
-      this.pdf3Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdf3)
-      this.pdf4Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdf4)
-     });
+      this.pdf1Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.constitucion_poliza)
+      this.pdf2Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.camara_comercio)
+      this.pdf3Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.licencia_funcionamiento)
+      this.pdf4Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.documento_seguridad)
+
+
+     console.log(this.pdf1Valor, this.pdf2Valor, this.pdf3Valor, this.pdf4Valor);
+
 
      this.log.getUid().then( res => {
       this.UidG = res
@@ -136,6 +136,8 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
         this.dataUser = res
       })
     })
+
+    console.log(this.Parqueadero)
 
   }
 
@@ -162,5 +164,20 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
   
   logout(){
     this.log.logout()
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: CambioDeRolPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        Parqueadero: this.Parqueadero
+      }
+    });
+    return await modal.present();
+  }
+
+  cerrar(){
+    this.modalController.dismiss();
   }
 }

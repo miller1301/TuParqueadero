@@ -1,10 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Cambio de Rol</ion-title>
-      <ion-back-button slot="start" defaultHref="/admin"></ion-back-button>
       <ion-buttons slot="end">
-        <ion-button (click)="abrir()"  id="open5">
-          <ion-icon slot="end" name="menu-outline" ></ion-icon>
+        <ion-button (click)="cerrar()"  id="open4">
+          <ion-icon slot="end" name="close-circle-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
   </ion-toolbar>
@@ -59,12 +58,12 @@
             <p><strong>Correo: </strong></p>
             <p> {{ dataUser.correo }} </p>
             <br>
-            <div *ngIf="dataParqueadero"  >
+            <div *ngIf="Parqueadero"  >
             <p><strong>Nombre del parqueadero:</strong></p>
-            <p>{{dataParqueadero.nameParqueadero}}</p>
+            <p>{{Parqueadero.data.nameParqueadero}}</p>
             <br>
             <p><strong>Ubicacion:</strong></p>
-            <p>{{dataParqueadero.ubicacion}}</p>
+            <p>{{Parqueadero.data.ubicacion}}</p>
             <br>
             <p><strong>Actualizar Rol a:</strong></p>
             <select class="selection" [(ngModel)]="valor">
