@@ -1,4 +1,75 @@
+// ! Imagen del usuario centrada y con un borde redondeado de 50%
 .imgp{
     margin-left: auto;
     margin-right: auto;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+// ! Color del texto de los titulos de la informacion que se muestra
+.texto{
+    color: #1C71FA;
+}
+// ! Color del Boton que se encuentra en desuso
+.textEdit{
+    color: white;
+    background-color: white;   
+}
+
+// ! Posicion y tamaño de nuestra menu
+.menup6{
+    // * Posicion que tendra el  menu 
+    position: fixed;
+    // * Ancho que tendra el menu
+    width: 230px;
+    // * z-index indica el orden de lo que se mostrara primero o por encima de 
+    z-index: 100;
+    // * left oculta o saca de la vista el menu
+    left: -230px;
+    // transition: all 500ms linear;
+}
+// ! Muestra el menu clase que se agrega o remueve a través de una funcion en el Ts
+.active6{
+    // * Ajusta la posicion de nuestro menu para que sea visible
+    left: 0px;
+}
+// ! Da estilos al header de nuestro menu
+.menu-header6{
+    // * Nos indica el alto de nuestro header
+    height: 230px;
+    // * Nos indica el ancho
+    width: 100%;
+    // * Nos indica sus colores de fondo
+    background: #3880ff;
+    background: linear-gradient(10deg, #3880ff 100%, #1c6dfa 100%);
+    // * Nos indica la sombra que tendra
+    box-shadow: 0px 1px 10px #003ca3;
+    // * Nos indica el borde redondeado que tendra el header
+    border-radius: 10px 10px 80px 10px;
+    // * Nos indica el padding que tendra nuestro header
+    padding: 10px;
+    // * Nos indica el margin hacia abajo que tendra el header
+    margin-bottom: 5px;
+}
+// ! Nos indica el tamaño y padding hacia abajo que tendran nuestras opciones en el menu
+.texto-menu6{
+    font-size: 17px;
+    padding-top: 17px;
+}
+
+// ! Nos indica el margin que tendra el icono de nuestras opciones del menu
+.menu6 ion-icon{
+    margin: 4px;
+}
+// ! Nos indica el borde redondeado que tendra la imagen en el menu
+.menu6 img{
+ border-radius: 50%;
+}
+// ! Nos indica el color que tendran las letras del header del menu
+.menu-text6{
+    color: white;
+} 
+// ! Nos indica que el puntero sera de tipo pointer al estar sobre los elementos de la base de datos 
+.cursor6{
+    cursor:pointer
 }

@@ -24,8 +24,24 @@ const routes: Routes = [
     path: 'crud',
     loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
   },
+  {
+    path: 'reserva',
+    loadChildren: () => import('./reservas/reserva/reserva.module').then( m => m.ReservaPageModule)
+  },
+  {
+    path: 'reserv',
+    loadChildren: () => import('./reservas/reserva/reserv/reserv.module').then( m => m.ReservPageModule)
+  },  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  }
+
+  
   
 
+
+
+  
 
 
   

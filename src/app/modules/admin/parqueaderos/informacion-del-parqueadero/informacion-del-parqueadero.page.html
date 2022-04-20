@@ -1,60 +1,120 @@
+<!-- 
+  !Aplicacion: TuParqueadero
+  !Equipo de trabajo: Miller Nivia, Andres Tibaquicha, Santiago Piraquive, Cristhofer Andres Tibaquicha
+  !Ficha: 2252471
+  !GitHub del proyecto: https://github.com/miller1301/TuParqueadero
+  !Tecnologias implementadas: Angular 13, Ionic 6 , Firebase 
+  !Modulo admin desarrollado por: Cristhofer Tibaquicha
+  !Mas informacion del desarrollador: https://github.com/CristhoferT29 
+-->
+<!--*Header de la pagina Informacion del parqueadero-->
 <ion-header>
   <ion-toolbar>
+    <!--*Informacion de la pagina en la cual se encuentra el usuario-->
     <ion-title>Información Del Parqueadero</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/admin/parqueaderos" ></ion-back-button>
-    </ion-buttons>
+      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button>
+    <!--*Boton que abre el menu del usuario  -->
+      <ion-buttons slot="end">
+        <ion-button (click)="abrir()"  id="open2">
+          <ion-icon slot="end" name="menu-outline" ></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+  <!--*Fin del header-->
+  <!--*Contenido de la pagina Informacion del parqueadero -->
 <ion-content>
-  <ion-grid>
-    <ion-row>
+  <!--*Contenedor Ion-Grid para el manejo del responsive -->
+<ion-grid>
+  <!--* Menu del usuario  -->
+<ion-row class="menu2 menup2 animate__animated" *ngIf="dataUser" id="animacion2"> 
+    <ion-col size="12">
+      <div class="menu-header2">
+        <!--*Informacion del usuario actual -->
+        <div>
+          <img [src]="dataUser.icono" width="120px" alt="Prueba">
+        </div>
+        <h4 class="menu-text2" >{{ dataUser.nombre }}</h4>
+        <p class="menu-text2"><small>{{ dataUser.perfil }}</small></p>
+      </div>
+      <!--*Fin de la informacion del usuario actual -->
+      <!--*Opciones por las cuales el usuario puede navegar -->
+      <div class="content-menu2">
+      <!--*Navegacion a la pagina principal -->
+      <ion-item routerLink="/admin" >
+        <ion-icon slot="start" name="mail-unread-outline"></ion-icon><p class="texto-menu2" > Bandeja de entrada</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de Gestion de usuarios  -->
+      <ion-item routerLink="/admin/parqueaderos" >
+        <ion-icon slot="start" name="people-outline"></ion-icon><p class="texto-menu2" > Gestion de usuarios</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de configuracion -->
+      <ion-item routerLink="/admin/configuracion-cuenta" >
+        <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu2" > Configuración </p>
+      </ion-item>
+      <!-- *Cierre de sesion del usuario -->
+      <ion-item routerLink="#" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu2" > Cerrar Sesión</p>
+      </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!--*Fin del menu del usuario -->
+  <!--*Contenido de la informacion del parqueadero -->
+  <!--*Datos de los parqueaderos y usuarios consumidos de la base de datos a través de las propiedades infoUser y infoPar-->
+    <ion-row *ngIf="infoUser && infoPar" >
+      <!-- * Tamaño de los elementos que se traen de la BD -->
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+        <!-- * Componente de Ionic que muestra la informacion -->
         <ion-card>
+          <!-- * Card-Header Muestra la imagen de perfil del usuario -->
           <ion-card-header>
             <ion-item>
-            <img src="../../../../../assets/users.png" alt="Usuario" width="150" class="imgp2">
+            <img [src]="infoUser.icono" alt="Usuario" width="150" class="imgp2">
             </ion-item>
           </ion-card-header>
+          <!-- * Card Content Muestra la informacion del usuario y la del parqueadero -->
           <ion-card-content>
-            <p><strong>Nombres:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <br>
-            <p><strong>Apellidos:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p><strong>Nombre Completo:</strong></p>
+            <p>{{ infoUser.nombre }}</p>
             <br>
             <p><strong>Correo:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>{{ infoUser.correo }}</p>
             <br>
             <p><strong>Telefono:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <br>
-            <p><strong>Ubicacion:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>{{ infoUser.telefono }}</p>
             <br>
             <ion-item><h1 class="imgp2"> Parqueadero </h1></ion-item>
             <br>
             <p><strong>Nombre del parqueadero:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>{{ infoPar.nameParqueadero }}</p>
             <br>
             <p><strong>Ubicacion:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>{{ infoPar.ubicacion }}</p>
             <br>
             <p><strong>Horario:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p> {{ infoPar.horario }} </p>
             <br>
             <p><strong>Tarifas:</strong></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p> {{infoPar.tarifa}} </p>
             <br>
+            <p><strong>Estado Actual:</strong></p>
+            <p>{{ infoPar.estado }}</p>
             <ion-item><h1 class="imgp2">Estado</h1></ion-item>
             <ion-button (click)="onClick()" expand="block"  size="large" [color]="color">
               {{ activo }}
             </ion-button>
+            <!-- * Boton que llama a la funcion createPdf que genera un pdf con un reporte con la informacion del usuario -->
+            <ion-button slot="end" (click)="createPdf()" expand="block">
+              Generar PDF <ion-icon name="download-outline" color="success" ></ion-icon>
+            </ion-button>
           </ion-card-content>
+          <!-- * Fin del contenido de la card -->
         </ion-card>
+        <!-- * Fin de la card -->
       </ion-col>
     </ion-row>
   </ion-grid>
-
+<!-- * Fin del contenido responsive -->
 </ion-content>
+<!-- * Fin de la informacion del parqueadero -->

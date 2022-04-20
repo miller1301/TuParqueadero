@@ -16,6 +16,6 @@ import { MenuComponent } from '../menu/menu.component';
     IonicModule,
     ReservasPageRoutingModule
   ],
-  declarations: [ReservasPage,MenuComponent]
+  declarations: [ReservasPage]
 })
 export class ReservasPageModule {}

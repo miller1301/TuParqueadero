@@ -16,6 +16,6 @@ import { MenuComponent } from '../menu/menu.component';
     IonicModule,
     ParHomePageRoutingModule
   ],
-  declarations: [ParHomePage,MenuComponent]
+  declarations: [ParHomePage]
 })
 export class ParHomePageModule {}

@@ -8,7 +8,33 @@
 </ion-header>
 
 <ion-content>
-  <app-menu></app-menu>
+  <ion-menu side="start" menuId="menu" contentId="parqueo">
+    <ion-content>
+      <div class="menu-header-bg">menu</div>
+      <div class="header-content">
+        <img [src]="dataUser.icono" width="120px" alt="Prueba">
+        <ion-label>
+          <h2 class="menu-text" >{{ dataUser.nombre }}</h2>
+          <p>dueño de parqueadero</p>
+        </ion-label>
+      </div>
+      <ion-list class="menu-items" lines="none">
+        <ion-item routerLink="/parqueadero/parqueadero">
+          <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
+        </ion-item>
+        <ion-item routerLink="/parqueadero/crud">
+          <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
+        </ion-item>
+        <ion-item routerLink="/parqueadero/reservas">
+          <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
+        </ion-item>
+        <ion-item routerLink="#" (click)="logout()" >
+          <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="parqueo"></ion-router-outlet>
   <div>
     <h1>Enero 2021</h1>
     <ion-card routerLink="/reserva">
