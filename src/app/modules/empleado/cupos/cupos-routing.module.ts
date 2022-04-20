@@ -15,11 +15,7 @@ const routes: Routes = [
     path: 'r-local',
     loadChildren: () => import('./r-local/r-local.module').then( m => m.RLocalPageModule)
   },
-  // Ruta Cupos Actualizados
-  {
-    path: 'cupos-act',
-    loadChildren: () => import('./cupos-act/cupos-act.module').then( m => m.CuposActPageModule)
-  }
+  
 ];
 
 @NgModule({

@@ -1,0 +1,83 @@
+
+// Diseño de la imagen de inicio
+#imagen{
+    height: auto;
+    width: 100%;
+}
+// Diseño del icono de ubicacion
+#ubicacion{
+    height: 80px;
+    width: 80px;
+}
+// Diseño del titulo
+#titulo{
+    font-size: 40px;
+}
+// Diseño del subtitulo
+#subtitulo{
+    font-size: 40px;
+}
+
+// ! Posicion y tamaño de nuestra menu
+.menup{
+    // * Posicion que tendra el  menu 
+    position: fixed;
+    // * Ancho que tendra el menu
+    width: 230px; 
+    // * z-index indica el orden de lo que se mostrara primero o por encima de 
+    z-index: 100;
+    // * left oculta o saca de la vista el menu
+    left: -230px;
+}
+
+// ! Muestra el menu clase que se agrega o remueve a través de una funcion en el Ts
+.active6{
+    // * Ajusta la posicion de nuestro menu para que sea visible
+    left: 0px;
+}
+// ! Da estilos al header de nuestro menu
+.menu-header{
+    // * Nos indica el alto de nuestro header
+    height: 230px;
+    // * Nos indica el ancho
+    width: 100%;
+    // * Nos indica sus colores de fondo
+    background: #3880ff;
+    background: linear-gradient(10deg, #3880ff 100%, #1c6dfa 100%);
+    // * Nos indica la sombra que tendra
+    box-shadow: 0px 1px 10px #003ca3;
+    // * Nos indica el borde redondeado que tendra el header
+    border-radius: 10px 10px 80px 10px;
+    // * Nos indica el padding que tendra nuestro header
+    padding: 10px;
+    // * Nos indica el margin hacia abajo que tendra el header
+    margin-bottom: 5px;
+}
+// ! Nos indica el tamaño y padding hacia abajo que tendran nuestras opciones en el menu
+.texto-menu{
+    font-size: 12px;
+    padding-top: 12px;
+}
+
+// ! Nos indica el margin que tendra el icono de nuestras opciones del menu
+.menu ion-icon{
+    margin: 4px;
+}
+// ! Nos indica el borde redondeado que tendra la imagen en el menu
+.menu img{
+ border-radius: 50%;
+}
+// ! Nos indica el color que tendran las letras del header del menu
+.menu-text{
+    color: white;
+} 
+
+// ! Imagen del usuario centrada y con un borde redondeado de 50%
+.imgp{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+

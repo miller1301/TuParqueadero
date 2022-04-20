@@ -58,10 +58,7 @@ const routes: Routes = [
     path: 'R_local',
     loadChildren: () => import('./modules/empleado/cupos/r-local/r-local.module').then( m => m.RLocalPageModule)
   },
-  {
-    path: 'cupos2',
-    loadChildren: () => import('./modules/empleado/cupos/cupos-act/cupos-act-routing.module').then( m => m.CuposActPageRoutingModule)
-  },
+  
   {
     path: 'agre-info-auto',
     loadChildren: () => import('./modules/empleado/agre-info-auto/agre-info-auto.module').then( m => m.AgreInfoAutoPageModule)
@@ -69,10 +66,6 @@ const routes: Routes = [
   {
     path: 'reservas',
     loadChildren: () => import('./modules/empleado/reservas/reservas.module').then( m => m.ReservasPageModule)
-  },
-  {
-    path: 'reservas-actu',
-    loadChildren: () => import('./modules/empleado/reservas-actu/reservas-actu.module').then( m => m.ReservasActuPageModule)
   },
   {
     path: 'inf-auto',
@@ -91,6 +84,11 @@ const routes: Routes = [
     path: 'contador',
     loadChildren: () => import('./modules/empleado/contador/contador.module').then( m => m.ContadorPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./modules/empleado/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+
   
    
 ];

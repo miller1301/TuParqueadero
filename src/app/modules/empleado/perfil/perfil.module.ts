@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { CuposActPageRoutingModule } from './cupos-act-routing.module';
-
-import { CuposActPage } from './cupos-act.page';
+import { PerfilPageRoutingModule } from './perfil-routing.module';
+import { PerfilPage } from './perfil.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CuposActPageRoutingModule
+    PerfilPageRoutingModule
   ],
-  declarations: [CuposActPage]
+  declarations: [PerfilPage]
 })
-export class CuposActPageModule {}
+export class PerfilPageModule {}
