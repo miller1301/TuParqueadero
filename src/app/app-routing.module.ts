@@ -39,6 +39,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/parqueadero/parqueadero.module').then( m => m.ParqueaderoPageModule)
   },
   {
+    path: 'edit',
+    loadChildren: () => import('./modules/parqueadero/edit-home/edit-home.module').then( m => m.EditHomePageModule)
+  },
+  {
     path: 'crud',
     loadChildren: () => import('./modules/parqueadero/crud/crud.module').then(m => m.CrudPageModule)
   },
