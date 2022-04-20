@@ -83,10 +83,10 @@ export class BookingParkingComponent implements OnInit {
           confirmButtonText: 'Ver ruta',
           confirmButtonColor: '#1A97E8'
         }).then( success => {
-          this.dismiss();
           let { latitud, longitud  } = this.parking.data
           this.mapsService.getRouteBetweenPoints(this.mapsService.positionRealTime , [Number(longitud), Number(latitud)]);
           this.mapsService.routeReady = true;
+          this.dismiss();
         })
       })
     }
