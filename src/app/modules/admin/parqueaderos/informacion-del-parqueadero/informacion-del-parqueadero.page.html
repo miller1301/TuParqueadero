@@ -12,13 +12,19 @@
   <ion-toolbar>
     <!--*Informacion de la pagina en la cual se encuentra el usuario-->
     <ion-title>Información Del Parqueadero</ion-title>
-      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button>
+      <!-- <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button> -->
     <!--*Boton que abre el menu del usuario  -->
-      <ion-buttons slot="end">
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()"  id="open4">
+        <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <!-- <ion-buttons slot="end">
         <ion-button (click)="abrir()"  id="open2">
           <ion-icon slot="end" name="menu-outline" ></ion-icon>
         </ion-button>
-      </ion-buttons>
+      </ion-buttons> -->
+
   </ion-toolbar>
 </ion-header>
   <!--*Fin del header-->

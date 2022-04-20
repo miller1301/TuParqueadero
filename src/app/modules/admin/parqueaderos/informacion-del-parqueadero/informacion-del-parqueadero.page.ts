@@ -4,6 +4,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AuthService } from 'src/app/services/auth.service';
+import { ModalController } from '@ionic/angular';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
  
@@ -34,7 +35,9 @@ export class InformacionDelParqueaderoPage implements OnInit {
     // *  LLamando al servicio que se utilizara para el manejo de los datos
     private firebase: FirestoreService, 
     // * Llamando al servicio que se utilizara para los metodos de Autenticion o manejo de la sesion del usuario
-    private log : AuthService 
+    private log : AuthService,
+
+    private modalController : ModalController
   ) { }
 
   // ! Creacion del metodo para crear los informes de los usuarios en PDF
@@ -170,6 +173,9 @@ export class InformacionDelParqueaderoPage implements OnInit {
       }
       this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
     }
+  }
+  cerrar(){
+    this.modalController.dismiss();
   }
 }
 
