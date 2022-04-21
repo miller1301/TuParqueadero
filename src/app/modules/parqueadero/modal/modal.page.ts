@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { Parqueadero } from 'src/app/modelos/parqueaderos';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,46 +11,32 @@ import { Router } from '@angular/router';
 })
 export class ModalPage implements OnInit {
 
-  
+  parqueaderos: Parqueadero = {
+    nameParqueadero: null,
+    telefono: null,
+    direccion: null,
+    uid: null,
+    horario: null,
+    userid: 'JO9qMOKsMVbBqhrJ7qGsdesfA5V2',
+    tarifa: null,
+    ubicacion: null, 
+    img: 'https://bogota.gov.co/sites/default/files/styles/1050px/public/2022-01/parqueadero1.jpg'
+  }
+  constructor( 
+    private router:Router,
+    // * Llamando al servicio que se utilizara para el manejo de los datos del usuario de la sesion actual
+    private firestore: FirestoreService) { }
 
   ngOnInit() {
-    // this.getDataUser();
+  }
 
-    // this.formReserva = this.formBuilder.group({
-    //   time: ['', [Validators.required]],
-    //   hour: ['', [Validators.required]],
-    //   vehicle: ['', [Validators.required]],
-    //   placa: ['', [Validators.required]],
-    //   marca: ['', [Validators.required]]
-    // });
+  rParquedero(){
+    this.firestore.create('Parqueaderos',this.parqueaderos).then(res=>{
+      console.log(res);
+    }); 
   }
   
   }
 
-  // parqueadero : Parqueaderos[] = [];
 
-  // id: string;
-
-  // private path = "Parqueaderos/";
-
-  // constructor(
-  //   public firestoreService:FirestoreService,
-  //   public auth: AngularFireAuth, 
-  //   private authh: AuthService,
-  //   private router:Router, 
-  //   ) { }
-
-    
-  // async rParquedero(){
-  //   console.log("Datos", this.datosp)
-  //   const res = await this.authh.registrarPar(this.datosp)
-  //   .then( async res => {
-  //     console.log('Exito al crear el parqueadero');
-  //     const path = 'Parqueaderos';
-  //     const id = res.user.uid;
-  //     this.datosp.uid = id;
-  //     await this.firestoreService.createDoc(this.datosp, path, id)
-  //     this.router.navigate(['/parqueadero']);
-  //   }).catch( error => console.log(error))
-  // }
 

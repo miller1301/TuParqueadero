@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { CrudPageRoutingModule } from './crud-routing.module';
 
 import { CrudPage } from './crud.page';
-import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [

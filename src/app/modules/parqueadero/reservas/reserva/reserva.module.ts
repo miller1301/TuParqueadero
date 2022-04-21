@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ReservaPageRoutingModule } from './reserva-routing.module';
 
 import { ReservaPage } from './reserva.page';
-import { MenuComponent } from '../../menu/menu.component';
 
 @NgModule({
   imports: [

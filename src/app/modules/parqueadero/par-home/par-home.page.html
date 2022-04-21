@@ -1,107 +1,70 @@
 <ion-app>
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button id="menu" ></ion-menu-button>
-      </ion-buttons>
-      
+
       <ion-title>parqueadero</ion-title>
     </ion-toolbar>
-    
-  </ion-header>
 
+  </ion-header>
   <ion-content>
-    <ion-menu side="start" menuId="menu" contentId="parqueo">
-      <ion-content>
-        <div class="menu-header-bg">menu</div>
-        <div class="header-content">
-          <img [src]="dataUser.icono" width="120px" alt="Prueba">
-          <ion-label>
-            <h2 class="menu-text" >{{ dataUser.nombre }}</h2>
-            <p>dueño de parqueadero</p>
-          </ion-label>
-        </div>
-        <ion-list class="menu-items" lines="none">
-          <ion-item routerLink="/parqueadero/parqueadero">
-            <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
-          </ion-item>
-          <ion-item routerLink="/parqueadero/crud">
-            <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
-          </ion-item>
-          <ion-item routerLink="/parqueadero/reservas">
-            <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
-          </ion-item>
-          <ion-item routerLink="#" (click)="logout()" >
-            <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon>  Cerrar Sesion
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="parqueo"></ion-router-outlet>
     <ion-grid>
-      <ion-row>
+      <ion-row *ngIf="infoUser">
         <ion-col id="img" sizeLg="4" offsetLg="5" sizeSm="4" offsetSm="5" sizeXs="6" offsetXs="3">
-        <img id="icono-carro" src="../../../assets/img/384e0b3361d99d9c370b4037115324b9-icono-de-coche-plano-vintage.png" alt="icono-carro">
+          <img id="icono-carro"
+            src="../../../assets/img/384e0b3361d99d9c370b4037115324b9-icono-de-coche-plano-vintage.png"
+            alt="icono-carro">
           <p id="txt">Mi parqueadero</p>
-          </ion-col>
+        </ion-col>
       </ion-row>
       <ion-row>
         <ion-col id="img2" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
           <ion-slides>
             <ion-slide>
               <div class="slide">
-                <img src="../../../../assets/img/2.jpeg" />
+                <img class="clas1" [src]="infoUser.img" alt="Usuario" />
               </div>
-            </ion-slide>
-            <ion-slide>
-              <img src="../../../../assets/img/600b1a714c8fe.jpeg" />
-            </ion-slide>
-            <ion-slide>
-              <img src="../../../../assets/img/15132529parqueadero.jpg" />
             </ion-slide>
           </ion-slides>
         </ion-col>
       </ion-row>
       <ion-row>
-          <ion-col sizeLg="5" offsetLg="1" sizeSm="12" sizeXs="12">
-            <ion-item-divider id="lines">
-              <h3 id="h3">Informacion</h3>
-            </ion-item-divider>
-            <h4>
-              Nombre
-            </h4>
-            <p>Parqueadero Parking Brokers</p>
-            <h4>
-              Direccion
-            </h4>
-            <p>Calle 100a # 45 - 20</p>
-            <h4>
-              Capacidad
-            </h4>
-            <p>30</p>
-            <h4>
-              Abierto
-            </h4>
-            <p>24 horas</p>
-            <h4>
-              Costo
-            </h4>
-            <p>---------</p>
-            <ion-button routerLink="/edit" expand="block" color="primary" mode="ios" class="ion-margin-top">
-              Editar
-            </ion-button>
-          </ion-col>
-          <ion-col sizeLg="4" offsetLg="1" sizeSm="12" sizeXs="12">
-            <ion-item>
-              <ion-select  interface="popover" placeholder="seleccionar estado">
-                <ion-select-option class="verde" value="red">Disponible</ion-select-option>
-                <ion-select-option class="rojo" value="purple">No Disponibles</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-col>
-      </ion-row> 
+        <ion-col sizeLg="5" offsetLg="1" sizeSm="12" sizeXs="12">
+          <ion-item-divider id="lines">
+            <h3 id="h3">Informacion</h3>
+          </ion-item-divider>
+          <h4>
+            Nombre
+          </h4>
+          <p>{{ infoUser.nameParqueadero }}</p>
+          <h4>
+            Direccion
+          </h4>
+          <p>{{ infoUser.nameParqueadero }}</p>
+          <h4>
+            Capacidad
+          </h4>
+          <p>30</p>
+          <h4>
+            Abierto
+          </h4>
+          <p>{{ infoUser.nameParqueadero }}</p>
+          <h4>
+            Costo
+          </h4>
+          <p>{{ infoUser.nameParqueadero }}</p>
+          <ion-button routerLink="/edit" expand="block" color="primary" mode="ios" class="ion-margin-top">
+            Editar
+          </ion-button>
+        </ion-col>
+        <ion-col sizeLg="4" offsetLg="1" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-select interface="popover" placeholder="seleccionar estado">
+              <ion-select-option class="verde" value="red">Disponible</ion-select-option>
+              <ion-select-option class="rojo" value="purple">No Disponibles</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </ion-content>
 </ion-app>
-
-

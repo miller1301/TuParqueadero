@@ -58,12 +58,14 @@ const routes: Routes = [
     loadChildren: () => import('./modules/empleado/cupos/cupos.module').then( m => m.CuposPageModule)
   },
   {
-    path: 'par-home',
-    loadChildren: () => import('./modules/parqueadero/par-home/par-home.module').then( m => m.ParHomePageModule)
-  },  {
     path: 'user',
     loadChildren: () => import('./modules/user/user.module').then( m => m.UserPageModule)
   },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./modules/inicio/inicio.module').then( m => m.InicioPageModule)
+  },
+
 
 
 ];

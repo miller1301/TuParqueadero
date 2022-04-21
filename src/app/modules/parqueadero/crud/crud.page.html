@@ -23,7 +23,7 @@
           </ion-label>
         </div>
         <ion-list class="menu-items" lines="none">
-          <ion-item routerLink="/parqueadero/parqueadero">
+          <ion-item routerLink="/parqueadero">
             <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
           </ion-item>
           <ion-item routerLink="/parqueadero/crud">
@@ -75,16 +75,19 @@
       </ion-col>
     </ion-row>
 
-    <ion-item *ngFor="let usuario of usuarios">
-      <ion-label class="nombre">{{usuario.nombre}}</ion-label>
-      <ion-label class="nombre">{{usuario.perfil}}</ion-label>
-      <ion-buttons>
-      <ion-button >
-        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="deleteUser(usuario)">
-        <ion-icon slot="icon-only" color="danger" name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    </ion-item>
+    <ion-col *ngFor="let usuario of usuarios" sizeLg="4" offsetLg="4" sizeSm="12" sizeXs="12">
+      <ion-item id="item" *ngIf="usuario.perfil == 'empleado'">
+        <ion-item>
+          <ion-label class="nombre">{{ usuario.nombre }}</ion-label>
+          <ion-buttons>
+            <ion-button>
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="deleteUser(usuario)">
+              <ion-icon slot="icon-only" color="danger" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-item>
+    </ion-col>
 </ion-content>

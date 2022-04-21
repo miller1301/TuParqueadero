@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { EditHomePageRoutingModule } from './edit-home-routing.module';
 
 import { EditHomePage } from './edit-home.page';
-import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
