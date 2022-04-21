@@ -1,33 +1,51 @@
 <ion-app>
+  <!-- el fin e¡de esta pantalla  -->
   <ion-header>
     <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button id="menu"></ion-menu-button>
+      </ion-buttons>
 
       <ion-title>parqueadero</ion-title>
     </ion-toolbar>
 
   </ion-header>
+
   <ion-content>
+    <!--*Contenedor Ion-Grid para el manejo del responsive -->
     <ion-grid>
-      <ion-row *ngIf="infoUser">
-        <ion-col id="img" sizeLg="4" offsetLg="5" sizeSm="4" offsetSm="5" sizeXs="6" offsetXs="3">
-          <img id="icono-carro"
-            src="../../../assets/img/384e0b3361d99d9c370b4037115324b9-icono-de-coche-plano-vintage.png"
-            alt="icono-carro">
-          <p id="txt">Mi parqueadero</p>
-        </ion-col>
-      </ion-row>
+    <ion-menu side="start" menuId="menu" contentId="parqueo">
+      <ion-content>
+        <div class="menu-header-bg">menu</div>
+        <div class="header-content">
+          <img [src]="dataUser.icono" width="120px" alt="Prueba">
+          <ion-label>
+            <h2 class="menu-text">{{ dataUser.nombre }}</h2>
+            <p>dueño de parqueadero</p>
+          </ion-label>
+        </div>
+        <ion-list class="menu-items" lines="none">
+          <ion-item routerLink="/parqueadero">
+            <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
+          </ion-item>
+          <ion-item routerLink="/parqueadero/crud">
+            <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
+          </ion-item>
+          <ion-item routerLink="/parqueadero/reservas">
+            <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
+          </ion-item>
+          <ion-item routerLink="/parqueadero/configuracion">
+            <ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion
+          </ion-item>
+          <ion-item routerLink="#" (click)="logout()">
+            <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar Sesion
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="parqueo"></ion-router-outlet>
       <ion-row>
-        <ion-col id="img2" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
-          <ion-slides>
-            <ion-slide>
-              <div class="slide">
-                <img class="clas1" [src]="infoUser.img" alt="Usuario" />
-              </div>
-            </ion-slide>
-          </ion-slides>
-        </ion-col>
-      </ion-row>
-      <ion-row>
+        <!-- * Tamaño de los elementos que se traen de la BD -->
         <ion-col sizeLg="5" offsetLg="1" sizeSm="12" sizeXs="12">
           <ion-item-divider id="lines">
             <h3 id="h3">Informacion</h3>
@@ -35,11 +53,11 @@
           <h4>
             Nombre
           </h4>
-          <p>{{ infoUser.nameParqueadero }}</p>
+          <p>Park funza</p>
           <h4>
             Direccion
           </h4>
-          <p>{{ infoUser.nameParqueadero }}</p>
+          <p>calle 12 # 2 21</p>
           <h4>
             Capacidad
           </h4>
@@ -47,22 +65,11 @@
           <h4>
             Abierto
           </h4>
-          <p>{{ infoUser.nameParqueadero }}</p>
+          <p>todo el dia</p>
           <h4>
             Costo
           </h4>
-          <p>{{ infoUser.nameParqueadero }}</p>
-          <ion-button routerLink="/edit" expand="block" color="primary" mode="ios" class="ion-margin-top">
-            Editar
-          </ion-button>
-        </ion-col>
-        <ion-col sizeLg="4" offsetLg="1" sizeSm="12" sizeXs="12">
-          <ion-item>
-            <ion-select interface="popover" placeholder="seleccionar estado">
-              <ion-select-option class="verde" value="red">Disponible</ion-select-option>
-              <ion-select-option class="rojo" value="purple">No Disponibles</ion-select-option>
-            </ion-select>
-          </ion-item>
+          <p>5000</p>
         </ion-col>
       </ion-row>
     </ion-grid>

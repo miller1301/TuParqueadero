@@ -19,51 +19,51 @@
   <ion-content>
     <ion-menu side="start" menuId="menu" contentId="parqueo">
       <ion-content>
-      <div class="menu-header-bg">menu</div>
-      <div class="header-content">
-        <img [src]="dataUser.icono" width="120px" alt="Prueba">
-        <ion-label>
-          <h2 class="menu-text">{{ dataUser.nombre }}</h2>
-          <p>dueño de parqueadero</p>
-        </ion-label>
-      </div>
-      <ion-list class="menu-items" lines="none">
-        <ion-item routerLink="/parqueadero/parqueadero">
-          <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
-        </ion-item>
-        <ion-item routerLink="/parqueadero/crud">
-          <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
-        </ion-item>
-        <ion-item routerLink="/parqueadero/reservas">
-          <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
-        </ion-item>
-        <ion-item routerLink="#" (click)="logout()">
-          <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar Sesion
-        </ion-item>
-      </ion-list>
-    </ion-content>
+        <div class="menu-header-bg">menu</div>
+        <div class="header-content">
+          <img [src]="dataUser.icono" width="120px" alt="Prueba">
+          <ion-label>
+            <h2 class="menu-text">{{ dataUser.nombre }}</h2>
+            <p>dueño de parqueadero</p>
+          </ion-label>
+          <!-- <ion-icon name="settings-outline"></ion-icon> -->
+        </div>
+        <ion-list class="menu-items" lines="none">
+          <ion-item routerLink="/parqueadero">
+            <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
+          </ion-item>
+          <ion-item routerLink="/parqueadero/crud">
+            <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
+          </ion-item>
+          <ion-item routerLink="/parqueadero/reservas">
+            <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
+          </ion-item>
+          <ion-item routerLink="/parqueadero/configuracion">
+            <ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion
+          </ion-item>
+          <ion-item routerLink="#" (click)="logout()">
+            <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar Sesion
+          </ion-item>
+        </ion-list>
+      </ion-content>
     </ion-menu>
     <ion-router-outlet id="parqueo"></ion-router-outlet>
 
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let datos of listaParqueadero" class="clas2" sizeLg="4" sizeSm="12" sizeXs="12">
-          <ion-col id="item" *ngIf="datos.userid == 'JO9qMOKsMVbBqhrJ7qGsdesfA5V2'">
-            <a (click)="openPar()">
-              <ion-card>
-                <img class="clas1" [src]="datos.img" alt="Usuario" />
-                <ion-card-header>
-                  <ion-card-title>{{ datos.nameParqueadero }}</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  <h4>
-                    Direccion
-                  </h4>
-                  <p>{{ datos.direccion }}</p>
-                </ion-card-content>
-              </ion-card>
-            </a>
-          </ion-col>
+        <ion-col *ngFor="let datos of listaParqueadero " sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12" >
+          <ion-item id="item" *ngIf="datos.userid === 'JO9qMOKsMVbBqhrJ7qGsdesfA5V2'">
+            <ion-item routerLink="/parqueadero/par-home">
+              <img class="clas1" [src]="datos.img" width="100px" alt="Park" class="ion-margin-horizontal" />
+              <ion-text id="text">
+                <h3>{{ datos.nameParqueadero }}</h3>
+                <!--*direccion del parqueadero -->
+                Direccion: {{ datos.direccion }}
+              </ion-text>
+              
+            </ion-item>
+              <ion-icon color="danger" (click)="eliminarP(datos.id)" name="trash-outline"></ion-icon>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>

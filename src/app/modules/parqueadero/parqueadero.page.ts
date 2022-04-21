@@ -5,6 +5,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from './modal/modal.page'
 import { ParHomePage } from './par-home/par-home.page';
+import { cachedDataVersionTag } from 'v8';
 
 @Component({
   selector: 'app-parqueadero',
@@ -28,7 +29,7 @@ export class ParqueaderoPage implements OnInit {
   UidG;
   // ! Propiedad que guarda la informacion del usuario actual para mostrarla en el menu 
   dataUser;
-
+  
 
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
@@ -45,6 +46,8 @@ export class ParqueaderoPage implements OnInit {
       });
     });
 
+    
+
     // ! Metodo que guarda el ID del usuario actual para luego hacer una busqueda en la base de datos y traer su informacion esperamos su respuesta "res" y se la asignamos a la propiedad UidG
     this.log.getUid().then(res => {
       // * Esperamos la respuesta y se la asignamos a la propiedad UidG 
@@ -57,6 +60,17 @@ export class ParqueaderoPage implements OnInit {
     });
   }
 
+  eliminarP(id){
+    this.firestore.delete('Parqueaderos', id).then(res =>{
+      alert("se elemino con exito");
+    }).catch(err =>{
+      console.log("error al eliminar", err);
+    });
+  }
+
+  modificar(){
+    this.firestore
+  }
 
   // * Funcion que consume el servicio de Autenticacion y le permite al usuario cerrar la sesion
   logout() {
@@ -79,4 +93,5 @@ export class ParqueaderoPage implements OnInit {
     return await modal.present();
 
   }
+  
 }

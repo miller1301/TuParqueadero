@@ -19,6 +19,7 @@ export class ModalPage implements OnInit {
     horario: null,
     userid: 'JO9qMOKsMVbBqhrJ7qGsdesfA5V2',
     tarifa: null,
+    estado: 'No disponible',
     ubicacion: null, 
     img: 'https://bogota.gov.co/sites/default/files/styles/1050px/public/2022-01/parqueadero1.jpg'
   }
