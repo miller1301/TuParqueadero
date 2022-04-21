@@ -61,11 +61,11 @@ export class BookingParkingComponent implements OnInit {
   onSubmit(){
     let data = {
       idUser: this.idUser,
-      idParking: this.parking.Uid,
-      nameParqueadero: this.parking.nameParqueadero,
-      img: this.parking.img,
-      direccion: this.parking.direccion,
-      telefono: this.parking.telefono,
+      idParking: this.parking.id,
+      nameParqueadero: this.parking.data.nameParqueadero,
+      img: this.parking.data.img,
+      direccion: this.parking.data.direccion,
+      telefono: this.parking.data.telefono,
       timeParking: this.formReserva.value.time,
       hourArrive: this.formReserva.value.hour,
       typeVehicle: this.formReserva.value.vehicle,
@@ -83,10 +83,10 @@ export class BookingParkingComponent implements OnInit {
           confirmButtonText: 'Ver ruta',
           confirmButtonColor: '#1A97E8'
         }).then( success => {
-          this.dismiss();
-          let { latitud, longitud  } = this.parking
+          let { latitud, longitud  } = this.parking.data
           this.mapsService.getRouteBetweenPoints(this.mapsService.positionRealTime , [Number(longitud), Number(latitud)]);
           this.mapsService.routeReady = true;
+          this.dismiss();
         })
       })
     }

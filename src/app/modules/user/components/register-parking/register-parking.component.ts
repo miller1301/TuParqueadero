@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { getAuth, onAuthStateChanged } from '@angular/fire/auth'
+
 import Swal from 'sweetalert2'
 
 @Component({
@@ -15,6 +17,7 @@ export class RegisterParkingComponent implements OnInit {
     read: ElementRef
   }) images: ElementRef;
 
+  idUser: string;
   formRegistroParking: FormGroup;
   mensajeArchivo = 'No hay un archivo seleccionado';
   imagenesForm = new FormData();
@@ -37,6 +40,8 @@ export class RegisterParkingComponent implements OnInit {
 
   ngOnInit() {
 
+    this.getDataUser();
+
     this.formRegistroParking = this.formBuilder.group({
       name: ['', [Validators.required]],
       location: ['', [Validators.required]],
@@ -53,6 +58,19 @@ export class RegisterParkingComponent implements OnInit {
       licencia: ['', Validators.required],
     });
 
+  }
+
+  // * Obtener datos del usuario autenticado
+  getDataUser(){
+    const auth = getAuth();
+    onAuthStateChanged( auth, (user) => {
+      if(user){
+        this.idUser = user.uid;
+        console.log(this.idUser);
+      } else {
+        return;
+      }
+    })
   }
 
   // TODO: Hacer que el path enviado en las funciones del Storage se le agregue el nombre del parqueadero del input
@@ -145,6 +163,7 @@ export class RegisterParkingComponent implements OnInit {
     if(this.formRegistroParking.valid){
       // Encapsular los datos para ser enviados
       let data = {
+        idUser: this.idUser,
         camara_comercio: this.formRegistroParking.value.comercio,
         constitucion_poliza: this.formRegistroParking.value.poliza,
         descripcion: this.formRegistroParking.value.solicitud,
@@ -167,6 +186,7 @@ export class RegisterParkingComponent implements OnInit {
       }
 
       this.firestoreService.createDocIdDefault('Parqueaderos', data).then( success => {
+        console.log(success);
         this.formRegistroParking.reset();
         Swal.fire({
           title: '¡Tu registro fue exitoso!',

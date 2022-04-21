@@ -7,14 +7,14 @@
   <div class="text-center">
     <img class="img-logo-parking" src="../../../../../assets/img/user/logo-parqueadero.png" width=""
       alt="Logo parqueadero">
-    <h1 class="name-parking">{{ parking.nameParqueadero }}</h1>
+    <h1 class="name-parking">{{ parking.data.nameParqueadero }}</h1>
   </div>
 
   <!-- Imagenes del parqueadero en Desktop -->
   <div class="slide-img-parking desktop p-5 pt-4 pb-2">
     <div class="row">
-      <div *ngFor="let img of parking.images" class="col">
-        <img class="imgs-parking" src="{{ img }}" />
+      <div *ngFor="let img of parking.data.images" class="col div-img-park">
+        <img width="50%" class="imgs-parking" src="{{ img }}" />
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
   <!-- Imagenes del parqueadero en Mobile -->
   <div class="slide-img-parking mobile">
     <ion-slides [pager]="true">
-      <ion-slide *ngFor="let img of parking.images">
+      <ion-slide *ngFor="let img of parking.data.images">
         <div class="slide">
           <img class="imgs-parking" src="{{ img }}" />
         </div>
@@ -37,15 +37,15 @@
   <div class="row justify-content-center div-informacion-parking">
     <div class="col-sm-12 col-lg-3 div-info">
       <img class="m-1" src="../../../../../assets/img/user/icon-location.png"alt="icono ubicación">
-      {{ parking.direccion }}
+      {{ parking.data.direccion }}
     </div>
     <div class="col-sm-12 col-lg-3 div-info">
       <img class="m-1" src="../../../../../assets/img/user/icon-reloj.png" alt="icono reloj">
-      {{ parking.horario }}
+      {{ parking.data.horario }}
     </div>
     <div class="col-sm-12 col-lg-3 div-info">
       <img class="m-1 mb-0" src="../../../../../assets/img/user/icon-telephone.png" alt="icono telefono">
-      {{ parking.telefono }}
+      {{ parking.data.telefono }}
     </div>
   </div>
   <div class="text-center div-btn-reservar">

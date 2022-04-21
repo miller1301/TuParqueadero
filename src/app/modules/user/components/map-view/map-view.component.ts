@@ -72,7 +72,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   getParkings(document: string){
     this.firestoreService.getAllDocs(document).subscribe( parqueaderos => {
       parqueaderos.forEach( (parkData: any) => {
-        this.parqueaderosDisponibles.push(parkData.payload.doc.data());
+        console.log(parkData);
+        this.parqueaderosDisponibles.push({
+          id: parkData.payload.doc.id,
+          data: parkData.payload.doc.data()
+        });
       });
       console.log(this.parqueaderosDisponibles);
       this.createMarkersFromParkings()
@@ -89,7 +93,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       // Crear popup
       const popup = new Popup()
         .setHTML(`
-          <h1>${parking.nameParqueadero}</h1>
+          <h1>${parking.data.nameParqueadero}</h1>
           <button class="btn btn-sm btn-primary mt-3" id="btn-ruta">Información</button>
         `)
         // Popup abierto
@@ -102,7 +106,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
       // Crear marcador 
       const newMarker = new Marker({color: 'orange'})
-        .setLngLat([parking.longitud, parking.latitud])
+        .setLngLat([parking.data.longitud, parking.data.latitud])
         .setPopup( popup )
         .addTo( this.mapService.map );
 
