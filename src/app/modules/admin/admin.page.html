@@ -60,21 +60,36 @@
   </ion-row>
   <!--*Fin del menu del usuario -->
   <!--*Contenido de la bandeja de entrada -->
-  <ion-row>  
+  <!-- <ion-row>   -->
     <!--*Datos de los parqueaderos consumidos de la base de datos a través de un For-->
-    <ion-col  *ngFor="let datos of listarData" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12" [routerLink]="['validacion-cuenta-parqueadero/' + datos.Uid]"  class="cursor" >
-      <!--*Item con la informacion del los parqueaderos -->
-      <ion-item >
+    <!-- <ion-col  *ngFor="let datos of listarData" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12" [routerLink]="['validacion-cuenta-parqueadero/' + datos.Uid]"  class="cursor" > -->
+      <!-- *Item con la informacion del los parqueaderos -->
+      <!-- <ion-item > -->
         <!--*Imagen del dueño del parqueadero-->
-        <img [src]="datos.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
-        <ion-text class="letra">
+        <!-- <img [src]="datos.img" width="40px" alt="Usuario" class="ion-margin-horizontal"> -->
+        <!-- <ion-text class="letra"> -->
           <!--*Nombre del parqueadero  -->
-          <h3>{{ datos.nameParqueadero }}</h3>
+          <!-- <h3>{{ datos.nameParqueadero }}</h3> -->
           <!--*Descripcion del parqueadero -->
-          {{ datos.descripcion }}
+          <!-- {{ datos.descripcion }} -->
+        <!-- </ion-text> -->
+      <!-- </ion-item> -->
+      <!--*Fin de la informacion del usuario -->
+    <!-- </ion-col> -->
+  <!-- </ion-row> -->
+  <ion-row>
+    <ion-col *ngFor="let datosP of arreglo;let i = index" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12" class="cursor" (click)="presentModal(i)">
+       <ion-item >
+        <!--*Imagen del dueño del parqueadero-->
+        <img [src]="datosP.data.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
+        <ion-text class="letra">
+          <!-- *Nombre del parqueadero  -->
+          <h3>{{ datosP.data.nameParqueadero }}</h3>
+          <!--*Descripcion del parqueadero -->
+          {{ datosP.data.descripcion }}
         </ion-text>
       </ion-item>
-      <!--*Fin de la informacion del usuario -->
+
     </ion-col>
   </ion-row>
 </ion-grid>

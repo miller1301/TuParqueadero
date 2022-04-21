@@ -114,14 +114,14 @@
       <ion-searchbar placeholder="Buscar Parqueaderos" (ionChange)="onSearchChange( $event )" mode="ios"></ion-searchbar>
       </ion-col>
       <!-- *Tamaño de los resultados del filtro de parqueadero y consumo de parqueaderos a través del for y la propiedad parqueadero-->
-      <ion-col  *ngFor="let parq of parqueaderos | filtro:textoBuscar" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" [routerLink]="['informacion-del-parqueadero/' + parq.Uid]" >
+      <ion-col  *ngFor="let i = index ;let parq of arreglo | filtro:textoBuscar" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12"  sizeXs="12" (click)="presentModal(i)" >
         <!-- *Informacion del parqueadero -->
           <ion-item >
             <!-- *Imagen del dueño del parqueadero -->
-            <img [src]="parq.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
+            <img [src]="parq.data.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
             <ion-text class="letra">
               <!-- *Nombre del parqueadero -->
-              <h3>{{ parq.nameParqueadero }}</h3>
+              <h3>{{ parq.data.nameParqueadero }}</h3>
             </ion-text>
           </ion-item>
           <!-- *Fin de los datos del parqueadero-->

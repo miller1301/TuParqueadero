@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { InformacionDelParqueaderoPage } from './informacion-del-parqueadero/informacion-del-parqueadero.page';
 
 @Component({
   selector: 'app-parqueaderos',
@@ -13,7 +15,9 @@ export class ParqueaderosPage implements OnInit {
     // * Llamando al servicio que se utilizara para los metodos de Autenticion o manejo de la sesion del usuario
     private auth:AuthService,
     // *  LLamando al servicio que se utilizara para el manejo de los datos de los filtros
-    private firebase:FirestoreService
+    private firebase:FirestoreService,
+
+    private modalController: ModalController
   ) { }
   
   // ! Propiedad que guarda la informacion de los parqueaderos traidos de la BD
@@ -41,6 +45,8 @@ export class ParqueaderosPage implements OnInit {
   // ! Propiedad que almacena la informacion del usuario actual
   dataUser;
 
+  arreglo = [];
+
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
     // ! Metodo que se ejecuta para traer los datos de los usuarios luego esperamos su respuesta "res" y se la asignamos a la propiedad "usuariosL" para luego ser consumida en la vista
@@ -59,9 +65,16 @@ export class ParqueaderosPage implements OnInit {
     // })
     // ! Metodo que se ejecuta para traer los datos de los parqueaderos luego esperamos su respuesta "res" y se la asignamos a la propiedad "parqueaderos" para luego ser consumida en la vista
     const pathP = 'Parqueaderos';
-    this.firebase.getDocs(pathP).subscribe(res => {
-      this.parqueaderos = res
-    });
+    this.firebase.getAllDocs(pathP).subscribe( (res:any)=>{
+      this.arreglo = [];
+      res.forEach( (parqueadero:any) => {
+        this.arreglo.push({
+          Idparqueadero:  parqueadero.payload.doc.id,
+          data: parqueadero.payload.doc.data()
+        })
+      })
+      console.log(this.arreglo)
+    })
     // ! Metodo que se ejecuta para traer el ID del usuario actual y luego traer la respectiva informacion del usuario
     this.auth.getUid().then( res => {
       // * Propiedad que almacena el Id del usuario actual
@@ -165,5 +178,16 @@ export class ParqueaderosPage implements OnInit {
   onSearchChange( event ){
   // console.log( event )
   this.textoBuscar = event.detail.value;
+  }
+
+  async presentModal(index:number) {
+    const modal = await this.modalController.create({
+      component: InformacionDelParqueaderoPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        arreglo : this.arreglo[index]
+      }
+    });
+    return await modal.present();
   }
 }
