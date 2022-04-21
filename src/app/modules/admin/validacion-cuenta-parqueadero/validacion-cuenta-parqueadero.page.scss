@@ -97,3 +97,8 @@ ion-modal {
     height: 600px;
     border: 2px solid red;
 }
+
+::ng-deep ion-modal{
+    --width: 85vw;
+    --height: 90vh;
+}
