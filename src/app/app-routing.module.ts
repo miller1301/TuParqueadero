@@ -49,10 +49,6 @@ const routes: Routes = [
   {
     path: 'empleado',
     loadChildren: () => import('./modules/empleado/empleado/home/home.module').then( m => m.HomeComponentModule)
-  },
-  {
-    path: 'cupos',
-    loadChildren: () => import('./modules/empleado/cupos/cupos.module').then( m => m.CuposPageModule)
   }
 ];
 @NgModule({

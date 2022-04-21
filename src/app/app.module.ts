@@ -14,13 +14,14 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { LoginPageModule } from './shared/login/login.module';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 // Implementación de modulos de AngularFire
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
-import { HttpClientModule } from '@angular/common/http';
 
 import { UserModule } from '../app/modules/user/user.module';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';

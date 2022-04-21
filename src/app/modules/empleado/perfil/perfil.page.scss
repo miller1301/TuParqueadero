@@ -31,7 +31,7 @@
 }
 
 // ! Muestra el menu clase que se agrega o remueve a través de una funcion en el Ts
-.active{
+.active6{
     // * Ajusta la posicion de nuestro menu para que sea visible
     left: 0px;
 }
@@ -71,4 +71,13 @@
 .menu-text{
     color: white;
 } 
+
+// ! Imagen del usuario centrada y con un borde redondeado de 50%
+.imgp{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
 

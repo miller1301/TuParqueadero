@@ -1,0 +1,153 @@
+<!-- 
+  !Aplicacion: TuParqueadero
+  !Equipo de trabajo: Miller Nivia, Andres Tibaquicha, Santiago Piraquive, Cristhofer Andres Tibaquicha
+  !Ficha: 2252471
+  !GitHub del proyecto: https://github.com/miller1301/TuParqueadero
+  !Tecnologias implementadas: Angular 13, Ionic 6 , Firebase 
+  !Modulo admin desarrollado por: Cristhofer Tibaquicha
+  !Mas informacion del desarrollador: https://github.com/CristhoferT29 
+-->
+<!--*Header de la configuracion del usuario -->
+<ion-header>
+  <ion-toolbar>
+    <!--*Informacion de la pagina en la cual se encuentra el usuario-->
+    <ion-title>Informacion de la cuenta</ion-title>
+    <!--*Boton que abre el menu del usuario  -->
+    <ion-buttons slot="end">
+      <ion-button (click)="abrir()" id="open6">
+        <ion-icon slot="end" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-back-button slot="start" defaultHref="/admin"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+  <!--*Fin del header-->
+  <!--*Contenido de la vista de configuracion  -->
+<ion-content>
+<ion-grid>
+  <!--*Contenedor Ion-Grid para el manejo del responsive -->
+  <ion-row class="menu menup animate__animated" *ngIf="dataUser"  id="animacion6"> 
+    <ion-col size="12">
+      <div class="menu-header">
+
+        <!--*Informacion del usuario actual -->
+        <div>
+          <img [src]="dataUser.icono"width="120px" alt="Prueba">
+        </div>
+        <h4 class="menu-text">{{dataUser.nombre}}</h4>
+        <p class="menu-text"><small>{{dataUser.perfil}}</small></p>
+      </div>
+      <!--*Fin de la informacion del usuario actual -->
+
+      <!--*Opciones por las cuales el usuario puede navegar -->
+      <div class="content-menu">
+        <!--*Navegacion a la pagina principal -->
+      <ion-item routerLink="/empleado" >
+        <ion-icon slot="start" name="home-outline"></ion-icon><p class="texto-menu">Inicio</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de Gestion Cupos  -->
+      <ion-item routerLink="/cupos" >
+        <ion-icon slot="start" name="car-sport-outline"></ion-icon><p class="texto-menu">Cupos</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de Reservas -->
+      <ion-item routerLink="/reservas" >
+        <ion-icon slot="start" name="calendar-outline"></ion-icon><p class="texto-menu">Reservas</p>
+      </ion-item>
+      <!-- *Navegacion a la pagina Reservas locales -->
+      <ion-item routerLink="/R_local">
+        <ion-icon slot="start" name="today-outline"></ion-icon><p class="texto-menu">Reservas locales</p>
+      </ion-item>
+       <!-- *Navegacion a la pagina Configuracion -->
+       <ion-item routerLink="/perfil">
+        <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu">Configuracion</p>
+      </ion-item>
+      <!-- *Cierre de sesion del usuario -->
+      <ion-item routerLink="#" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu">Cerrar Sesión</p>
+      </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!--*Fin del menu del usuario -->
+  <!--*Contenido de la vista de configuracion -->
+  <!--* Condicional para saber si tenemos informacion que mostrar en caso de que esto sea true mostrara la informacion  -->
+  <ion-row *ngIf="dataUser" >
+    <!-- * Tamaño en el cual se mostrara la informacion del usuario -->
+    <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+      <!-- * Componente que contendra la informacion del usuario -->
+    <ion-card-content class="ion-padding">
+      <!-- * Componente que muestra la imagen del usuario -->
+      <ion-item class="ion-padding-top">
+        <img [src]="dataUser.icono" width="150px" class="imgp">
+      </ion-item>
+      <!-- * Componente que nos permite actualizar la imagen del usuario -->
+      <ion-item>
+        <ion-icon name="create-outline" color="success" slot="end" (click)="actualizarImg()" ></ion-icon>
+      </ion-item>
+      <!-- * Componente que muestra los nombres completos del usuario -->
+      <ion-item>
+        <h3 class="texto" >Nombres y Apellidos:</h3>
+    </ion-item>
+    <ion-item>
+      <ion-text>
+        <p>{{ dataUser.nombre }}</p> 
+      </ion-text>
+      <!-- * Componente que nos permite actualizar el nombre del usuario -->
+      <ion-icon name="create-outline" color="success" slot="end" (click)="actualizarNombre()" ></ion-icon>
+    </ion-item>
+      <!-- * Componente que muestra el correo del usuario -->
+    <ion-item>
+      <p class="texto">Correo:</p>
+    </ion-item>
+      <ion-item>
+        <ion-text>
+          <p>{{ dataUser.correo }}</p>
+        </ion-text>
+      <!-- * Componente que nos muestra un mensaje informativo -->
+        <ion-icon slot="end" color="danger" name="information-circle-outline" (click)="informacion()" ></ion-icon>
+      </ion-item>
+      <!-- * Componente que nos muestra el numero telefonico del usuario -->
+      <ion-item>
+        <p class="texto">Telefono:</p>
+      </ion-item>
+      <ion-item>
+        <ion-text>
+          <p>{{ dataUser.telefono }}</p>
+        </ion-text>
+        <!-- * Componente que nos permite actualizar el telefono del usuario -->
+        <ion-icon name="create-outline" color="success" slot="end" (click)="actualizarTel()" ></ion-icon>
+      </ion-item>
+      <!-- * Componente que nos muestra el rol del usuario  -->
+      <ion-item>
+        <p class="texto">Rol:</p>
+      </ion-item>
+      <ion-item>
+        <ion-text>
+          <p>{{ dataUser.perfil }} </p>
+        </ion-text>
+        <!-- * Componente que nos muestra un mensaje informativo -->
+        <ion-icon slot="end" color="danger" name="information-circle-outline" (click)="informacion()"></ion-icon>
+      </ion-item>
+      <!-- * Componente que nos muestra el Id del usuario -->
+      <ion-item>
+        <p class="texto">Id de la cuenta:</p>
+      </ion-item>
+      <ion-item>
+          <ion-text>
+            <p>{{ dataUser.uid }}</p>
+          </ion-text>
+        <!-- * Componente que nos muestra un mensaje informativo -->
+          <ion-icon slot="end" color="danger" name="information-circle-outline" (click)="informacion()"></ion-icon>
+      </ion-item>
+        </ion-card-content>
+        <!-- * Fin de la informacion del usuario -->
+        <!-- ! Componente que actualiza toda la informacion del usuario "No lo tendremos en cuenta por ahora" -->
+        <!-- <ion-button (click)="actualizar()"  expand="block" size="large" color="success" class="ion-margin-top textEdit ">
+          Actualizar
+        </ion-button> -->
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- * Fin del contenido responsive -->
+</ion-content>
+<!-- * Fin del contenido -->

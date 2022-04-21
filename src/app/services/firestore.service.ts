@@ -25,7 +25,11 @@ export class FirestoreService{
     // * Obtener documentos en base de datos Firestore
     getDoc<Tipo>(path: string, id: string){
         const colleccion = this.firestore.collection<Tipo>(path)
-        return colleccion.doc(id).valueChanges()
+        return colleccion.doc<Tipo>(id).valueChanges()
+    }
+
+    updateDoc(path:string, id: string, data: any){
+        return this.firestore.collection(path).doc(id).update(data)
     }
 
     getDocs<Tipo>(path){
