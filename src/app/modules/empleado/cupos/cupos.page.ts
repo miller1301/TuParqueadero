@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./cupos.page.scss'],
 })
 export class CuposPage implements OnInit {
-  log: any;
 
   constructor(private log:AuthService) { }
 
@@ -37,12 +36,6 @@ export class CuposPage implements OnInit {
   ngOnInit(): void {
   }
 
-
-  // Iniciar sesion-Cerrar sesion
-  logout(){
-    console.log("logout")
-    this.log.logout()
-  }
 
   // Iniciar sesion-Cerrar sesion
   logout(){
