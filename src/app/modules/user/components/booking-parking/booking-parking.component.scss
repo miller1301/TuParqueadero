@@ -48,7 +48,7 @@
 .div-info-parqueo{
     width: 50%;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 1%;
     @media(max-width: 678px){
         width: 90%;
     }
@@ -61,4 +61,8 @@
     @media(max-width: 678px){
         font-size: 12px;
     }
+}
+
+.mat-form-field{
+    width: 100%;
 }
