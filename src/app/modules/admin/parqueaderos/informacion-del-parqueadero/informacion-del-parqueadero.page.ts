@@ -178,4 +178,3 @@ export class InformacionDelParqueaderoPage implements OnInit {
     this.modalController.dismiss();
   }
 }
-

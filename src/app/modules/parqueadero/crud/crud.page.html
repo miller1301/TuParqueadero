@@ -50,7 +50,7 @@
     </ion-row>
     <ion-row>
     <ion-col *ngFor="let usuario of usuarios"  sizeLg="4" offsetLg="4" sizeSm="12"  sizeXs="12" >
-    <ion-item id="item" *ngIf="usuario.perfil == 'trabajador'">
+    <ion-item id="item" *ngIf="usuario.perfil == 'empleado'">
       <ion-item >
       <ion-label class="nombre">{{usuario.nombre}}</ion-label>
       <ion-buttons>
