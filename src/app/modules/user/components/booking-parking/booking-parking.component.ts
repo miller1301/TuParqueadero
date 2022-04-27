@@ -29,12 +29,19 @@ export class BookingParkingComponent implements OnInit {
     this.getDataUser();
 
     this.formReserva = this.formBuilder.group({
+      date: ['', [Validators.required]],
       time: ['', [Validators.required]],
       hour: ['', [Validators.required]],
       vehicle: ['', [Validators.required]],
       placa: ['', [Validators.required]],
       marca: ['', [Validators.required]]
     });
+  }
+
+  sendData(){
+    let date = this.formReserva.value.date.toLocaleDateString();
+    console.log(date);
+    console.log(this.formReserva.value);
   }
 
   // Cerrar modal
@@ -66,6 +73,7 @@ export class BookingParkingComponent implements OnInit {
       img: this.parking.data.img,
       direccion: this.parking.data.direccion,
       telefono: this.parking.data.telefono,
+      dateBooking: this.formReserva.value.date.toLocaleDateString(),
       timeParking: this.formReserva.value.time,
       hourArrive: this.formReserva.value.hour,
       typeVehicle: this.formReserva.value.vehicle,

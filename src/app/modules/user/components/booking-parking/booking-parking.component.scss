@@ -48,13 +48,18 @@
 .div-info-parqueo{
     width: 50%;
     margin: auto;
-    margin-top: 1%;
+    margin-top: 5%;
     @media(max-width: 678px){
         width: 90%;
     }
     img{
         width: 10%;
     }
+}
+
+:host ::ng-deep .input-hour .mat-form-field-infix{
+    display: flex;
+    border-top: 0px;
 }
 
 .input-info::placeholder{

@@ -34,6 +34,7 @@
     "cordova-android": "10.1.1",
     "firebase": "^9.4.0",
     "mapbox-gl": "^2.7.0",
+    "ngx-material-timepicker": "^5.5.3",
     "pdfmake": "^0.2.4",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
