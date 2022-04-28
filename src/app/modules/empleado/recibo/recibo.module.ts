@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ContadorPageRoutingModule } from './contador-routing.module';
+import { ReciboPageRoutingModule } from './recibo-routing.module';
 
-import { ContadorPage } from './contador.page';
+import { ReciboPage } from './recibo.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ContadorPageRoutingModule
+    ReciboPageRoutingModule
   ],
-  declarations: [ContadorPage]
+  declarations: [ReciboPage]
 })
-export class ContadorPageModule {}
+export class ReciboPageModule {}

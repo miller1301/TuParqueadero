@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: () => import('../../agre-info-auto/agre-info-auto.module').then( m => m.AgreInfoAutoPageModule)
   },
   {
-    path: 'contador',
-    loadChildren: () => import('../../contador/contador.module').then( m => m.ContadorPageModule)
-  },
-  {
     path: 'cupos',
     loadChildren: () => import('../../cupos/cupos.module').then( m => m.CuposPageModule)
   },

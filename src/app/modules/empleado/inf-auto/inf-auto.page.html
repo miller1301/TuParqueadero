@@ -20,6 +20,11 @@
   <ion-grid>
     <ion-row>
         <ion-col id="cuest" sizeLg="4" offsetLg="4" sizeSm="12" sizeXs="12">
+          <!-- Item Hora -->
+          <ion-item>
+            <ion-label position="floating">Hora de Ingreso</ion-label>
+            <ion-input type="time" placeholder="" ></ion-input>
+          </ion-item>
           <!-- Item Placa -->
           <ion-item>
             <ion-label position="floating">Placa</ion-label>
@@ -42,10 +47,14 @@
             </ion-item>
             <!-- Subir Fotografia -->
             <h1 class="ion-text-center" id="titulo2">Fotografia-estado del automovil </h1>
-            <img src="../../../../assets/carro.png" alt="">
+            
             <!-- Novedad del automovil -->
-          <ion-button routerLink="/empleado/novedad"  expand="block" color="primary" mode="ios" class="ion-margin-top">
+          <ion-button routerLink="/empleado/novedad"  expand="block" color="danger" mode="ios" class="ion-margin-top">
             Novedad
+          </ion-button>
+
+          <ion-button routerLink="/recibo"  expand="block" color="primary" mode="ios" class="ion-margin-top">
+             Sin Novedad
           </ion-button>
           
           

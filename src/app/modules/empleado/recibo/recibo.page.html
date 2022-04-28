@@ -1,0 +1,30 @@
+<!-- Pagina web y aplicacion movil:Tuparqueadero
+Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago piraquive
+Ficha 2252471 ADSI
+Redes sociales: Tuparqueadero-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recibo de Pago</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/novedad"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding-horizontal">
+<ion-grid>
+
+  <ion-item>
+    <ion-label position="floating">Hora de Salida</ion-label>
+    <ion-input type="time" placeholder="" ></ion-input>
+  </ion-item>
+  
+
+
+<ion-button (click)="createPdf()">
+  Generar recibo
+</ion-button>
+
+
+</ion-grid>
+</ion-content>

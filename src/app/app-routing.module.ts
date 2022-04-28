@@ -49,7 +49,12 @@ const routes: Routes = [
   {
     path: 'empleado',
     loadChildren: () => import('./modules/empleado/empleado/home/home.module').then( m => m.HomeComponentModule)
+  },
+  {
+    path: 'recibo',
+    loadChildren: () => import('./modules/empleado/recibo/recibo.module').then( m => m.ReciboPageModule)
   }
+
 ];
 @NgModule({
   imports: [
