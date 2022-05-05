@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cambio-de-rol',
@@ -11,7 +12,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class CambioDeRolPage implements OnInit {
 
 
-  constructor(private log : AuthService, private cambio:ActivatedRoute, private firebase:FirestoreService ) { }
+  constructor(private log : AuthService, private cambio:ActivatedRoute, private firebase:FirestoreService, private modalController: ModalController ) { }
+
+  @Input() Parqueadero;
 
   usuarioId;
   dataUser;
@@ -24,10 +27,10 @@ export class CambioDeRolPage implements OnInit {
   ngOnInit() {
     this.usuarioId = this.cambio.snapshot.paramMap.get('id')
     this.parqueaderoId = this.cambio.snapshot.paramMap.get('id')
-    this.firebase.getDoc('Usuarios', this.usuarioId).subscribe(res => {
+    this.firebase.getDoc('Usuarios', this.Parqueadero.data.idUser).subscribe(res => {
     this.dataUser = res;
     })
-    this.firebase.getDoc('Parqueaderos', this.parqueaderoId).subscribe(res =>{
+    this.firebase.getDoc('Parqueaderos', this.Parqueadero.IdParqueadero).subscribe(res =>{
       this.dataParqueadero = res
     })
 
@@ -47,16 +50,17 @@ export class CambioDeRolPage implements OnInit {
   
 
   abrir(){
-     const abrirM = document.getElementById('open5');
-     abrirM.addEventListener('click', function(){
+     const abrirM = ()=>{
       document.getElementById('animacion5').classList.toggle('active5');
       document.getElementById('animacion5').classList.toggle('animate__bounceInLeft');
-     })
+     }
+
+     abrirM()
   }
 
   actualizarRol(){
     const path = 'Usuarios';
-    const id = this.usuarioId;
+    const id = this.Parqueadero.data.idUser;
 
     console.log("Usuario", this.valor)
     const actualizar = {
@@ -64,5 +68,8 @@ export class CambioDeRolPage implements OnInit {
     }
     this.firebase.updateDoc(path, id, actualizar);
 
+  }
+  cerrar(){
+    this.modalController.dismiss();
   }
 }

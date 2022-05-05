@@ -11,29 +11,60 @@ Redes sociales: Tuparqueadero-->
     <ion-title>Empleado del parqueadero</ion-title>
   </ion-toolbar> 
 </ion-header>
-  <!-- Menu de navegacion -->
-  <ion-content>
-    <ion-menu side="start" menuId="first" contentId="second">
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <!-- <ion-list> -->
-          <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
-          <ion-item routerLink="/empleado/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
-          <ion-item routerLink="/empleado/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
-          <ion-item routerLink="/empleado/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
-          <ion-item (click)="logout()"><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
-        <!-- </ion-list> -->
-      </ion-content>
-    </ion-menu>
 
+<ion-buttons slot="end">
+  <ion-button (click)="abrir()"  id="open">
+    <ion-icon slot="end" name="menu-outline" ></ion-icon>
+  </ion-button>
+</ion-buttons>
       
     <!-- Pagina principal del rol empleado -->
     <ion-content class="ion-padding-horizontal">
       <ion-grid>
+         <!--* Menu del usuario  -->
+  <ion-row class="menu menup animate__animated" *ngIf="dataUser"  id="animacion"> 
+    <ion-col size="12">
+      <div class="menu-header">
+
+        <!--*Informacion del usuario actual -->
+        <div>
+          <img [src]="dataUser.icono"width="120px" alt="Prueba">
+        </div>
+        <h4 class="menu-text">{{dataUser.nombre}}</h4>
+        <p class="menu-text"><small>{{dataUser.perfil}}</small></p>
+      </div>
+      <!--*Fin de la informacion del usuario actual -->
+
+      <!--*Opciones por las cuales el usuario puede navegar -->
+      <div class="content-menu">
+        <!--*Navegacion a la pagina principal -->
+      <ion-item routerLink="/empleado" >
+        <ion-icon slot="start" name="home-outline"></ion-icon><p class="texto-menu">Inicio</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de Gestion Cupos  -->
+      <ion-item routerLink="/empleado/cupos" >
+        <ion-icon slot="start" name="car-sport-outline"></ion-icon><p class="texto-menu">Cupos</p>
+      </ion-item>
+      <!--*Navegacion a la pagina de Reservas -->
+      <ion-item routerLink="/empleado/reservas" >
+        <ion-icon slot="start" name="calendar-outline"></ion-icon><p class="texto-menu">Reservas</p>
+      </ion-item>
+      <!-- *Navegacion a la pagina Reservas locales -->
+      <ion-item routerLink="/empleado/R_local">
+        <ion-icon slot="start" name="today-outline"></ion-icon><p class="texto-menu">Reservas locales</p>
+      </ion-item>
+       <!-- *Navegacion a la pagina Configuracion -->
+       <ion-item routerLink="/empleado/perfil">
+        <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu">Configuracion</p>
+      </ion-item>
+      <!-- *Cierre de sesion del usuario -->
+      <ion-item routerLink="#" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu">Cerrar Sesión</p>
+      </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!--*Fin del menu del usuario -->
       <ion-row>
         <ion-col sizesm="12">
         <div class="ion-text-center">

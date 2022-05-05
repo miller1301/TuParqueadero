@@ -14,17 +14,18 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { LoginPageModule } from './shared/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 // Implementación de modulos de AngularFire
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
-import { HttpClientModule } from '@angular/common/http';
-
 import { UserModule } from '../app/modules/user/user.module';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { ParqueaderoPageModule } from './modules/parqueadero/parqueadero.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { ParqueaderoPageModule } from './modules/parqueadero/parqueadero.module'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -13,10 +13,13 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "~13.0.0",
+    "@angular/cdk": "^13.3.4",
     "@angular/common": "~13.0.0",
     "@angular/core": "~13.0.0",
     "@angular/fire": "^7.2.1",
     "@angular/forms": "~13.0.0",
+    "@angular/material": "^13.3.4",
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
@@ -34,6 +37,7 @@
     "pdfmake": "^0.2.4",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

@@ -35,6 +35,11 @@
     }
 }
 
+.div-img-park{
+    display: flex;
+    justify-content: center;
+}
+
 .div-info{
     font-size: 20px;
     img{
@@ -60,5 +65,13 @@
     background-color: #1A97E8;
     @media(min-width: 679px){
         padding: 1% 8%;
+    }
+}
+
+// Título información
+.title-info{
+    @media(max-width: 678px){
+        font-size: 15px;
+        margin-top: 5px;
     }
 }

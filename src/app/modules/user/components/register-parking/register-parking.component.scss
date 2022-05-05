@@ -1,0 +1,38 @@
+::ng-deep body{
+    --ion-background-color: #FFF !important
+}
+
+.div-back{
+    cursor: pointer;
+}
+
+.title-inscribe{
+    color: #1A97E8;
+    font-size: 35px;
+    @media(max-width: 678px){
+        font-size: 17px;
+    }
+}
+
+.div-btn-confirmar{
+    button{
+        background-color: #1A97E8;
+    }
+}
+
+.div-info-parqueo{
+    @media(min-width: 679px){
+        padding: 5%;
+        padding-top: 2%;
+    }
+    .label-docs{
+        color: #1A97E8;
+        text-align: left;
+        float: left;
+    }
+    .label-docs:nth-child(1){
+        @media(max-width: 678px){
+            font-size: 15px;
+        }
+    }
+}

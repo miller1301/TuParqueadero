@@ -13,7 +13,5 @@ export class ParqueaderoPage implements OnInit {
   ngOnInit() {
   }
 
-  
-  
 
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AuthService } from 'src/app/services/auth.service';
+import { ModalController } from '@ionic/angular';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
  
@@ -26,13 +27,17 @@ export class InformacionDelParqueaderoPage implements OnInit {
   // ! Propiedad que guarda la informacion del usuario actual
   dataUser;
 
+  @Input() arreglo;
+
   constructor(
     // * Llamada a la clase ActivatedRoute que nos permite obtener el id que se le paso como paremetro 
     private activatedRoute:ActivatedRoute,
     // *  LLamando al servicio que se utilizara para el manejo de los datos
     private firebase: FirestoreService, 
     // * Llamando al servicio que se utilizara para los metodos de Autenticion o manejo de la sesion del usuario
-    private log : AuthService 
+    private log : AuthService,
+
+    private modalController : ModalController
   ) { }
 
   // ! Creacion del metodo para crear los informes de los usuarios en PDF
@@ -94,6 +99,9 @@ export class InformacionDelParqueaderoPage implements OnInit {
   }
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
+     
+
+
     // * Creamos una variable con el valor del objeto Date
     const data = new Date
     // * Luego le pasamos ese valor a la propiedad "data" para luego implementarla en nuestro Pdf
@@ -105,9 +113,12 @@ export class InformacionDelParqueaderoPage implements OnInit {
     // ! Id del parqueadero y usuario que obtenemos atraves de la implementacion de la clase ActivatedRoute y guardamos en la propiedad idParqueadero
     this.idParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
     // * Metodo para obtener la informacion del usuario recibe como parametros el path y el id del usuario luego guardamos la respuesta en la propiedad infoUser
-    this.firebase.getDoc(path, this.idParqueadero).subscribe(res => this.infoUser = res)
+    this.firebase.getDoc(path, this.arreglo.data.idUser).subscribe(res => this.infoUser = res)
     // * Metodo para obtener la informacion del parqueadero recibe como parametro el path y el id del parqueadero luego guardamos la respuesta en la propiedad infoPar
-    this.firebase.getDoc(path2, this.idParqueadero).subscribe( res => this.infoPar = res)
+    this.firebase.getDoc(path2, this.arreglo.Idparqueadero).subscribe((res: any) => {
+      this.infoPar = res
+    
+    })
     // * Metodo para obtener el Id del usuario actual 
     this.log.getUid().then( res => {
       // ! Propiedad que guarda la respuesta del metodo anterior
@@ -118,20 +129,23 @@ export class InformacionDelParqueaderoPage implements OnInit {
       this.dataUser = res
       });
     });
+
+    this.activo = this.arreglo.data.estado;
+
+    console.log(this.arreglo.data.estado)
   }
   // ! Metodo que muestra o oculta el menu del usuario
   abrir(){
     // * Constante que obtiene el elemento por el id "open2" para luego asignarle un evento
-    const abrirM = document.getElementById('open2');
-    // * Se le asigna un evento click al elemento que obtuvimos anteriormente el cual ejecutara una funcion
-    abrirM.addEventListener('click', function(){
-    // * La funcion a ejecutar es la siguiente
+    const abrirM = ()=>{
     // ! Se obtiene el elemento por id "animacion2" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
     // * La clase "active2" mostrara el menu 
     document.getElementById('animacion2').classList.toggle('active2');
     // * La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
     document.getElementById('animacion2').classList.toggle('animate__bounceInLeft');
-    });
+    }
+
+    abrirM()
   }
   // * Funcion que consume el servicio de Autenticacion y le permite al usuario cerrar la sesion
  logout(){
@@ -139,15 +153,28 @@ export class InformacionDelParqueaderoPage implements OnInit {
  }
 
   // ! Propiedades por defecto del boton para indicar si el estado del parqueadero esta activo o inactivo
-  activo: string = 'Activo';
-  color = 'success';
+  activo;
+  color = 'primary';
   // ! Funcion que cambia el valor de las propiedades de Activo a Inactivo y viceversa junto con su color respectivo por ahora no genera cambios en la base de datos
   onClick(){
-    this.activo === 'Activo' ?
-    (this.activo = 'Inactivo', this.color = 'danger')
-      : 
-    (this.activo = 'Activo', this.color = 'success'); 
+    if( this.activo == 'Activo'){
+      this.activo = 'Inactivo'
+      this.color = 'danger'
+      const data = {
+        estado: 'Inactivo'
+      }
+      this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
+    }
+    else if( this.activo == 'Inactivo'){
+      this.activo = 'Activo'
+      this.color = 'success'
+      const data = {
+        estado: 'Activo'
+      }
+      this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
+    }
   }
-
-  
+  cerrar(){
+    this.modalController.dismiss();
+  }
 }

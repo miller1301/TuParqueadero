@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Please wait...',
-      duration: 1000
+      duration: 1500
     });
     await loading.present();
   }

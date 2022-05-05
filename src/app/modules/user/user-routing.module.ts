@@ -1,37 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { UserPage } from './user.page';
+import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
+import { ParkingReadyComponent } from './components/parking-ready/parking-ready.component';
+import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UserPage
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },  {
-    path: 'reserv-map',
-    loadChildren: () => import('./reserv-map/reserv-map.module').then( m => m.ReservMapPageModule)
-  },
-  {
-    path: 'inscripcion',
-    loadChildren: () => import('./inscripcion/inscripcion.module').then( m => m.InscripcionPageModule)
-  },
-  {
-    path: 'insc2',
-    loadChildren: () => import('./insc2/insc2.module').then( m => m.Insc2PageModule)
-  },
-  {
-    path: 'rservas',
-    loadChildren: () => import('./rservas/rservas.module').then( m => m.RservasPageModule)
-  }
-
+    {
+        path: 'user',
+        component: HomeComponent
+    },
+    {
+        path: 'llegada',
+        component: ParkingReadyComponent
+    },
+    {
+        path: 'register-parking',
+        component: RegisterParkingComponent
+    },
+    {
+        path: 'mis-reservas',
+        component: CrudReservasComponent
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class UserPageRoutingModule {}
+
+
+export class UserRoutingModule {}

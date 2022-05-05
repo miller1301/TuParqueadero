@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { FirestoreService } from 'src/app/services/firestore.service';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AuthService } from 'src/app/services/auth.service';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
  
 @Component({
@@ -57,8 +54,6 @@ export class InformacionUsuarioPage implements OnInit {
       }
     }
 
-    const pdf = pdfMake.createPdf(pdfDefiniton);
-    pdf.download();
   }
 
   constructor( private activaredRouter: ActivatedRoute, private firebase:FirestoreService, private log : AuthService ) { }
@@ -84,12 +79,12 @@ export class InformacionUsuarioPage implements OnInit {
     this.log.logout()
   }
   abrir(){
-    const abrirM = document.getElementById('open3');
-    abrirM.addEventListener('click', function(){
+    const abrirM = ()=>{
      document.getElementById('animacion3').classList.toggle('active3');
      document.getElementById('animacion3').classList.toggle('animate__bounceInLeft')
 
-    })
+    }
+    abrirM()
  }
 
 }

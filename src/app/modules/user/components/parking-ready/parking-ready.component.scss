@@ -1,0 +1,82 @@
+::ng-deep body{
+    --ion-background-color: #FFF !important
+}
+
+::ng-deep .ion-page{
+    justify-content: start;
+    align-items: center;
+}
+
+.title-vehiculo-parqueado{
+    font-size: 35px;
+    font-weight: bold;
+    color: #1A97E8;
+    margin-top: 10%;
+    @media(max-width: 678px){
+        font-size: 25px;
+        margin-top: 15%;
+    }
+}
+
+.div-hora-llegada{
+    display: grid;
+    align-items: center;
+    align-content: space-evenly;
+    justify-content: center;
+    margin-top: 5%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    border: solid 5px #1A97E8;
+    text-align: center;
+    box-shadow: 0px 0px 12px 3px gray;
+    h1{
+        color: grey;
+        font-size: 35px;
+    }
+    p{
+        font-size: 80px;
+        color: #1A97E8;
+        font-weight: bold;
+    }
+    @media(max-width: 678px){
+        width: 260px;
+        height: 260px;
+        margin-top: 20%;
+        h1{
+            font-size: 25px;
+        }
+        p{
+            font-size: 60px;
+        }
+    }
+}
+
+// Contenedor botón pagar
+.div-btn-pagar{
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    ion-button{
+        width: 100%;
+        height: 100%;
+        --border-radius: 50px;
+    }
+    @media(min-width: 678px){
+        height: 8%;
+        bottom: 25px;
+        ion-button{
+            height: 100%;
+            width: 22%;
+            font-size: 18px;
+        }
+    }
+}
+
+@media(max-width: 678px){
+    app-tu-parq-logo{
+        display: none;
+    }
+}

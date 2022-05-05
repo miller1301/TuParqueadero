@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ParqueaderosPage
   },
   {
-    path: 'informacion-del-parqueadero/:id',
+    path: 'informacion-del-parqueadero',
     loadChildren: () => import('./informacion-del-parqueadero/informacion-del-parqueadero.module').then( m => m.InformacionDelParqueaderoPageModule)
   },
   {

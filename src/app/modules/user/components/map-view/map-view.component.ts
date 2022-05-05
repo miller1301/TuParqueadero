@@ -21,7 +21,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   constructor( 
     private placesService: PlacesService, 
-    private mapService: MapsService, 
+    private mapService: MapsService,
     private firestoreService: FirestoreService, 
     private directionsApi: DirectionsApiClient,
     public modalController: ModalController
@@ -54,6 +54,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         <span>Estoy en este lugar del mundo</span>
       `);
 
+
     // Implementación del marcador
     new Marker({ color: 'red' })
       .setLngLat( this.placesService.userLocation )
@@ -71,7 +72,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   getParkings(document: string){
     this.firestoreService.getAllDocs(document).subscribe( parqueaderos => {
       parqueaderos.forEach( (parkData: any) => {
-        this.parqueaderosDisponibles.push(parkData.payload.doc.data());
+        console.log(parkData);
+        this.parqueaderosDisponibles.push({
+          id: parkData.payload.doc.id,
+          data: parkData.payload.doc.data()
+        });
       });
       console.log(this.parqueaderosDisponibles);
       this.createMarkersFromParkings()
@@ -88,20 +93,20 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       // Crear popup
       const popup = new Popup()
         .setHTML(`
-          <h1>${parking.nameParqueadero}</h1>
-          <button class="btn btn-sm btn-primary mt-3" id="btn-ruta">Direcciones</button>
+          <h1>${parking.data.nameParqueadero}</h1>
+          <button class="btn btn-sm btn-primary mt-3" id="btn-ruta">Información</button>
         `)
         // Popup abierto
         .on('open', () => {
           console.log([Number(latitud), Number(longitud)]);
           document.getElementById('btn-ruta').addEventListener('click', () => {
-            this.presentModal();
+            this.presentModal(parking);
           });
         });
 
       // Crear marcador 
       const newMarker = new Marker({color: 'orange'})
-        .setLngLat([parking.longitud, parking.latitud])
+        .setLngLat([parking.data.longitud, parking.data.latitud])
         .setPopup( popup )
         .addTo( this.mapService.map );
 
@@ -113,11 +118,15 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Abrir modal info parqueadero
-  async presentModal() {
+  // Abrir modal info parqueadero y enviar datos de parqueadero
+  async presentModal(parking) {
+    console.log(parking);
     const modal = await this.modalController.create({
       component: InfoParkingComponent,
-      cssClass: 'modal-info-parking'
+      cssClass: 'modal-info-parking',
+      componentProps: {
+        parking
+      }
     });
     return await modal.present();
   }

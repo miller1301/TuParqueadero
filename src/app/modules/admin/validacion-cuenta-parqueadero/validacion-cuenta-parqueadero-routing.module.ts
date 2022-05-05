@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ValidacionCuentaParqueaderoPage
   },
   {
-    path: 'cambio-de-rol/:id',
+    path: 'cambio-de-rol',
     loadChildren: () => import('../validacionCuentaParqueadero/cambio-de-rol/cambio-de-rol.module').then( m => m.CambioDeRolPageModule)
   }
 ];

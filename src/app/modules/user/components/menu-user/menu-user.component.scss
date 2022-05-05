@@ -1,0 +1,33 @@
+::ng-deep #background-content{
+    background: #000;
+}
+
+// #userMenu{
+//     z-index: -1;
+// }
+
+ion-button{
+    position: fixed;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+}
+
+.img-menu-user{
+    width: 20%;
+    margin: 5%;
+}
+
+ion-title{
+    @media(max-width: 678px){
+        font-size: 17px;
+    }
+}
+
+ion-item{
+    cursor: pointer;
+}
+
+.img-icon{
+    width: 10%;
+}

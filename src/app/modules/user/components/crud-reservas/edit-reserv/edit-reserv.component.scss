@@ -1,0 +1,77 @@
+// Modal ionic
+::ng-deep ion-modal {
+    --ion-background-color: #FFFFFF;
+    --ion-text-color: #000000;
+    --border-radius: 30px;
+    --width: 75%;
+    --height: 95%;
+    @media(max-width: 678px){
+        --width: 100%;
+        --height: 100%;
+    }
+}
+
+.img-logo-parking{
+    width: 7%;
+    @media(max-width: 678px){
+        width: 20%;
+    }
+}
+
+.name-parking{
+    @media(max-width: 678px){
+        font-size: 16px;
+    }
+}
+
+.div-informacion-parking{
+    @media(max-width: 678px){
+        padding: 0% 5%;
+    }
+}
+
+.div-info{
+    font-size: 15px;
+    img{
+        width: 16%;
+    }
+    @media(max-width: 678px){
+        font-size: 12px;
+        margin-bottom: 3%;
+        img{
+            width: 10%;
+        }
+    }
+}
+
+.div-btn-confirmar{
+    margin-top: 5%;
+    @media(max-width: 678px){
+        margin-top: 2%;
+    }
+}
+
+.btn-confirmar{
+    background-color: #1A97E8;
+    @media(min-width: 679px){
+        padding: 1% 8%;
+    }
+}
+
+.div-info-parqueo{
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    @media(max-width: 678px){
+        width: 90%;
+    }
+    img{
+        width: 10%;
+    }
+}
+
+.input-info::placeholder{
+    @media(max-width: 678px){
+        font-size: 12px;
+    }
+}

@@ -1,19 +1,20 @@
 <!-- Contenedor de busqueda de lugares -->
 <div class="modal-places">
-<!-- Botón abrir modal -->
-<ion-button id="trigger-button">Seleccionar destino</ion-button>
-<!-- Sheet Modal -->
-<ion-modal trigger="trigger-button" [isOpen]="false" [breakpoints]="[0.1, 0.5, 1]" [initialBreakpoint]="0.5">
-  <ng-template>
-    <ion-content>
-      <div class="p-4 text-center">
-        <label class="text-selecciona mb-2 mt-2">Selecciona tu destino</label>
-        <input #txtQuery (keyup)="onQueryChange(txtQuery.value)" type="text" class="form-control" placeholder="Buscar lugar...">
-      </div>
-      <div class="div-results">
-        <app-search-results></app-search-results>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+  <!-- Botón abrir modal -->
+  <ion-button id="trigger-button">Seleccionar destino</ion-button>
+  <!-- Sheet Modal -->
+  <ion-modal trigger="trigger-button" [isOpen]="false" [breakpoints]="[0.1, 0.5, 1]" [initialBreakpoint]="0.5">
+    <ng-template>
+      <ion-content>
+        <div class="p-4 text-center">
+          <label class="text-selecciona mb-2 mt-2">Selecciona tu destino</label>
+          <input #txtQuery (keyup)="onQueryChange(txtQuery.value)" type="text" class="form-control"
+            placeholder="Buscar lugar...">
+        </div>
+        <div class="div-results">
+          <app-search-results></app-search-results>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </div>

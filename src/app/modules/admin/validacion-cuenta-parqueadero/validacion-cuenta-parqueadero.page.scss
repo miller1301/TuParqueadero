@@ -10,7 +10,18 @@
 }
 
 .imgp1{
-    margin: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 100%;
+    width: 100%;
+    // image-rendering: auto;
+    // image-rendering: crisp-edges;
+    // image-rendering: pixelated;
+
+       
+    // image-rendering: inherit;
+    // image-rendering: initial;
+    image-rendering: unset;
 }
 
 .imgp2{
@@ -79,4 +90,15 @@
 
 .textoB{
     font-size: 17px;
+}
+
+ion-modal {
+    width: 800px;
+    height: 600px;
+    border: 2px solid red;
+}
+
+::ng-deep ion-modal{
+    --width: 85vw;
+    --height: 90vh;
 }

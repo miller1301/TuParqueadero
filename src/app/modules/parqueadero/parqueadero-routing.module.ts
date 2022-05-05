@@ -33,12 +33,6 @@ const routes: Routes = [
     loadChildren: () => import('./reservas/reserva/reserv/reserv.module').then( m => m.ReservPageModule)
   }
   
-  
-
-
-
-  
-
 ];
 
 @NgModule({

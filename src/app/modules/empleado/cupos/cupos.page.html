@@ -24,9 +24,9 @@
     <ion-content>
       <!-- <ion-list> -->
         <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
-        <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
-        <ion-item routerLink="/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
-        <ion-item routerLink="/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
+        <ion-item routerLink="/empleado/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+        <ion-item routerLink="/empleado/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+        <ion-item routerLink="/empleado/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
         <ion-item (click)="logout()"><ion-icon name="log-out-outline" class="ion-padding-horizontal" detail="true"></ion-icon> Cerrar sesión</ion-item>
       <!-- </ion-list> -->
     </ion-content>
@@ -43,9 +43,9 @@
     
       <!-- <ion-list> -->
         <ion-item routerLink="/empleado" ><ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Parqueadero</ion-item>
-        <ion-item routerLink="/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
-        <ion-item routerLink="/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
-        <ion-item routerLink="/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
+        <ion-item routerLink="/empleado/cupos"><ion-icon name="car-sport" class="ion-padding-horizontal"></ion-icon> Cupos</ion-item>
+        <ion-item routerLink="/empleado/R_local" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas locales </ion-item>
+        <ion-item routerLink="/empleado/reservas" ><ion-icon name="people" class="ion-padding-horizontal"></ion-icon> Reservas</ion-item>
       <!-- </ion-list> -->
     </ion-content>
   </ion-menu>
@@ -112,14 +112,31 @@
             </p>
           </ion-col>
         </ion-row>
-        
-       <!-- Se Actulizaran los cupos -->
+
+        <!-- Contador de cupos en el parqueadero -->
         <ion-row>
-          <ion-col id="col1" sizeLg="2" offsetLg="5" sizeSm="12" sizeXs="12" > 
-            <ion-button routerLink="/cupos2" id="boton1"  expand="block" color="primary" mode="ios" class="ion-margin-top">
-              Actualizar
-            </ion-button>
-          </ion-col>
+          <ion-col  class="ion-justify-content-center position-relative" sizeLg="6" offsetLg="3" sizeSm="4" offsetSm="5" sizeXs="12">
+          <p id="titulo2"> 
+            Contador de Automoviles
+          </p>
+          
+
+          <!-- Boton aumentar numero al dar clik -->
+          
+          <ion-button id="boton1"  (click)=" numero = numero + 1;" expand="DEFAULT SIZE" color="primary" mode="ios" class="ion-text-center">
+            <ion-icon id="icono" name="add-sharp"></ion-icon>              
+          </ion-button>
+      
+          <!-- Mostrara el numero resultante -->
+          <span id="numcontador"> {{ numero }} </span>
+            
+              
+          <!-- Boton disminuir numero al dar click -->
+          <ion-button id="boton1" (click)=" numero = numero - 1;"  expand="DEFAULT SIZE" color="danger" mode="ios" class="ion-text-center">
+            <ion-icon id="icono" name="remove-sharp"></ion-icon>
+          </ion-button>
+        
+        </ion-col>
         </ion-row>
         </ion-col>
 </ion-grid>

@@ -7,70 +7,48 @@
   <div class="text-center">
     <img class="img-logo-parking" src="../../../../../assets/img/user/logo-parqueadero.png" width=""
       alt="Logo parqueadero">
-    <h1 class="name-parking">Parqueadero público Mosquera</h1>
+    <h1 class="name-parking">{{ parking.data.nameParqueadero }}</h1>
   </div>
 
   <!-- Imagenes del parqueadero en Desktop -->
-  <div class="slide-img-parking desktop p-5 pt-4 pb-2">
+  <div class="slide-img-parking desktop p-5 pt-4 pb-2" style="width: 25vw; margin: auto;">
     <div class="row">
-      <div class="col-3">
-        <img class="imgs-parking" src="https://www.elcarrocolombiano.com/wp-content/uploads/2021/11/20211130-Tarifas-Parqueadero-Bogota%CC%81-01-1.jpg" />
+      <div *ngFor="let img of parking.data.images" class="col div-img-park">
+        <img width="100%" class="imgs-parking" src="{{ img }}" />
       </div>
-      <div class="col-3">
-        <img class="imgs-parking" src="https://cr00.epimg.net/radio/imagenes/2022/01/09/bogota/1641737927_519258_1641738404_noticia_normal.jpg" />
-      </div>
-      <div class="col-3">
-        <img class="imgs-parking" src="https://www.patrimonios.co/images/contenido/Novedades/parqueadero.jpg" />
-      </div>
-      <div class="col-3">
-        <img class="imgs-parking" src="https://www.semana.com/resizer/f2vSjpEu-ZKts3OOaVqFHgXEC_Y=/1200x675/filters:format(jpg):quality(50)//cloudfront-us-east-1.images.arcpublishing.com/semana/TVVRKO7C2JDH3LZ7DHRHOUG6OE.png" />
-      </div>
-
     </div>
   </div>
 
   <!-- Imagenes del parqueadero en Mobile -->
   <div class="slide-img-parking mobile">
     <ion-slides [pager]="true">
-      <ion-slide>
+      <ion-slide *ngFor="let img of parking.data.images">
         <div class="slide">
-          <img class="imgs-parking" src="https://www.elcarrocolombiano.com/wp-content/uploads/2021/11/20211130-Tarifas-Parqueadero-Bogota%CC%81-01-1.jpg" />
+          <img class="imgs-parking" src="{{ img }}" />
         </div>
-      </ion-slide>
-
-      <ion-slide>
-        <img class="imgs-parking" src="https://cr00.epimg.net/radio/imagenes/2022/01/09/bogota/1641737927_519258_1641738404_noticia_normal.jpg" />
-      </ion-slide>
-
-      <ion-slide>
-        <img class="imgs-parking" src="https://www.patrimonios.co/images/contenido/Novedades/parqueadero.jpg" />
-      </ion-slide>
-
-      <ion-slide>
-        <img class="imgs-parking" src="https://www.semana.com/resizer/f2vSjpEu-ZKts3OOaVqFHgXEC_Y=/1200x675/filters:format(jpg):quality(50)//cloudfront-us-east-1.images.arcpublishing.com/semana/TVVRKO7C2JDH3LZ7DHRHOUG6OE.png" />
       </ion-slide>
     </ion-slides>
   </div>
 
   <!-- Info parqueadero -->
-  <h1 class="text-center">Información</h1>
+  <h1 class="text-center title-info">Información</h1>
   <hr>
 
   <div class="row justify-content-center div-informacion-parking">
     <div class="col-sm-12 col-lg-3 div-info">
       <img class="m-1" src="../../../../../assets/img/user/icon-location.png"alt="icono ubicación">
-      Calle 100a #45 - 20
+      {{ parking.data.direccion }}
     </div>
     <div class="col-sm-12 col-lg-3 div-info">
       <img class="m-1" src="../../../../../assets/img/user/icon-reloj.png" alt="icono reloj">
-      Abierto 24 horas
+      {{ parking.data.horario }}
     </div>
     <div class="col-sm-12 col-lg-3 div-info">
       <img class="m-1 mb-0" src="../../../../../assets/img/user/icon-telephone.png" alt="icono telefono">
-      3025971943
+      {{ parking.data.telefono }}
     </div>
   </div>
   <div class="text-center div-btn-reservar">
-    <button class="btn btn-reservar btn-lg text-white">Reservar</button>
+    <button class="btn btn-reservar btn-lg text-white" (click)="bookingModal()">Reservar</button>
   </div>
 </div>
