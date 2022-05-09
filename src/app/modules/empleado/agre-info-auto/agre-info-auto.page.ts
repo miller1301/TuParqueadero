@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Reserva } from 'src/app/modelos/r-local';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 
 
@@ -11,10 +13,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agre-info-auto.page.scss'],
 })
 export class AgreInfoAutoPage implements OnInit {
+  ReservasL:Reserva[]=[];
 
-  constructor() { }
+  id:string;
+  datos:Reserva={
+   Hora_de_ingreso: null,
+   Placa: null,
+   Modelo: null,
+   Marca: null,
+   Nombre: null,
+   telefono: null,
+   Correo: null,
+   img: 'https://www.marcali.com/wp-content/uploads/2020/07/carros-que-consumen-menos-gasolina-1280x720.jpg',
+   novedad: null
+  }
+  constructor(private firestore:FirestoreService) {
+
+    
+   }
 
   ngOnInit() {
+  }
+
+  C_reserva( ){
+    this.firestore.createDocIdDefault('ReservasL',this.datos).then(res=>{
+      console.log(res);
+    }) .catch(err=>{
+      console.log("error",err)
+    });
+    
+ 
   }
 
 }

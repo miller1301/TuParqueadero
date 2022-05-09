@@ -20,9 +20,18 @@ export class ReciboPage implements OnInit {
     const pdfDefinition: any = {
       content: [
         {
-          text:'Tuparqueadero'
-          
-          
+          text:'Factura Tuparqueadero',
+          style: 'tex'
+        },
+        {
+          text:'Datos del usuario',
+          style:'text'
+        },
+        {
+          ul:[
+            'nombres completos'
+            
+          ]
         }
       ]
 

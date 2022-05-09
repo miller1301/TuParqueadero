@@ -7,3 +7,4 @@ export interface User {
     perfil: 'usuario'|'admin'|'parqueadero'|'trabajador',
     icono: string
 }
+

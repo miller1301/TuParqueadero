@@ -72,6 +72,7 @@ export class BookingParkingComponent implements OnInit {
       placaVehicle: this.formReserva.value.placa,
       marcaVehicle: this.formReserva.value.marca
     }
+    
     if(this.formReserva.valid){
       console.log(this.mapsService.routeReady);
       this.firestoreService.createDocIdDefault('reservas', data).then( success => {

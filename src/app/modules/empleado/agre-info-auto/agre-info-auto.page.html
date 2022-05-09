@@ -23,34 +23,67 @@
     <ion-row>
         <ion-col id="cuest" sizeLg="4" offsetLg="4" sizeSm="12" sizeXs="12">
           <!-- Item para agregar informacion al formulario -->
+
+          <!-- Item Hora de Ingreso -->
           <ion-item>
             <ion-label position="floating">Hora de Ingreso</ion-label>
-            <ion-input type="time" placeholder="Hora de entrada"></ion-input>
+            <ion-input [(ngModel)]="datos.Hora_de_ingreso" type="time" placeholder="Hora de entrada"></ion-input>
           </ion-item>
+
+          <!-- Item Placa -->
           <ion-item>
             <ion-label position="floating">Placa</ion-label>
-            <ion-input type="text" placeholder="Placa"></ion-input>
+            <ion-input [(ngModel)]="datos.Placa"  type="text" placeholder="Placa"></ion-input>
           </ion-item>
+
+          <!-- Item Modelo -->
           <ion-item>
             <ion-label position="floating">Modelo</ion-label>
-            <ion-input type="text" placeholder="Modelo"></ion-input>
+            <ion-input [(ngModel)]="datos.Modelo" type="text" placeholder="Modelo"></ion-input>
           </ion-item>
+
+          <!-- Item Marca -->
           <ion-item>
             <ion-label position="floating">Marca</ion-label>
-            <ion-input type="text" placeholder="Marca"></ion-input>
+            <ion-input [(ngModel)]="datos.Marca" type="text" placeholder="Marca"></ion-input>
           </ion-item>
+
+          <!-- Item Nombre -->
           <ion-item>
-            <ion-label position="floating">Telefono</ion-label>
-            <ion-input type="text" placeholder="Telefono"></ion-input>
+            <ion-label position="floating">Nombre Completo</ion-label>
+            <ion-input [(ngModel)]="datos.Nombre" type="text" placeholder="" ></ion-input>
             </ion-item>
+          <ion-item>
+
+            <!-- Item Telefono -->
+            <ion-label position="floating">Telefono</ion-label>
+            <ion-input [(ngModel)]="datos.telefono" type="number" placeholder="Telefono"></ion-input>
+            </ion-item>
+
+            <!-- Item Correo -->
+            <ion-item>
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input [(ngModel)]="datos.Correo" type="text" placeholder="" ></ion-input>
+              </ion-item>
+
+              <!-- Titulo del apartado fotografia del vehiculo -->
             <h1 class="ion-text-center" id="titulo2">Fotografia-estado del automovil </h1>
+
             <!-- Espacio que contiene la fotografia del vehiculo -->
             <img src="../../../../assets/carro.png" alt="">
+
+            <!-- Novedad -->
+            <ion-item>
+              <ion-label position="floating">Novedad</ion-label>
+              <ion-input [(ngModel)]="datos.novedad" type="number" placeholder="" ></ion-input>
+              </ion-item>
+            
             <!-- Boton de confirmacion -->
-          <ion-button routerLink="/empleado/novedad" expand="block" color="primary" mode="ios" class="ion-margin-top">
+          <ion-button routerLink="/recibo" (click)="C_reserva()"   expand="block" color="primary" mode="ios" class="ion-margin-top">
             Confirmar
           </ion-button>
-          </ion-col>
+          
+        </ion-col>
     </ion-row> 
-  </ion-grid>
+</ion-grid>
 </ion-content>
