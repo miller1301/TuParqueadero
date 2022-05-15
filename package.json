@@ -36,6 +36,7 @@
     "mapbox-gl": "^2.7.0",
     "ngx-material-timepicker": "^5.5.3",
     "pdfmake": "^0.2.4",
+    "primeicons": "^5.0.0",
     "primeng": "^13.3.3",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",

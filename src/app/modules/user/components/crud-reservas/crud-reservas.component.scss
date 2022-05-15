@@ -1,8 +1,22 @@
 ::ng-deep body{
-    --ion-background-color: #FFF !important
+    --ion-background-color: #EDF0F0 !important
 }
 
 ::ng-deep .ion-page{
     justify-content: normal;
     overflow-y: auto;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    padding-top: 0%;
+    h1{
+        color: #1A97E8;
+        margin: auto;
+        font-size: 30px;
+        font-weight: bold;
+    }
 }

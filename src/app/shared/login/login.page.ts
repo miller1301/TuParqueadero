@@ -32,13 +32,11 @@ export class LoginPage implements OnInit {
       private router: Router,
       private firestore: FirestoreService,
       private loading: LoadingController
-    ) { }
+    ) {}
 
   ngOnInit() {
-
+    document.getElementById('menu-user').style.display="none";
   }
-
-
 
   loginFacebook() {
     this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(success => {
@@ -88,6 +86,7 @@ export class LoginPage implements OnInit {
       const id = res.user.uid
       this.firestore.getDoc<any>(path, id).forEach(resp => {
         console.log(resp)
+        localStorage.setItem('user', JSON.stringify(resp));
         if (resp.perfil === 'usuario') {
           this.router.navigate(['/user'])
         }

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import Swal from 'sweetalert2'
 import { MapsService } from 'src/app/services';
+import { BookingResponse } from 'src/app/interfaces/booking';
 
 @Component({
   selector: 'app-booking-parking',
@@ -39,9 +40,10 @@ export class BookingParkingComponent implements OnInit {
   }
 
   sendData(){
-    let date = this.formReserva.value.date.toLocaleDateString();
+    let date = this.formReserva.value.date;
     console.log(date);
-    console.log(this.formReserva.value);
+    let date1 = new Date(date);
+    console.log(date1.getTime());
   }
 
   // Cerrar modal
@@ -64,6 +66,8 @@ export class BookingParkingComponent implements OnInit {
     })
   }
 
+// TODO Enviar fecha en formato YYYY/MM/DD
+
   // * Enviar datos a colección reservas en Firebase
   onSubmit(){
     let data = {
@@ -73,7 +77,7 @@ export class BookingParkingComponent implements OnInit {
       img: this.parking.data.img,
       direccion: this.parking.data.direccion,
       telefono: this.parking.data.telefono,
-      dateBooking: this.formReserva.value.date.toLocaleDateString(),
+      dateBooking: this.formReserva.value.date.getTime(),
       timeParking: this.formReserva.value.time,
       hourArrive: this.formReserva.value.hour,
       typeVehicle: this.formReserva.value.vehicle,

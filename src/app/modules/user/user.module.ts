@@ -33,6 +33,12 @@ import { MatSelectModule } from '@angular/material/select';
 // NGXTimePicker
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
+// NG Prime
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { BadgeModule } from 'primeng/badge';
+
 
 
 @NgModule({
@@ -66,10 +72,15 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    TableModule,
+    ButtonModule,
+    RatingModule,
+    BadgeModule
   ],
   providers: [
     MapViewComponent
-  ]
+  ],
+  exports: [MenuUserComponent]
 })
 export class UserModule {}
