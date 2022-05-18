@@ -1,10 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Información Del Usuario</ion-title>
-      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button>
+  <ion-toolbar color="tuparqueaderocolor">
+      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" color="light" ></ion-back-button>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+        <ion-label>
+          <ion-avatar>
+            <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+            <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+          </ion-avatar>
+        </ion-label>
+      </ion-item>
       <ion-buttons slot="end">
         <ion-button (click)="abrir()"  id="open3">
-          <ion-icon slot="end" name="menu-outline" ></ion-icon>
+          <ion-icon slot="end" name="menu-outline" color="light"></ion-icon>
         </ion-button>
       </ion-buttons>
   </ion-toolbar>
