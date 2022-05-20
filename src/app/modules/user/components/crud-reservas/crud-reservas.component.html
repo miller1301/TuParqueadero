@@ -33,7 +33,7 @@
             </td>
             <td>
               <span class="p-column-title">Acciones</span>
-              <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button>
+              <!-- <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button> -->
               <button *ngIf="statusBooking[index].status == 'Programada'" (click)="presentModal(index)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-outlined p-button-warning m-1"></button>
               <button *ngIf="statusBooking[index].status == 'Programada'" (click)="deleteBooking(booking.idBooking)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-outlined p-button-danger m-1"></button>
             </td>
@@ -76,7 +76,7 @@
             </td>
             <td>
               <span class="p-column-title">Acciones</span>
-              <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button>
+              <!-- <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button> -->
             </td>
         </tr>
     </ng-template>
@@ -117,7 +117,7 @@
             </td>
             <td>
               <span class="p-column-title">Acciones</span>
-              <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button>
+              <!-- <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button> -->
               <button (click)="presentModal(index)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-outlined p-button-warning m-1"></button>
               <button (click)="deleteBooking(booking.idBooking)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-outlined p-button-danger m-1"></button>
             </td>
