@@ -22,6 +22,7 @@ import { MenuUserComponent } from './components/menu-user/menu-user.component';
 import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
 import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
 import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit-reserv.component';
+import { LogoAppComponent } from './components/logo-app/logo-app.component';
 
 // Importaciones Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -57,7 +58,8 @@ import { BadgeModule } from 'primeng/badge';
     MenuUserComponent,
     RegisterParkingComponent,
     CrudReservasComponent,
-    EditReservComponent
+    EditReservComponent,
+    LogoAppComponent
   ],
   imports: [
     CommonModule,
