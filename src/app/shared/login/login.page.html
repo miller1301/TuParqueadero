@@ -2,60 +2,80 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid >
+  <ion-grid>
     <ion-row>
-      <ion-col sizeMd="6" offsetMd="3" sizeLg="4" offsetLg="4">
-        <ion-text color="primary" class="ion-text-center">
-          <h1 color="primary">Iniciar Sesión</h1>
-        </ion-text>
-        <ion-card>
-          <ion-card-content class="ion-padding">
-            <ion-item>
-              <ion-label position="floating">Correo</ion-label>
-              <ion-input type="text" placeholder="Correo"  [(ngModel)]="credenciales.correo"></ion-input>
-            </ion-item>
-            <p *ngIf="emailInvalid" class="text-danger">El correo es inválido</p>
-            <p *ngIf="userNotFound" class="text-danger">Usuario no encontrado</p>
-            <ion-item>
-              <ion-label position="floating">Contraseña</ion-label>
-              <ion-input type="password" placeholder="Contraseña"  [(ngModel)]="credenciales.password"></ion-input>
-            </ion-item>    
-            <p *ngIf="passwordInvalid" class="text-danger">La contraseña es incorrecta</p>     
-            <div class="ion-text-center">
-              <ion-button  color="primary" class="ion-margin-top" (click)="login()">
-                Login
+      <ion-col size-lg="1"></ion-col>
+      <ion-col size="12" size-lg="10">
+
+        <!-- Card que contiene todo el login -->
+        <ion-card class="card">
+          <!-- cotenido de la fila -->
+          <ion-row>
+
+            <!-- ion-col de la imagen tamaño Size = 6  -->
+            <ion-col>
+              <img src="../../../assets/img/user/logo-parqueadero.png" id="logo" />
+            </ion-col>
+
+            <!-- ion-col del contenido de inicio de sesion -->
+            <ion-col id="col">
+
+              <!-- datos de inicio de sesion (nombre, correo, contraseña, olvido de contraseña) -->
+
+              <ion-text class="ion-text-center">
+                <h1 id="text">Iniciar Sesión</h1>
+              </ion-text><br><br><br>
+
+              <ion-item>
+                <ion-label position="floating" id="text" color="primary">Correo</ion-label>
+                <ion-input placeholder="correo electronico" id="correo" type="text" [(ngModel)]="credenciales.correo">
+                </ion-input>
+              </ion-item>
+
+              <p *ngIf="emailInvalid" class="text-danger">El correo es inválido</p>
+              <p *ngIf="userNotFound" class="text-danger">Usuario no encontrado</p>
+
+              <ion-item>
+                <ion-label position="floating" id="text" color="primary">Contraseña</ion-label>
+                <ion-input id="contraseña" type="password" placeholder="Contraseña" [(ngModel)]="credenciales.password">
+                </ion-input>
+                <p *ngIf="passwordInvalid" class="text-danger">La contraseña es incorrecta</p>
+              </ion-item>
+
+
+              <div class="ion-text-center">
+                <ion-button class="ion-margin-top" (click)="login()">
+                  Login
+                </ion-button>
+              </div>
+
+              <ion-button expand="block" fill="clear" routerLink="/recuperar-contrasena" id="text">
+                ¿Olvidaste tu Contraseña?
               </ion-button>
-            </div> 
-            
-            <ion-button expand="block" fill="clear" routerLink="/recuperar-contrasena" >
-              Recuperar contraseña
-            </ion-button>
-          </ion-card-content>
+              <ion-row>
+                <ion-col sizeLg="2" offsetLg="3" sizeMd="2" offsetMd="3" sizeXs="12">
+                  <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
+                    <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />
+                  </ion-button>
+                </ion-col>
+                <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
+                  <ion-button (click)="loginFacebook()" expand="block" fill="outline" mode="ios">
+                    <img src="../../../assets/facebook.png" width="30px" alt="Facebook_logo">
+                  </ion-button>
+                </ion-col>
+                <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
+                  <ion-button (click)="loginTwitter()" expand="block" fill="outline" mode="ios">
+                    <img src="../../../assets/Twitter.png" width="30px" alt="Twitter_logo">
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-button expand="block" fill="clear" routerLink="/register">
+                Registrarse
+              </ion-button>
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-col>
-      
     </ion-row>
-    <ion-row>
-      <ion-col sizeLg="2" offsetLg="3" sizeMd="2" offsetMd="3" sizeXs="12">
-        <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
-          <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />          
-        </ion-button>
-      </ion-col>
-      <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
-        <ion-button (click)="loginFacebook()" expand="block" fill="outline" mode="ios">
-          <img src="../../../assets/facebook.png" width="30px" alt="Facebook_logo">
-        </ion-button>
-      </ion-col>
-      <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
-        <ion-button (click)="loginTwitter()" expand="block" fill="outline" mode="ios">
-          <img src="../../../assets/Twitter.png" width="30px" alt="Twitter_logo">
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-button  expand="block" fill="clear" routerLink="/register">
-      Registrarse
-    </ion-button>
   </ion-grid>
-
 </ion-content>
-
