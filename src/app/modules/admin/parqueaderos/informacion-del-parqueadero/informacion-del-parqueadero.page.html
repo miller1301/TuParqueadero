@@ -9,14 +9,21 @@
 -->
 <!--*Header de la pagina Informacion del parqueadero-->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tuparqueaderocolor">
     <!--*Informacion de la pagina en la cual se encuentra el usuario-->
-    <ion-title>Información Del Parqueadero</ion-title>
+    <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+          <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
       <!-- <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button> -->
     <!--*Boton que abre el menu del usuario  -->
     <ion-buttons slot="end">
       <ion-button (click)="cerrar()"  id="open4">
-        <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+        <ion-icon slot="end" name="close-circle-outline" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
       <!-- <ion-buttons slot="end">

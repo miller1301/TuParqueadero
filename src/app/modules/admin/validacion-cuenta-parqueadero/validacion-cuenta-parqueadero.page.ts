@@ -27,8 +27,8 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
 
     @Input() Parqueadero;
      
-    
-
+  ver;
+  user;
   data;
   UidG;
   dataUser;
@@ -37,7 +37,7 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
   pdf3Valor;
   pdf4Valor;
 
-
+  Usuario:boolean;
   datosUser:boolean = true;
   imagenes:boolean;
   constitucion:boolean;
@@ -66,6 +66,7 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
       this.licencia = false
       this.seguridad = false
       this.cambio = true
+      this.Usuario = false
     }
     else if ( data.valor === 'imagenes'){
       this.datosUser = false
@@ -75,6 +76,8 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
       this.licencia = false
       this.seguridad = false
       this.cambio = false
+      this.Usuario = false
+
     }
     else if(data.valor === 'constitucion'){
       this.datosUser = false
@@ -84,6 +87,8 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
       this.licencia = false
       this.seguridad = false
       this.cambio = false
+      this.Usuario = false
+
     }
     else if(data.valor === 'camara'){
       this.datosUser = false
@@ -93,6 +98,8 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
       this.licencia = false
       this.seguridad = false
       this.cambio = false
+      this.Usuario = false
+
     }
     else if(data.valor === 'licencia'){
       this.datosUser = false
@@ -102,14 +109,16 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
       this.licencia = true
       this.seguridad = false
       this.cambio = false
+      this.Usuario = false
+
     }
-    else if(data.valor === 'seguridad'){
+    else if(data.valor === 'usuario'){
       this.datosUser = false
       this.imagenes = false
       this.constitucion = false
       this.camara = false
       this.licencia = false
-      this.seguridad = true
+      this.Usuario = true
       this.cambio = false
     }
     
@@ -129,16 +138,19 @@ export class ValidacionCuentaParqueaderoPage implements OnInit {
      console.log(this.pdf1Valor, this.pdf2Valor, this.pdf3Valor, this.pdf4Valor);
 
 
-     this.log.getUid().then( res => {
+     this.log.getUid().then( (res:any) => {
       this.UidG = res
 
       this.firestore.getDoc('Usuarios', this.UidG ).subscribe(res => {
         this.dataUser = res
       })
     })
-
     console.log(this.Parqueadero)
-
+    this.user = this.Parqueadero.data.idUser
+    this.firestore.getDoc('Usuarios', this.user).subscribe(res => {
+      this.ver = res
+      console.log(this.ver)
+    })
   }
 
 

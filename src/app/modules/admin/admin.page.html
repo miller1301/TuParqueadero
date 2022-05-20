@@ -8,14 +8,21 @@
   !Mas informacion del desarrollador: https://github.com/CristhoferT29 
 -->
 <!--*Header de la bandeja de entrada -->
-<ion-header>
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar color="tuparqueaderocolor"> 
     <!--*Informacion de la pagina en la cual se encuentra el usuario-->
-    <ion-title>Bandeja de entrada</ion-title>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+        <ion-label>
+          <ion-avatar>
+            <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+            <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+          </ion-avatar>
+        </ion-label>
+      </ion-item>
     <!--*Boton que abre el menu del usuario  -->
     <ion-buttons slot="end">
       <ion-button (click)="abrir()"  id="open">
-        <ion-icon slot="end" name="menu-outline" ></ion-icon>
+        <ion-icon slot="end" name="menu-outline" color="light" ></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
