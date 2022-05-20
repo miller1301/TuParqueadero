@@ -22,7 +22,7 @@
             </ion-item>
             <ion-item>
               <ion-label position="floating">Telefono</ion-label>
-              <ion-input type="text" placeholder="Telefono" [(ngModel)]="parqueaderos.telefono" ></ion-input>
+              <ion-input type="number" placeholder="Telefono" [(ngModel)]="parqueaderos.telefono" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Ubicacion</ion-label>
@@ -30,11 +30,11 @@
             </ion-item>
             <ion-item>
               <ion-label position="floating">Horario</ion-label>
-              <ion-input type="text" placeholder="Horario" [(ngModel)]="parqueaderos.horario" ></ion-input>
+              <ion-input type="time" placeholder="Horario" [(ngModel)]="parqueaderos.horario" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Tarifa</ion-label>
-              <ion-input type="text" placeholder="Tarifa" [(ngModel)]="parqueaderos.tarifa" ></ion-input>
+              <ion-input type="number" placeholder="Tarifa" [(ngModel)]="parqueaderos.tarifa" ></ion-input>
             </ion-item>
             <div class="ion-text-center">
               <ion-button  color="primary" class="ion-margin-top"  mode="ios" (click)="rParquedero()">

@@ -22,11 +22,7 @@ import { RegisterParkingComponent } from './components/register-parking/register
 import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
 import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit-reserv.component';
 
-// Importaciones Angular Material
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
+
 
 
 
@@ -55,11 +51,7 @@ import { MatInputModule } from '@angular/material/input';
     IonicModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule
+    ReactiveFormsModule
   ],
   providers: [
     MapViewComponent

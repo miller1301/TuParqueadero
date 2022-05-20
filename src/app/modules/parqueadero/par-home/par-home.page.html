@@ -14,66 +14,57 @@
     <!-- <app-menu></app-menu> -->
     <ion-grid>
       <ion-row>
-        <ion-col id="img" sizeLg="4" offsetLg="5" sizeSm="4" offsetSm="5" sizeXs="6" offsetXs="3">
-        <img id="icono-carro" src="../../../assets/img/384e0b3361d99d9c370b4037115324b9-icono-de-coche-plano-vintage.png" alt="icono-carro">
-          <p id="txt">Mi parqueadero</p>
+          <!-- * Tamaño de los elementos que se traen de la BD -->
+          <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+            <!-- * Componente de Ionic que muestra la informacion -->
+            <ion-card>
+              <!-- * Card-Header Muestra la imagen de perfil del usuario -->
+              <ion-card-header>
+                <ion-item>
+                <img [src]="infoUser.icono" alt="Usuario" width="150" class="imgp2">
+                </ion-item>
+              </ion-card-header>
+              <!-- * Card Content Muestra la informacion del usuario y la del parqueadero -->
+              <ion-card-content>
+                <p><strong>Nombre Completo:</strong></p>
+                <p>{{ infoUser.nombre }}</p>
+                <br>
+                <p><strong>Correo:</strong></p>
+                <p>{{ infoUser.correo }}</p>
+                <br>
+                <p><strong>Telefono:</strong></p>
+                <p>{{ infoUser.telefono }}</p>
+                <br>
+                <ion-item><h1 class="imgp2"> Parqueadero </h1></ion-item>
+                <br>
+                <p><strong>Nombre del parqueadero:</strong></p>
+                <p>{{ arreglo.data.nameParqueadero }}</p>
+                <br>
+                <p><strong>Ubicacion:</strong></p>
+                <p>{{ arreglo.data.ubicacion }}</p>
+                <br>
+                <p><strong>Horario:</strong></p>
+                <p> {{ arreglo.data.horario }} </p>
+                <br>
+                <p><strong>Tarifas:</strong></p>
+                <p> {{arreglo.data.tarifa}} </p>
+                <br>
+                <p><strong>Estado Actual:</strong></p>
+                <p>{{ infoPar.estado }}</p>
+                <ion-item><h1 class="imgp2">Estado</h1></ion-item>
+                <ion-button (click)="onClick()" expand="block"  size="large" [color]="color">
+                  {{ activo }}
+                </ion-button>
+                <!-- * Boton que llama a la funcion createPdf que genera un pdf con un reporte con la informacion del usuario -->
+                <ion-button slot="end" (click)="createPdf()" expand="block">
+                  Generar PDF <ion-icon name="download-outline" color="success" ></ion-icon>
+                </ion-button>
+              </ion-card-content>
+              <!-- * Fin del contenido de la card -->
+            </ion-card>
+            <!-- * Fin de la card -->
           </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col id="img2" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
-          <ion-slides>
-            <ion-slide>
-              <div class="slide">
-                <img src="../../../../assets/img/2.jpeg" />
-              </div>
-            </ion-slide>
-            <ion-slide>
-              <img src="../../../../assets/img/600b1a714c8fe.jpeg" />
-            </ion-slide>
-            <ion-slide>
-              <img src="../../../../assets/img/15132529parqueadero.jpg" />
-            </ion-slide>
-          </ion-slides>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col sizeLg="5" offsetLg="1" sizeSm="12" sizeXs="12">
-            <ion-item-divider id="lines">
-              <h3 id="h3">Informacion</h3>
-            </ion-item-divider>
-            <h4>
-              Nombre
-            </h4>
-            <p>Parqueadero Parking Brokers</p>
-            <h4>
-              Direccion
-            </h4>
-            <p>Calle 100a # 45 - 20</p>
-            <h4>
-              Capacidad
-            </h4>
-            <p>30</p>
-            <h4>
-              Abierto
-            </h4>
-            <p>24 horas</p>
-            <h4>
-              Costo
-            </h4>
-            <p>---------</p>
-            <ion-button routerLink="/parqueadero/edit-home" expand="block" color="primary" mode="ios" class="ion-margin-top">
-              Editar
-            </ion-button>
-          </ion-col>
-          <ion-col sizeLg="4" offsetLg="1" sizeSm="12" sizeXs="12">
-            <ion-item>
-              <ion-select  interface="popover" placeholder="seleccionar estado">
-                <ion-select-option class="verde" value="red">Disponible</ion-select-option>
-                <ion-select-option class="rojo" value="purple">No Disponibles</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-col>
-      </ion-row> 
+        </ion-row>
     </ion-grid>
   </ion-content>
 </ion-app>

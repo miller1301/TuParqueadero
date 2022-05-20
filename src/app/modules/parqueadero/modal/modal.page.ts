@@ -31,12 +31,16 @@ export class ModalPage implements OnInit {
   ngOnInit() {
   }
 
-  rParquedero(){
-    this.firestore.create('Parqueaderos',this.parqueaderos).then(res=>{
-      console.log(res);
-    }); 
-  }
   
+  rParquedero( ){
+    this.firestore.createDocIdDefault('Parqueaderos',this.parqueaderos).then(res=>{
+      console.log(res);
+    }) .catch(err=>{
+      console.log("error",err)
+    });
+
+  }
+
   }
 
 
