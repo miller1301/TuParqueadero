@@ -6,7 +6,10 @@
 <!-- Este es el header contiene la barra de navegacion entre paginas-->
 <ion-header> 
   <ion-toolbar color="primary">
-    <ion-title>Agregar Info Auto </ion-title>
+    <ion-item color="primary">
+    <img id="img" src="../../../../assets/img/user/logo-parqueadero.png" alt="logo">
+    <ion-title>Tuparqueadero</ion-title>
+    </ion-item>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/empleado"></ion-back-button>
     </ion-buttons>
@@ -22,7 +25,8 @@
     <ion-grid>
     <ion-row>
         <ion-col id="cuest" sizeLg="4" offsetLg="4" sizeSm="12" sizeXs="12">
-          <!-- Item para agregar informacion al formulario -->
+        
+          
 
           <!-- Item Hora de Ingreso -->
           <ion-item>
@@ -63,7 +67,7 @@
             <!-- Item Correo -->
             <ion-item>
               <ion-label position="floating">Correo</ion-label>
-              <ion-input [(ngModel)]="datos.Correo" type="text" placeholder="" ></ion-input>
+              <ion-input [(ngModel)]="datos.Correo" type="email" placeholder="" ></ion-input>
               </ion-item>
 
               <!-- Titulo del apartado fotografia del vehiculo -->
@@ -75,13 +79,15 @@
             <!-- Novedad -->
             <ion-item>
               <ion-label position="floating">Novedad</ion-label>
-              <ion-input [(ngModel)]="datos.novedad" type="number" placeholder="" ></ion-input>
+              <ion-input [(ngModel)]="datos.novedad" type="text" placeholder="" ></ion-input>
               </ion-item>
             
             <!-- Boton de confirmacion -->
-          <ion-button routerLink="/recibo" (click)="C_reserva()"   expand="block" color="primary" mode="ios" class="ion-margin-top">
+            
+          <ion-button routerLink="/reservas-g" (click)="C_reserva()" (click)="showModal()"       expand="block" color="primary" mode="ios" class="ion-margin-top">
             Confirmar
           </ion-button>
+        
           
         </ion-col>
     </ion-row> 

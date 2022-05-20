@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CuposPage } from './cupos.page';
+import { ReservasGPage } from './reservas-g.page';
 
-describe('CuposPage', () => {
-  let component: CuposPage;
-  let fixture: ComponentFixture<CuposPage>;
+describe('ReservasGPage', () => {
+  let component: ReservasGPage;
+  let fixture: ComponentFixture<ReservasGPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CuposPage ],
+      declarations: [ ReservasGPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CuposPage);
+    fixture = TestBed.createComponent(ReservasGPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -22,5 +22,3 @@ describe('CuposPage', () => {
     expect(component).toBeTruthy();
   });
 });
-
-

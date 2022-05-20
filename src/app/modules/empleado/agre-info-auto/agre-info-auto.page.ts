@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from 'src/app/modelos/r-local';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 
 
 
@@ -17,6 +19,7 @@ export class AgreInfoAutoPage implements OnInit {
 
   id:string;
   datos:Reserva={
+  uid: '6R6SbxeS01fDCxTyD9KK6Fk9aNX2',
    Hora_de_ingreso: null,
    Placa: null,
    Modelo: null,
@@ -43,6 +46,16 @@ export class AgreInfoAutoPage implements OnInit {
     });
     
  
+  }
+
+  // Modal del Boton 
+  showModal(){
+    Swal.fire({
+      title: 'Muy bien!!',
+      text: 'Su reserva esta registrada',
+      icon: 'success'
+      
+    })
   }
 
 }

@@ -53,7 +53,11 @@ const routes: Routes = [
   {
     path: 'recibo',
     loadChildren: () => import('./modules/empleado/recibo/recibo.module').then( m => m.ReciboPageModule)
+  },  {
+    path: 'reservas-g',
+    loadChildren: () => import('./modules/empleado/reservas-g/reservas-g.module').then( m => m.ReservasGPageModule)
   }
+
 
 ];
 @NgModule({

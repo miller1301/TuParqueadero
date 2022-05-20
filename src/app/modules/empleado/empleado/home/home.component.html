@@ -3,19 +3,24 @@ Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago p
 Ficha 2252471 ADSI
 Redes sociales: Tuparqueadero-->
 
-<ion-header translucent>
-  <ion-toolbar>
+<ion-header  translucent>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
+      <img id="img" src="../../../../assets/img/user/logo-parqueadero.png" alt="logo">
     </ion-buttons>
-    <ion-title id="title">Hola Johan</ion-title>
+    <ion-buttons id="color1"  slot="end">
+      <ion-button  (click)="abrir()"  id="open">
+        <ion-icon  slot="end" name="menu-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title id="title">Tuparqueadero</ion-title>
   </ion-toolbar> 
 </ion-header>
 
-<ion-buttons slot="end">
-  <ion-button (click)="abrir()"  id="open">
-    <ion-icon slot="end" name="menu-outline" ></ion-icon>
-  </ion-button>
-</ion-buttons>
+
+
+
+
       
     <!-- Pagina principal del rol empleado -->
     <ion-content class="ion-padding-horizontal">

@@ -7,6 +7,11 @@
     animation: text 5s linear infinite;
 }
 
+#img{
+    width: 45px;
+    height: 45px;
+}
+
 @keyframes text {
     0% {
         filter: hue-rotate(0deg);

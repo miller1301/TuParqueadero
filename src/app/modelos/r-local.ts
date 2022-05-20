@@ -1,4 +1,5 @@
 export interface Reserva {
+    uid: string,
     Hora_de_ingreso: string,
     Placa: string,
     Modelo: string,
