@@ -54,5 +54,13 @@ export class FirestoreService{
         return colleccion.doc(id).delete();
     }
 
+    async getAll(path){
+        try{
+        return await this.firestore.collection(path).snapshotChanges();
+        }catch(error){
+            console.log('error en getAll', error)
+        }
+    }
+
 
 }
