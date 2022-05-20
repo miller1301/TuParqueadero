@@ -28,8 +28,10 @@ export class ReservasGPage implements OnInit {
           return reservas;
         });
 
+
       });
     });
+    
   }
 
   // Modal del Boton 
