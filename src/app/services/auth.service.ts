@@ -34,6 +34,7 @@ export class AuthService {
   logout(){
     this.authfirebase.signOut()
     this.router.navigate(['/login'])
+    localStorage.clear();
   }
 
   registrarUser(datos:User){

@@ -1,5 +1,6 @@
 .imgp2{
     margin: auto !important;
+    border-radius: 50%;
 }
 .selection{
     width: 160px;
@@ -76,4 +77,8 @@ ion-toolbar{
 
 .contenido{
     height: 55px;
+}
+
+ion-card-content p {
+    font-size: 18px;
 }

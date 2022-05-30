@@ -8,7 +8,7 @@
 }
 // ! Color del texto de los titulos de la informacion que se muestra
 .texto{
-    color: #1C71FA;
+    color: #1A97E8;
 }
 // ! Color del Boton que se encuentra en desuso
 .textEdit{
@@ -40,8 +40,8 @@
     // * Nos indica el ancho
     width: 100%;
     // * Nos indica sus colores de fondo
-    background: #3880ff;
-    background: linear-gradient(10deg, #3880ff 100%, #1c6dfa 100%);
+    background: #1A97E8;
+    background: linear-gradient(10deg, #1A97E8 100%, #1c6dfa 100%);
     // * Nos indica la sombra que tendra
     box-shadow: 0px 1px 10px #003ca3;
     // * Nos indica el borde redondeado que tendra el header
@@ -97,3 +97,28 @@ ion-toolbar{
     height: 55px;
   }
   
+
+  ion-text p {
+    font-size: 16px;
+  }
+
+  ion-grid{
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 100%;
+    position: relative;
+  }
+  ion-footer{
+    text-align: center;
+    background-color: #1A97E8;
+    color: white;
+    width: 100%;
+    height: 25px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  ion-card-content{
+    margin-bottom: 27px;
+  }

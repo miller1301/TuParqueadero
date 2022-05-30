@@ -46,12 +46,62 @@ export class ParqueaderosPage implements OnInit {
   dataUser;
 
   arreglo = [];
+  arreglo2;
 
+  arregloUser = [];
+  user = [];
+  adminins = [];
+  trabajador = [];
+  duenop = [];
+  
+    fecha;
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
+
+    const fecha = new Date()
+    this.fecha = fecha.getFullYear(); 
     // ! Metodo que se ejecuta para traer los datos de los usuarios luego esperamos su respuesta "res" y se la asignamos a la propiedad "usuariosL" para luego ser consumida en la vista
     const path = 'Usuarios'
-    this.firebase.getDocs(path).subscribe(res => this.usuariosL = res)
+    this.firebase.getDocs(path).subscribe((res:any) => {
+      this.usuariosL = res
+    })
+
+    this.firebase.getDocs(path).subscribe((res:any) => {
+      this.arregloUser = res
+      // console.log(this.arregloUser)
+
+      this.adminins = this.arregloUser.filter( (item)=>{
+        if(item.perfil === 'administrador'){
+          return true
+        }
+      } )
+
+      // console.log(this.adminins)
+      
+      this.user = this.arregloUser.filter( (item)=>{
+        if(item.perfil === 'usuario'){
+          return true
+        }
+      })
+      
+      // console.log(this.user)
+
+      this.trabajador = this.arregloUser.filter( (item)=>{
+        if(item.perfil === 'empleado'){
+          return true
+        }
+      })
+
+      // console.log(this.trabajador)
+
+      this.duenop = this.arregloUser.filter( (item)=>{
+        if(item.perfil === 'parqueadero'){
+          return true
+        }
+      })
+      // console.log(this.duenop)
+    })
+
     // ! Metodo por ahora en desuso
     // this.firebase.getDocs(path).subscribe((res:any[]) => {
     //   console.log(res)
@@ -73,7 +123,11 @@ export class ParqueaderosPage implements OnInit {
           data: parqueadero.payload.doc.data()
         })
       })
-      console.log(this.arreglo)
+      this.arreglo2 = this.arreglo.filter( (item)=>{
+        if( item.data.estado === 'Activo' || item.data.estado === 'Inactivo'){
+          return true
+        }
+      })
     })
     // ! Metodo que se ejecuta para traer el ID del usuario actual y luego traer la respectiva informacion del usuario
     this.auth.getUid().then( res => {
@@ -173,6 +227,10 @@ export class ParqueaderosPage implements OnInit {
     
   }
 
+  cerrar(){
+    document.getElementById('animacion1').classList.remove('active1');
+  }
+
   textoBuscar:string = '';
 
   onSearchChange( event ){
@@ -185,9 +243,10 @@ export class ParqueaderosPage implements OnInit {
       component: InformacionDelParqueaderoPage,
       cssClass: 'my-custom-class',
       componentProps: {
-        arreglo : this.arreglo[index]
+        arreglo : this.arreglo2[index]
       }
     });
     return await modal.present();
   }
+  
 }
