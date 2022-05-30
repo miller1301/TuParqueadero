@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,11 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './recuperar-contrasena.page.html',
   styleUrls: ['./recuperar-contrasena.page.scss'],
 })
-export class RecuperarContrasenaPage{
+export class RecuperarContrasenaPage implements OnInit {
   
   emailU: string = '';
 
   constructor(private auth: AuthService, private router:Router, private alertController: AlertController) { }
+  
+  ngOnInit(): void {
+    document.getElementById('menu-user').style.display="none";
+  }
 
     async Reset(){
       const email = this.emailU

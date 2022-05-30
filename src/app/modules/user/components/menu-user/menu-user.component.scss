@@ -26,6 +26,10 @@ ion-title{
 
 ion-item{
     cursor: pointer;
+    a{
+        text-decoration: none;
+        color: #000;
+    }
 }
 
 .img-icon{

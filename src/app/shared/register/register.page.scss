@@ -1,0 +1,38 @@
+.card{
+    border-radius: 10px;
+    background: rgb(26, 151, 232);
+}
+
+#logo{
+    width: 60%;
+    margin-top: 150px;
+    margin-left: 100px;
+}
+
+.title-register{
+    display: flex;
+    h1{
+        margin: auto;
+    }
+}
+
+#col{
+    background: white;
+}
+
+.ion-text-center{
+    margin-top: 30px ;
+}
+
+#text{
+    color: rgb(26, 151, 232);
+    margin-top: 30px;
+}
+
+.fondo{
+    background: black;
+}
+
+ion-item{
+    padding: 1% 7%;
+}
