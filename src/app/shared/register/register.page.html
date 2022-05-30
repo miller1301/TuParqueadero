@@ -10,15 +10,17 @@
 
           <ion-row>
   
-            <ion-col>
-              <img src="../../../assets/img/user/logo-parqueadero.png" id="logo" />
+            <ion-col size="12" size-md="6">
+              <div class="div-img-logo">
+                <img src="../../../assets/img/user/logo-parqueadero.png" id="logo" />
+              </div>
             </ion-col>
   
             <ion-col id="col">
               
               <ion-text color="primary" class="ion-text-center title-register">
                 <h1 color="primary">Registrarse</h1>
-              </ion-text><br><br>
+              </ion-text>
 
   
             <ion-item>
@@ -47,18 +49,20 @@
             </ion-item>
             <p *ngIf="invalid" class="text-danger">Las contraseñas no coinciden</p>
             <div class="ion-text-center">
-              <ion-button color="primary" class="ion-margin-top" mode="ios" (click)="registrar()">
+              <ion-button color="primary" class="ion-margin-top btn-registrarse" mode="ios" (click)="registrar()">
                 Registrarse
               </ion-button>
             </div>
   
             <ion-row>
-              <ion-col sizeLg="2" offsetLg="3" sizeMd="2" offsetMd="3" sizeXs="12">
-                <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
-                  <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />
-                </ion-button>
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+                <div class="ion-text-center">
+                  <ion-button class="btn-google" (click)="loginGoogle()" mode="ios" fill="outline">
+                    <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />
+                  </ion-button>
+                </div>
               </ion-col>
-              <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
+              <!-- <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
                 <ion-button (click)="loginFacebook()" expand="block" fill="outline" mode="ios">
                   <img src="../../../assets/facebook.png" width="30px" alt="Facebook_logo">
                 </ion-button>
@@ -67,7 +71,7 @@
                 <ion-button (click)="loginTwitter()" expand="block" fill="outline" mode="ios">
                   <img src="../../../assets/Twitter.png" width="30px" alt="Twitter_logo">
                 </ion-button>
-              </ion-col>
+              </ion-col> -->
             </ion-row>
             <ion-button expand="block" fill="clear" routerLink="/login">
               Ya tengo cuenta
