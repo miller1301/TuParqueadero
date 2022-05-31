@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import 'sweetalert2/src/sweetalert2.scss';
 import Swal from 'sweetalert2';
+import pdfMake from 'pdfmake/build/pdfMake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-reservas-g',
@@ -38,10 +42,36 @@ export class ReservasGPage implements OnInit {
   showModal(){
     Swal.fire({
       title: 'RESERVA FINALIZADA',
-      text: 'Genere el Recibo',
+      text: 'Espere su recibo',
       icon: 'success'
       
     })
+  }
+
+  createPdf(){
+
+    const pdfDefinition: any = {
+      content: [
+        {
+          text:'Factura Tuparqueadero',
+          style: 'tex'
+        },
+        {
+          text:'Datos del usuario',
+          style:'text'
+        },
+        {
+          ul:[
+            'nombres completos'
+            
+          ]
+        }
+      ]
+
+    }
+
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
   }
 
 }
