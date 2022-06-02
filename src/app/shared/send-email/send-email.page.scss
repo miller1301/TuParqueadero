@@ -12,6 +12,9 @@
 .card-title{
     color:  rgb(26, 151, 232);
     font-size: 35px;
+    @media(max-width: 678px){
+        font-size: 30px;
+    }
 }
 
 .div-info{
