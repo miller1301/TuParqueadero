@@ -1,9 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>reservas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="tuparqueaderocolor">
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagen" />
+          <ion-text class="Titulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
 
+<ion-content >
+<ion-grid>
+<ion-row>
+
+
+  <ion-col *ngFor="let datos of listareserva" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+    <ion-card id="item" *ngIf="datos.uid === '6R6SbxeS01fDCxTyD9KK6Fk9aNX2'">
+      <ion-card-header>
+      </ion-card-header>
+      <ion-card-content class="c">
+        <img [src]="datos.img" [alt]="datos.Nombre">
+        <p class="i textot">Hora Ingreso:</p>
+        <p class="i textoc">{{ datos.Hora_de_ingreso }}</p>
+        <p class="i textot">Telefono:</p>
+        <p class="i textoc">{{ datos.telefono }}</p>
+
+        <div class="vermas">
+          <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+
+
+
+
+ 
+</ion-row>
+</ion-grid>
 </ion-content>

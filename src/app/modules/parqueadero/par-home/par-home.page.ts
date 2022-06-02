@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController, PopoverController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { PoppoverInfoComponent } from '../../admin/poppover-info/poppover-info.component';
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { AuthService } from 'src/app/services/auth.service';
-import { ModalController } from '@ionic/angular';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-par-home',
@@ -13,168 +13,241 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./par-home.page.scss'],
 })
 export class ParHomePage implements OnInit {
-  // ! Propiedad que guarda el id del parqueadero extrayendolo de la url
-  idParqueadero:string;
-  // ! Propiedad que guarda la informacion del parqueadero
-  infoPar;
-  // ! Propiedad que guarda la informacion del usuario
-  infoUser;
-  // ! Propiedad que guerda la fecha en la que se genero el Pdf
-  data;
-  // ! Propiedad que guarda el Id del usuario actual
-  UidG;
-  // ! Propiedad que guarda la informacion del usuario actual
-  dataUser;
-
-  @Input() arreglo;
+  idDueñoParqueadero:string;
 
   constructor(
-    // * Llamada a la clase ActivatedRoute que nos permite obtener el id que se le paso como paremetro 
-    private activatedRoute:ActivatedRoute,
-    // *  LLamando al servicio que se utilizara para el manejo de los datos
-    private firebase: FirestoreService, 
-    // * Llamando al servicio que se utilizara para los metodos de Autenticion o manejo de la sesion del usuario
     private log : AuthService,
+    private activatedRoute: ActivatedRoute,
+    private firestore:FirestoreService,
+    private sanitizer : DomSanitizer,
+    private popoverController : PopoverController,
+    private modalController: ModalController
+    ) {}
 
-    private modalController : ModalController
-  ) { }
+    @Input() Parqueadero;
+  
+  time;
+  ver;
+  user;
+  data;
+  UidG;
+  dataUser;
+  pdf1Valor;
+  pdf2Valor;
+  pdf3Valor;
+  pdf4Valor;
 
-  // ! Creacion del metodo para crear los informes de los usuarios en PDF
-  // ? Mas informacion de la libreria para generar PDF en: https://pdfmake.github.io/docs/0.1/
+  Usuario:boolean;
+  datosUser:boolean = true;
+  imagenes:boolean;
+  constitucion:boolean;
+  camara:boolean;
+  licencia:boolean;
+  seguridad:boolean;
+  cambio:boolean = true
+
   createPdf(){
     const pdfDefiniton: any ={
       // ! Contenido del Pdf
+      watermark: { text: 'TuParqueadero', fontSize: 140, color: '#1A97E8',opacity: 0.3, bold: true, italics: false  },
       content: [
         {
-          text: `Informe de TuParqueadero `, style: `tex`
+          width: '100%',
+          height: '30px',
+          text: `Informe de TuParqueadero `, style: `titulo`
+        },
+        ,{
+          text: `Informe dirigido a TuParqueadero y/o ${this.ver.nombre}`,
+          style: 'espacio'
         },
         {
-          text: `Informe del usuario ${this.infoUser.nombre} identificado en la plataforma con el Id N° ${this.infoUser.uid} los siguientes datos seran usados para mantener todos nuestros archivos actualizados con informacion que el usuario nos brinda al momento de hacer su registro en TuParqueadero:`
-        },{
-          text: `Informacion del usuario`, style: `tex`
+          image: 'snow',
+          width: 100,
+          height: 100,
+          alignment: 'center',
+          lineHeight: 3
         },
         {
-          ul: [
-            ` Nombres Completos: ${this.infoUser.nombre}`,
-            ` Numero de Telefono: ${this.infoUser.telefono}`,
-            ` Direccion de correo: ${this.infoUser.correo}`,
-            ` Rol de usuario: ${this.infoUser.perfil}`,
-            ` ID del usuario: ${this.infoUser.uid} `
-          ], style: `espacio`
+          text: `La Aplicación TuParqueadero informa que el Usuario ${this.ver.nombre} identificado en la plataforma con el ID ${this.ver.uid} dueño del parqueadero " ${this.Parqueadero.data.nameParqueadero } " ha aceptado el uso de su información al momento de hacer el registro en la plataforma y esta información será guardada y usada únicamente para validar temas legales entre un tercero, el usuario y TuParqueadero entre la información a utilizar estaría su nombre completo, su número de teléfono, su dirección de correo, el nombre de su parqueadero, la ubicación de su parqueadero, la dirección entre otros.`,
+          style: 'espaciot'
         },
         {
-          text: 'Informacion del parqueadero', style: `tex`
-        },
-        {
-          ul: [
-            `Nombre del parqueadero ${this.infoPar.nameParqueadero}`,
-            `Ubicacion: ${this.infoPar.ubicacion} `,
-            `Direccion: ${this.infoPar.direccion}`,
-            `Pagina: ${this.infoPar.pagina}`,
-            `Horario: ${this.infoPar.horario}`,
-            `Tarifa: ${this.infoPar.tarifa}`,
-            `Estado actual: ${this.infoPar.estado}`
-          ], style: `espacio`
-        },
-        {
-          text: `Este documento fue realizado el ${this.data}`
+          text: `Este documento fue elaborado el ${this.time}`
         }
 
       ],
+      images:{
+        snow: 'https://cdn-icons-png.flaticon.com/512/2439/2439758.png'      },
+
       styles:{
         tex:{
           alignment: 'center',
           lineHeight: 2 
         },
+        titulo:{
+          alignment: 'center',
+          lineHeight: 3,
+          bold: true,
+          fontSize: 25,
+          color: '#1A97E8'
+        },
         espacio:{
-          lineHeight: 2
+          lineHeight: 2,
+          fontSize: 15
+        },
+        espacios:{
+          lineHeight: 7
+        },
+        espaciot:{
+          lineHeight: 3,
+          fontSize: 12,
+          alignment: 'justify'
         }
       }
     }
-    // ! Creacion del Pdf
-    const pdf = pdfMake.createPdf(pdfDefiniton);
-    // ! Descarga del Pdf
-    pdf.download();
+     // ! Creacion del Pdf
+     const pdf = pdfMake.createPdf(pdfDefiniton);
+     // ! Descarga del Pdf
+     pdf.download();
   }
-  // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
-  ngOnInit() {
-     
-
-
-    // * Creamos una variable con el valor del objeto Date
-    const data = new Date
-    // * Luego le pasamos ese valor a la propiedad "data" para luego implementarla en nuestro Pdf
-    this.data = data.toLocaleDateString()
-    // ! Path donde se encuentran almacenados los datos de los usuarios de nuestra aplicacion
-    const path = 'Usuarios'
-    // ! Path donde se encuentran almacenados los datos de los parqueaderos de nuestra aplicacion
-    const path2 = 'Parqueaderos'
-    // ! Id del parqueadero y usuario que obtenemos atraves de la implementacion de la clase ActivatedRoute y guardamos en la propiedad idParqueadero
-    this.idParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
-    // * Metodo para obtener la informacion del usuario recibe como parametros el path y el id del usuario luego guardamos la respuesta en la propiedad infoUser
-    this.firebase.getDoc(path, this.arreglo.data.idUser).subscribe(res => this.infoUser = res)
-    // * Metodo para obtener la informacion del parqueadero recibe como parametro el path y el id del parqueadero luego guardamos la respuesta en la propiedad infoPar
-    this.firebase.getDoc(path2, this.arreglo.Idparqueadero).subscribe((res: any) => {
-      this.infoPar = res
-    
-    })
-    // * Metodo para obtener el Id del usuario actual 
-    this.log.getUid().then( res => {
-      // ! Propiedad que guarda la respuesta del metodo anterior
-      this.UidG = res
-      // ! Metodo que obtiene la informacion del usuario como parametros recibe el path y el Id del usuario actual
-      this.firebase.getDoc('Usuarios', this.UidG ).subscribe(res => {
-      // ! Propiedad que guarda la informacion de la respuesta
-      this.dataUser = res
-      });
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PoppoverInfoComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
     });
+    await popover.present();
 
-    this.activo = this.arreglo.data.estado;
+    const { data } = await popover.onWillDismiss();
+    console.log(data.valor)
 
-    console.log(this.arreglo.data.estado)
-  }
-  // ! Metodo que muestra o oculta el menu del usuario
-  abrir(){
-    // * Constante que obtiene el elemento por el id "open2" para luego asignarle un evento
-    const abrirM = ()=>{
-    // ! Se obtiene el elemento por id "animacion2" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
-    // * La clase "active2" mostrara el menu 
-    document.getElementById('animacion2').classList.toggle('active2');
-    // * La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
-    document.getElementById('animacion2').classList.toggle('animate__bounceInLeft');
+    if( data.valor === 'datos usuario' ){
+      this.datosUser = true
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = false
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = true
+      this.Usuario = false
     }
+    else if ( data.valor === 'imagenes'){
+      this.datosUser = false
+      this.imagenes = true
+      this.constitucion = false
+      this.camara = false
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = false
+      this.Usuario = false
 
-    abrirM()
+    }
+    else if(data.valor === 'constitucion'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = true
+      this.camara = false
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = false
+      this.Usuario = false
+
+    }
+    else if(data.valor === 'camara'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = true
+      this.licencia = false
+      this.seguridad = false
+      this.cambio = false
+      this.Usuario = false
+
+    }
+    else if(data.valor === 'licencia'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = false
+      this.licencia = true
+      this.seguridad = false
+      this.cambio = false
+      this.Usuario = false
+
+    }
+    else if(data.valor === 'usuario'){
+      this.datosUser = false
+      this.imagenes = false
+      this.constitucion = false
+      this.camara = false
+      this.licencia = false
+      this.Usuario = true
+      this.cambio = false
+    }
+    
   }
-  // * Funcion que consume el servicio de Autenticacion y le permite al usuario cerrar la sesion
- logout(){
-    this.log.logout();
+
+  ngOnInit() {
+
+    const time = new Date
+    // * Luego le pasamos ese valor a la propiedad "data" para luego implementarla en nuestro Pdf
+    this.time = time.toLocaleDateString()
+
+     this.idDueñoParqueadero = this.activatedRoute.snapshot.paramMap.get('id')
+
+    
+
+      this.pdf1Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.constitucion_poliza)
+      this.pdf2Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.camara_comercio)
+      this.pdf3Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.licencia_funcionamiento)
+      this.pdf4Valor = this.sanitizer.bypassSecurityTrustResourceUrl(this.Parqueadero.data.documento_seguridad)
+
+
+     console.log(this.pdf1Valor, this.pdf2Valor, this.pdf3Valor, this.pdf4Valor);
+
+
+     this.log.getUid().then( (res:any) => {
+      this.UidG = res
+
+      this.firestore.getDoc('Usuarios', this.UidG ).subscribe(res => {
+        this.dataUser = res
+      })
+    })
+    console.log(this.Parqueadero)
+    this.user = this.Parqueadero.data.idUser
+    this.firestore.getDoc('Usuarios', this.user).subscribe(res => {
+      this.ver = res
+      console.log(this.ver)
+    })
+  }
+
+
+  
+
+
+
+  abrir(){
+    const abrirMenu = ()=> {
+      document.getElementById('animacion4').classList.toggle('active4');
+     document.getElementById('animacion4').classList.toggle('animate__bounceInLeft');
+    }
+    abrirMenu()
  }
 
-  // ! Propiedades por defecto del boton para indicar si el estado del parqueadero esta activo o inactivo
-  activo;
-  color = 'primary';
-  // ! Funcion que cambia el valor de las propiedades de Activo a Inactivo y viceversa junto con su color respectivo por ahora no genera cambios en la base de datos
-  onClick(){
-    if( this.activo == 'Activo'){
-      this.activo = 'Inactivo'
-      this.color = 'danger'
-      const data = {
-        estado: 'Inactivo'
-      }
-      this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
-    }
-    else if( this.activo == 'Inactivo'){
-      this.activo = 'Activo'
-      this.color = 'success'
-      const data = {
-        estado: 'Activo'
-      }
-      this.firebase.updateDoc('Parqueaderos', this.arreglo.Idparqueadero, data)
-    }
+//  const abrirM = document.getElementById('open4');
+//     abrirM.addEventListener('dblclick', function(){
+//      document.getElementById('animacion4').classList.toggle('active4');
+//      document.getElementById('animacion4').classList.toggle('animate__bounceInLeft');
+//     })
+
+ 
+  
+  logout(){
+    this.log.logout()
   }
+
   cerrar(){
     this.modalController.dismiss();
   }
-
 }
