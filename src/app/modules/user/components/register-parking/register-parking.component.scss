@@ -2,8 +2,18 @@
     --ion-background-color: #FFF !important
 }
 
-.div-back{
-    cursor: pointer;
+// :host ::ng-deep{
+//     #div-logo{
+//         right: 10px;
+//         left: auto;
+//     }
+// }
+
+.container{
+    margin-top: 7%;
+    @media(max-width: 678px){
+        margin-top: 25%;
+    }
 }
 
 .title-inscribe{
@@ -21,8 +31,9 @@
 }
 
 .div-info-parqueo{
+    padding: 5%;
+    padding-bottom: 2%;
     @media(min-width: 679px){
-        padding: 5%;
         padding-top: 2%;
     }
     .label-docs{

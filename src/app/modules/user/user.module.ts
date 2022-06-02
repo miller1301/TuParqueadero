@@ -21,7 +21,7 @@ import { MenuUserComponent } from './components/menu-user/menu-user.component';
 import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
 import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
 import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit-reserv.component';
-
+import { LogoAppComponent } from './components/logo-app/logo-app.component';
 
 
 
@@ -42,7 +42,8 @@ import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit
     MenuUserComponent,
     RegisterParkingComponent,
     CrudReservasComponent,
-    EditReservComponent
+    EditReservComponent,
+    LogoAppComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +56,7 @@ import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit
   ],
   providers: [
     MapViewComponent
-  ]
+  ],
+  exports: [MenuUserComponent]
 })
 export class UserModule {}

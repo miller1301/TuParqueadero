@@ -3,20 +3,24 @@ Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago p
 Ficha 2252471 ADSI
 Redes sociales: Tuparqueadero-->
 
-<ion-header translucent>
-  <ion-toolbar>
+<ion-header  translucent>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button id="first"></ion-menu-button>
+      <img id="img" src="../../../../assets/img/user/logo-parqueadero.png" alt="logo">
     </ion-buttons>
-    <ion-title>Empleado del parqueadero</ion-title>
+    <ion-buttons id="color1"  slot="end">
+      <ion-button  (click)="abrir()"  id="open">
+        <ion-icon  slot="end" name="menu-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title id="title">Tuparqueadero</ion-title>
   </ion-toolbar> 
 </ion-header>
 
-<ion-buttons slot="end">
-  <ion-button (click)="abrir()"  id="open">
-    <ion-icon slot="end" name="menu-outline" ></ion-icon>
-  </ion-button>
-</ion-buttons>
+
+
+
+
       
     <!-- Pagina principal del rol empleado -->
     <ion-content class="ion-padding-horizontal">
@@ -68,10 +72,14 @@ Redes sociales: Tuparqueadero-->
       <ion-row>
         <ion-col sizesm="12">
         <div class="ion-text-center">
-          <h2 id="titulo">Tuparqueadero</h2>
+          <h2 id="titulo">ParqueaderoSANTINI</h2>
           <img id="imagen" src="https://www.eltiempo.com/files/article_main/uploads/2021/01/22/600b1a714c8fe.jpeg"><img>
           <h2 id="subtitulo">¿Quienes somos?</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque earum, consectetur iste nobis labore iusto veritatis mollitia dolores, temporibus hic ipsa asperiores, ipsum voluptates magnam. Similique fugiat mollitia commodi consectetur autem sed corporis, illum eaque non tenetur ad. Ab asperiores atque doloribus veritatis quasi illum dolor distinctio eum, facere provident nesciunt fugiat veniam ducimus odio quae nobis libero magnam necessitatibus amet velit neque. Hic nemo natus dicta corporis voluptatibus facilis odio nisi maxime iusto architecto. Atque similique eveniet odit possimus, obcaecati non provident dolorem optio sit excepturi maiores laboriosam repellat esse harum aliquid repudiandae, commodi debitis ducimus sunt deserunt. Et.</p>
+          <p>Somo ParqueaderoSANTINI ofrecemos una experiencia espectacular,seguridad,confianza y satisfaccion  ya que puede
+            Reservar Conocer el parqueadero a fondo nuestro equipo de Trabajo por la aplicacion Tuparqueadero esto lo hacemos para que nuestro cliente este seguro al momento de dejarlo en el lugar
+            estamos ubicados en Mosquera-Cundinamarca 
+          </p>
+          <img id="imagen2" src="https://www.ceupe.com/images/easyblog_articles/1303/equipo-de-trabajo.jpg"><img>
         </div>
       </ion-col>
        </ion-row>

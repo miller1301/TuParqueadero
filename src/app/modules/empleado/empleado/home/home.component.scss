@@ -2,7 +2,13 @@
 // Diseño de la imagen de inicio
 #imagen{
     height: auto;
-    width: 100%;
+    width: 100%; 
+}
+
+// imagen 2 del home
+#imagen2{
+    width: 55%;
+    height: auto;
 }
 // Diseño del icono de ubicacion
 #ubicacion{
@@ -16,6 +22,10 @@
 // Diseño del subtitulo
 #subtitulo{
     font-size: 40px;
+}
+
+#color1{
+    color: #1497be;
 }
 
 // ! Posicion y tamaño de nuestra menu
@@ -71,4 +81,55 @@
 .menu-text{
     color: white;
 } 
+
+#titulo{
+    background: linear-gradient(#1497be,#FF0000 );
+    font-size: 50px;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: text 5s linear infinite;
+}
+
+@keyframes text {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#subtitulo{
+    background: linear-gradient(#1497be,#FF0000 );
+    font-size: 50px;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: text 5s linear infinite;
+}
+
+#img{
+    width: 45px;
+    height: 45px;
+}
+
+
+
+@keyframes text {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+
+
+
+}
+
+
+
 

@@ -39,6 +39,7 @@ export class CambioDeRolPage implements OnInit {
 
       this.firebase.getDoc('Usuarios', this.UidG ).subscribe(res => {
         this.dataUsers = res
+        
       })
     })
 

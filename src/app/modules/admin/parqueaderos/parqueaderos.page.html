@@ -9,16 +9,22 @@
 -->
 <!--*Header de la Gestion de usuarios -->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tuparqueaderocolor">
     <!--*Informacion de la pagina en la cual se encuentra el usuario-->
     <!--*Boton para regresar a la pagina anterior -->
-      <ion-back-button slot="start" defaultHref="/admin" ></ion-back-button>
-      <ion-toolbar>
-      </ion-toolbar>
+      <ion-back-button slot="start" defaultHref="/admin" color="light" ></ion-back-button>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+        <ion-label>
+          <ion-avatar>
+            <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+            <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+          </ion-avatar>
+        </ion-label>
+      </ion-item>
     <!--*Boton que abre el menu del usuario  -->
       <ion-buttons slot="end">
         <ion-button (click)="abrir()" id="open1">
-          <ion-icon slot="end" name="menu-outline"></ion-icon>
+          <ion-icon slot="end" name="menu-outline" color="light"></ion-icon>
         </ion-button>
       </ion-buttons>
   </ion-toolbar>

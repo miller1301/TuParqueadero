@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ContadorPageRoutingModule } from './contador-routing.module';
+import { ReservasGPageRoutingModule } from './reservas-g-routing.module';
 
-import { ContadorPage } from './contador.page';
+import { ReservasGPage } from './reservas-g.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ContadorPageRoutingModule
+    ReservasGPageRoutingModule
   ],
-  declarations: [ContadorPage]
+  declarations: [ReservasGPage]
 })
-export class ContadorPageModule {}
+export class ReservasGPageModule {}
