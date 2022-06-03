@@ -17,6 +17,7 @@ export class RegisterParkingComponent implements OnInit {
     read: ElementRef
   }) images: ElementRef;
 
+  dataUser: any;
   idUser: string;
   formRegistroParking: FormGroup;
   mensajeArchivo = 'No hay un archivo seleccionado';
@@ -41,6 +42,7 @@ export class RegisterParkingComponent implements OnInit {
   ngOnInit() {
 
     this.getDataUser();
+    this.getUserDataDb();
 
     this.formRegistroParking = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -71,6 +73,11 @@ export class RegisterParkingComponent implements OnInit {
         return;
       }
     })
+  }
+
+  getUserDataDb(){
+    let user = localStorage.getItem('user');
+    this.dataUser = JSON.parse(user);
   }
 
   // TODO: Hacer que el path enviado en las funciones del Storage se le agregue el nombre del parqueadero del input
@@ -168,7 +175,7 @@ export class RegisterParkingComponent implements OnInit {
         constitucion_poliza: this.formRegistroParking.value.poliza,
         descripcion: this.formRegistroParking.value.solicitud,
         direccion: this.formRegistroParking.value.location,
-        estado: 'Inactivo',
+        estado: 'enRevision',
         horario: this.formRegistroParking.value.schedule,
         images: [
           this.formRegistroParking.value.images
@@ -182,7 +189,9 @@ export class RegisterParkingComponent implements OnInit {
         nameParqueadero: this.formRegistroParking.value.name,
         tarifa: this.formRegistroParking.value.tarifa,
         telefono: this.formRegistroParking.value.telephone,
-        ubicacion: this.formRegistroParking.value.municipio
+        ubicacion: this.formRegistroParking.value.municipio,
+        nameUser: this.dataUser.nombre,
+        imgUser: this.dataUser.icono
       }
 
       this.firestoreService.createDocIdDefault('Parqueaderos', data).then( success => {
