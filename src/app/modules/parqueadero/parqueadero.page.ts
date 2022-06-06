@@ -105,7 +105,6 @@ export class ParqueaderoPage implements OnInit {
   }
 
 
-  Modal
   async presentModal(index: number) {
     const modal = await this.modalController.create({
       component: ParHomePage,

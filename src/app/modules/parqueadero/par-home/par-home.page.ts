@@ -176,15 +176,6 @@ export class ParHomePage implements OnInit {
       this.Usuario = false
 
     }
-    else if(data.valor === 'usuario'){
-      this.datosUser = false
-      this.imagenes = false
-      this.constitucion = false
-      this.camara = false
-      this.licencia = false
-      this.Usuario = true
-      this.cambio = false
-    }
     
   }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
 
 import { ParqueaderoPage } from './parqueadero.page';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'reservas',
     loadChildren: () => import('./reservas/reservas.module').then( m => m.ReservasPageModule)
+  },
+  {
+    path: 'registrar',
+    component: ModalComponent
   }
 
   

@@ -9,6 +9,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class ReservasPage implements OnInit {
 
   listareserva = [];
+  listareserva2 = [];
   constructor(private firestore: FirestoreService) { }
 
   ngOnInit() {
@@ -19,6 +20,18 @@ export class ReservasPage implements OnInit {
           let reservas=parkref.payload.doc.data();
           reservas['id']=parkref.payload.doc.id;
           return reservas;
+        });
+
+
+      });
+    });
+    this.firestore.getAll('reservas').then(parkres =>{
+      parkres.subscribe(listareservaReff =>{
+        
+        this.listareserva2 = listareservaReff.map(parkreff=>{
+          let reservas1=parkreff.payload.doc.data();
+          reservas1['id']=parkreff.payload.doc.id;
+          return reservas1;
         });
 
 

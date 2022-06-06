@@ -5,12 +5,14 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { getAuth, onAuthStateChanged } from '@angular/fire/auth'
 
 import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
+
 
   @ViewChild("images", {
     read: ElementRef
@@ -72,9 +74,12 @@ export class ModalComponent implements OnInit {
     })
   }
 
+  // TODO: Hacer que el path enviado en las funciones del Storage se le agregue el nombre del parqueadero del input
 
+  // * Subir imágenes del parqueadero al storage y retornar url
+  // TODO: Realizar función para subir varias imagenes al tiempo
   async newImageUpload(event: any){
-    const path = 'modal';
+    const path = 'register-parking';
     const name = event.target.files[0].name;
     const file = event.target.files[0];
     const res = await this.fireStorageService.uploadFile(file, path, name);
@@ -82,8 +87,9 @@ export class ModalComponent implements OnInit {
     this.uploadImages = res;
   }
 
+  // * Subir poliza al Storage y retornar link
   async polizaUpload(event: any){
-    const path = 'modal';
+    const path = 'register-parking';
     const name = event.target.files[0].name;
     const file = event.target.files[0];
     const res = await this.fireStorageService.uploadFile(file, path, name);
@@ -91,8 +97,9 @@ export class ModalComponent implements OnInit {
     this.uploadDocPoliza = res;
   }
 
+  // * Subir cámara de comercio al Storage y retornar link
   async camaraComercioUpload(event: any){
-    const path = 'modal';
+    const path = 'register-parking';
     const name = event.target.files[0].name;
     const file = event.target.files[0];
     const res = await this.fireStorageService.uploadFile(file, path, name);
@@ -100,8 +107,9 @@ export class ModalComponent implements OnInit {
     this.uploadDocComercio = res;
   }
 
+  // * Subir licencia de funcionamiento al Storage y retornar link
   async licenciaUpload(event: any){
-    const path = 'modal';
+    const path = 'register-parking';
     const name = event.target.files[0].name;
     const file = event.target.files[0];
     const res = await this.fireStorageService.uploadFile(file, path, name);
@@ -110,12 +118,14 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit(){
+    // Se asignan las rutas de los archivos al formulario
     this.formRegistroParking.value.images = this.uploadImages;
     this.formRegistroParking.value.poliza = this.uploadDocPoliza;
     this.formRegistroParking.value.comercio = this.uploadDocComercio;
     this.formRegistroParking.value.licencia = this.uploadDocLicencia;
 
     if(this.formRegistroParking.valid){
+      // Encapsular los datos para ser enviados
       let data = {
         idUser: this.idUser,
         camara_comercio: this.formRegistroParking.value.comercio,

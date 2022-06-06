@@ -1,6 +1,9 @@
 <ion-app>
   <ion-header>
     <ion-toolbar color="tuparqueaderocolor">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/parqueadero"></ion-back-button>
+      </ion-buttons>
       <ion-item  color="tuparqueaderocolor" class="contenido">
       <ion-label>
         <ion-avatar>
@@ -28,6 +31,24 @@
         <p class="i textoc">{{ datos.Hora_de_ingreso }}</p>
         <p class="i textot">Telefono:</p>
         <p class="i textoc">{{ datos.telefono }}</p>
+
+        <div class="vermas">
+          <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+  <ion-col *ngFor="let datos1 of listareserva2" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+    <ion-card id="item">
+      <ion-card-header>
+      </ion-card-header>
+      <ion-card-content class="c">
+        <img [src]="datos1.img" [alt]="datos1.Nombre">
+        <p class="i textot">Hora Ingreso:</p>
+        <p class="i textoc">{{ datos1.hourArrive }}</p>
+        <p class="i textot">Telefono:</p>
+        <p class="i textoc">{{ datos1.telefono }}</p>
 
         <div class="vermas">
           <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
