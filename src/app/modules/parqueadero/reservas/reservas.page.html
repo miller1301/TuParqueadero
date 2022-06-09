@@ -19,49 +19,38 @@
 <ion-content >
 <ion-grid>
 <ion-row>
-
-
-  <ion-col *ngFor="let datos of listareserva" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
-    <ion-card id="item" *ngIf="datos.uid === '6R6SbxeS01fDCxTyD9KK6Fk9aNX2'">
-      <ion-card-header>
-      </ion-card-header>
+  
+  <ion-col *ngFor="let datosP of arreglos2;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+    <ion-card id="item" >
       <ion-card-content class="c">
-        <img [src]="datos.img" [alt]="datos.Nombre">
-        <p class="i textot">Hora Ingreso:</p>
-        <p class="i textoc">{{ datos.Hora_de_ingreso }}</p>
+        <img [src]="datosP.data.img" [alt]="datosP.Nombre">
+        <p class="i textot">Parqueadero:</p>
+        <p class="i textoc">{{ datosP.data.nameParqueadero }}</p>
         <p class="i textot">Telefono:</p>
-        <p class="i textoc">{{ datos.telefono }}</p>
-
+        <p class="i textoc">{{ datosP.data.telefono }}</p>
         <div class="vermas">
           <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
         </div>
       </ion-card-content>
     </ion-card>
   </ion-col>
-
-  <ion-col *ngFor="let datos1 of listareserva2" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+ 
+  <ion-col *ngFor="let datost of arreglos4;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
     <ion-card id="item">
       <ion-card-header>
       </ion-card-header>
       <ion-card-content class="c">
-        <img [src]="datos1.img" [alt]="datos1.Nombre">
+        <img [src]="datost.data.img" [alt]="datos.Nombre">
         <p class="i textot">Hora Ingreso:</p>
-        <p class="i textoc">{{ datos1.hourArrive }}</p>
+        <p class="i textoc">{{ datost.data.hourArrive }}</p>
         <p class="i textot">Telefono:</p>
-        <p class="i textoc">{{ datos1.telefono }}</p>
-
+        <p class="i textoc">{{ datost.data.telefono }}</p>
         <div class="vermas">
-          <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
+          <button class="bvermas" (click)="presentModal2(i)"> Ver mas </button>
         </div>
       </ion-card-content>
     </ion-card>
   </ion-col>
-
-
-
-
-
- 
 </ion-row>
 </ion-grid>
 </ion-content>

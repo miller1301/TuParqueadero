@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: ReservasPage
+  },
+  {
+    path: 'info-reservas',
+    loadChildren: () => import('./info-reservas/info-reservas.module').then( m => m.InfoReservasPageModule)
+  },
+  {
+    path: 'inforeserva',
+    loadChildren: () => import('./inforeserva/inforeserva.module').then( m => m.InforeservaPageModule)
   }
 ];
 

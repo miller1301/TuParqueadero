@@ -4,8 +4,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { PoppoverInfoComponent } from '../../admin/poppover-info/poppover-info.component';
 import pdfMake from 'pdfmake/build/pdfmake';
+import { DatosComponent } from '../datos/datos.component';
 
 @Component({
   selector: 'app-par-home',
@@ -112,7 +112,7 @@ export class ParHomePage implements OnInit {
   }
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
-      component: PoppoverInfoComponent,
+      component: DatosComponent,
       cssClass: 'my-custom-class',
       event: ev,
       translucent: true

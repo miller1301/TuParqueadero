@@ -62,13 +62,12 @@
       <ion-row>
         <ion-col *ngFor="let datosP of arreglos2;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
           <ion-card>
-            <ion-card-header>
-            </ion-card-header>
             <ion-card-content class="c">
               <img [src]="datosP.data.images[0]" [alt]="datosP.data.nameParqueadero">
-              <p class="i textot">Descripcion:</p>
-              <p class="i textoc">{{ datosP.data.descripcion }}</p>
-    
+              <p class="i textot">Nombre:</p>
+              <p class="i textoc">{{ datosP.data.nameParqueadero }}</p>
+              <p class="i textot">Telefono:</p>
+              <p class="i textoc">{{ datosP.data.telefono }}</p>
               <div class="vermas">
                 <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
               </div>

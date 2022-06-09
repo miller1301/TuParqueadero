@@ -85,7 +85,7 @@ export class ParqueaderoPage implements OnInit {
         })
       });
       this.arreglos2 = this.arreglo.filter( (item)=>{ 
-        if( item.data.estado === 'enRevision' ){
+        if( item.data.idUser === 'JO9qMOKsMVbBqhrJ7qGsdesfA5V2' ){
           return true 
         }
       })
@@ -116,13 +116,6 @@ export class ParqueaderoPage implements OnInit {
     return await modal.present();
   }
 
-  async openModal() {
-    const modal = await this.modalController.create({
-      component: ModalComponent,
-      cssClass: 'my-custom-class'
-    });
-    return await modal.present();
-  }
 
  
 

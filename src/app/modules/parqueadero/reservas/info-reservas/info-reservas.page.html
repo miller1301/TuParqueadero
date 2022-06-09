@@ -1,0 +1,50 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button id="menu" ></ion-menu-button>
+      </ion-buttons>
+      
+      <ion-title>Reserva</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+
+  <ion-content>
+    <!-- <app-menu></app-menu> -->
+    <ion-grid>
+      <ion-row *ngIf="Parqueadero">
+        <ion-col sizeLg="10" offsetLg="1" sizeMd="10" offsetMd="1" sizeSm="12">
+          <ion-card>
+          <ion-card-header>
+            <ion-item>
+              <!-- <img src="../../../../assets/users.png" alt="Usuario" class="imgp"> -->
+              <img [src]="Parqueadero.data.img" alt="Usuario" class="imgp">
+  
+            </ion-item>
+            </ion-card-header>
+            <ion-card-content *ngIf="datosUser" >
+                <p class="titulo"><strong> Nombre: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.Nombre }}</p>  
+                <br>
+                <p  class="titulo"><strong>Marca</strong></p>
+                <p class="textoB">{{ Parqueadero.data.Marca }}</p>
+                <br>
+                <p  class="titulo"><strong>Modelo: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.Modelo }}</p>
+                <br>
+                <p  class="titulo"><strong>Placa: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.Placa }}</p>
+                <br>
+                <p class="titulo"><strong>telefono: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.telefono }}</p>
+                <br>
+              </ion-card-content>
+                
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
+
