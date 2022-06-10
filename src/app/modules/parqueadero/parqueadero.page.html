@@ -40,16 +40,15 @@
           <ion-item routerLink="/parqueadero/crud">
             <ion-icon  slot="start"  name="albums-outline"></ion-icon><p class="texto-menu" > Gestion empleado</p>
           </ion-item>
+          <ion-item routerLink="/parqueadero/reservas" >
+            <ion-icon slot="start" name="calendar-outline"></ion-icon><p class="texto-menu" > Reservas </p>
+          </ion-item>
+          <ion-item routerLink="/parqueadero/registrar" >
+            <ion-icon slot="start" name="car-sport-outline"></ion-icon><p class="texto-menu" > registrar </p>
+          </ion-item>
           <!--*Navegacion a la pagina de configuracion -->
           <ion-item routerLink="/parqueadero/configuracion" >
             <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu" > Configuración </p>
-          </ion-item>
-
-          <ion-item routerLink="/parqueadero/reservas" >
-            <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu" > Reservas </p>
-          </ion-item>
-          <ion-item routerLink="/parqueadero/registrar" >
-            <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu" > registrar </p>
           </ion-item>
           <!-- *Cierre de sesion del usuario -->
           <ion-item routerLink="#" (click)="logout()">
