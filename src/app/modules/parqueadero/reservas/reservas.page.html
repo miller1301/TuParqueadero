@@ -1,56 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button id="menu" ></ion-menu-button>
-    </ion-buttons>
-    <ion-title>reservas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="tuparqueaderocolor">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/parqueadero"></ion-back-button>
+      </ion-buttons>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagen" />
+          <ion-text class="Titulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <!-- <app-menu></app-menu> -->
-  <div>
-    <h1>Enero 2021</h1>
-    <ion-card routerLink="/parqueadero/reserva">
-    <ol>
-      <li class="dia">Lun</li>
-      <li class="dia">Mar</li>
-      <li class="dia">Mie</li>
-      <li class="dia">Jue</li>
-      <li class="dia">Vie</li>
-      <li class="dia">Sab</li>
-      <li class="dia">Dom</li>
-      <li id="primer_dia" class="dis">1</li>
-      <li class="dis">2</li>
-      <li class="dis">3</li>
-      <li class="dis">4</li>
-      <li class="dis">5</li>
-      <li class="dis">6</li>
-      <li class="dis">7</li>
-      <li class="dis">8</li>
-      <li class="dis">9</li>
-      <li class="dis">10</li>
-      <li class="dis">11</li>
-      <li class="dis">12</li>
-      <li class="dis">13</li>
-      <li class="dis">14</li>
-      <li class="dis">15</li>
-      <li class="dis">16</li>
-      <li class="dis">17</li>
-      <li class="dis">18</li>
-      <li class="dis">19</li>
-      <li class="dis">20</li>
-      <li class="dis">21</li>
-      <li class="dis">22</li>
-      <li class="dis">23</li>
-      <li class="dis">24</li>
-      <li class="dis">25</li>
-      <li class="dis">26</li>
-      <li class="dis">27</li>
-      <li class="dis">28</li>
-      <li class="dis">29</li>
-      <li class="dis">30</li>
-      <li class="dis">31</li>
-    </ol> </ion-card>
-  </div>
+
+<ion-content >
+<ion-grid>
+<ion-row>
+  
+  <ion-col *ngFor="let datosP of arreglos2;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+    <ion-card id="item" >
+      <ion-card-content class="c">
+        <img [src]="datosP.data.img" [alt]="datosP.Nombre">
+        <p class="i textot">Parqueadero:</p>
+        <p class="i textoc">{{ datosP.data.nameParqueadero }}</p>
+        <p class="i textot">Telefono:</p>
+        <p class="i textoc">{{ datosP.data.telefono }}</p>
+        <div class="vermas">
+          <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+ 
+  <ion-col *ngFor="let datost of arreglos4;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+    <ion-card id="item">
+      <ion-card-header>
+      </ion-card-header>
+      <ion-card-content class="c">
+        <img [src]="datost.data.img" [alt]="datos.Nombre">
+        <p class="i textot">Hora Ingreso:</p>
+        <p class="i textoc">{{ datost.data.hourArrive }}</p>
+        <p class="i textot">Telefono:</p>
+        <p class="i textoc">{{ datost.data.telefono }}</p>
+        <div class="vermas">
+          <button class="bvermas" (click)="presentModal2(i)"> Ver mas </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+</ion-grid>
 </ion-content>

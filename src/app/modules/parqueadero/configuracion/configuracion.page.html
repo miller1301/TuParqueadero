@@ -1,52 +1,23 @@
 <ion-app>
-  <!-- el fin e¡de esta pantalla  -->
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="tuparqueaderocolor">
       <ion-buttons slot="start">
-        <ion-menu-button id="menu"></ion-menu-button>
+        <ion-back-button defaultHref="/parqueadero"></ion-back-button>
       </ion-buttons>
-
-      <ion-title>parqueadero</ion-title>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagen" />
+          <ion-text class="Titulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
     </ion-toolbar>
-
   </ion-header>
 
   <ion-content>
-    <!--*Contenedor Ion-Grid para el manejo del responsive -->
+
     <ion-grid>
-    <ion-menu side="start" menuId="menu" contentId="parqueo">
-      <ion-content>
-        <div class="menu-header-bg">menu</div>
-        <div class="header-content">
-          <img [src]="dataUser.icono" width="120px" alt="Prueba">
-          <ion-label>
-            <h2 class="menu-text">{{ dataUser.nombre }}</h2>
-            <p>dueño de parqueadero</p>
-          </ion-label>
-        </div>
-        <ion-list class="menu-items" lines="none">
-          <ion-item routerLink="/parqueadero">
-            <ion-icon name="home-outline" class="ion-padding-horizontal"></ion-icon> Bandeja de entrada
-          </ion-item>
-          <ion-item routerLink="/parqueadero/crud">
-            <ion-icon name="albums-outline" class="ion-padding-horizontal"></ion-icon> Gestion empleado
-          </ion-item>
-          <ion-item routerLink="/parqueadero/reservas">
-            <ion-icon name="calendar-outline" class="ion-padding-horizontal"></ion-icon> Reservas
-          </ion-item>
-          <ion-item routerLink="/parqueadero/configuracion">
-            <ion-icon name="settings-outline" class="ion-padding-horizontal"></ion-icon> Configuracion
-          </ion-item>
-          <ion-item routerLink="#" (click)="logout()">
-            <ion-icon name="log-out-outline" class="ion-padding-horizontal"></ion-icon> Cerrar Sesion
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="parqueo"></ion-router-outlet>
-    <!--*Fin del menu del usuario -->
-    <!--*Contenido de la vista de configuracion -->
-    <!--* Condicional para saber si tenemos informacion que mostrar en caso de que esto sea true mostrara la informacion  -->
     <ion-row *ngIf="dataUser">
       <!-- * Tamaño en el cual se mostrara la informacion del usuario -->
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">

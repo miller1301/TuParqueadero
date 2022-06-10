@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ModalPage } from './modal.page';
+import { InforeservaPage } from './inforeserva.page';
 
-describe('ModalPage', () => {
-  let component: ModalPage;
-  let fixture: ComponentFixture<ModalPage>;
+describe('InforeservaPage', () => {
+  let component: InforeservaPage;
+  let fixture: ComponentFixture<InforeservaPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalPage ],
+      declarations: [ InforeservaPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalPage);
+    fixture = TestBed.createComponent(InforeservaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalPageRoutingModule } from './modal-routing.module';
+import { InforeservaPageRoutingModule } from './inforeserva-routing.module';
 
-import { ModalPage } from './modal.page';
+import { InforeservaPage } from './inforeserva.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ModalPageRoutingModule
+    InforeservaPageRoutingModule
   ],
-  declarations: [ModalPage]
+  declarations: [InforeservaPage]
 })
-export class ModalPageModule {}
+export class InforeservaPageModule {}

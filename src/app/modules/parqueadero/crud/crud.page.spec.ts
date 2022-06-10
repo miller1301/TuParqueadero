@@ -22,3 +22,11 @@ describe('CrudPage', () => {
     expect(component).toBeTruthy();
   });
 });
+function beforeEach(arg0: (done: any) => any) {
+  throw new Error('Function not implemented.');
+}
+
+function expect(component: CrudPage) {
+  throw new Error('Function not implemented.');
+}
+

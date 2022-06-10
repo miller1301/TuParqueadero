@@ -25,6 +25,8 @@ export class ConfiguracionPage implements OnInit {
   UidG;
   // ! Propiedad que guarda la informacion del usuario actual para mostrarla en el menu 
   dataUser;
+
+
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
     // ! Metodo que guarda el ID del usuario actual para luego hacer una busqueda en la base de datos y traer su informacion esperamos su respuesta "res" y se la asignamos a la propiedad UidG
@@ -49,18 +51,6 @@ export class ConfiguracionPage implements OnInit {
     this.log.logout()
   }
   // ! Metodo que muestra o oculta el menu del usuario
-  abrir(){
-    // * Constante que obtiene el elemento por el id "open6" para luego asignarle un evento
-    const abrirM = ()=>{
-    // ! Se obtiene el elemento por id "animacion6" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
-    // * La clase "active6" mostrara el menu 
-     document.getElementById('animacion6').classList.toggle('active6');
-    // * La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
-     document.getElementById('animacion6').classList.toggle('animate__bounceInLeft');
-    }
-
-    abrirM()
-  }
 
     // ! Funcion para usar el componente Toast de Ionic 
     // ? Mas informacion para el uso de este: https://ionicframework.com/docs/api/toast
