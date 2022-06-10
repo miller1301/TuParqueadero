@@ -51,8 +51,10 @@
             <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu" > Configuración </p>
           </ion-item>
           <!-- *Cierre de sesion del usuario -->
-          <ion-item routerLink="#" (click)="logout()">
-            <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu" > Cerrar Sesión</p>
+          <ion-item>
+            <a class="ahref-logout" href="/login">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu" > Cerrar Sesión</p>
+            </a>
           </ion-item>
         </div>
       </ion-col>
