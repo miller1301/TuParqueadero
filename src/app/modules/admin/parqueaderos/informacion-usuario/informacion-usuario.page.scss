@@ -17,8 +17,8 @@
 .menu-header3{
   height: 230px;
   width: 100%;
-  background: #3880ff;
-  background: linear-gradient(10deg, #3880ff 100%, #1c6dfa 100%);
+  background: #1A97E8;
+  background: linear-gradient(10deg, #1A97E8 100%, #1c6dfa 100%);
   box-shadow: 0px 1px 10px #003ca3;
   border-radius: 10px 10px 80px 10px;
   padding: 10px;
@@ -70,4 +70,27 @@ ion-toolbar{
   height: 55px;
 }
 
+ion-grid{
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 100%;
+  position: relative;
+}
+ion-footer{
+  text-align: center;
+  background-color: #1A97E8;
+  color: white;
+  width: 100%;
+  height: 25px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+}
 
+ion-card{
+  margin-bottom: 27px;
+}
+
+ion-card-content p {
+  font-size: 18px;
+}

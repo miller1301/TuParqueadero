@@ -26,7 +26,10 @@ export class ConfiguracionCuentaPage implements OnInit {
   // ! Propiedad que guarda la informacion del usuario actual para mostrarla en el menu 
   dataUser;
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
-  ngOnInit() {
+  fecha;
+    ngOnInit() {
+    const fecha = new Date()
+    this.fecha = fecha.getFullYear(); 
     // ! Metodo que guarda el ID del usuario actual para luego hacer una busqueda en la base de datos y traer su informacion esperamos su respuesta "res" y se la asignamos a la propiedad UidG
     this.log.getUid().then(res => {
     // * Esperamos la respuesta y se la asignamos a la propiedad UidG 
@@ -60,6 +63,9 @@ export class ConfiguracionCuentaPage implements OnInit {
     }
 
     abrirM()
+  }
+  cerrar(){
+    document.getElementById('animacion6').classList.remove('active6');
   }
 
     // ! Funcion para usar el componente Toast de Ionic 

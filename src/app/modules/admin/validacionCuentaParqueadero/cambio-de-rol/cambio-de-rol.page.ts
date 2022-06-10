@@ -67,8 +67,19 @@ export class CambioDeRolPage implements OnInit {
     const actualizar = {
       perfil : this.valor
     }
-    this.firebase.updateDoc(path, id, actualizar);
 
+    const path2 = 'Parqueaderos'
+    const id2 = this.Parqueadero.IdParqueadero
+    const actualizar2 = {
+      estado: 'Activo'
+    }
+
+    this.firebase.updateDoc(path, id, actualizar);
+    this.firebase.updateDoc(path2, id2, actualizar2);
+
+    setTimeout(() => {
+      this.modalController.dismiss();
+    },1500);
   }
   cerrar(){
     this.modalController.dismiss();

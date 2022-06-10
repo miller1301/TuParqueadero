@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AuthService } from 'src/app/services/auth.service';
 import { ModalController } from '@ionic/angular';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
  
@@ -29,6 +29,7 @@ export class InformacionDelParqueaderoPage implements OnInit {
 
   @Input() arreglo;
 
+
   constructor(
     // * Llamada a la clase ActivatedRoute que nos permite obtener el id que se le paso como paremetro 
     private activatedRoute:ActivatedRoute,
@@ -45,50 +46,59 @@ export class InformacionDelParqueaderoPage implements OnInit {
   createPdf(){
     const pdfDefiniton: any ={
       // ! Contenido del Pdf
+      watermark: { text: 'TuParqueadero', fontSize: 140, color: '#1A97E8',opacity: 0.3, bold: true, italics: false  },
       content: [
         {
-          text: `Informe de TuParqueadero `, style: `tex`
+          width: '100%',
+          height: '30px',
+          text: `Informe de TuParqueadero `, style: `titulo`
+        },
+        ,{
+          text: `Informe dirigido a TuParqueadero y/o ${this.infoUser.nombre}`,
+          style: 'espacio'
         },
         {
-          text: `Informe del usuario ${this.infoUser.nombre} identificado en la plataforma con el Id N° ${this.infoUser.uid} los siguientes datos seran usados para mantener todos nuestros archivos actualizados con informacion que el usuario nos brinda al momento de hacer su registro en TuParqueadero:`
-        },{
-          text: `Informacion del usuario`, style: `tex`
+          image: 'snow',
+          width: 100,
+          height: 100,
+          alignment: 'center',
+          lineHeight: 3
         },
         {
-          ul: [
-            ` Nombres Completos: ${this.infoUser.nombre}`,
-            ` Numero de Telefono: ${this.infoUser.telefono}`,
-            ` Direccion de correo: ${this.infoUser.correo}`,
-            ` Rol de usuario: ${this.infoUser.perfil}`,
-            ` ID del usuario: ${this.infoUser.uid} `
-          ], style: `espacio`
+          text: `La Aplicación TuParqueadero informa que el Usuario ${this.infoUser.nombre} identificado en la plataforma con el ID ${this.infoUser.uid} dueño del parqueadero " ${this.infoPar.nameParqueadero } " con ID ${this.arreglo.Idparqueadero} ha aceptado el uso de su información al momento de hacer el registro en la plataforma y esta información será guardada y usada únicamente para validar temas legales entre un tercero, el usuario y TuParqueadero entre la información a utilizar estaría su nombre completo, su número de teléfono, su dirección de correo, el nombre de su parqueadero, la ubicación de su parqueadero, la dirección entre otros.`,
+          style: 'espaciot'
         },
         {
-          text: 'Informacion del parqueadero', style: `tex`
-        },
-        {
-          ul: [
-            `Nombre del parqueadero ${this.infoPar.nameParqueadero}`,
-            `Ubicacion: ${this.infoPar.ubicacion} `,
-            `Direccion: ${this.infoPar.direccion}`,
-            `Pagina: ${this.infoPar.pagina}`,
-            `Horario: ${this.infoPar.horario}`,
-            `Tarifa: ${this.infoPar.tarifa}`,
-            `Estado actual: ${this.infoPar.estado}`
-          ], style: `espacio`
-        },
-        {
-          text: `Este documento fue realizado el ${this.data}`
+          text: `Este documento fue elaborado el ${this.data}`
         }
 
       ],
+      images:{
+        snow: 'https://cdn-icons-png.flaticon.com/512/2439/2439758.png'      },
+
       styles:{
         tex:{
           alignment: 'center',
           lineHeight: 2 
         },
+        titulo:{
+          alignment: 'center',
+          lineHeight: 3,
+          bold: true,
+          fontSize: 25,
+          color: '#1A97E8'
+        },
         espacio:{
-          lineHeight: 2
+          lineHeight: 2,
+          fontSize: 15
+        },
+        espacios:{
+          lineHeight: 7
+        },
+        espaciot:{
+          lineHeight: 3,
+          fontSize: 12,
+          alignment: 'justify'
         }
       }
     }
@@ -117,7 +127,7 @@ export class InformacionDelParqueaderoPage implements OnInit {
     // * Metodo para obtener la informacion del parqueadero recibe como parametro el path y el id del parqueadero luego guardamos la respuesta en la propiedad infoPar
     this.firebase.getDoc(path2, this.arreglo.Idparqueadero).subscribe((res: any) => {
       this.infoPar = res
-    
+      console.log(res)
     })
     // * Metodo para obtener el Id del usuario actual 
     this.log.getUid().then( res => {

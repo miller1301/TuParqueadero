@@ -1,6 +1,7 @@
 // ! Posicion de la imagen
 .imgp2{
     margin: auto !important;
+    border-radius: 50%;
 }
 // ! Posicion y tamaño de nuestra menu
 
@@ -82,4 +83,18 @@ ion-toolbar{
 
 .contenido{
     height: 55px;
+}
+
+::ng-deep ion-modal{
+    --width: 85vw;
+    --height: 90vh;
+}
+
+
+.imgre{
+    border-radius: 50%;
+}
+
+ion-card-content p {
+    font-size: 18px;
 }

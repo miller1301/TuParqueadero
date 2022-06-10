@@ -38,16 +38,21 @@ export class LoginPage implements OnInit {
     document.getElementById('menu-user').style.display="none";
   }
 
-  loginFacebook() {
-    this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(success => {
+  async loginFacebook() {
+    const res = await this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(success => {
       this.router.navigate(['/user']);
+      console.log("El success", success)
     });
+    console.log("res", res)
   }
 
   loginTwitter() {
-    this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then(success => {
+    const res = this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider()).then(success => {
       this.router.navigate(['/user']);
+      console.log("El success", success)
     });
+    console.log("res", res)
+
   }
 
   // logout() {
@@ -117,13 +122,45 @@ export class LoginPage implements OnInit {
   }
 
   async loginGoogle() {
-    const res = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
-    if (res) {
+    const res:any = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(error => console.log(error))
+    const id = res.user.multiFactor.user.uid
+    this.firestore.getDoc('Usuarios', id).subscribe((resLogin:any) =>{
+      if(resLogin){
+        return true
+      }else {
+        const data = {
+          nombre: res.user.multiFactor.user.displayName,
+          correo: res.user.multiFactor.user.email,
+          telefono: res.user.multiFactor.user.phoneNumber,
+          uid: res.user.multiFactor.user.uid,
+          password: null,
+          perfil: 'usuario',
+          icono: res.user.multiFactor.user.photoURL
+        };
+        this.firestore.createDoc(data, 'Usuarios', id);
+      }
+    })
+        
 
-      this.router.navigate(['/user'])
-    } else (
-      console.log('No se pudo iniciar sesion')
-    )
+   this.firestore.getDoc('Usuarios', id).subscribe((resLogin:any) =>{
+
+      if (resLogin.perfil === 'usuario') {
+        this.router.navigate(['/user'])
+      }
+      else if (resLogin.perfil === 'administrador') {
+        this.router.navigate(['/admin'])
+        return;
+      }
+      else if (resLogin.perfil === 'parqueadero') {
+        this.router.navigate(['/parqueadero'])
+        return;
+      }
+      else if (resLogin.perfil === 'empleado') {
+        this.router.navigate(['/empleado'])
+        return;
+      }
+
+    })
 
 
   }

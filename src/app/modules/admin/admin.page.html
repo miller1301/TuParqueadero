@@ -29,7 +29,7 @@
 </ion-header>
   <!--*Fin del header-->
   <!--*Contenido de la bandeja de entrada  -->
-<ion-content>
+<ion-content (click)="cerrar()" >
   <!--*Contenedor Ion-Grid para el manejo del responsive -->
 <ion-grid>
   <!--* Menu del usuario  -->
@@ -85,20 +85,48 @@
     <!-- </ion-col> -->
   <!-- </ion-row> -->
   <ion-row>
-    <ion-col *ngFor="let datosP of arreglo;let i = index" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12" class="cursor" (click)="presentModal(i)">
+    <!-- <ion-col *ngFor="let datosP of arreglos2;let i = index" sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="12" class="cursor" (click)="presentModal(i)">
        <ion-item >
         <!--*Imagen del dueño del parqueadero-->
-        <img [src]="datosP.data.img" width="40px" alt="Usuario" class="ion-margin-horizontal">
-        <ion-text class="letra">
+        <!-- <img [src]="datosP.data.img" width="40px" alt="Usuario" class="ion-margin-horizontal"> -->
+        <!-- <ion-text class="letra"> -->
           <!-- *Nombre del parqueadero  -->
-          <h3>{{ datosP.data.nameParqueadero }}</h3>
+          <!-- <h3>{{ datosP.data.nameParqueadero }}</h3> -->
           <!--*Descripcion del parqueadero -->
-          {{ datosP.data.descripcion }}
-        </ion-text>
-      </ion-item>
+          <!-- {{ datosP.data.descripcion }} -->
+        <!-- </ion-text> -->
+      <!-- </ion-item> -->
 
+    <!-- </ion-col> --> 
+    <ion-col *ngFor="let datosP of arreglos2;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+      <ion-card>
+        <ion-card-header>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img [src]="datosP.data.imgUser" class="jgp" />
+            </ion-avatar>
+            <ion-label>
+              <p class="textott">{{ datosP.data.nameUser }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+        <ion-card-content class="c">
+          <img [src]="datosP.data.images[0]" [alt]="datosP.data.nameParqueadero">
+          <p class="i textot">Descripcion:</p>
+          <p class="i textoc">{{ datosP.data.descripcion }}</p>
+
+          <div class="vermas">
+            <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
+          </div>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
+    
   </ion-row>
+
+  <ion-footer >
+      &copy; {{ fecha }} TuParqueadero 
+  </ion-footer>
 </ion-grid>
   <!--*Fin del contenido responsive-->
 </ion-content>

@@ -30,7 +30,7 @@
 </ion-header>
   <!--*Fin del header-->
   <!--*Contenido de la vista de configuracion  -->
-<ion-content>
+<ion-content (click)="cerrar()" >
 <ion-grid>
   <!--*Contenedor Ion-Grid para el manejo del responsive -->
   <ion-row class="menu6 menup6 animate__animated" *ngIf="dataUser" id="animacion6"> 
@@ -144,7 +144,11 @@
         </ion-button> -->
     </ion-col>
   </ion-row>
+  <ion-footer >
+    &copy; {{ fecha }} TuParqueadero 
+  </ion-footer>
 </ion-grid>
+
 <!-- * Fin del contenido responsive -->
 </ion-content>
 <!-- * Fin del contenido -->
