@@ -57,8 +57,17 @@
     }
 }
 
+:host ::ng-deep .input-hour .mat-form-field-infix{
+    display: flex;
+    border-top: 0px;
+}
+
 .input-info::placeholder{
     @media(max-width: 678px){
         font-size: 12px;
     }
+}
+
+.mat-form-field{
+    width: 100%;
 }

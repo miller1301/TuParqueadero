@@ -1,68 +1,83 @@
-<router-outlet></router-outlet>
-
 <ion-app>
   <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button id="menu" ></ion-menu-button>
-      </ion-buttons>
-      
-      <ion-title>parqueadero</ion-title>
+    <ion-toolbar color="tuparqueaderocolor">
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagen" />
+          <ion-text class="Titulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
+    <ion-buttons slot="end">
+      <ion-button (click)="abrir()"  id="open">
+        <ion-icon slot="end" name="menu-outline" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
     </ion-toolbar>
-    
   </ion-header>
+
   <ion-content>
-    <!-- <app-menu></app-menu> -->
+    <ion-row class="menu menup animate__animated" *ngIf="dataUser"  id="animacion"> 
+      <ion-col size="12">
+        <div class="menu-header">
+  
+          <!--*Informacion del usuario actual -->
+          <div>
+            <img [src]="dataUser.icono"width="120px" alt="Prueba">
+          </div>
+          <h4 class="menu-text">{{dataUser.nombre}}</h4>
+          <p class="menu-text"><small>{{dataUser.perfil}}</small></p>
+        </div>
+        <!--*Fin de la informacion del usuario actual -->
+  
+        <!--*Opciones por las cuales el usuario puede navegar -->
+        <div class="content-menu">
+          <!--*Navegacion a la pagina principal -->
+          <ion-item routerLink="/parqueadero" >
+            <ion-icon slot="start" name="mail-unread-outline"></ion-icon><p class="texto-menu" > Bandeja de entrada</p>
+          </ion-item>
+          <ion-item routerLink="/parqueadero/crud">
+            <ion-icon  slot="start"  name="albums-outline"></ion-icon><p class="texto-menu" > Gestion empleado</p>
+          </ion-item>
+          <ion-item routerLink="/parqueadero/reservas" >
+            <ion-icon slot="start" name="calendar-outline"></ion-icon><p class="texto-menu" > Reservas </p>
+          </ion-item>
+          <ion-item routerLink="/parqueadero/registrar" >
+            <ion-icon slot="start" name="car-sport-outline"></ion-icon><p class="texto-menu" > registrar </p>
+          </ion-item>
+          <!--*Navegacion a la pagina de configuracion -->
+          <ion-item routerLink="/parqueadero/configuracion" >
+            <ion-icon slot="start" name="settings-outline"></ion-icon><p class="texto-menu" > Configuración </p>
+          </ion-item>
+          <!-- *Cierre de sesion del usuario -->
+          <ion-item>
+            <a class="ahref-logout" href="/login">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu" > Cerrar Sesión</p>
+            </a>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
     <ion-grid>
       <ion-row>
-        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
-          <a routerLink="/parqueadero/par-home">
-          <ion-card class="card">
-            <img src="./../../../assets/img/15132529parqueadero.jpg" />
-            <ion-card-header>
-              <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h4>
-                Direccion
-              </h4>
-              <p>Calle 100a # 45 - 20</p>
+        <ion-col *ngFor="let datosP of arreglos2;let i = index" sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeXs="12">
+          <ion-card>
+            <ion-card-content class="c">
+              <img [src]="datosP.data.images[0]" [alt]="datosP.data.nameParqueadero">
+              <p class="i textot">Nombre:</p>
+              <p class="i textoc">{{ datosP.data.nameParqueadero }}</p>
+              <p class="i textot">Telefono:</p>
+              <p class="i textoc">{{ datosP.data.telefono }}</p>
+              <div class="vermas">
+                <button class="bvermas" (click)="presentModal(i)"> Ver mas </button>
+              </div>
             </ion-card-content>
-          </ion-card></a>
+          </ion-card>
         </ion-col>
-        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
-          <a routerLink="/par-home">
-          <ion-card class="card">
-            <img src="./../../../assets/img/2.jpeg"/>
-            <ion-card-header>
-              <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h4>
-                Direccion
-              </h4>
-              <p>Calle 100a # 45 - 20</p>
-            </ion-card-content>
-          </ion-card></a>
-        </ion-col>
-        <ion-col sizeLg="4" sizeSm="12" sizeXs="12">
-          <a routerLink="/par-home">
-          <ion-card class="card">
-            <img src="./../../../assets/img/600b1a714c8fe.jpeg"/>
-            <ion-card-header>
-              <ion-card-title>Parqueadero Parking Brokers</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h4>
-                Direccion
-              </h4>
-              <p>Calle 100a # 45 - 20</p>
-            </ion-card-content>
-          </ion-card></a>
-        </ion-col>
-      </ion-row> 
+      </ion-row>
     </ion-grid>
   </ion-content>
+
 </ion-app>
-
-
+<!-- *ngIf="datosP.data.idUser === 'JO9qMOKsMVbBqhrJ7qGsdesfA5V2'" -->

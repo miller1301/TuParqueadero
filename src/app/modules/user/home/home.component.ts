@@ -19,7 +19,9 @@ export class HomeComponent implements OnInit {
     private mapViewComponent: MapViewComponent
     ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    document.getElementById('menu-user').style.display="block";
+  }
 
   logout(){
     console.log("Logout")

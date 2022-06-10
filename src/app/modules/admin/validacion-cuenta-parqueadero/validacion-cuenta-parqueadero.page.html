@@ -1,9 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Validacion de la cuenta del parqueadero</ion-title>
+  <ion-toolbar color="tuparqueaderocolor">
+    <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+          <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
     <ion-buttons slot="end">
       <ion-button (click)="cerrar()"  id="open4">
-        <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+        <ion-icon slot="end" name="close-circle-outline" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -115,9 +122,26 @@
                   </ion-col>
                 </ion-row>
               </ion-card-content>
+              <ion-card-content *ngIf="Usuario">
+                <p><strong  class="titulo">Informacion del Usuario: </strong></p>
+                <ion-row>
+                  <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="12" sizeXs="12" >
+                    <ion-item>
+                      <!-- <img src="../../../../assets/users.png" alt="Usuario" class="imgp"> -->
+                      <img [src]="ver.icono" alt="Usuario" class="imgp">
+                    </ion-item>
+                    <p class="titulo">Nombre:</p>
+                    <p class="textopB">{{ ver.nombre }} </p>
+                    <p class="titulo">Telefono:</p>
+                    <p class="textopB">{{ ver.telefono }} </p>
+                    <p class="titulo">Correo:</p>
+                    <p class="textopB">{{ ver.correo }} </p>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
               <ion-card-content *ngIf="cambio"> 
                 <div>
-                  <ion-button expand="block" color="primary" size="large"  (click)="presentModal()">
+                  <ion-button expand="block" class="botoncr" size="large"  (click)="presentModal()" >
                     Cambiar rol
                   </ion-button>
                 </div>

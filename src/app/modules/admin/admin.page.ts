@@ -33,7 +33,8 @@ export class AdminPage implements OnInit {
 
 
   arreglo;
-
+  arreglos2;
+  usuario;
 
   // ! Metodo que muestra o oculta el menu del usuario
   abrir(){
@@ -48,15 +49,21 @@ export class AdminPage implements OnInit {
     abrirM();
   }
 
+  cerrar(){
+    document.getElementById('animacion').classList.remove('active');
+  }
+  fecha;
   // ! Metodo del ciclo de vida de los componentes es lo primero que se ejecuta al entrar a nuestra vista
   ngOnInit() {
+    const fecha = new Date()
+    this.fecha = fecha.getFullYear(); 
     // ! Metodo que se ejecuta para traer los datos de los parqueaderos luego esperamos su respuesta "res" y se la asignamos a la propiedad "listarData" para luego ser consumida en la vista
-    this.datos.getDocs('Parqueaderos').subscribe(res => {
-    // * Le asignamos la respuesta a nuestra propiedad "listarData" para luego ser consumida
-    this.listarData = res
-    // * Usamos el consol.log en desarrollo para mirar si la respueta que nos llego fue la indicada
-    // !console.log( this.listarData)
-    });
+    // this.datos.getDoc('Parqueaderos').subscribe(res => {
+    // // * Le asignamos la respuesta a nuestra propiedad "listarData" para luego ser consumida
+    // this.listarData = res
+    // // * Usamos el consol.log en desarrollo para mirar si la respueta que nos llego fue la indicada
+    // // !console.log( this.listarData)
+    // });
     // ! Metodo que guarda el ID del usuario actual para luego hacer una busqueda en la base de datos y traer su informacion esperamos su respuesta "res" y se la asignamos a la propiedad UidG
     this.log.getUid().then( res => {
     // * Esperamos la respuesta y se la asignamos a la propiedad UidG 
@@ -76,8 +83,15 @@ export class AdminPage implements OnInit {
           data : parqueadero.payload.doc.data()
         })
       });
-      console.log(this.arreglo)
-
+      this.arreglos2 = this.arreglo.filter( (item)=>{ 
+        if( item.data.estado === 'enRevision' ){
+          return true 
+        }
+      })
+      // console.log(this.arreglos2)
+      
+      
+      
     })
 
     });
@@ -96,7 +110,7 @@ export class AdminPage implements OnInit {
       component: ValidacionCuentaParqueaderoPage,
       cssClass: 'my-custom-class',
       componentProps: {
-        Parqueadero: this.arreglo[index]
+        Parqueadero: this.arreglos2[index]
       }
     });
     return await modal.present();

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { AuthService } from 'src/app/services/auth.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { AuthService } from 'src/app/services/auth.service';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
  
@@ -23,50 +23,74 @@ export class InformacionUsuarioPage implements OnInit {
 
   createPdf(){
     const pdfDefiniton: any ={
+      watermark: { text: 'TuParqueadero', fontSize: 140, color: '#1A97E8',opacity: 0.3, bold: true, italics: false  },
       content: [
         {
-          text: `Informe de TuParqueadero `, style: `tex`
+          width: '100%',
+          height: '30px',
+          text: `Informe de TuParqueadero `, style: `titulo`
+        },
+        ,{
+          text: `Informe dirigido a TuParqueadero y/o ${this.infoUser.nombre}`,
+          style: 'espacio'
         },
         {
-          text: `Informe del usuario ${this.infoUser.nombre} identificado en la plataforma con el Id N° ${this.infoUser.uid} los siguientes datos seran usados para mantener todos nuestros archivos actualizados con informacion que el usuario nos brinda al momento de hacer su registro en TuParqueadero:`
-        },{
-          text: `Informacion del usuario`, style: `tex`
+          image: 'snow',
+          width: 100,
+          height: 100,
+          alignment: 'center',
+          lineHeight: 3
         },
         {
-          ul: [
-            ` Nombres Completos: ${this.infoUser.nombre}`,
-            ` Numero de Telefono: ${this.infoUser.telefono}`,
-            ` Direccion de correo: ${this.infoUser.correo}`,
-            ` Rol de usuario: ${this.infoUser.perfil}`,
-            ` ID del usuario: ${this.infoUser.uid} `
-          ], style: `espacio`
+          text: `La Aplicación TuParqueadero informa que el Usuario ${this.infoUser.nombre} identificado en la plataforma con el ID ${this.infoUser.uid} ha aceptado el uso de su información al momento de hacer el registro en la plataforma y esta información será guardada y usada únicamente para validar temas legales entre un tercero, el usuario y TuParqueadero entre la información a utilizar estaría su nombre completo, su número de teléfono, su dirección de correo  entre otros.`,
+          style: 'espaciot'
         },
         {
-          text: `Este documento fue realizado el ${this.data}`
+          text: `Este documento fue elaborado el ${this.data}`
         }
 
       ],
+      images:{
+        snow: 'https://cdn-icons-png.flaticon.com/512/2439/2439758.png'      },
+
       styles:{
         tex:{
           alignment: 'center',
           lineHeight: 2 
         },
+        titulo:{
+          alignment: 'center',
+          lineHeight: 3,
+          bold: true,
+          fontSize: 25,
+          color: '#1A97E8'
+        },
         espacio:{
-          lineHeight: 2
+          lineHeight: 2,
+          fontSize: 15
+        },
+        espacios:{
+          lineHeight: 7
+        },
+        espaciot:{
+          lineHeight: 3,
+          fontSize: 12,
+          alignment: 'justify'
         }
       }
     }
-
+    // ! Creacion del Pdf
     const pdf = pdfMake.createPdf(pdfDefiniton);
+    // ! Descarga del Pdf
     pdf.download();
   }
-
+  fecha;
   constructor( private activaredRouter: ActivatedRoute, private firebase:FirestoreService, private log : AuthService ) { }
 
   ngOnInit() {
     const data = new Date
     this.data = data.toLocaleDateString()
-
+    this.fecha = data.getFullYear()
     this.idUser = this.activaredRouter.snapshot.paramMap.get('id');
     const path = 'Usuarios'
     this.firebase.getDoc(path, this.idUser).subscribe(res => this.infoUser = res)
@@ -91,5 +115,9 @@ export class InformacionUsuarioPage implements OnInit {
     }
     abrirM()
  }
+
+ cerrar(){
+  document.getElementById('animacion3').classList.remove('active3');
+}
 
 }

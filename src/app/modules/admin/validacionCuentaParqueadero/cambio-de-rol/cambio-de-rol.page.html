@@ -1,9 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Cambio de Rol</ion-title>
+  <ion-toolbar color="tuparqueaderocolor">
+    <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+          <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
       <ion-buttons slot="end">
         <ion-button (click)="cerrar()"  id="open4">
-          <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+          <ion-icon slot="end" name="close-circle-outline" color="light"></ion-icon>
         </ion-button>
       </ion-buttons>
   </ion-toolbar>
@@ -44,7 +51,7 @@
           <ion-card-header>
             <ion-row>
               <ion-col sizeLg="2" offsetLg="5" sizeMd="2" offsetMd="5" sizeSm="4" offsetSm="4" sizeXs="4" offsetXs="4">
-                <img src="../../../../../assets/users.png" alt="Usuario" class="imgp2" width="150px">
+                <img [src]="dataUser.icono"alt="Usuario" class="imgp2" width="150px">
               </ion-col>
             </ion-row>
           </ion-card-header>

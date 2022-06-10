@@ -21,6 +21,7 @@ export class EditReservComponent implements OnInit {
     console.log(this.dataBooking);
 
     this.formEditReserva = this.formBuilder.group({
+      date: [new Date(this.dataBooking.data.dateBooking), [Validators.required]],
       time: [this.dataBooking.data.timeParking, [Validators.required]],
       hour: [this.dataBooking.data.hourArrive, [Validators.required]],
       vehicle: [this.dataBooking.data.typeVehicle, [Validators.required]],
@@ -40,6 +41,7 @@ export class EditReservComponent implements OnInit {
   onSubmitUpdatedData(){
     console.log(this.formEditReserva.value);
     let updatedData = {
+      dateBooking: this.formEditReserva.value.date.getTime(),
       timeParking: this.formEditReserva.value.time,
       hourArrive: this.formEditReserva.value.hour,
       typeVehicle: this.formEditReserva.value.vehicle,

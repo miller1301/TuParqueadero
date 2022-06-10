@@ -24,36 +24,52 @@
 
   <!-- Formulario de parqueo por el usuario -->
   <form [formGroup]="formEditReserva" (ngSubmit)="onSubmitUpdatedData()">
-    <div class="div-info-parqueo">
-      <div class="input-group mb-3">
-        <span class="input-group-text span-input-1" id="basic-addon1">
-          <i class="fas fa-clock"></i>
-        </span>
-        <input formControlName="time" name="time" type="text" class="form-control input-info" placeholder="Tiempo estimado de parqueo" aria-label="tiempo" aria-describedby="basic-addon1">
+    <div class="div-info-parqueo row">
+      <div class="mb-3 col-lg-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de reserva</mat-label>
+          <input formControlName="date" name="date" matInput [matDatepicker]="pickerDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDate></mat-datepicker>
+        </mat-form-field>
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text span-input-1" id="basic-addon2">
-          <i class="bi bi-geo-alt-fill"></i>
-        </span>
-        <input formControlName="hour" name="hour" type="text" class="form-control input-info" placeholder="Hora estimada de llegada" aria-label="hora" aria-describedby="basic-addon2">
+      <div class="mb-3 col-lg-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Tiempo estimado de parqueo</mat-label>
+          <input formControlName="time" name="time" matInput placeholder="Ej. 1 hora">
+        </mat-form-field>
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text span-input-1" id="basic-addon3">
-          <i class="fas fa-car"></i>
-        </span>
-        <input formControlName="vehicle" name="vehicle" type="text" class="form-control input-info" placeholder="Tipo de vehículo" aria-label="vehículo" aria-describedby="basic-addon3">
+      <div class="mb-3 col-lg-6 input-hour">
+        <mat-form-field appearance="fill">
+          <input formControlName="hour" name="hour" [ngxTimepicker]="toggleTimepicker" [disableClick]="false" matInput placeholder="Hora de llegada">
+          <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+          <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+        </mat-form-field>
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text span-input-1" id="basic-addon4">
-          <i class="bi bi-123"></i>
-        </span>
-        <input formControlName="placa" name="placa" type="text" class="form-control input-info" placeholder="Placa de vehículo" aria-label="placa" aria-describedby="basic-addon4">
+      <div class="mb-3 col-lg-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de vehículo</mat-label>
+          <mat-select formControlName="vehicle" name="vehicle">
+            <mat-option value="Carro">
+              Carro
+            </mat-option>
+            <mat-option value="Moto">
+              Moto
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text span-input-1" id="basic-addon5">
-          <i class="bi bi-circle-half"></i>
-        </span>
-        <input formControlName="marca" name="marca" type="text" class="form-control input-info" placeholder="Marca de vehículo" aria-label="marca" aria-describedby="basic-addon5">
+      <div class="mb-3 col-lg-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Placa de vehículo</mat-label>
+          <input formControlName="placa" name="placa" matInput placeholder="Ej. MSN013">
+        </mat-form-field>
+      </div>
+      <div class="mb-3 col-lg-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Marca de vehículo</mat-label>
+          <input formControlName="marca" name="marca" matInput placeholder="Ej. Chevrolet">
+        </mat-form-field>
       </div>
     </div>
   

@@ -1,0 +1,28 @@
+#pwd{
+    width: 50%;
+}
+
+#text{
+    color: rgb(26, 151, 232);
+    margin-top: 30px;
+}
+
+.color-text{
+    @media(max-width: 678px){
+        padding: 0% 10%;
+    }
+}
+
+ion-item{
+    padding: 1% 7%;
+}
+
+#boton{
+    background-color: rgb(26, 151, 232);
+}
+
+.div-btn{
+    display: flex;
+    justify-content: center;
+    margin: 4%;
+}

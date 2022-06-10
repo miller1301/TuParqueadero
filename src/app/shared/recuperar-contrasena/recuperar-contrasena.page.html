@@ -10,23 +10,32 @@
   <ion-grid>
     <ion-row>
       <ion-col sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeSm="10" offsetSm="1">
+        
         <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle class="ion-text-center">Ingrese su correo para la recuperacion de contraseña</ion-card-subtitle>
-          </ion-card-header>
+          <ion-text class="ion-text-center">
+            <h1 id="text">Recuperar Contraseña</h1>
+          </ion-text>
+          <div class="text-center">
+            <img src="../../../assets/img/user/password.png" id="pwd">
+          </div>
+          <ion-text class="ion-text-center">
+            <h4 class="color-text">Ingresa tu correo electronico para recuperar la contraseña</h4>
+          </ion-text>
           <ion-card-content>
             <ion-item>
-              <ion-label position="floating">Ingrese su correo</ion-label>
+              <ion-label position="floating" id="text" color="primary">Ingrese su correo</ion-label>
               <ion-input type="email" placeholder="Ingrese su correo"  [(ngModel)]="emailU" ></ion-input>
             </ion-item>
           </ion-card-content>
+
+          <div class="div-btn">
+            <ion-button color="primary" (click)="Reset()" >Enviar correo de recuperación</ion-button>
+          </div>
+
         </ion-card>
         <!-- <h1 *ngIf="rec" >El correo que ingreso no esta registrado en nuestra aplicacion o esta mal escrito</h1> -->
 
       </ion-col>
     </ion-row>
   </ion-grid>
-<ion-button (click)="Reset()" expand="block" fill="clear">
-  Enviar correo de recuperación.
-</ion-button>
 </ion-content>

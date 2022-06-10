@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,17 +10,24 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MenuUserComponent implements OnInit {
 
-  constructor( private menuController: MenuController, private auth: AuthService ) { }
+  dataUser: any;
 
-  ngOnInit() {}
+  constructor( private menuController: MenuController, private auth: AuthService, private router: Router ) { }
 
-  openMenu() {
-    this.menuController.open();
+  ngOnInit() {
+    this.getUser();
+  }
+
+  getUser(){
+    let user = localStorage.getItem('user');
+    this.dataUser = JSON.parse(user);
+    console.log(this.dataUser);
   }
 
   // * Funcion que consume el servicio de Autenticacion y le permite al usuario cerrar la sesion
   logout() {
     this.auth.logout();
+    this.router.navigate(['/']);
   }
 
 }

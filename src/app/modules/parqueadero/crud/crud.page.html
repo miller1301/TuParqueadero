@@ -1,19 +1,25 @@
 <ion-app>
-  <!-- el fin e¡de esta pantalla  -->
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="tuparqueaderocolor">
       <ion-buttons slot="start">
-        <ion-menu-button id="menu" ></ion-menu-button>
+        <ion-back-button defaultHref="/parqueadero"></ion-back-button>
       </ion-buttons>
-      
-      <ion-title>parqueadero</ion-title>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagen" />
+          <ion-text class="Titulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
     </ion-toolbar>
-    
   </ion-header>
 
-  <ion-content>
-    <!-- <app-menu></app-menu> -->
+<ion-content>
+    
 <ion-grid>
+
     <ion-row>
       <ion-col size="12">
         <ion-text color="primary" class="ion-text-center">
@@ -49,19 +55,21 @@
       </ion-col>
     </ion-row>
     <ion-row>
-    <ion-col *ngFor="let usuario of usuarios"  sizeLg="4" offsetLg="4" sizeSm="12"  sizeXs="12" >
-    <ion-item id="item" *ngIf="usuario.perfil == 'trabajador'">
+    <ion-col *ngFor="let usuario of usuarios"  sizeLg="8" offsetLg="2" sizeSm="12"  sizeXs="12" >
+    <ion-item id="item" *ngIf="usuario.perfil == 'empleado'">
       <ion-item >
-      <ion-label class="nombre">{{usuario.nombre}}</ion-label>
-      <ion-buttons>
-      <ion-button >
-        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="deleteUser(usuario)">
-        <ion-icon slot="icon-only" color="danger" name="trash-outline"></ion-icon>
+        <img class="clas1" [src]="usuario.icono" width="100px" alt="Park" class="ion-margin-horizontal" />
+        <ion-text id="text">
+      <h2 class="nombre">{{usuario.nombre}}</h2>
+       Telefono: {{usuario.telefono}}
+       <p> Rol: {{usuario.perfil}}</p>
+    </ion-text>
+  </ion-item>
+  <ion-buttons>
+    <ion-button (click)="deleteUser(usuario)">
+      <ion-icon slot="icon-only" color="danger" name="trash-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-item>
     </ion-item>
   </ion-col>
 </ion-row>

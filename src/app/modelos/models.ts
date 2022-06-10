@@ -4,7 +4,7 @@ export interface User {
     correo: string,
     uid: string,
     password: string,
-    perfil: 'usuario'|'admin'|'parqueadero'|'trabajador',
+    perfil: 'usuario'|'admin'|'parqueadero'|'empleado',
     icono: string
 }
 

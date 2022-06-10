@@ -1,71 +1,63 @@
-<app-menu-user></app-menu-user>
 <ion-content>
-  <ion-infinite-scroll>
-    <ion-infinite-scroll-content>
-      <div class="container">
-        <!-- Cerrar modal -->
-        <div routerLink="/user" class="div-back mt-4 ms-2">
-          <i class="fas fa-arrow-left"></i>
+  <div class="container">
+    <app-logo-app></app-logo-app>
+    <!-- logo parqueadero -->
+    <div class="text-center">
+      <h1 class="title-inscribe">INSCRIBE TU PARQUEADERO</h1>
+    </div>
+  
+    <!-- Formulario de parqueo por el usuario -->
+    <form [formGroup]="formRegistroParking" (ngSubmit)="onSubmit()">
+      <div class="div-info-parqueo row">
+        <div class="mb-3 col-md-6">
+          <input formControlName="name" name="name" type="text" class="form-control input-info" placeholder="Nombre de parqueadero">
         </div>
-        <!-- logo parqueadero -->
-        <div class="text-center">
-          <h1 class="title-inscribe">INSCRIBE TU PARQUEADERO</h1>
+        <div class="mb-3 col-md-6">
+          <input formControlName="location" name="location" type="text" class="form-control input-info" placeholder="Dirección de parqueadero">
         </div>
-      
-        <!-- Formulario de parqueo por el usuario -->
-        <form [formGroup]="formRegistroParking" (ngSubmit)="onSubmit()">
-          <div class="div-info-parqueo row">
-            <div class="mb-3 col-md-6">
-              <input formControlName="name" name="name" type="text" class="form-control input-info" placeholder="Nombre de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="location" name="location" type="text" class="form-control input-info" placeholder="Dirección de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="municipio" name="municipio" type="text" class="form-control input-info" placeholder="Ciudad o municipio de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="telephone" name="telephone" type="text" class="form-control input-info" placeholder="Teléfono de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="latitud" name="latitud" type="text" class="form-control input-info" placeholder="Latitud de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="longitud" name="longitud" type="text" class="form-control input-info" placeholder="Longitud de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="schedule" name="schedule" type="text" class="form-control input-info" placeholder="Horarios de parqueadero">
-            </div>
-            <div class="mb-3 col-md-6">
-              <input formControlName="tarifa" name="tarifa" type="text" class="form-control input-info" placeholder="Tarifa de parqueadero">
-            </div>
-            <div class="mb-3 col-md-12">
-              <textarea formControlName="solicitud" name="solicitud" type="text" class="form-control" placeholder="Describe tu solicitud"></textarea>
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="label-docs">Imágenes de tu parqueadero</label>
-              <input #images (change)="newImageUpload($event)" formControlName="images" name="images" type="file" class="form-control" multiple>
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="label-docs">Constitución de póliza de responsabilidad civil extracontractual</label>
-              <input type="file" formControlName="poliza" name="poliza" class="form-control" (change)="polizaUpload($event)">
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="label-docs">Cámara de comercio</label>
-              <input type="file" formControlName="comercio" name="comercio" class="form-control" (change)="camaraComercioUpload($event)">
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="label-docs">Licencia de funcionamiento</label>
-              <input type="file" formControlName="licencia" name="licencia" class="form-control" (change)="licenciaUpload($event)">
-            </div>
-          </div>
-        
-          <!-- Botón confirmar -->
-          <div class="text-center div-btn-confirmar">
-            <button type="submit" class="btn btn-confirmar btn-lg text-white">Confirmar</button>
-          </div>
-        </form>
+        <div class="mb-3 col-md-6">
+          <input formControlName="municipio" name="municipio" type="text" class="form-control input-info" placeholder="Ciudad o municipio de parqueadero">
+        </div>
+        <div class="mb-3 col-md-6">
+          <input formControlName="telephone" name="telephone" type="text" class="form-control input-info" placeholder="Teléfono de parqueadero">
+        </div>
+        <div class="mb-3 col-md-6">
+          <input formControlName="latitud" name="latitud" type="text" class="form-control input-info" placeholder="Latitud de parqueadero">
+        </div>
+        <div class="mb-3 col-md-6">
+          <input formControlName="longitud" name="longitud" type="text" class="form-control input-info" placeholder="Longitud de parqueadero">
+        </div>
+        <div class="mb-3 col-md-6">
+          <input formControlName="schedule" name="schedule" type="text" class="form-control input-info" placeholder="Horarios de parqueadero">
+        </div>
+        <div class="mb-3 col-md-6">
+          <input formControlName="tarifa" name="tarifa" type="text" class="form-control input-info" placeholder="Tarifa de parqueadero">
+        </div>
+        <div class="mb-3 col-md-12">
+          <textarea formControlName="solicitud" name="solicitud" type="text" class="form-control" placeholder="Describe tu solicitud"></textarea>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label class="label-docs">Imágenes de tu parqueadero</label>
+          <input #images (change)="newImageUpload($event)" formControlName="images" name="images" type="file" class="form-control" multiple>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label class="label-docs">Constitución de póliza de responsabilidad civil extracontractual</label>
+          <input type="file" formControlName="poliza" name="poliza" class="form-control" (change)="polizaUpload($event)">
+        </div>
+        <div class="mb-3 col-md-6">
+          <label class="label-docs">Cámara de comercio</label>
+          <input type="file" formControlName="comercio" name="comercio" class="form-control" (change)="camaraComercioUpload($event)">
+        </div>
+        <div class="mb-3 col-md-6">
+          <label class="label-docs">Licencia de funcionamiento</label>
+          <input type="file" formControlName="licencia" name="licencia" class="form-control" (change)="licenciaUpload($event)">
+        </div>
       </div>
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+    
+      <!-- Botón confirmar -->
+      <div class="text-center div-btn-confirmar">
+        <button type="submit" class="btn btn-confirmar btn-lg text-white">Confirmar</button>
+      </div>
+    </form>
+  </div>
 </ion-content>

@@ -9,21 +9,28 @@
 -->
 <!--*Header de la configuracion del usuario -->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tuparqueaderocolor">
     <!--*Informacion de la pagina en la cual se encuentra el usuario-->
-    <ion-title>Informacion de la cuenta</ion-title>
+    <ion-item  color="tuparqueaderocolor" class="contenido">
+      <ion-label>
+        <ion-avatar>
+          <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+          <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+        </ion-avatar>
+      </ion-label>
+    </ion-item>
     <!--*Boton que abre el menu del usuario  -->
     <ion-buttons slot="end">
       <ion-button (click)="abrir()" id="open6">
-        <ion-icon slot="end" name="menu-outline"></ion-icon>
+        <ion-icon slot="end" name="menu-outline" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-back-button slot="start" defaultHref="/admin"></ion-back-button>
+    <ion-back-button slot="start" defaultHref="/admin" color="light"></ion-back-button>
   </ion-toolbar>
 </ion-header>
   <!--*Fin del header-->
   <!--*Contenido de la vista de configuracion  -->
-<ion-content>
+<ion-content (click)="cerrar()" >
 <ion-grid>
   <!--*Contenedor Ion-Grid para el manejo del responsive -->
   <ion-row class="menu6 menup6 animate__animated" *ngIf="dataUser" id="animacion6"> 
@@ -67,7 +74,7 @@
       <!-- * Componente que contendra la informacion del usuario -->
     <ion-card-content class="ion-padding">
       <!-- * Componente que muestra la imagen del usuario -->
-      <ion-item class="ion-padding-top">
+      <ion-item class="ion-padding-top" lines="none">
         <img [src]="dataUser.icono" width="150px" class="imgp">
       </ion-item>
       <!-- * Componente que nos permite actualizar la imagen del usuario -->
@@ -75,7 +82,7 @@
         <ion-icon name="create-outline" color="success" slot="end" (click)="actualizarImg()" ></ion-icon>
       </ion-item>
       <!-- * Componente que muestra los nombres completos del usuario -->
-      <ion-item>
+      <ion-item lines="none">
         <h3 class="texto" >Nombres y Apellidos:</h3>
     </ion-item>
     <ion-item>
@@ -86,7 +93,7 @@
       <ion-icon name="create-outline" color="success" slot="end" (click)="actualizarNombre()" ></ion-icon>
     </ion-item>
       <!-- * Componente que muestra el correo del usuario -->
-    <ion-item>
+    <ion-item lines="none">
       <p class="texto">Correo:</p>
     </ion-item>
       <ion-item>
@@ -97,7 +104,7 @@
         <ion-icon slot="end" color="danger" name="information-circle-outline" (click)="informacion()" ></ion-icon>
       </ion-item>
       <!-- * Componente que nos muestra el numero telefonico del usuario -->
-      <ion-item>
+      <ion-item lines="none">
         <p class="texto">Telefono:</p>
       </ion-item>
       <ion-item>
@@ -108,7 +115,7 @@
         <ion-icon name="create-outline" color="success" slot="end" (click)="actualizarTel()" ></ion-icon>
       </ion-item>
       <!-- * Componente que nos muestra el rol del usuario  -->
-      <ion-item>
+      <ion-item lines="none">
         <p class="texto">Rol:</p>
       </ion-item>
       <ion-item>
@@ -119,7 +126,7 @@
         <ion-icon slot="end" color="danger" name="information-circle-outline" (click)="informacion()"></ion-icon>
       </ion-item>
       <!-- * Componente que nos muestra el Id del usuario -->
-      <ion-item>
+      <ion-item lines="none">
         <p class="texto">Id de la cuenta:</p>
       </ion-item>
       <ion-item>
@@ -137,7 +144,11 @@
         </ion-button> -->
     </ion-col>
   </ion-row>
+  <ion-footer >
+    &copy; {{ fecha }} TuParqueadero 
+  </ion-footer>
 </ion-grid>
+
 <!-- * Fin del contenido responsive -->
 </ion-content>
 <!-- * Fin del contenido -->
