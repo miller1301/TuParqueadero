@@ -26,8 +26,8 @@
     // * Nos indica el ancho
     width: 100%;
     // * Nos indica sus colores de fondo
-    background: #3880ff;
-    background: linear-gradient(10deg, #3880ff 100%, #1c6dfa 100%);
+    background: #1A97E8;
+    background: linear-gradient(10deg, #1A97E8 100%, #1c6dfa 100%);
     // * Nos indica la sombra que tendra
     box-shadow: 0px 1px 10px #003ca3;
     // * Nos indica el borde redondeado que tendra el header
@@ -71,3 +71,102 @@ ion-modal {
     height: 600px;
     border: 2px solid red;
 }
+
+ion-toolbar{
+    background-color: #1A97E8;
+}
+
+
+.ColorTitulo{
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.imagenMenu{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+
+.contenido{
+    height: 55px;
+}
+
+
+
+.tarjetat{
+    background-color: #1A97E8;
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.textott{
+    font-size: 15px;
+}
+
+.c{
+    text-align: center;
+    justify-content: center;
+}
+
+.i{
+    text-align: left !important;
+}
+
+.textoc{
+    color: #000;
+    font-size: 15px;
+}
+
+.textot{
+    font-weight: bold;
+    color: #000;
+    margin-top: 5px;
+}
+
+.vermas{
+    text-align: right !important;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.bvermas{
+    width: 120px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #1A97E8;
+    border-radius: 15px;
+}
+
+
+.footer{
+    text-align: center;
+    background-color: #1A97E8;
+    color: white;
+}
+
+ion-grid{
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 100%;
+    position: relative;
+  }
+  ion-footer{
+    text-align: center;
+    background-color: #1A97E8;
+    color: white;
+    width: 100%;
+    height: 25px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  ion-card{
+    margin-bottom: 27px;
+  }

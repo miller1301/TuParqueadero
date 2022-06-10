@@ -2,12 +2,27 @@
     margin-top: 80px;
     border-radius: 10px;
     background: rgb(26, 151, 232);
+    @media(max-width: 678px){
+        margin-top: 15px;
+    }
+}
+
+.div-img-logo{
+    @media(max-width: 678px){
+        display: flex;
+        justify-content: center;
+        padding: 4%;
+    }
 }
 
 #logo{
     width: 60%;
     margin-top: 100px;
     margin-left: 100px;
+    @media(max-width: 678px){
+        margin: auto;
+        width: 50%;
+    }
 }
 
 #col{
@@ -35,3 +50,38 @@
     background: rgb(44, 44, 44) ;
 }
 
+ion-item{
+    padding: 1% 7%;
+}
+
+.btn-login{
+    width: 50%;
+    @media(max-width: 678px){
+        width: 80%;
+    }
+}
+
+.btn-google{
+    width: 35%;
+    @media(max-width: 678px){
+        width: 60%;
+    }
+}
+
+#text{
+    color: rgb(26, 151, 232);
+    margin-top: 30px;
+    @media(max-width: 678px){
+        margin-top: 15px;
+    }
+}
+
+.link-recuperar-contraseña{
+    @media(max-width: 678px){
+        font-size: 14px;
+    }
+}
+
+.fondo{
+    background: black;
+}

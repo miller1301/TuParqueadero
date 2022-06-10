@@ -13,8 +13,10 @@
           <ion-row>
 
             <!-- ion-col de la imagen tamaño Size = 6  -->
-            <ion-col>
-              <img src="../../../assets/img/user/logo-parqueadero.png" id="logo" />
+            <ion-col size="12" size-md="6">
+              <div class="div-img-logo">
+                <img src="../../../assets/img/user/logo-parqueadero.png" id="logo" />
+              </div>
             </ion-col>
 
             <!-- ion-col del contenido de inicio de sesion -->
@@ -24,41 +26,40 @@
 
               <ion-text class="ion-text-center">
                 <h1 id="text">Iniciar Sesión</h1>
-              </ion-text><br><br><br>
+              </ion-text>
 
               <ion-item>
                 <ion-label position="floating" id="text" color="primary">Correo</ion-label>
-                <ion-input placeholder="correo electronico" id="correo" type="text" [(ngModel)]="credenciales.correo">
+                <ion-input type="text" [(ngModel)]="credenciales.correo">
                 </ion-input>
-              </ion-item> 
+              </ion-item>
 
               <p *ngIf="emailInvalid" class="text-danger">El correo es inválido</p>
               <p *ngIf="userNotFound" class="text-danger">Usuario no encontrado</p>
 
               <ion-item>
                 <ion-label position="floating" id="text" color="primary">Contraseña</ion-label>
-                <ion-input id="contraseña" type="password" placeholder="Contraseña" [(ngModel)]="credenciales.password">
+                <ion-input type="password" placeholder="Contraseña" [(ngModel)]="credenciales.password">
                 </ion-input>
                 <p *ngIf="passwordInvalid" class="text-danger">La contraseña Es Incorrecta</p>
               </ion-item>
 
 
               <div class="ion-text-center">
-                <ion-button class="ion-margin-top" (click)="login()">
+                <ion-button class="ion-margin-top btn-login" (click)="login()">
                   Login
                 </ion-button>
               </div>
 
-              <ion-button expand="block" fill="clear" routerLink="/recuperar-contrasena" id="text">
-                ¿Olvidaste tu Contraseña?
-              </ion-button>
               <ion-row>
-                <ion-col sizeLg="2" offsetLg="3" sizeMd="2" offsetMd="3" sizeXs="12">
-                  <ion-button (click)="loginGoogle()" expand="block" mode="ios" fill="outline">
-                    <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />
-                  </ion-button>
+                <ion-col sizeLg="12"  sizeMd="12" sizeXs="12">
+                  <div class="ion-text-center">
+                    <ion-button class="btn-google" (click)="loginGoogle()" mode="ios" fill="outline">
+                      <img src="../../../assets/goole.png" width="30px" alt="Google_logo" />
+                    </ion-button>
+                  </div>
                 </ion-col>
-                <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
+                <!-- <ion-col sizeLg="2" sizeMd="2" sizeXs="12">
                   <ion-button (click)="loginFacebook()" expand="block" fill="outline" mode="ios">
                     <img src="../../../assets/facebook.png" width="30px" alt="Facebook_logo">
                   </ion-button>
@@ -67,8 +68,11 @@
                   <ion-button (click)="loginTwitter()" expand="block" fill="outline" mode="ios">
                     <img src="../../../assets/Twitter.png" width="30px" alt="Twitter_logo">
                   </ion-button>
-                </ion-col>
+                </ion-col> -->
               </ion-row>
+              <ion-button expand="block" fill="clear" routerLink="/recuperar-contrasena" id="text" class="link-recuperar-contraseña">
+                ¿Olvidaste tu Contraseña?
+              </ion-button>
               <ion-button expand="block" fill="clear" routerLink="/register">
                 Registrarse
               </ion-button>

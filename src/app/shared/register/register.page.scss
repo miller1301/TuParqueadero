@@ -3,10 +3,29 @@
     background: rgb(26, 151, 232);
 }
 
+.div-img-logo{
+    @media(max-width: 678px){
+        display: flex;
+        justify-content: center;
+        padding: 4%;
+    }
+}
+
 #logo{
     width: 60%;
     margin-top: 150px;
     margin-left: 100px;
+    @media(max-width: 678px){
+        margin: auto;
+        width: 50%;
+    }
+}
+
+.title-register{
+    display: flex;
+    h1{
+        margin: auto;
+    }
 }
 
 #col{
@@ -14,22 +33,38 @@
 }
 
 .ion-text-center{
-    margin-top: 30px ;
+    margin-top: 7px ;
+    @media(max-width: 678px){
+        margin-top: 10px;
+    }
 }
 
 #text{
     color: rgb(26, 151, 232);
-    margin-top: 30px;
+    margin-top: 7px;
+    @media(max-width: 678px){
+        margin-top: 10px;
+    }
 }
 
 .fondo{
     background: black;
 }
 
-#correo{
-    background: rgb(44, 44, 44);
+ion-item{
+    padding: 1% 7%;
 }
 
-#contraseña{
-    background: rgb(44, 44, 44) ;
+.btn-registrarse{
+    width: 50%;
+    @media(max-width: 678px){
+        width: 80%;
+    }
+}
+
+.btn-google{
+    width: 35%;
+    @media(max-width: 678px){
+        width: 60%;
+    }
 }

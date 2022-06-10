@@ -1,0 +1,56 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button id="menu" ></ion-menu-button>
+      </ion-buttons>
+      
+      <ion-title>Reserva</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+
+  <ion-content>
+    <!-- <app-menu></app-menu> -->
+    <ion-grid>
+      <ion-row *ngIf="Parqueadero">
+        <ion-col sizeLg="10" offsetLg="1" sizeMd="10" offsetMd="1" sizeSm="12">
+          <ion-card>
+          <ion-card-header>
+            <ion-item>
+              <!-- <img src="../../../../assets/users.png" alt="Usuario" class="imgp"> -->
+              <img [src]="Parqueadero.data.img" alt="Usuario" class="imgp">
+  
+            </ion-item>
+            </ion-card-header>
+            <ion-card-content *ngIf="datosUser" >
+                <p class="titulo"><strong>Nombre del parquedero: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.nameParqueadero }}</p>  
+                <br>
+                <p  class="titulo"><strong>direccion: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.direccion }}</p>
+                <br>
+                <p  class="titulo"><strong>Hora de llegada: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.hourArrive }}</p>
+                <br>
+                <p  class="titulo"><strong>Marca del vehiculo: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.marcaVehicle }}</p>
+                <br>
+                <p class="titulo"><strong>placa: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.placaVehicle }}</p>
+                <br>
+                <p class="titulo"><strong>telefono: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.telefono }}</p>
+                <br>
+                <br>
+                <p class="titulo"><strong>Tiempo de parqueo: </strong></p>
+                <p class="textoB">{{ Parqueadero.data.timeParking }}</p>
+                <br>
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
+

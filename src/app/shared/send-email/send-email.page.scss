@@ -1,11 +1,31 @@
+::ng-deep{
+    .ion-page{
+        background-color: #FFF;
+        justify-content: flex-start;
+    }
+}
+
 #img{
     width: 100%;
 }
 
-#text{
-    
+.card-title{
+    color:  rgb(26, 151, 232);
+    font-size: 35px;
+    @media(max-width: 678px){
+        font-size: 30px;
+    }
 }
 
-.text-center{
-   color:  rgb(26, 151, 232) ;
+.div-info{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .form-group{
+        text-align: center;
+        p{
+            font-size: 15px;
+            
+        }
+    }
 }

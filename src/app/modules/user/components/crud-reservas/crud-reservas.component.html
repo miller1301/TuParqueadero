@@ -1,19 +1,132 @@
-<app-menu-user></app-menu-user>
-<h1 class="text-center">Mis reservas</h1>
-
-<div class="container p-5">
-  <div *ngFor="let booking of userBookings; let i = index" class="row">
-    <div class="col-lg-2">
-      <img [src]="booking.data.img" width="100%">
-    </div>
-    <div class="col-lg-4">
-      <h3>{{ booking.data.nameParqueadero }}</h3>
-      <p>{{ booking.data.direccion }}</p>
-      <p>{{ booking.data.telefono }}</p>
-    </div>
-    <div class="col-lg-6">
-      <button class="btn btn-warning" (click)="presentModal(i)">Editar</button>
-      <button class="btn btn-danger" (click)="deleteBooking(booking.idBooking)">Eliminar</button>
-    </div>
+<div class="container mt-5 p-4 bg-white rounded-3">
+  <div class="container-fluid header">
+    <h1>MIS RESERVAS</h1>
   </div>
+  <p-table *ngIf="filterBooking == 'Todas'" [value]="bookings" responsiveLayout="stack">
+    <ng-template pTemplate="caption">
+      <button (click)="filterStatusBooking('Todas')" class="p-button-raised p-button-sm p-button-success m-1" pButton type="button" icon="pi pi-check" iconPos="left" label="Todas"></button>
+      <button (click)="filterStatusBooking('Programadas')" class="p-button-raised p-button-sm m-1" pButton type="button" icon="pi pi-calendar" iconPos="left" label="Programadas"></button>
+      <button (click)="filterStatusBooking('Realizadas')" class="p-button-raised p-button-sm p-button-warning m-1" pButton type="button" icon="pi pi-history" iconPos="left" label="Realizadas"></button>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Parqueadero</th>
+            <th>Fecha</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-booking let-index="rowIndex">
+        <tr>
+            <td>
+              <img src="{{ booking.data.img }}" width="50" style="vertical-align: middle" />
+              <span class="image-text">{{booking.data.nameParqueadero}}</span>
+            </td>
+            <td><span class="p-column-title">Fecha</span>{{ booking.data.dateBooking | date:'dd/MM/yyyy' }}</td>
+            <td><span class="p-column-title">Dirección</span>{{ booking.data.direccion }}</td>
+            <td><span class="p-column-title">Teléfono</span>{{ booking.data.telefono }}</td>
+            <td><span class="p-column-title">Estado</span>
+              <p-badge *ngIf="statusBooking[index].status == 'Programada'" [value]="statusBooking[index].status"></p-badge>
+              <p-badge *ngIf="statusBooking[index].status == 'Realizada'" severity="warning" [value]="statusBooking[index].status"></p-badge>
+            </td>
+            <td>
+              <span class="p-column-title">Acciones</span>
+              <!-- <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button> -->
+              <button *ngIf="statusBooking[index].status == 'Programada'" (click)="presentModal(index)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-outlined p-button-warning m-1"></button>
+              <button *ngIf="statusBooking[index].status == 'Programada'" (click)="deleteBooking(booking.idBooking)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-outlined p-button-danger m-1"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="d-flex align-items-center justify-content-between">
+            En total tienes {{bookings ? bookings.length : 0 }} reservas.
+        </div>
+    </ng-template>
+  </p-table>
+
+  <p-table *ngIf="filterBooking == 'Realizadas'" [value]="bookingsMade" responsiveLayout="stack">
+    <ng-template pTemplate="caption">
+      <button (click)="filterStatusBooking('Todas')" class="p-button-raised p-button-sm p-button-success m-1" pButton type="button" icon="pi pi-check" iconPos="left" label="Todas"></button>
+      <button (click)="filterStatusBooking('Programadas')" class="p-button-raised p-button-sm m-1" pButton type="button" icon="pi pi-calendar" iconPos="left" label="Programadas"></button>
+      <button (click)="filterStatusBooking('Realizadas')" class="p-button-raised p-button-sm p-button-warning m-1" pButton type="button" icon="pi pi-history" iconPos="left" label="Realizadas"></button>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Parqueadero</th>
+            <th>Fecha</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-booking let-index="rowIndex">
+        <tr>
+            <td>
+              <img src="{{ booking.data.img }}" width="50" style="vertical-align: middle" />
+              <span class="image-text">{{booking.data.nameParqueadero}}</span>
+            </td>
+            <td><span class="p-column-title">Fecha</span>{{ booking.data.dateBooking | date:'dd/MM/yyyy' }}</td>
+            <td><span class="p-column-title">Dirección</span>{{ booking.data.direccion }}</td>
+            <td><span class="p-column-title">Teléfono</span>{{ booking.data.telefono }}</td>
+            <td><span class="p-column-title">Estado</span>
+              <p-badge severity="warning" value="Realizada"></p-badge>
+            </td>
+            <td>
+              <span class="p-column-title">Acciones</span>
+              <!-- <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button> -->
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="d-flex align-items-center justify-content-between">
+            En total tienes {{bookingsMade ? bookingsMade.length : 0 }} reservas.
+        </div>
+    </ng-template>
+  </p-table>
+
+  <p-table *ngIf="filterBooking == 'Programadas'" [value]="bookingsScheduled" responsiveLayout="stack">
+    <ng-template pTemplate="caption">
+      <button (click)="filterStatusBooking('Todas')" class="p-button-raised p-button-sm p-button-success m-1" pButton type="button" icon="pi pi-check" iconPos="left" label="Todas"></button>
+      <button (click)="filterStatusBooking('Programadas')" class="p-button-raised p-button-sm m-1" pButton type="button" icon="pi pi-calendar" iconPos="left" label="Programadas"></button>
+      <button (click)="filterStatusBooking('Realizadas')" class="p-button-raised p-button-sm p-button-warning m-1" pButton type="button" icon="pi pi-history" iconPos="left" label="Realizadas"></button>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Parqueadero</th>
+            <th>Fecha</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-booking let-index="rowIndex">
+        <tr>
+            <td>
+              <img src="{{ booking.data.img }}" width="50" style="vertical-align: middle" />
+              <span class="image-text">{{booking.data.nameParqueadero}}</span>
+            </td>
+            <td><span class="p-column-title">Fecha</span>{{ booking.data.dateBooking | date:'dd/MM/yyyy' }}</td>
+            <td><span class="p-column-title">Dirección</span>{{ booking.data.direccion }}</td>
+            <td><span class="p-column-title">Teléfono</span>{{ booking.data.telefono }}</td>
+            <td><span class="p-column-title">Estado</span>
+              <p-badge value="Programada"></p-badge>
+            </td>
+            <td>
+              <span class="p-column-title">Acciones</span>
+              <!-- <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-outlined m-1"></button> -->
+              <button (click)="presentModal(index)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-outlined p-button-warning m-1"></button>
+              <button (click)="deleteBooking(booking.idBooking)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-outlined p-button-danger m-1"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="d-flex align-items-center justify-content-between">
+            En total tienes {{bookingsScheduled ? bookingsScheduled.length : 0 }} reservas.
+        </div>
+    </ng-template>
+  </p-table>
 </div>

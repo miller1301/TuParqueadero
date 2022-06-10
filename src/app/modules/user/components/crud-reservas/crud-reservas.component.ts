@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { getAuth, onAuthStateChanged } from '@angular/fire/auth'
+import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { EditReservComponent } from './edit-reserv/edit-reserv.component';
 import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2'
@@ -12,10 +12,18 @@ import Swal from 'sweetalert2'
 })
 export class CrudReservasComponent implements OnInit {
 
-  // Reservas del usuario
-  userBookings = [];
   // Id del usuario
   idUser: string;
+  // Reservas del usuario
+  bookings = [];
+  // Reservas Realizadas
+  bookingsMade = [];
+  // Reservas Programadas
+  bookingsScheduled = [];
+  // Estado de la reserva
+  statusBooking = [];
+  // Filtro de busqueda de reservas
+  filterBooking: string = 'Todas';
   // The `ion-modal` element reference.
   modal: HTMLElement;
 
@@ -41,20 +49,68 @@ export class CrudReservasComponent implements OnInit {
   // * Obtener todas las reservas del usuario
   getBookingsUser(){
     this.firestoreService.getAllDocs('reservas').subscribe( (bookings: any) => {
-      this.userBookings = [];
+      this.bookings = [];
       bookings.forEach( (bookingData: any) => {
         if( bookingData.payload.doc.data().idUser == this.idUser ){
-          this.userBookings.push({
+          this.bookings.push({
           idBooking: bookingData.payload.doc.id,
           idUser: bookingData.payload.doc.data().idUser,
-          data: bookingData.payload.doc.data()
+          data: bookingData.payload.doc.data(),
         })
         } else{
-          console.log('hola');
+          console.log('No Hay Data');
         }
       })
-      console.log(this.userBookings);
+      this.validateStatusBooking();
     })
+  }
+
+  // * Validar estado de la reserva
+  validateStatusBooking(){
+    // Obtenemos la fecha actual
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+    // Fecha con formato legible
+    const dateNow = hoy.toLocaleDateString();
+    // hoy.getTime() -> Fecha en timestamps (milisegundos)
+    console.log(hoy.getTime());
+    this.bookings.forEach( booking => {
+      if( booking.data.dateBooking >= hoy.getTime() ){
+        console.log('Reserva programada');
+        this.statusBooking.push({
+          idBooking: booking.data.idBooking,
+          status: 'Programada'
+        })
+        booking['status'] = 'Programada'
+      } else{
+        console.log('Reserva realizada');
+        this.statusBooking.push({
+          idBooking: booking.data.idBooking,
+          status: 'Realizada'
+        })
+        booking['status'] = 'Realizada'
+      }
+    });
+  }
+
+  // Filtro de reservas (Todas, programadas y realizadas)
+  filterStatusBooking(filterStatus: string){
+    if( filterStatus == 'Programadas' ){
+      this.filterBooking = 'Programadas';
+      this.bookingsScheduled = this.bookings.filter( bookings => bookings.status == 'Programada');
+      console.log(this.bookingsScheduled);
+    } else if( filterStatus == 'Realizadas' ){
+      this.filterBooking = 'Realizadas';
+      this.bookingsMade = this.bookings.filter( bookings => bookings.status == 'Realizada');
+      console.log(this.bookingsMade);
+    } else{
+      this.filterBooking = 'Todas';
+    }
+  }
+
+  // TODO: Ver ruta de la reserva
+  watchRouteBooking(){
+
   }
 
   // * Abrir modal editar reserva
@@ -63,7 +119,7 @@ export class CrudReservasComponent implements OnInit {
       component: EditReservComponent,
       cssClass: 'edit-reserv-modal',
       componentProps: {
-        dataBooking: this.userBookings[index]
+        dataBooking: this.bookings[index]
       }
     });
     return await modal.present();

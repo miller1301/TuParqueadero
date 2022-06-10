@@ -1,26 +1,32 @@
-<div class="container mt-5" *ngIf="user$ | async as user; else loading">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container mt-4" *ngIf="user$ | async as user; else loading">
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title text-center" id="text">¡Gracias por registrarte!</h2>
+      <h1 class="card-title text-center" id="text">¡Gracias por registrarte!</h1>
 
       <ion-row>
-        <ion-col>
+        <ion-col size="12" size-md="6">
           <img src="../../../assets/img/user/send-email.png" id="img">
         </ion-col>
-        <ion-col>
-          <div class="form-group mt-5">
-            <p class="text-center">
-              Te hemos enviado un email de confirmación a <strong>{{ user?.email }}</strong>
-            </p>
-            <p class="text-center">
-              Por favor revisa tu email y da click en el link para verificar tu dirección de correo.
-            </p>
+        <ion-col size="12" size-md="6">
+          <div class="div-info">
+            <div class="form-group">
+              <p class="text-center">
+                Te hemos enviado un email de confirmación a <strong>{{ user?.email }}</strong>
+              </p>
+              <p class="text-center">
+                Por favor revisa tu email y da click en el link para verificar tu dirección de correo.
+              </p>
+              <button class="btn btn-primary mt-5" (click)="onSendEmail()">Reenviar verificación de email</button>
+            </div>
           </div>
-
-          <div class="form-group text-center mt-5">
-            <button class="btn btn-primary" (click)="onSendEmail()">Reenviar verificación de email</button>
-          </div>
-
         </ion-col>
       </ion-row>
     </div>

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './modules/user/home/home.component';
 
 // Protección de rutas
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
-
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -48,7 +48,14 @@ const routes: Routes = [
   {
     path: 'empleado',
     loadChildren: () => import('./modules/empleado/empleado/home/home.module').then( m => m.HomeComponentModule)
+  },
+  
+  {
+    path: 'reservas-g',
+    loadChildren: () => import('./modules/empleado/reservas-g/reservas-g.module').then( m => m.ReservasGPageModule)
   }
+
+
 ];
 @NgModule({
   imports: [

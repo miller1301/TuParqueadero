@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import Swal from 'sweetalert2'
 import { MapsService } from 'src/app/services';
+import { BookingResponse } from 'src/app/interfaces/booking';
 
 @Component({
   selector: 'app-booking-parking',
@@ -29,12 +30,20 @@ export class BookingParkingComponent implements OnInit {
     this.getDataUser();
 
     this.formReserva = this.formBuilder.group({
+      date: ['', [Validators.required]],
       time: ['', [Validators.required]],
       hour: ['', [Validators.required]],
       vehicle: ['', [Validators.required]],
       placa: ['', [Validators.required]],
       marca: ['', [Validators.required]]
     });
+  }
+
+  sendData(){
+    let date = this.formReserva.value.date;
+    console.log(date);
+    let date1 = new Date(date);
+    console.log(date1.getTime());
   }
 
   // Cerrar modal
@@ -57,6 +66,8 @@ export class BookingParkingComponent implements OnInit {
     })
   }
 
+// TODO Enviar fecha en formato YYYY/MM/DD
+
   // * Enviar datos a colección reservas en Firebase
   onSubmit(){
     let data = {
@@ -66,12 +77,14 @@ export class BookingParkingComponent implements OnInit {
       img: this.parking.data.img,
       direccion: this.parking.data.direccion,
       telefono: this.parking.data.telefono,
+      dateBooking: this.formReserva.value.date.getTime(),
       timeParking: this.formReserva.value.time,
       hourArrive: this.formReserva.value.hour,
       typeVehicle: this.formReserva.value.vehicle,
       placaVehicle: this.formReserva.value.placa,
       marcaVehicle: this.formReserva.value.marca
     }
+    
     if(this.formReserva.valid){
       console.log(this.mapsService.routeReady);
       this.firestoreService.createDocIdDefault('reservas', data).then( success => {

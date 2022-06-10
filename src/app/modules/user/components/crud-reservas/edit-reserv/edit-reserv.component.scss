@@ -75,3 +75,12 @@
         font-size: 12px;
     }
 }
+
+:host ::ng-deep .input-hour .mat-form-field-infix{
+    display: flex;
+    border-top: 0px;
+}
+
+.mat-form-field{
+    width: 100%;
+}

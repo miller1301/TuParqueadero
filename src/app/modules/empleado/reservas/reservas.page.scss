@@ -1,0 +1,22 @@
+#titulo2{
+    background: linear-gradient(#1497be,#FF0000 );
+    font-size: 50px;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: text 5s linear infinite;
+}
+
+@keyframes text {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+body{
+    background: aquamarine;
+}

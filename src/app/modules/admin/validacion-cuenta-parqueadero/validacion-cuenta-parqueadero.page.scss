@@ -102,3 +102,34 @@ ion-modal {
     --width: 85vw;
     --height: 90vh;
 }
+
+ion-toolbar{
+    background-color: #1A97E8;
+}
+
+
+.ColorTitulo{
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.imagenMenu{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+
+.contenido{
+    height: 55px;
+}
+
+.botoncr{
+    background-color: #1A97E8;
+}
+
+ion-card-content p {
+    font-size: 18px;
+  }

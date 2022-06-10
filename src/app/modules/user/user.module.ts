@@ -22,12 +22,23 @@ import { MenuUserComponent } from './components/menu-user/menu-user.component';
 import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
 import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
 import { EditReservComponent } from './components/crud-reservas/edit-reserv/edit-reserv.component';
+import { LogoAppComponent } from './components/logo-app/logo-app.component';
 
 // Importaciones Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+// NGXTimePicker
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
+// NG Prime
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { BadgeModule } from 'primeng/badge';
 
 
 
@@ -47,7 +58,8 @@ import { MatInputModule } from '@angular/material/input';
     MenuUserComponent,
     RegisterParkingComponent,
     CrudReservasComponent,
-    EditReservComponent
+    EditReservComponent,
+    LogoAppComponent
   ],
   imports: [
     CommonModule,
@@ -60,10 +72,17 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    NgxMaterialTimepickerModule,
+    TableModule,
+    ButtonModule,
+    RatingModule,
+    BadgeModule
   ],
   providers: [
     MapViewComponent
-  ]
+  ],
+  exports: [MenuUserComponent]
 })
 export class UserModule {}

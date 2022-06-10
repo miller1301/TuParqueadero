@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: () => import('../../agre-info-auto/agre-info-auto.module').then( m => m.AgreInfoAutoPageModule)
   },
   {
-    path: 'contador',
-    loadChildren: () => import('../../contador/contador.module').then( m => m.ContadorPageModule)
-  },
-  {
     path: 'cupos',
     loadChildren: () => import('../../cupos/cupos.module').then( m => m.CuposPageModule)
   },
@@ -28,10 +24,7 @@ const routes: Routes = [
     path: 'inf-auto',
     loadChildren: () => import('../../inf-auto/inf-auto.module').then( m => m.InfAutoPageModule)
   }, 
-  {
-    path: 'info-lista',
-    loadChildren: () => import('../../info-lista/info-lista.module').then( m => m.InfoListaPageModule)
-  },
+  
   {
     path: 'novedad',
     loadChildren: () => import('../../novedad/novedad.module').then( m => m.NovedadPageModule)

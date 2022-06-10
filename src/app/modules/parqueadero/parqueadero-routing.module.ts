@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
 
 import { ParqueaderoPage } from './parqueadero.page';
 
@@ -9,14 +10,6 @@ const routes: Routes = [
     component: ParqueaderoPage,
   },
   {
-    path: 'edit-home',
-    loadChildren: () => import('./edit-home/edit-home.module').then( m => m.EditHomePageModule)
-  },
-  {
-    path: 'reservas',
-    loadChildren: () => import('./reservas/reservas.module').then( m => m.ReservasPageModule)
-  },
-  {
     path: 'par-home',
     loadChildren: () => import('./par-home/par-home.module').then( m => m.ParHomePageModule)
   },
@@ -24,14 +17,21 @@ const routes: Routes = [
     path: 'crud',
     loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
   },
+  
   {
-    path: 'reserva',
-    loadChildren: () => import('./reservas/reserva/reserva.module').then( m => m.ReservaPageModule)
+    path: 'configuracion',
+    loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   },
   {
-    path: 'reserv',
-    loadChildren: () => import('./reservas/reserva/reserv/reserv.module').then( m => m.ReservPageModule)
-  }
+    path: 'reservas',
+    loadChildren: () => import('./reservas/reservas.module').then( m => m.ReservasPageModule)
+  },
+  {
+    path: 'registrar',
+    component: ModalComponent
+  },
+
+
   
 ];
 

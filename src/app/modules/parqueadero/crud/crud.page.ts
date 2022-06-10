@@ -35,6 +35,9 @@ export class CrudPage implements OnInit {
     private authh: AuthService,
     private router:Router, 
     public modalController:ModalController) { }
+    
+
+  
 
   ngOnInit() {
     this.getEmpleado()
@@ -65,4 +68,6 @@ export class CrudPage implements OnInit {
   deleteUser(usuarios:User){
     this.firestoreService.deleteDoc(this.path, usuarios.uid)
   }
+
+ 
 }

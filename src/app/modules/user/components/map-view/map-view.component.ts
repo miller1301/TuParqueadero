@@ -22,8 +22,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   constructor( 
     private placesService: PlacesService, 
     private mapService: MapsService,
-    private firestoreService: FirestoreService, 
-    private directionsApi: DirectionsApiClient,
+    private firestoreService: FirestoreService,
     public modalController: ModalController
   ) { }
 
@@ -31,7 +30,9 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.makeMapInitial();
+    setTimeout(() => {
+      this.makeMapInitial();
+    }, 1800);
     
   }
 

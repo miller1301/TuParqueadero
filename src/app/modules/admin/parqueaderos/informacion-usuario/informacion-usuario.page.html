@@ -1,16 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Información Del Usuario</ion-title>
-      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" ></ion-back-button>
+  <ion-toolbar color="tuparqueaderocolor">
+      <ion-back-button slot="start" defaultHref="/admin/parqueaderos" color="light" ></ion-back-button>
+      <ion-item  color="tuparqueaderocolor" class="contenido">
+        <ion-label>
+          <ion-avatar>
+            <img src="../../../assets/img/user/logo-parqueadero.png" class="imagenMenu" />
+            <ion-text class="ColorTitulo">TuParqueadero</ion-text>
+          </ion-avatar>
+        </ion-label>
+      </ion-item>
       <ion-buttons slot="end">
         <ion-button (click)="abrir()"  id="open3">
-          <ion-icon slot="end" name="menu-outline" ></ion-icon>
+          <ion-icon slot="end" name="menu-outline" color="light"></ion-icon>
         </ion-button>
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content (click)="cerrar()" >
   <ion-grid>
     <ion-row class="menu3 menup3 animate__animated" *ngIf="dataUser" id="animacion3"> 
       <ion-col size="12">
@@ -39,7 +46,7 @@
     </ion-row>
 
     <ion-row *ngIf="infoUser" >
-      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeSm="8" offsetSm="2">
+      <ion-col sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeSm="8" offsetSm="2">
         <ion-card>
           <ion-card-header>
             <ion-item>
@@ -69,6 +76,9 @@
         </ion-card>
       </ion-col>
     </ion-row>
+    <ion-footer >
+      &copy; {{ fecha }} TuParqueadero 
+  </ion-footer>
   </ion-grid>
 
 </ion-content>
