@@ -1,6 +1,7 @@
 #item{
     display: flex;
-}a{
+}
+a{
     text-decoration: none;
 }
 .card:hover{
@@ -23,6 +24,9 @@ ion-toolbar{
     font-size: 20px;
 }
 
+.textott{
+    font-size: 22px;
+}
 
 .imagen{
     width: 40px;
@@ -110,3 +114,7 @@ ion-modal {
 img{
     border-radius: 50%;
    }
+
+.ct{
+    text-align: right !important;
+}

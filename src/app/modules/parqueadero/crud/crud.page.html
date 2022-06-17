@@ -55,23 +55,30 @@
       </ion-col>
     </ion-row>
     <ion-row>
-    <ion-col *ngFor="let usuario of usuarios"  sizeLg="8" offsetLg="2" sizeSm="12"  sizeXs="12" >
-    <ion-item id="item" *ngIf="usuario.perfil == 'empleado'">
-      <ion-item >
-        <img class="clas1" [src]="usuario.icono" width="100px" alt="Park" class="ion-margin-horizontal" />
-        <ion-text id="text">
-      <h2 class="nombre">{{usuario.nombre}}</h2>
-       Telefono: {{usuario.telefono}}
-       <p> Rol: {{usuario.perfil}}</p>
-    </ion-text>
-  </ion-item>
-  <ion-buttons>
-    <ion-button (click)="deleteUser(usuario)">
-      <ion-icon slot="icon-only" color="danger" name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    </ion-item>
-  </ion-col>
+    <ion-col *ngFor="let usuario of usuarios"  sizeLg="6" offsetLg="3" sizeMd="6" offsetMd="3" sizeSm="12"  sizeXs="12" >
+      <ion-col *ngIf="usuario.perfil == 'empleado'">
+        <ion-card >
+          <ion-card-header>
+            <ion-item>
+              <ion-avatar slot="start">
+                <img [src]="usuario.icono" class="jgp" width="300px" height="300px" />
+              </ion-avatar>
+              <ion-label id="item">
+                <p class="textott">{{ usuario.nombre }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <div slot="end" class="ct">
+              <ion-button slot="end" color="danger" (click)="deleteUser(usuario)">
+                Eliminar
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-col>
+    
 </ion-row>
 </ion-grid>
 </ion-content>
