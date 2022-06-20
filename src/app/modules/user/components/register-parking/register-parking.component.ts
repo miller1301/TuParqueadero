@@ -211,4 +211,19 @@ export class RegisterParkingComponent implements OnInit {
     }
   }
 
+
+
+  // * Abrir menú de usuario
+  abrir(){
+    const abrirM = ()=>{
+    // La funcion a ejecutar es la siguiente
+    // Se obtiene el elemento por id "animacion" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
+    // La clase "active" mostrara el menu 
+    document.getElementById('animacionMenuRegister').classList.toggle('active');
+    // La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
+    document.getElementById('animacionMenuRegister').classList.toggle('animate__bounceInLeft');
+    }
+    abrirM();
+  }
+
 }

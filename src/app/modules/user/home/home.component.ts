@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    document.getElementById('menu-user').style.display="block";
+    // document.getElementById('menu-user').style.display="block";
   }
 
   logout(){
