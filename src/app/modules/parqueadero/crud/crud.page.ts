@@ -55,7 +55,6 @@ export class CrudPage implements OnInit {
       this.datos.password = null;
       this.authh.sendVerificationEmail();
       await this.firestoreService.createDoc(this.datos, path, id)
-      this.router.navigate(['/crud']);
     }).catch( error => console.log(error))
   }
 
