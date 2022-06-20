@@ -39,6 +39,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { BadgeModule } from 'primeng/badge';
+import { ConfiguracionCuentaPageModule } from './components/configuracion-cuenta/configuracion-cuenta.module';
 
 
 
@@ -78,7 +79,8 @@ import { BadgeModule } from 'primeng/badge';
     TableModule,
     ButtonModule,
     RatingModule,
-    BadgeModule
+    BadgeModule,
+    ConfiguracionCuentaPageModule
   ],
   providers: [
     MapViewComponent

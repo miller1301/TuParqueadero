@@ -1,10 +1,7 @@
-::ng-deep body{
-    --ion-background-color: #EDF0F0 !important
-}
-
 ::ng-deep .ion-page{
     justify-content: normal;
     overflow-y: auto;
+    background-color: #FFF;
 }
 
 .header{

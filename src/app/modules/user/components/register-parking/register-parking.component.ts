@@ -5,6 +5,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { getAuth, onAuthStateChanged } from '@angular/fire/auth'
 
 import Swal from 'sweetalert2'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register-parking',
@@ -36,13 +37,14 @@ export class RegisterParkingComponent implements OnInit {
   constructor( 
     private formBuilder: FormBuilder, 
     private fireStorageService: FirebaseStorageService,
-    private firestoreService: FirestoreService
+    private firestoreService: FirestoreService,
+    private auth: AuthService
     ) { }
 
   ngOnInit() {
 
     this.getDataUser();
-    this.getUserDataDb();
+    this.getUser();
 
     this.formRegistroParking = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -75,11 +77,21 @@ export class RegisterParkingComponent implements OnInit {
     })
   }
 
-  getUserDataDb(){
-    let user = localStorage.getItem('user');
-    this.dataUser = JSON.parse(user);
-  }
+  // * Obtener datos del usuario
+  getUser(){
+    if( localStorage.getItem('user') ){
+      let user = localStorage.getItem('user');
+      this.dataUser = JSON.parse(user);
+    } else{
+      this.auth.getUid().then( id => {
+        this.firestoreService.getDoc('Usuarios', id).subscribe( data => {
+          localStorage.setItem('user', JSON.stringify(data))
+          this.dataUser = data;
+        });
+      });
+    }
 
+  }
   // TODO: Hacer que el path enviado en las funciones del Storage se le agregue el nombre del parqueadero del input
 
   // * Subir imágenes del parqueadero al storage y retornar url

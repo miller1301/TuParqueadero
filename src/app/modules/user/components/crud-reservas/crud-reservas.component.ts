@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { EditReservComponent } from './edit-reserv/edit-reserv.component';
 import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-crud-reservas',
@@ -29,11 +30,11 @@ export class CrudReservasComponent implements OnInit {
 
   dataUser: any;
 
-  constructor( private firestoreService: FirestoreService, public modalController: ModalController ) { }
+  constructor( private firestoreService: FirestoreService, public modalController: ModalController, private auth: AuthService ) { }
 
   ngOnInit() {
     this.getDataUser();
-    this.getUserDataDb();
+    this.getUser();
     this.getBookingsUser();
   }
 
@@ -49,9 +50,20 @@ export class CrudReservasComponent implements OnInit {
     })
   }
 
-  getUserDataDb(){
-    let user = localStorage.getItem('user');
-    this.dataUser = JSON.parse(user);
+  // * Obtener datos del usuario
+  getUser(){
+    if( localStorage.getItem('user') ){
+      let user = localStorage.getItem('user');
+      this.dataUser = JSON.parse(user);
+    } else{
+      this.auth.getUid().then( id => {
+        this.firestoreService.getDoc('Usuarios', id).subscribe( data => {
+          localStorage.setItem('user', JSON.stringify(data))
+          this.dataUser = data;
+        });
+      });
+    }
+
   }
 
   // * Obtener todas las reservas del usuario
