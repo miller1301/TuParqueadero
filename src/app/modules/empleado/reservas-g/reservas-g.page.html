@@ -23,7 +23,7 @@
         <h1 class="ion-text-center" id="titulo2">RESERVAS GENERADAS</h1>
       </ion-col>
 
-      <ion-col  id="cole" *ngFor="let datos of listareserva;let i=index" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
+      <ion-col  id="cole" *ngFor="let datos of reservasactivas;let i=index" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
         <ion-item id="item" *ngIf="datos.uid === '6R6SbxeS01fDCxTyD9KK6Fk9aNX2'">
           <ion-item>
             <img class="clas1" [src]="datos.img" width="100px" alt="Park" class="ion-margin-horizontal" />
@@ -35,8 +35,7 @@
 
             </ion-text>
 
-            <ion-button id="boton1" (click)="showModal()" (click)="createPdf(i)" slot="end" expand="block"
-              color="primary" mode="ios" class="ion-margin-top">
+            <ion-button id="boton1" (click)="actualizar(i)"  (click)="showModal()" (click)="createPdf(i)" slot="end"  color="primary" mode="ios" class="ion-margin-top">
               Finalizar Reserva
             </ion-button>
 

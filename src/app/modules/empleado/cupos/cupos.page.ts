@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CuposPage implements OnInit {
 
-  constructor(private log:AuthService) { }
+  constructor(private log:AuthService,private firebase:FirestoreService) { }
 
   numero:number = 0;
 
@@ -31,10 +33,33 @@ export class CuposPage implements OnInit {
   accionOperacion( valor:number ){
     this.numero +=valor;
   }
-  
 
-  ngOnInit(): void {
+  cupos:any[]=[]
+
+  
+  parqueaderosactivos:any[]=[]
+
+  ngOnInit(){
+    this.firebase.getDocs("reservas").subscribe((res:any)=>{
+    this.parqueaderosactivos=res
+     
+    this.cupos=this.parqueaderosactivos.filter((cupo)=>{
+      if(cupo.estado==="Activo"){
+        return true
+      }
+      
+    })
+    console.log(this.cupos.length)
+    })
+    
+
+      
+    
   }
+
+
+
+  
 
 
   // Iniciar sesion-Cerrar sesion
