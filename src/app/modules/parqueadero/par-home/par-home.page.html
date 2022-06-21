@@ -27,9 +27,6 @@
             </ion-item>
             </ion-card-header>
             <ion-card-content *ngIf="datosUser" >
-                <p class="titulo"><strong> Descripcion: </strong></p>
-                <p class="textoB">{{ Parqueadero.data.descripcion }}</p>  
-                <br>
                 <p  class="titulo"><strong>Nombre del parquedero</strong></p>
                 <p class="textoB">{{ Parqueadero.data.nameParqueadero }}</p>
                 <br>
@@ -44,6 +41,11 @@
                 <br>
                 <p  class="titulo"><strong>Pagina web (Opcional): </strong></p>
                 <p class="textoB"><a [href]="Parqueadero.data.pagina" target="blank">Pagina web</a></p>
+                <p><strong>Actualizar estado a:</strong></p>
+                <select class="selection" [(ngModel)]="valor">
+                  <option >Activo</option>
+                  <option >Inactivo</option>
+                </select>
                 <br>
               </ion-card-content>
               <ion-card-content *ngIf="imagenes">

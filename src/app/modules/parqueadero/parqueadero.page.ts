@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { ModalController } from '@ionic/angular';
-import { ModalComponent } from './modal/modal.component';
 import { ParHomePage } from './par-home/par-home.page';
 
 @Component({

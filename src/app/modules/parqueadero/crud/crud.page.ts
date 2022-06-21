@@ -16,6 +16,7 @@ export class CrudPage implements OnInit {
   usuarios : User[] = [];
 
   id: string;
+  valor: string = 'usuario';
 
   datos: User = {
     nombre: null,
@@ -64,8 +65,12 @@ export class CrudPage implements OnInit {
     })
   }
 
-  deleteUser(usuarios:User){
-    this.firestoreService.deleteDoc(this.path, usuarios.uid)
+
+  actualizarRol(usuarios:User){
+    const actualizar = {
+      perfil :  this.valor
+    }
+    this.firestoreService.updateDoc(this.path, usuarios.uid, actualizar);
   }
 
  

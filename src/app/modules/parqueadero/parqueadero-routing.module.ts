@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ModalComponent } from './modal/modal.component';
 
 import { ParqueaderoPage } from './parqueadero.page';
 
@@ -28,8 +27,9 @@ const routes: Routes = [
   },
   {
     path: 'registrar',
-    component: ModalComponent
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
   },
+
 
 
   

@@ -1,7 +1,9 @@
 <ion-app>
   <ion-header>
     <ion-toolbar color="tuparqueaderocolor">
-      
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/parqueadero"></ion-back-button>
+      </ion-buttons>
       <ion-item  color="tuparqueaderocolor" class="contenido">
       <ion-label>
         <ion-avatar>
@@ -14,16 +16,10 @@
   </ion-header>
   <ion-content>
         <div class="container">
-          <ion-buttons slot="start">
-            <ion-back-button defaultHref="/parqueadero"></ion-back-button>
-          </ion-buttons>
           <!-- logo parqueadero -->
           <div class="text-center">
             <h1 class="title-inscribe">INSCRIBE TU PARQUEADERO</h1>
           </div>
-          <ion-buttons slot="start">
-            <ion-back-button defaultHref="/parqueadero"></ion-back-button>
-          </ion-buttons>
         
           <!-- Formulario de parqueo por el usuario -->
           <form [formGroup]="formRegistroParking" (ngSubmit)="onSubmit()">
@@ -80,3 +76,4 @@
           </form>
         </div>
   </ion-content>
+  © 2022 GitHub, Inc.

@@ -35,6 +35,8 @@ export class ParHomePage implements OnInit {
   pdf1Valor;
   pdf2Valor;
   pdf3Valor;
+  dataParqueadero;
+  valor: string = 'Activo';
   pdf4Valor;
 
   Usuario:boolean;
@@ -211,9 +213,25 @@ export class ParHomePage implements OnInit {
       this.ver = res
       console.log(this.ver)
     })
+
+    this.firestore.getDoc('Parqueaderos', this.Parqueadero.IdParqueadero).subscribe(res =>{
+      this.dataParqueadero = res
+    })
   }
 
 
+  actualizarRol(){
+    const path = 'Parqueadero';
+    const id = this.Parqueadero.IdParqueadero;
+
+    console.log("Parqueadero", this.valor)
+    const actualizar = {
+      estado : this.valor
+    }
+    this.firestore.updateDoc(path, id, actualizar);
+  }
+
+  
   
 
 
