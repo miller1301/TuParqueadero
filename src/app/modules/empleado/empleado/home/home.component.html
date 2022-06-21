@@ -4,7 +4,7 @@ Ficha 2252471 ADSI
 Redes sociales: Tuparqueadero-->
 
 <ion-header>
-  <ion-toolbar class="toolbar">
+  <ion-toolbar color="primary" class="toolbar">
     <ion-buttons slot="start">
       <img src="../../../../../assets/img/user/logo-parqueadero.png" width="70px">
       <ion-button (click)="abrir()" id="open">
@@ -61,9 +61,10 @@ Redes sociales: Tuparqueadero-->
             <p class="texto-menu">Configuracion</p>
           </ion-item>
           <!-- *Cierre de sesion del usuario -->
-          <ion-item routerLink="#" (click)="logout()">
-            <ion-icon slot="start" name="log-out-outline"></ion-icon>
-            <p class="texto-menu">Cerrar Sesión</p>
+          <ion-item>
+            <a class="ahref-logout" href="/login">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon><p class="texto-menu" > Cerrar Sesión</p>
+            </a>
           </ion-item>
         </div>
       </ion-col>

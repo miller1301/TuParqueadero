@@ -6,7 +6,7 @@
   <ion-toolbar color="primary">
     <ion-item color="primary">
       <img id="img" src="../../../../assets/img/user/logo-parqueadero.png" alt="logo">
-    <ion-title>Tuparqueadero</ion-title>
+      <ion-title>Tuparqueadero</ion-title>
     </ion-item>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/agre-info-auto"></ion-back-button>
@@ -15,39 +15,40 @@
 </ion-header>
 
 <ion-content fullscreen>
-<ion-grid>
-<ion-row>
+  <ion-grid>
+    <ion-row>
 
-  <!-- Contenido principal -->
-  <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2">
-    <h1 class="ion-text-center" id="titulo2">RESERVAS GENERADAS</h1>
-  </ion-col>
+      <!-- Contenido principal -->
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2">
+        <h1 class="ion-text-center" id="titulo2">RESERVAS GENERADAS</h1>
+      </ion-col>
 
-  <ion-col *ngFor="let datos of listareserva;let i=index" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12" >
-    <ion-item id="item" *ngIf="datos.uid === '6R6SbxeS01fDCxTyD9KK6Fk9aNX2'">
-      <ion-item >
-        <img class="clas1" [src]="datos.img" width="100px" alt="Park" class="ion-margin-horizontal" />
-        <ion-text id="text">
-          <h3>{{ datos.Nombre }}</h3>
-          <!--*Hora del parqueadero -->
-          Hora: {{ datos.Hora_de_ingreso }}
-          <p>Telefono{{datos.telefono}}</p>
-          
-        </ion-text>
+      <ion-col  id="cole" *ngFor="let datos of listareserva;let i=index" sizeLg="8" offsetLg="2" sizeSm="12" sizeXs="12">
+        <ion-item id="item" *ngIf="datos.uid === '6R6SbxeS01fDCxTyD9KK6Fk9aNX2'">
+          <ion-item>
+            <img class="clas1" [src]="datos.img" width="100px" alt="Park" class="ion-margin-horizontal" />
+            <ion-text id="text">
+              <h3>{{ datos.Nombre }}</h3>
+              <!--*Hora del parqueadero -->
+              Hora: {{ datos.Hora_de_ingreso }}
+              <p>Telefono{{datos.telefono}}</p>
 
-        <ion-button id="boton1" (click)="showModal()" (click)="createPdf(i)"  expand="block" color="primary" mode="ios" class="ion-margin-top">
-          Finalizar Reserva
-        </ion-button>
-        
-      </ion-item>
-    </ion-item>
-  </ion-col>
+            </ion-text>
 
+            <ion-button id="boton1" (click)="showModal()" (click)="createPdf(i)" slot="end" expand="block"
+              color="primary" mode="ios" class="ion-margin-top">
+              Finalizar Reserva
+            </ion-button>
 
-
+          </ion-item>
+        </ion-item>
+      </ion-col>
 
 
- 
-</ion-row>
-</ion-grid>
+
+
+
+
+    </ion-row>
+  </ion-grid>
 </ion-content>
