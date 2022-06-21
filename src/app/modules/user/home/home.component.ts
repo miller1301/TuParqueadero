@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // document.getElementById('menu-user').style.display="block";
   }
 
   logout(){
@@ -35,7 +34,8 @@ export class HomeComponent implements OnInit {
 
   resetMap(){
     this.mapService.routeReady = false;
-    this.mapViewComponent.makeMapInitial();
+    // this.mapViewComponent.makeMapInitial();
+    this.mapService.removePoline('RouteString');
   }
 
 }

@@ -35,7 +35,6 @@ export class LoginPage implements OnInit {
     ) {}
 
   ngOnInit() {
-    // document.getElementById('menu-user').style.display="none";
   }
 
   async loginFacebook() {

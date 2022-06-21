@@ -186,4 +186,8 @@ export class MapsService {
 
   }
 
+  removePoline(layer: string){
+    this.map.removeLayer(layer);
+  }
+
 }

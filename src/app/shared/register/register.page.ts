@@ -47,7 +47,6 @@ export class RegisterPage implements OnInit {
 
 
   ngOnInit() {
-    document.getElementById('menu-user').style.display="none";
   }
 
  

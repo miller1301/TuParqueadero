@@ -15,7 +15,6 @@ export class SendEmailPage implements OnInit {
   constructor( private authService: AuthService ) { }
 
   ngOnInit() {
-    document.getElementById('menu-user').style.display="none";
   }
   onSendEmail(){
     this.authService.sendVerificationEmail();

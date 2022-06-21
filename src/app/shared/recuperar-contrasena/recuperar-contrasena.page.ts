@@ -15,7 +15,6 @@ export class RecuperarContrasenaPage implements OnInit {
   constructor(private auth: AuthService, private router:Router, private alertController: AlertController) { }
   
   ngOnInit(): void {
-    document.getElementById('menu-user').style.display="none";
   }
 
     async Reset(){

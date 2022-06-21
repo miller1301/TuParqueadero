@@ -1,20 +1,20 @@
 
-ion-buttons{
+// ion-buttons{
+//     position: fixed;
+// }
+ion-button{
+    background-color: #1A97E8;
+    width: 45px;
+    height: 37px;
+    border-radius: 4px;
     position: fixed;
+    z-index: 100;
+    top: 14px;
+    left: 95vw;
+}
+@media(max-width: 678px){
     ion-button{
-        background-color: #1A97E8;
-        width: 45px;
-        height: 37px;
-        border-radius: 4px;
-        position: fixed;
-        z-index: 100;
-        top: 14px;
-        left: 95vw;
-    }
-    @media(max-width: 678px){
-        ion-button{
-            left: 86vw;
-        }
+        left: 86vw;
     }
 }
 
