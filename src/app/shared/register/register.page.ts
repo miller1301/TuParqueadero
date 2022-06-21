@@ -32,7 +32,8 @@ export class RegisterPage implements OnInit {
     uid: null,
     password: null,
     perfil: 'usuario',
-    icono: 'https://firebasestorage.googleapis.com/v0/b/tuparqueadero-178e4.appspot.com/o/user.png?alt=media&token=33002ea0-edf8-4d10-9f5b-9768d2ed8b0e'
+    icono: 'https://firebasestorage.googleapis.com/v0/b/tuparqueadero-178e4.appspot.com/o/user.png?alt=media&token=33002ea0-edf8-4d10-9f5b-9768d2ed8b0e',
+    uidp: ''
   }
 
   constructor( 

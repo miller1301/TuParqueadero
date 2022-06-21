@@ -5,6 +5,7 @@ export interface User {
     uid: string,
     password: string,
     perfil: 'usuario'|'admin'|'parqueadero'|'empleado',
-    icono: string
+    icono: string,
+    uidp: string
 }
 

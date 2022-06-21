@@ -5,14 +5,12 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { getAuth, onAuthStateChanged } from '@angular/fire/auth'
 
 import Swal from 'sweetalert2'
-
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
+  templateUrl: './modal.page.html',
+  styleUrls: ['./modal.page.scss'],
 })
-export class ModalComponent implements OnInit {
-
+export class ModalPage implements OnInit {
 
   @ViewChild("images", {
     read: ElementRef

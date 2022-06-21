@@ -263,7 +263,7 @@ export class ConfiguracionPage implements OnInit {
 
     await alert.present();
   }
-  // ! Metodo que recive los parametros de los campos que se van a actualizar y actualiza los datos en la base de datos y presenta un Componente Toast
+
   saveTel(telefonoInput:String ){
     const path = 'Usuarios';
     const id = this.UidG;
@@ -273,7 +273,56 @@ export class ConfiguracionPage implements OnInit {
     this.firebase.updateDoc(path, id, updateDoc).then(()=>{
       this.presentToastEdit()
     })
-  } 
+  }
+
+  actualizarPass(){
+    this.presentAlertPass();
+  }
+
+  async presentAlertPass() {
+    const alert = await this.alertController.create({
+      header: 'Editar password',
+      inputs: [
+        {
+          name : 'password',
+          type: 'password',
+          placeholder: 'Ingresa la nueva contraseña'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Actualizar',
+          handler: (e) => {
+            console.log('Datos Actualizados');
+            this.savePass(e.password)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  savePass(passwordInput:null ){
+    const path = 'Usuarios';
+    const id = this.UidG;
+    const updateDoc = {
+      password: passwordInput
+    };
+    this.firebase.updateDoc(path, id, updateDoc).then(()=>{
+      this.presentToastEdit()
+    })
+  }
+  
+  // ! Metodo que recive los parametros de los campos que se van a actualizar y actualiza los datos en la base de datos y presenta un Componente Toast
+   
 
 }
 

@@ -16,6 +16,7 @@ export class CrudPage implements OnInit {
   usuarios : User[] = [];
 
   id: string;
+  valor: string = 'usuario';
 
   datos: User = {
     nombre: null,
@@ -24,9 +25,10 @@ export class CrudPage implements OnInit {
     uid: null,
     password: null,
     perfil: 'empleado',
-    icono: 'https://firebasestorage.googleapis.com/v0/b/tuparqueadero-178e4.appspot.com/o/user.png?alt=media&token=33002ea0-edf8-4d10-9f5b-9768d2ed8b0e'
+    icono: 'https://www.webespacio.com/wp-content/uploads/2010/12/perfil-facebook.jpg',
+    uidp: 'LmDbHtDOgCixBGlkGhKg'
   }
-
+  LmDbHtDOgCixBGlkGhKg
   private path = "Usuarios/";
 
   constructor(
@@ -55,7 +57,6 @@ export class CrudPage implements OnInit {
       this.datos.password = null;
       this.authh.sendVerificationEmail();
       await this.firestoreService.createDoc(this.datos, path, id)
-      this.router.navigate(['/crud']);
     }).catch( error => console.log(error))
   }
 
@@ -65,8 +66,12 @@ export class CrudPage implements OnInit {
     })
   }
 
-  deleteUser(usuarios:User){
-    this.firestoreService.deleteDoc(this.path, usuarios.uid)
+
+  actualizarRol(usuarios:User){
+    const actualizar = {
+      perfil :  this.valor
+    }
+    this.firestoreService.updateDoc(this.path, usuarios.uid, actualizar);
   }
 
  
