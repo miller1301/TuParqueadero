@@ -20,7 +20,7 @@
 <ion-content>
   <!-- Tamaños de columna (RESPONSIVE) -->
       <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2">
-      <h1 class="ion-text-center" id="titulo2">Agregar informacion del automovil</h1>
+      <h1 class="ion-text-center" id="titulo2" color="primary">Agregar informacion del automovil</h1>
       </ion-col>
     <ion-grid>
     <ion-row>
@@ -30,55 +30,55 @@
 
           <!-- Item Hora de Ingreso -->
           <ion-item>
-            <ion-label position="floating">Hora de Ingreso</ion-label>
+            <ion-label position="floating" color="primary">Hora de Ingreso</ion-label>
             <ion-input [(ngModel)]="datos.Hora_de_ingreso" type="time" placeholder="Hora de entrada"></ion-input>
           </ion-item>
 
           <!-- Item Placa -->
           <ion-item>
-            <ion-label position="floating">Placa</ion-label>
+            <ion-label position="floating" color="primary">Placa</ion-label>
             <ion-input [(ngModel)]="datos.Placa"  type="text" placeholder="Placa"></ion-input>
           </ion-item>
 
           <!-- Item Modelo -->
           <ion-item>
-            <ion-label position="floating">Modelo</ion-label>
+            <ion-label position="floating" color="primary">Modelo</ion-label>
             <ion-input [(ngModel)]="datos.Modelo" type="text" placeholder="Modelo"></ion-input>
           </ion-item>
 
           <!-- Item Marca -->
           <ion-item>
-            <ion-label position="floating">Marca</ion-label>
+            <ion-label position="floating" color="primary">Marca</ion-label>
             <ion-input [(ngModel)]="datos.Marca" type="text" placeholder="Marca"></ion-input>
           </ion-item>
 
           <!-- Item Nombre -->
           <ion-item>
-            <ion-label position="floating">Nombre Completo</ion-label>
+            <ion-label position="floating" color="primary">Nombre Completo</ion-label>
             <ion-input [(ngModel)]="datos.Nombre" type="text" placeholder="" ></ion-input>
             </ion-item>
           <ion-item>
 
             <!-- Item Telefono -->
-            <ion-label position="floating">Telefono</ion-label>
+            <ion-label position="floating" color="primary">Telefono</ion-label>
             <ion-input [(ngModel)]="datos.telefono" type="number" placeholder="Telefono"></ion-input>
             </ion-item>
 
             <!-- Item Correo -->
             <ion-item>
-              <ion-label position="floating">Correo</ion-label>
+              <ion-label position="floating" color="primary">Correo</ion-label>
               <ion-input [(ngModel)]="datos.Correo" type="email" placeholder="" ></ion-input>
               </ion-item>
 
               <!-- Titulo del apartado fotografia del vehiculo -->
-            <h1 class="ion-text-center" id="titulo2">Fotografia-estado del automovil </h1>
+            <h1 class="ion-text-center" color="primary">Fotografia-estado del automovil </h1>
 
             <!-- Espacio que contiene la fotografia del vehiculo -->
             <img src="../../../../assets/carro.png" alt="">
 
             <!-- Novedad -->
             <ion-item>
-              <ion-label position="floating">Novedad</ion-label>
+              <ion-label position="floating" color="primary">Novedad</ion-label>
               <ion-input [(ngModel)]="datos.novedad" type="text" placeholder="" ></ion-input>
               </ion-item>
             
@@ -90,6 +90,14 @@
         
           
         </ion-col>
+
+        <ion-footer color="primary">
+          <ion-toolbar color="primary">
+            © 2022 TuParqueadero - Todos los Derechos Reservados  
+            <img src="../../../../../assets/icon/phone-solid.svg" width="20px">
+          </ion-toolbar>
+        </ion-footer>
+
     </ion-row> 
 </ion-grid>
 </ion-content>

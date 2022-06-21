@@ -1,10 +1,10 @@
 <!-- Pagina web y aplicacion movil:Tuparqueadero
-Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago piraquive
+Equipo de Trabajo: miller nivia,Andres tibaquica,Cristofer tibaquicha,Santiago piraquive, Mabel Diaz
 Ficha 2252471 ADSI
 Redes sociales: Tuparqueadero-->
-<ion-header>
-  <ion-toolbar>
-    <ion-title>RESERVAS</ion-title>
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-title >RESERVAS</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/empleado"></ion-back-button>
     </ion-buttons>
@@ -15,27 +15,38 @@ Redes sociales: Tuparqueadero-->
 <ion-content id="body" fullscreen> 
   <ion-grid>
     <ion-row>
-      
+
       <!-- Titulo principal de la pagina -->
-      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2">
-    <h1 class="ion-text-center" id="titulo2">RESERVAS</h1>
-    </ion-col>
+      <ion-col sizeLg="8" offsetLg="2" sizeMd="8" offsetMd="2" sizeXs="8" offsetXs="2"></ion-col>
+    <ion-col>
+      <h1 class="ion-text-center" id="titulo2">RESERVAS</h1>
   
-    
-    <ion-col *ngFor="let booking of parkingBookings" id="col1" sizeLg="6" offsetLg="3" sizeSm="12" sizeXs="12">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img id="imag2" src="https://img.freepik.com/free-vector/woman-avatar-profile-round-icon_24640-14042.jpg"/>
-        </ion-avatar>
-        <p>Fecha reserva {{ booking.data.dateBooking | date:'dd/MM/yyyy' }}</p>
-        <p>Hora llegada {{ booking.data.hourArrive }}</p>
-        <p>Tipo de vehículo {{ booking.data.typeVehicle }}</p>
-        <p>Marca vehículo {{ booking.data.marcaVehicle }}</p>
-        <p>Placa vehículo {{ booking.data.placaVehicle }}</p>
-        <p>Tiempo de parqueo {{ booking.data.timeParking }}</p>
-      </ion-item>
+      <ion-card>
+        <ion-col *ngFor="let booking of parkingBookings" id="col1" sizeLg="6" offsetLg="3" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img id="imag2" src="https://img.freepik.com/free-vector/woman-avatar-profile-round-icon_24640-14042.jpg"/>
+            </ion-avatar>
+            <tr>Fecha reservaㅤㅤㅤㅤㅤ<br><br> {{ booking.data.dateBooking | date:'dd/MM/yyyy' }}</tr>
+            <tr>Hora llegadaㅤㅤㅤㅤㅤ<br><br> {{ booking.data.hourArrive }}</tr>
+            <tr>Tipo de vehículoㅤㅤㅤㅤㅤ <br><br> {{ booking.data.typeVehicle }}</tr>
+            <tr>Marca vehículoㅤㅤㅤㅤㅤ <br><br> {{ booking.data.marcaVehicle }}</tr>
+            <tr>Placa vehículoㅤㅤㅤㅤㅤ <br><br> {{ booking.data.placaVehicle }}</tr>
+            <tr>Tiempo de parqueoㅤㅤㅤㅤㅤ <br><br> {{ booking.data.timeParking }}</tr>
+          </ion-item>
+        </ion-col>
+      </ion-card>
     </ion-col>
+    
   </ion-row>
+
+  <ion-footer color="primary">
+    <ion-toolbar color="primary">
+      © 2022 TuParqueadero - Todos los Derechos Reservados  
+      <img src="../../../../../assets/icon/phone-solid.svg" width="20px">
+    </ion-toolbar>
+  </ion-footer>
+  
   </ion-grid>
   </ion-content>
 
