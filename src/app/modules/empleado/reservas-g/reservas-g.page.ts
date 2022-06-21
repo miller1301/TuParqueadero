@@ -20,7 +20,7 @@ export class ReservasGPage implements OnInit {
     
   }
 
-  
+  reservasactivas:any[]=[]
 
   ngOnInit() {
     this.firestore.getAll('ReservasL').then(parkres =>{
@@ -32,7 +32,13 @@ export class ReservasGPage implements OnInit {
           return reservas;
         });
 
+        this.reservasactivas=this.listareserva.filter((reservaA)=>{
+          if(reservaA.estado==="Activo"){
+            return true
+          }
+        })
         console.log(this.listareserva)
+        console.log(this.reservasactivas)
       });
     });
     
@@ -120,6 +126,15 @@ export class ReservasGPage implements OnInit {
     const pdf = pdfMake.createPdf(pdfDefiniton);
     //  Descarga del Pdf
     pdf.open();
+  }
+
+  actualizar(i){
+    const path="ReservasL"
+    const id=this.listareserva[i].id
+    const info={
+      estado:"Inactivo"
+    }
+    this.firestore.updateDoc(path,id,info)
   }
 
 }
