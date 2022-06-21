@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ConfiguracionCuentaPage } from './components/configuracion-cuenta/configuracion-cuenta.page';
 import { CrudReservasComponent } from './components/crud-reservas/crud-reservas.component';
 import { ParkingReadyComponent } from './components/parking-ready/parking-ready.component';
 import { RegisterParkingComponent } from './components/register-parking/register-parking.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'mis-reservas',
         component: CrudReservasComponent
+    },
+    {
+        path: 'configuracion',
+        component: ConfiguracionCuentaPage
     }
 ];
 

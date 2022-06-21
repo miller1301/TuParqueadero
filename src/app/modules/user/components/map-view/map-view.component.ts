@@ -73,14 +73,14 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   getParkings(document: string){
     this.firestoreService.getAllDocs(document).subscribe( parqueaderos => {
       parqueaderos.forEach( (parkData: any) => {
-        console.log(parkData);
-        this.parqueaderosDisponibles.push({
-          id: parkData.payload.doc.id,
-          data: parkData.payload.doc.data()
-        });
+        if( parkData.payload.doc.data().estado == 'Activo' ){
+          this.parqueaderosDisponibles.push({
+            id: parkData.payload.doc.id,
+            data: parkData.payload.doc.data()
+          });
+        }
       });
-      console.log(this.parqueaderosDisponibles);
-      this.createMarkersFromParkings()
+      this.createMarkersFromParkings();
     });
   }
 

@@ -1,4 +1,4 @@
-::ng-deep body{
+::ng-deep body {
     --ion-background-color: #FFF !important
 }
 
@@ -9,41 +9,158 @@
 //     }
 // }
 
-.container{
+.container {
     margin-top: 7%;
-    @media(max-width: 678px){
+
+    @media(max-width: 678px) {
         margin-top: 25%;
     }
 }
 
-.title-inscribe{
+.title-inscribe {
     color: #1A97E8;
     font-size: 35px;
-    @media(max-width: 678px){
+
+    @media(max-width: 678px) {
         font-size: 17px;
     }
 }
 
-.div-btn-confirmar{
-    button{
+.div-btn-confirmar {
+    button {
         background-color: #1A97E8;
     }
 }
 
-.div-info-parqueo{
+.div-info-parqueo {
     padding: 5%;
     padding-bottom: 2%;
-    @media(min-width: 679px){
+
+    @media(min-width: 679px) {
         padding-top: 2%;
     }
-    .label-docs{
+
+    .label-docs {
         color: #1A97E8;
         text-align: left;
         float: left;
     }
-    .label-docs:nth-child(1){
-        @media(max-width: 678px){
+
+    .label-docs:nth-child(1) {
+        @media(max-width: 678px) {
             font-size: 15px;
         }
+    }
+}
+
+
+ion-buttons {
+    position: fixed;
+
+    ion-button {
+        background-color: #1A97E8;
+        width: 45px;
+        height: 37px;
+        border-radius: 4px;
+        position: fixed;
+        z-index: 100;
+        top: 14px;
+        left: 95vw;
+    }
+
+    @media(max-width: 678px) {
+        ion-button {
+            left: 86vw;
+        }
+    }
+}
+
+.menu-user {
+    padding: 0px;
+
+    .col-menu {
+        height: 100vh;
+        background-color: #FFF;
+
+        ion-item {
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+
+        .img-icon {
+            width: 10%;
+            border-radius: 0px;
+        }
+    }
+
+    .menup {
+        // * Posicion que tendra el  menu 
+        position: fixed;
+        // * Ancho que tendra el menu
+        width: 230px;
+        // * z-index indica el orden de lo que se mostrara primero o por encima de 
+        z-index: 100;
+        // * left oculta o saca de la vista el menu
+        left: -230px;
+    }
+
+    .active {
+        // * Ajusta la posicion de nuestro menu para que sea visible
+        left: 0px;
+    }
+
+    .menu-header {
+        // * Nos indica el alto de nuestro header
+        height: 230px;
+        // * Nos indica el ancho
+        width: 100%;
+        // * Nos indica sus colores de fondo
+        background: #1A97E8;
+        background: linear-gradient(10deg, #1A97E8 100%, #1c6dfa 100%);
+        // * Nos indica la sombra que tendra
+        box-shadow: 0px 1px 10px #003ca3;
+        // * Nos indica el borde redondeado que tendra el header
+        border-radius: 10px 10px 80px 10px;
+        // * Nos indica el padding que tendra nuestro header
+        padding: 10px;
+        // * Nos indica el margin hacia abajo que tendra el header
+        margin-bottom: 5px;
+        text-align: center;
+
+        .div-img-user {
+            text-align: center;
+
+            img {
+                width: 50%;
+                height: auto;
+                box-shadow: 0px 0px 10px 0px #646464;
+            }
+        }
+
+        h2 {
+            margin-top: 8%;
+            font-size: 25px;
+        }
+    }
+
+    .texto-menu {
+        font-size: 17px;
+        padding-top: 17px;
+    }
+
+    .menu ion-icon {
+        margin: 4px;
+    }
+
+    .menu img {
+        border-radius: 50%;
+    }
+
+    .menu-text {
+        color: white;
     }
 }

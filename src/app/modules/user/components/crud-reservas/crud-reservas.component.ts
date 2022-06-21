@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { EditReservComponent } from './edit-reserv/edit-reserv.component';
 import { ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-crud-reservas',
@@ -27,10 +28,13 @@ export class CrudReservasComponent implements OnInit {
   // The `ion-modal` element reference.
   modal: HTMLElement;
 
-  constructor( private firestoreService: FirestoreService, public modalController: ModalController ) { }
+  dataUser: any;
+
+  constructor( private firestoreService: FirestoreService, public modalController: ModalController, private auth: AuthService ) { }
 
   ngOnInit() {
     this.getDataUser();
+    this.getUser();
     this.getBookingsUser();
   }
 
@@ -44,6 +48,22 @@ export class CrudReservasComponent implements OnInit {
         return;
       }
     })
+  }
+
+  // * Obtener datos del usuario
+  getUser(){
+    if( localStorage.getItem('user') ){
+      let user = localStorage.getItem('user');
+      this.dataUser = JSON.parse(user);
+    } else{
+      this.auth.getUid().then( id => {
+        this.firestoreService.getDoc('Usuarios', id).subscribe( data => {
+          localStorage.setItem('user', JSON.stringify(data))
+          this.dataUser = data;
+        });
+      });
+    }
+
   }
 
   // * Obtener todas las reservas del usuario
@@ -142,5 +162,18 @@ export class CrudReservasComponent implements OnInit {
     })
   }
 
+
+  // * Abrir menú de usuario
+  abrir(){
+    const abrirM = ()=>{
+    // La funcion a ejecutar es la siguiente
+    // Se obtiene el elemento por id "animacion" y se le agrega una clase mediante un metodo llamado toggle el cual agrega la clase si esta no es parte del elemento o remueve la clase si esta ya forma parte de el
+    // La clase "active" mostrara el menu 
+    document.getElementById('animacionMenuReservas').classList.toggle('active');
+    // La clase "animated__bounceInLeft" hara una animacion en el menu cuando este se muestre
+    document.getElementById('animacionMenuReservas').classList.toggle('animate__bounceInLeft');
+    }
+    abrirM();
+  }
 
 }
