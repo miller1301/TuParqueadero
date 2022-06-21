@@ -25,9 +25,10 @@ export class CrudPage implements OnInit {
     uid: null,
     password: null,
     perfil: 'empleado',
-    icono: 'https://www.webespacio.com/wp-content/uploads/2010/12/perfil-facebook.jpg'
+    icono: 'https://www.webespacio.com/wp-content/uploads/2010/12/perfil-facebook.jpg',
+    uidp: 'LmDbHtDOgCixBGlkGhKg'
   }
-
+  LmDbHtDOgCixBGlkGhKg
   private path = "Usuarios/";
 
   constructor(
