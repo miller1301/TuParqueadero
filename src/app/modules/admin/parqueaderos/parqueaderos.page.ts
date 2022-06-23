@@ -127,7 +127,9 @@ export class ParqueaderosPage implements OnInit {
         if( item.data.estado === 'Activo' || item.data.estado === 'Inactivo'){
           return true
         }
+        console.log(item);
       })
+      console.log(this.arreglo2);
     })
     // ! Metodo que se ejecuta para traer el ID del usuario actual y luego traer la respectiva informacion del usuario
     this.auth.getUid().then( res => {
