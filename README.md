@@ -1,3 +1,5 @@
+# TuParqueadero
+
 ## Modulo Usuario
 En este módulo vamos a encontrar el apartado del rol usuario donde podemos ver mapa con disponibilidad de parqueaderos, reservar parqueaderos, realizar pagos de reservas y ver el estado de la reserva.
 
@@ -29,9 +31,6 @@ En este módulo vamos a encontrar el apartado del rol usuario donde podemos ver 
 Desarrollador FullStack encargado de crear y gestionar el módulo de usuario conectando los servicios que provee Firebase y Mapbox con el FrontEnd de Angular y Ionic.
 
 =======
-
-# TuParqueadero
-
 # Modulo Parqueadero
 
 Este modulo permite hacer la gestion de Parqueadero, Visualizacion de reservas y creacion de empleados ademas nos permite ver las estadisticas del parqueadero
